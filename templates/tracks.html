@@ -2,13 +2,14 @@
 
 {% block content %}
 
-    {% for track in tracks %}
-        {{ track.track_title }}
-        {{ track.media_link }}
-        {{ track.artist }}
-        {{ track.year }}
-        {{ track.genre }}
-        {{ track.upvotes }}
-    {% endfor %}
+        <ul class="collapsible">
+            {% for track in tracks %}
+            <li>
+                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>{{ track.artist }} - {{ track.track_title }}</div>
+                <div class="collapsible-body"><span>{{ track.year }}</span></div>
+                <iframe width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </li>
+            {% endfor %}
+        </ul>
 
 {% endblock %}
