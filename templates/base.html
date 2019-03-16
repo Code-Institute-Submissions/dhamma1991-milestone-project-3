@@ -1,5 +1,26 @@
-<body>
-    <h1>Outside!</h1>
-    {% block content %} <!-- 'content' is a variable name, you can call it what you like, 'content' is just convention -->
-    {% endblock %}
-</body>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <!-- Materialize css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">   
+    </head>
+    
+    <body>
+        <h1>Outside!</h1>
+        {% block content %} <!-- 'content' is a variable name, you can call it what you like, 'content' is just convention -->
+        {% endblock %}
+        
+        <!-- Scripts -->
+        <!-- jQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Materialize -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <!-- /Scripts -->
+    </body>
+</html>
