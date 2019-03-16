@@ -11,12 +11,12 @@ app.config["MONGO_URI"] = 'mongodb://admin:Strat3gic@ds127115.mlab.com:27115/lev
 mongo = PyMongo(app)
 
 @app.route('/')
-@app.route('/get_tracks')
+@app.route('/get-tracks')
 def get_tasks():
     return render_template("tracks.html",
     tracks=mongo.db.tracks.find())
     
-@app.route('/add_track')
+@app.route('/add-track')
 def add_track():
     return render_template('add-track.html') 
  
