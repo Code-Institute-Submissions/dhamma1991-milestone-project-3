@@ -15,7 +15,7 @@ mongo = PyMongo(app)
 def get_tasks():
     return render_template("tracks.html",
     tracks=mongo.db.tracks.find())
-    
+ 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
     port=int(os.environ.get('PORT')),
