@@ -11,14 +11,20 @@ app.config["MONGO_URI"] = 'mongodb://admin:Strat3gic@ds127115.mlab.com:27115/lev
 mongo = PyMongo(app)
 
 @app.route('/')
-@app.route('/get-tracks')
-def get_tasks():
+@app.route('/get_tracks')
+def get_tracks():
     return render_template("tracks.html",
     tracks=mongo.db.tracks.find())
     
-@app.route('/add-track')
+@app.route('/add_track')
 def add_track():
     return render_template('add-track.html') 
+    
+@app.route('/insert_track', methods=['POST']) # Because you're using POST here, you have to set that via methods
+def insert_track():
+    tracks = mongo.db.tracks # Get the tracks collection
+    tracks.insert_one(request.form.to_dict()) # Whenever you submit something, it is submitted as a request object. We need to convert to a dictionary so that it can be understood by mongo
+    return redirect(url_for('get_tracks')) # Once submitted, we redirect to the get_tasks function so that we can view our collection
  
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

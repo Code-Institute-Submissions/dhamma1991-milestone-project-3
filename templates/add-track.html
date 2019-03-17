@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="row">
-        <form action="" method="POST"class="col s12">
+        <form action="{{ url_for('insert_track') }}" method="POST" class="col s12"> <!-- The form will call the insert_track function located in app.py -->
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">assignment</i>
