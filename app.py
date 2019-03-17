@@ -25,6 +25,22 @@ def insert_track():
     tracks = mongo.db.tracks # Get the tracks collection
     tracks.insert_one(request.form.to_dict()) # Whenever you submit something, it is submitted as a request object. We need to convert to a dictionary so that it can be understood by mongo
     return redirect(url_for('get_tracks')) # Once submitted, we redirect to the get_tasks function so that we can view our collection
+    
+@app.route('/upvote_track/<track_id>', methods=['POST'])
+def upvote_track(track_id):
+    tracks = mongo.db.tracks
+    tracks.update( 
+        {'_id': ObjectId(track_id)},
+        {'$inc': { 'upvotes': 1 }}
+    )
+    
+#     db.products.update(
+#   { sku: "abc123" },
+#   { $inc: { quantity: -2, "metrics.orders": 1 } }
+#     )
+
+
+    return redirect(url_for('get_tasks'))
  
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
