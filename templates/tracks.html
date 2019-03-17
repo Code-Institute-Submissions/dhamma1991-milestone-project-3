@@ -6,7 +6,10 @@
             {% for track in tracks %}
             <li>
                 <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>{{ track.artist }} - {{ track.track_title }}</div>
-                <div class="collapsible-body"><span>{{ track.year }}</span></div>
+                <div class="collapsible-body">
+                    <span>Released in {{ track.year }}</span>
+                    <p>{{ track.genre }}</p>
+                </div>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ track.youtube_link|replace('https://www.youtube.com/watch?v=', '') }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </li>
             {% endfor %}
