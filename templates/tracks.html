@@ -5,7 +5,14 @@
         <ul class="collapsible">
             {% for track in tracks %}
             <li>
-                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>{{ track.artist }} - {{ track.track_title }}</div>
+                <div class="collapsible-header">
+                    <i class="material-icons">arrow_drop_down</i>
+                    {{ track.artist }} - {{ track.track_title }}
+                    <span>
+                        <i class="material-icons">arrow_upward</i>
+                    </span>
+                    {{ track.upvotes }}
+                </div>
                 <div class="collapsible-body">
                     <span>Released in {{ track.year }}</span>
                     <p>{{ track.genre }}</p>
