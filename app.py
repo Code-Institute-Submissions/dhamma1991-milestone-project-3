@@ -10,6 +10,8 @@ from flask_pymongo import PyMongo
 # Allow working with _id fields
 from bson.objectid import ObjectId
 
+from datetime import datetime
+
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = 'level-up'
@@ -29,6 +31,7 @@ def add_track():
     
 @app.route('/insert_track', methods=['POST']) # Because you're using POST here, you have to set that via methods
 def insert_track():
+    now = datetime.now()
     tracks = mongo.db.tracks # Get the tracks collection
     # tracks.insert_one(request.form.to_dict(), { 'created_on' : 'today' }) # Whenever you submit something, it is submitted as a request object. We need to convert to a dictionary so that it can be understood by mongo
     tracks.insert_one(
@@ -40,7 +43,7 @@ def insert_track():
             'genre': request.form.get('genre'),
             # Upvotes is set to 1 by default
             'upvotes': 1,
-            'date_added': 'new Date()'
+            'date_added': now
         }
     )
     return redirect(url_for('get_tracks')) # Once submitted, we redirect to the get_tasks function so that we can view our collection
