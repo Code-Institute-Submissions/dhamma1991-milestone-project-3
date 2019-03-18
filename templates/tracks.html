@@ -13,7 +13,7 @@
                     {{ track.artist }} - {{ track.track_title }}
                     <!-- /Artist - Title -->
                     <!-- Upvote Button -->
-                    <form action="{{ url_for('upvote_track', track_id=track._id) }}" method="POST'">
+                    <form action="{{ url_for('upvote_track', track_id=track._id) }}" method="POST">
                         <button type="submit">
                             <i class="material-icons">arrow_upward</i>
                         </button>
