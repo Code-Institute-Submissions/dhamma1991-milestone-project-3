@@ -1,7 +1,17 @@
+# Allow configuration
 import os
+
+# Allow full utilisation of Flask framework
 from flask import Flask, render_template, redirect, request, url_for
+
+# Allow database manipulation
 from flask_pymongo import PyMongo
+
+# Allow working with _id fields
 from bson.objectid import ObjectId
+
+# Allow timestamp on track inserts
+from datetime import datetime
 
 app = Flask(__name__)
 
