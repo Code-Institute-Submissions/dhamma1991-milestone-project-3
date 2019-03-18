@@ -13,10 +13,12 @@
                     {{ track.artist }} - {{ track.track_title }}
                     <!-- /Artist - Title -->
                     <!-- Upvote Button -->
-                    <button type="submit" formaction="{{ url_for('upvote_track', track_id=track._id) }}">
-                        <i class="material-icons">arrow_upward</i>
-                    </button>
-                    {{ track.upvotes }}
+                    <form action="{{ url_for('upvote_track', track_id=track._id) }}" method="POST'">
+                        <button type="submit">
+                            <i class="material-icons">arrow_upward</i>
+                        </button>
+                        {{ track.upvotes }}
+                    </form>
                     <!-- /Upvote Button -->
                 </div>
                 <!-- /Accordion Header -->
