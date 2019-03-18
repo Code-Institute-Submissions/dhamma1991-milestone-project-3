@@ -10,9 +10,6 @@ from flask_pymongo import PyMongo
 # Allow working with _id fields
 from bson.objectid import ObjectId
 
-# Allow timestamp on track inserts
-from datetime import datetime
-
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = 'level-up'
@@ -43,7 +40,7 @@ def insert_track():
             'genre': request.form.get('genre'),
             # Upvotes is set to 1 by default
             'upvotes': 1,
-            'date_added': datetime.now()
+            'date_added': 'new Date()'
         }
     )
     return redirect(url_for('get_tracks')) # Once submitted, we redirect to the get_tasks function so that we can view our collection
