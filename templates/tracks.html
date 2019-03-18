@@ -2,24 +2,36 @@
 
 {% block content %}
 
+        <!-- Accordion Container -->
         <ul class="collapsible">
-            {% for track in tracks %}
+            {% for track in tracks %} <!-- For each track in the database -->
             <li>
+                <!-- Accordion Header -->
                 <div class="collapsible-header">
+                    <!-- Artist - Title -->
                     <i class="material-icons">arrow_drop_down</i>
                     {{ track.artist }} - {{ track.track_title }}
+                    <!-- /Artist - Title -->
+                    <!-- Upvote Button -->
                     <button type="submit" formaction="{{ url_for('upvote_track', track_id=track._id) }}">
                         <i class="material-icons">arrow_upward</i>
                     </button>
                     {{ track.upvotes }}
+                    <!-- /Upvote Button -->
                 </div>
+                <!-- /Accordion Header -->
+                <!-- Accordion Body -->
                 <div class="collapsible-body">
                     <span>Released in {{ track.year }}</span>
                     <p>{{ track.genre }}</p>
                 </div>
+                <!-- /Accordion Body -->
+                <!-- YouTube Video -->
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ track.youtube_link|replace('https://www.youtube.com/watch?v=', '') }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- /YouTube Video -->
             </li>
             {% endfor %}
         </ul>
+        <!-- /Accordion Container -->
 
 {% endblock %}
