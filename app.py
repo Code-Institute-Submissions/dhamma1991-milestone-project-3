@@ -31,7 +31,9 @@ def insert_track():
             'youtube_link': request.form.get('youtube_link'),
             'year': request.form.get('year'),
             'genre': request.form.get('genre'),
-            'upvotes': 1
+            # Upvotes is set to 1 by default
+            'upvotes': 1,
+            'date_added': 'Test'
         }
     )
     return redirect(url_for('get_tracks')) # Once submitted, we redirect to the get_tasks function so that we can view our collection
