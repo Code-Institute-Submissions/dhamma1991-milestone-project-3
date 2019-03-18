@@ -8,7 +8,7 @@
                 <div class="collapsible-header">
                     <i class="material-icons">arrow_drop_down</i>
                     {{ track.artist }} - {{ track.track_title }}
-                    <button type="submit" formaction="{{ url_for('upvote_track') }}">
+                    <button type="submit" formaction="{{ url_for('upvote_track', track_id=track._id) }}">
                         <i class="material-icons">arrow_upward</i>
                     </button>
                     {{ track.upvotes }}
