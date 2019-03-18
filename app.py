@@ -23,7 +23,7 @@ def add_track():
 @app.route('/insert_track', methods=['POST']) # Because you're using POST here, you have to set that via methods
 def insert_track():
     tracks = mongo.db.tracks # Get the tracks collection
-    tracks.insert_one(request.form.to_dict()) # Whenever you submit something, it is submitted as a request object. We need to convert to a dictionary so that it can be understood by mongo
+    tracks.insert_one(request.form.to_dict(), { 'created_on' : 'today' }) # Whenever you submit something, it is submitted as a request object. We need to convert to a dictionary so that it can be understood by mongo
     return redirect(url_for('get_tracks')) # Once submitted, we redirect to the get_tasks function so that we can view our collection
     
 @app.route('/upvote_track/<track_id>', methods=['POST'])
