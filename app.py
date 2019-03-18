@@ -40,7 +40,7 @@ def upvote_track(track_id):
 #     )
 
 
-    return redirect(url_for('get_tasks'))
+    return redirect(url_for('get_tracks'))
  
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
