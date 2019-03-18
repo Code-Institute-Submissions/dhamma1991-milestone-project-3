@@ -33,13 +33,6 @@ def upvote_track(track_id):
         {'_id': ObjectId(track_id)},
         {'$inc': { 'upvotes': 1 }}
     )
-    
-#     db.products.update(
-#   { sku: "abc123" },
-#   { $inc: { quantity: -2, "metrics.orders": 1 } }
-#     )
-
-
     return redirect(url_for('get_tracks'))
  
 if __name__ == '__main__':
