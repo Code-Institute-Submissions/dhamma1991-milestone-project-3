@@ -35,7 +35,7 @@ def add_track():
     
 @app.route('/insert_track', methods=['POST']) # Because you're using POST here, you have to set that via methods
 def insert_track():
-    timestamp = datetime.now()
+    timestamp = datetime.now().strftime('%d, %b %Y')
     tracks = mongo.db.tracks # Get the tracks collection
     tracks.insert_one(
         {
@@ -56,6 +56,7 @@ def upvote_track(track_id):
     tracks = mongo.db.tracks
     tracks.update( 
         {'_id': ObjectId(track_id)},
+        # Increment the value of the upvote key by 1
         {'$inc': { 'upvotes': 1 }}
     )
     return redirect(url_for('get_tracks'))
