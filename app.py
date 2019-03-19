@@ -10,7 +10,8 @@ from flask_pymongo import PyMongo
 # Allow working with _id fields
 from bson.objectid import ObjectId
 
-from datetime import datetime
+# Allow date and time manipulation
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
@@ -24,14 +25,8 @@ mongo = PyMongo(app)
 def get_tracks():
     # Get the tracks collection
     tracks = mongo.db.tracks
-    # test = datetime.now
-    tracks.update_many(
-       { },
-       { '$set': {'current_date': datetime.now()} }
-    )
     return render_template("tracks.html",
     tracks=tracks.find(), 
-    # test=test
     )
     
 @app.route('/add_track')
@@ -42,7 +37,6 @@ def add_track():
 def insert_track():
     timestamp = datetime.now()
     tracks = mongo.db.tracks # Get the tracks collection
-    # tracks.insert_one(request.form.to_dict(), { 'created_on' : 'today' }) # Whenever you submit something, it is submitted as a request object. We need to convert to a dictionary so that it can be understood by mongo
     tracks.insert_one(
         {
             'track_title': request.form.get('track_title'), # Access the tasks collection
