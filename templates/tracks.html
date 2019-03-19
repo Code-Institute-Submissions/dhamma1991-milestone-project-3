@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<a href="{{ url_for('sort_tracks_upvote_asc') }}">Sort by Upvotes</a>
     <!-- Accordion Container -->
     <ul class="collapsible">
         {% for track in tracks %} <!-- For each track in the database -->
