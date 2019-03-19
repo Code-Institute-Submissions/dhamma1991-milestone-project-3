@@ -28,6 +28,14 @@ def get_tracks():
     return render_template("tracks.html",
     tracks=tracks.find(), 
     )
+
+@app.route('/sort_tracks_upvote_asc')
+def sort_tracks_upvote_asc():
+    tracks = mongo.db.tracks
+    return render_template("tracks.html",
+    tracks=tracks.find().sort({'upvotes': 1}), 
+    )
+    
     
 @app.route('/add_track')
 def add_track():
