@@ -21,6 +21,9 @@ app.config["MONGO_URI"] = 'mongodb://admin:Strat3gic@ds127115.mlab.com:27115/lev
 mongo = PyMongo(app)
 
 @app.route('/')
+def index():
+    return render_template("index.html")
+
 @app.route('/get_tracks')
 def get_tracks():
     # Get the tracks collection
@@ -38,11 +41,29 @@ def sort_tracks_upvote_desc():
         )
     return render_template("tracks.html", tracks=tracks)
     
+@app.route('/sort_tracks_upvote_asc')
+def sort_tracks_upvote_asc():
+    tracks = mongo.db.tracks.aggregate(
+           [
+             { '$sort' : { 'upvotes' : 1} }
+           ]
+        )
+    return render_template("tracks.html", tracks=tracks)
+    
 @app.route('/sort_tracks_date_added_desc')
 def sort_tracks_date_added_desc():
     tracks = mongo.db.tracks.aggregate(
            [
              { '$sort' : { 'date_added_raw' : -1} }
+           ]
+        )
+    return render_template("tracks.html", tracks=tracks)
+    
+@app.route('/sort_tracks_date_added_asc')
+def sort_tracks_date_added_asc():
+    tracks = mongo.db.tracks.aggregate(
+           [
+             { '$sort' : { 'date_added_raw' : 1} }
            ]
         )
     return render_template("tracks.html", tracks=tracks)
