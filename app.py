@@ -67,7 +67,8 @@ def insert_track():
             'genre': request.form.get('genre'),
             # Upvotes is set to 1 by default
             'upvotes': 1,
-            'date_added': timestamp
+            'date_added': timestamp,
+            'date_added_raw': datetime.now()
         }
     )
     return redirect(url_for('get_tracks')) # Once submitted, we redirect to the get_tasks function so that we can view our collection
