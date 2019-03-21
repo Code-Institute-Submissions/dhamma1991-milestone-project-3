@@ -38,6 +38,15 @@ def sort_tracks_upvote_desc():
         )
     return render_template("tracks.html", tracks=tracks)
     
+@app.route('/sort_tracks_date_added_desc')
+def sort_tracks_date_added_desc():
+    tracks = mongo.db.tracks.aggregate(
+           [
+             { '$sort' : { 'upvotes' : -1} }
+           ]
+        )
+    return render_template("tracks.html", tracks=tracks)
+    
 @app.route('/add_track')
 def add_track():
     return render_template('add-track.html') 
