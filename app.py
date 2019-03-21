@@ -42,7 +42,7 @@ def sort_tracks_upvote_desc():
 def sort_tracks_date_added_desc():
     tracks = mongo.db.tracks.aggregate(
            [
-             { '$sort' : { 'upvotes' : -1} }
+             { '$sort' : { 'date_addded_raw' : -1} }
            ]
         )
     return render_template("tracks.html", tracks=tracks)
