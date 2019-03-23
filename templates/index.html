@@ -11,7 +11,12 @@
             <div class="dummy-content">
                 <h2 class="center-align">Current Top 3 Tracks</h2>
                 {% for track in tracks %}
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ track.youtube_link|replace('https://www.youtube.com/watch?v=', '') }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <!-- Limit the return tracks to 3.
+                         Since the list has already been sorted by upvotes descending in app.py the returned tracks will be the 3 highest upvoted tracks 
+                    -->
+                    {% if loop.index <= 3 %}
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ track.youtube_link|replace('https://www.youtube.com/watch?v=', '') }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
