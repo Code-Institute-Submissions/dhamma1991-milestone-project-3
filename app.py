@@ -35,6 +35,10 @@ def index():
                                                     )
                             )
 
+@app.route('/about')
+def about():
+    return render_template("about.html")
+
 @app.route('/get_tracks')
 def get_tracks():
     # Get the tracks collection
