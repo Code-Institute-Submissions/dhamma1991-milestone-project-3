@@ -1,4 +1,9 @@
-.parallax-container .parallax img {
-  display: inherit !important; }
+.parallax-container {
+  height: 600px !important; }
+  .parallax-container .parallax img {
+    display: inherit !important; }
+  .parallax-container p {
+    text-align: center;
+    margin-top: 10%; }
 
 /*# sourceMappingURL=style.css.map */
