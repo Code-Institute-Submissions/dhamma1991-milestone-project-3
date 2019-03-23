@@ -39,7 +39,8 @@ def index():
 
 @app.route('/about')
 def about():
-    return render_template("about.html")
+    title = "DesertIsland | About"
+    return render_template("about.html", title = title)
 
 @app.route('/get_tracks')
 def get_tracks():
