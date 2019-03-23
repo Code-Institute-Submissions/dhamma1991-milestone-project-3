@@ -10,6 +10,9 @@
         <div class="container">
             <div class="dummy-content">
                 <h2 class="center-align">Current Top 3 Tracks</h2>
+                {% for track in tracks %}
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ track.youtube_link|replace('https://www.youtube.com/watch?v=', '') }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                {% endfor %}
             </div>
         </div>
         <div class="parallax-container">

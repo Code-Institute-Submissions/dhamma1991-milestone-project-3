@@ -22,19 +22,20 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    tracks = mongo.db.tracks.aggregate(
-           [
-             { '$sort' : { 'upvotes' : -1} }
-           ]
-        )
-    return render_template("index.html")
+    tracks = mongo.db.tracks
+    # tracks.aggregate(
+    #       [
+    #          { '$sort' : { 'upvotes' : -1} }
+    #       ]
+    #     )
+    return render_template("index.html", tracks = tracks.find(),
+    )
 
 @app.route('/get_tracks')
 def get_tracks():
     # Get the tracks collection
     tracks = mongo.db.tracks
-    return render_template("tracks.html",
-    tracks=tracks.find(), 
+    return render_template("tracks.html", tracks=tracks.find(), 
     )
 
 @app.route('/sort_tracks_upvote_desc')
