@@ -13,13 +13,16 @@ from bson.objectid import ObjectId
 # Allow date and time manipulation
 from datetime import datetime, timedelta
 
+# Initialise Flask
 app = Flask(__name__)
-
+# Connect to Database
 app.config["MONGO_DBNAME"] = 'level-up'
 app.config["MONGO_URI"] = 'mongodb://admin:Strat3gic@ds127115.mlab.com:27115/level-up'
 
+# Initialise PyMongo
 mongo = PyMongo(app)
 
+# Index Route
 @app.route('/index')
 @app.route('/')
 def index():
