@@ -27,12 +27,14 @@ mongo = PyMongo(app)
 @app.route('/')
 def index():
     tracks = mongo.db.tracks
+    title = "DesertIsland | Home"
     return render_template("index.html", 
                             tracks = tracks.aggregate(
                                                        [
                                                          { '$sort' : { 'upvotes' : -1} }
                                                        ]
-                                                    )
+                                                    ),
+                            title = title
                             )
 
 @app.route('/about')
