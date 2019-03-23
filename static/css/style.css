@@ -6,6 +6,15 @@
   height: 1px;
   overflow: hidden; }
 
+/* Sticky Footer */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+
+main {
+  flex: 1 0 auto; }
+
 .parallax-container {
   height: 600px !important; }
   .parallax-container .parallax img {
