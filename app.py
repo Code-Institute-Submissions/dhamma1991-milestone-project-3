@@ -74,6 +74,11 @@ def get_tracks():
     else:
         session['pagination'] = 0
         pagination = session['pagination']
+        
+    just_upvoted = False
+        
+    session['ranking'] = [1,2,3,4,5]
+    ranking = session['ranking']
     
     starting_track = tracks_collection.find().sort('upvotes', pymongo.DESCENDING)
     last_track = starting_track[offset]['upvotes']
@@ -87,10 +92,14 @@ def get_tracks():
     tracks = tracks_collection.find().sort(
                                             'upvotes', pymongo.DESCENDING).skip(
                                                                                 pagination).limit(5)
+                                                                                
+    session['pagination'] = 0
+    pagination = session['pagination']
     
     return render_template("tracks.html", 
                             tracks = tracks,
-                            pagination = pagination
+                            pagination = pagination,
+                            ranking = ranking
                             )
                             
 @app.route('/next_tracks')
