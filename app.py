@@ -62,7 +62,7 @@ def get_tracks():
     limit = 2
     
     # If the user has just come from upvoting a track
-    if session['just_upvoted'] == True:
+    if session['just_upvoted']:
         # Set just_upvoted to true
         just_upvoted = session['just_upvoted']
         # Keep the pagination the user was on
