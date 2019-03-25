@@ -74,7 +74,7 @@ def get_tracks():
     # Sort the tracks collection by upvotes with the highest upvoted track first. Limit to 5 results
     tracks = tracks_collection.find().sort('upvotes', pymongo.DESCENDING).limit(5)
     
-    session['pagination'] = 5
+    session['pagination'] = 0
     
     return render_template("tracks.html", 
                             tracks = tracks,
@@ -82,7 +82,8 @@ def get_tracks():
                             
 @app.route('/next_tracks')
 def next_tracks():
-    pagination = session.get('pagination')
+    session['pagination'] += 5
+    pagination = session['pagination']
     
     # Get the tracks collection
     tracks_collection = mongo.db.tracks
@@ -94,7 +95,6 @@ def next_tracks():
                                                                                 pagination
                                                                                             ).limit(5)
     
-    
     return render_template("tracks.html",
                             tracks = tracks,
                             pagination = pagination
@@ -102,8 +102,8 @@ def next_tracks():
                             
 @app.route('/prev_tracks')
 def prev_tracks():
-    pagination = session.get('pagination')
-    pagination -= 5
+    session['pagination'] -= 5
+    pagination = session['pagination']
     
     # Get the tracks collection
     tracks_collection = mongo.db.tracks
