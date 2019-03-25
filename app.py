@@ -61,7 +61,19 @@ def get_tracks():
     # Set the limit for the number of tracks returned
     limit = 2
     
+    if session['just_upvoted'] == True:
+        just_upvoted = session['just_upvoted']
+    else:
+        just_upvoted = False
     
+    # if session.get['just_upvoted']:
+    #     just_upvoted = True
+    
+    if just_upvoted:
+        pagination = session['pagination']
+    else:
+        session['pagination'] = 0
+        pagination = session['pagination']
     
     starting_track = tracks_collection.find().sort('upvotes', pymongo.DESCENDING)
     last_track = starting_track[offset]['upvotes']
@@ -72,12 +84,13 @@ def get_tracks():
     #                                     'upvotes', pymongo.DESCENDING).limit(limit)
     
     # Sort the tracks collection by upvotes with the highest upvoted track first. Limit to 5 results
-    tracks = tracks_collection.find().sort('upvotes', pymongo.DESCENDING).limit(5)
-    
-    session['pagination'] = 0
+    tracks = tracks_collection.find().sort(
+                                            'upvotes', pymongo.DESCENDING).skip(
+                                                                                pagination).limit(5)
     
     return render_template("tracks.html", 
                             tracks = tracks,
+                            pagination = pagination
                             )
                             
 @app.route('/next_tracks')
@@ -175,6 +188,9 @@ def upvote_track(track_id):
         # Increment the value of the upvote key by 1
         {'$inc': { 'upvotes': 1 }}
     )
+    
+    session['just_upvoted'] = True
+    
     return redirect(url_for('get_tracks'))
  
 if __name__ == '__main__':
