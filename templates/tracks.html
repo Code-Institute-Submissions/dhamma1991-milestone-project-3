@@ -48,6 +48,7 @@
         <!-- Previous arrow -->
         <a href="">Previous</a>
         <!-- Next arrow -->
-        <a href="">Next</a>
+        <a href="{{ url_for('next_tracks') }}">Next</a>
+        {{ pagination }}
     </main>
 {% endblock %}

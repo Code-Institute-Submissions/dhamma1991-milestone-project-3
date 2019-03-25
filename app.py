@@ -2,10 +2,10 @@
 import os
 
 # Allow full utilisation of Flask framework
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, session
 
 # Allow database manipulation
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, pymongo
 
 # Allow working with _id fields
 from bson.objectid import ObjectId
@@ -18,6 +18,8 @@ app = Flask(__name__)
 # Connect to Database
 app.config["MONGO_DBNAME"] = 'level-up'
 app.config["MONGO_URI"] = 'mongodb://admin:Strat3gic@ds127115.mlab.com:27115/level-up'
+
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 # Initialise PyMongo
 mongo = PyMongo(app)
@@ -45,43 +47,77 @@ def about():
 @app.route('/get_tracks')
 def get_tracks():
     # Get the tracks collection
-    tracks = mongo.db.tracks
-    return render_template("tracks.html", tracks=tracks.find())
+    tracks_collection = mongo.db.tracks
+    # Get the number of items in tracks_collection
+    tracks_col_count = tracks_collection.count()
+    
+    # Get the item with the max upvotes
+    max_upvotes = tracks_collection.find().sort('upvotes', pymongo.DESCENDING).limit(1)
+    # Get the item with the min upvotes
+    min_upvotes = tracks_collection.find().sort('upvotes', pymongo.ASCENDING).limit(1)
+    
+    offset = 3
+    
+    # Set the limit for the number of tracks returned
+    limit = 2
+    
+    
+    
+    starting_track = tracks_collection.find().sort('upvotes', pymongo.DESCENDING)
+    last_track = starting_track[offset]['upvotes']
+    
+    # tracks = tracks_collection.find(
+    #                                 # Sort by upvotes descending
+    #                                 {'_id': {'$gte': last_track}}).sort(
+    #                                     'upvotes', pymongo.DESCENDING).limit(limit)
+    
+    # Sort the tracks collection by upvotes with the highest upvoted track first. Limit to 5 results
+    tracks = tracks_collection.find().sort('upvotes', pymongo.DESCENDING).limit(5)
+    
+    session['pagination'] = 5
+    
+    return render_template("tracks.html", 
+                            tracks = tracks,
+                            )
+                            
+@app.route('/next_tracks')
+def next_tracks():
+    pagination = session.get('pagination')
+    
+    # Get the tracks collection
+    tracks_collection = mongo.db.tracks
+    
+    # Sort the tracks collection by upvotes with the highest upvoted track first. Limit to 5 results
+    tracks = tracks_collection.find(
+                                    ).sort(
+                                            'upvotes', pymongo.DESCENDING).skip(
+                                                                                pagination
+                                                                                            ).limit(5)
+    
+    
+    return render_template("tracks.html",
+                            tracks = tracks,
+                            pagination = pagination
+                            )
 
 @app.route('/sort_tracks_upvote_desc')
 def sort_tracks_upvote_desc():
-    tracks = mongo.db.tracks.aggregate(
-               [
-                 { '$sort' : { 'upvotes' : -1} }
-               ]
-            )
+    tracks = mongo.db.tracks.find().sort('upvotes', pymongo.DESCENDING)
     return render_template("tracks.html", tracks=tracks)
     
 @app.route('/sort_tracks_upvote_asc')
 def sort_tracks_upvote_asc():
-    tracks = mongo.db.tracks.aggregate(
-           [
-             { '$sort' : { 'upvotes' : 1} }
-           ]
-        )
+    tracks = mongo.db.tracks.find().sort('upvotes', pymongo.ASCENDING)
     return render_template("tracks.html", tracks=tracks)
     
 @app.route('/sort_tracks_date_added_desc')
 def sort_tracks_date_added_desc():
-    tracks = mongo.db.tracks.aggregate(
-           [
-             { '$sort' : { 'date_added_raw' : -1} }
-           ]
-        )
+    tracks = mongo.db.tracks.find().sort('date_added_raw', pymongo.DESCENDING)
     return render_template("tracks.html", tracks=tracks)
     
 @app.route('/sort_tracks_date_added_asc')
 def sort_tracks_date_added_asc():
-    tracks = mongo.db.tracks.aggregate(
-           [
-             { '$sort' : { 'date_added_raw' : 1} }
-           ]
-        )
+    tracks = mongo.db.tracks.find().sort('date_added_raw', pymongo.ASCENDING)
     return render_template("tracks.html", tracks=tracks)
     
 @app.route('/add_track')
