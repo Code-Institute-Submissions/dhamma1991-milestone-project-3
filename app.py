@@ -28,6 +28,8 @@ mongo = PyMongo(app)
 @app.route('/index')
 @app.route('/')
 def index():
+    # Testing establishing the session for just_upvoted to check whether get_tracks will call correctly
+    session['pagination'] = False
     tracks = mongo.db.tracks
     title = "DesertIsland | Home"
     return render_template("index.html", 
