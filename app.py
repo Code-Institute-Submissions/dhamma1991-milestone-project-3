@@ -103,7 +103,8 @@ def get_tracks():
     return render_template("tracks.html", 
                             tracks = tracks,
                             pagination = pagination,
-                            ranking = ranking
+                            ranking = ranking,
+                            tracks_col_count = tracks_col_count
                             )
                             
 @app.route('/next_tracks')

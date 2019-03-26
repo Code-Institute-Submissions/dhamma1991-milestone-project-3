@@ -50,7 +50,10 @@
             <a href="{{ url_for('prev_tracks') }}">Previous</a>
         {% endif %}
         <!-- Next arrow -->
-        <a href="{{ url_for('next_tracks') }}">Next</a>
+        {% if pagination < tracks_col_count - 5 %}
+            <a href="{{ url_for('next_tracks') }}">Next</a>
+        {% endif %}
         {{ pagination }}
+        {{ tracks_col_count }}
     </main>
 {% endblock %}
