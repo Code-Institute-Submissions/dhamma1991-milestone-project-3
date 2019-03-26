@@ -54,16 +54,6 @@ def get_tracks():
     # Get the number of items in tracks_collection
     tracks_col_count = tracks_collection.count()
     
-    # Get the item with the max upvotes
-    max_upvotes = tracks_collection.find().sort('upvotes', pymongo.DESCENDING).limit(1)
-    # Get the item with the min upvotes
-    min_upvotes = tracks_collection.find().sort('upvotes', pymongo.ASCENDING).limit(1)
-    
-    offset = 3
-    
-    # Set the limit for the number of tracks returned
-    limit = 2
-    
     if 'hold_pagination' in session:
         pagination = session['pagination']
     else:
