@@ -28,6 +28,9 @@ mongo = PyMongo(app)
 @app.route('/index')
 @app.route('/')
 def index():
+    # Clear any session the user may have 
+    # This ensures the user can go to get_tracks cleanly
+    session.clear()
     tracks = mongo.db.tracks
     title = "DesertIsland | Home"
     return render_template("index.html", 
