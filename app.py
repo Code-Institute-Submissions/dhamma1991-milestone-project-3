@@ -66,9 +66,6 @@ def get_tracks():
     session['ranking'] = [1,2,3,4,5]
     ranking = session['ranking']
     
-    starting_track = tracks_collection.find().sort('upvotes', pymongo.DESCENDING)
-    last_track = starting_track[offset]['upvotes']
-    
     # Sort the tracks collection by upvotes with the highest upvoted track first. Limit to 5 results
     tracks = tracks_collection.find().sort(
                                             'upvotes', pymongo.DESCENDING).skip(
