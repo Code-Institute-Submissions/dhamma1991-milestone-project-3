@@ -28,8 +28,6 @@ mongo = PyMongo(app)
 @app.route('/index')
 @app.route('/')
 def index():
-    # Testing establishing the session for just_upvoted to check whether get_tracks will call correctly
-    session['pagination'] = False
     tracks = mongo.db.tracks
     title = "DesertIsland | Home"
     return render_template("index.html", 
@@ -62,6 +60,9 @@ def get_tracks():
     
     # Set the limit for the number of tracks returned
     limit = 2
+    
+    if 'just_upvoted' not in session:
+        session['just_upvoted'] = False
     
     # If the user has just come from upvoting a track
     if session['just_upvoted']:
