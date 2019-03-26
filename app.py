@@ -96,8 +96,6 @@ def get_tracks():
                                             'upvotes', pymongo.DESCENDING).skip(
                                                                                 pagination).limit(5)
                                                                                 
-    session['pagination'] = 0
-    pagination = session['pagination']
     
     return render_template("tracks.html", 
                             tracks = tracks,
