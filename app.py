@@ -66,25 +66,20 @@ def get_tracks():
     else:
         session['pagination'] = 0
         pagination = session['pagination']
-    
+        
     # Delete the hold_pagination session.
     # If this session is needed again, it will be created by either upvote_track, next_tracks or prev_tracks
     # For all other use cases it is redundant
     session.pop('hold_pagination', None)
-        
-    session['ranking'] = [1,2,3,4,5]
-    ranking = session['ranking']
     
     # Sort the tracks collection by upvotes with the highest upvoted track first. Limit to 5 results
     tracks = tracks_collection.find().sort(
                                             'upvotes', pymongo.DESCENDING).skip(
                                                                                 pagination).limit(5)
-                                                                                
     
     return render_template("tracks.html", 
                             tracks = tracks,
                             pagination = pagination,
-                            ranking = ranking,
                             tracks_col_count = tracks_col_count
                             )
                             
