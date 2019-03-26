@@ -16,7 +16,8 @@
             <li>
                 <!-- Accordion Header -->
                 <div class="collapsible-header">
-                    <!-- Artist - Title -->
+                    <!-- Rank. Artist - Title -->
+                    <!-- Rank is determined by adding the current pagination value to the loop index -->
                     <i class="material-icons">arrow_drop_down</i>
                     {{ loop.index + pagination }}. {{ track.artist }} - {{ track.track_title }}
                     <!-- /Artist - Title -->
