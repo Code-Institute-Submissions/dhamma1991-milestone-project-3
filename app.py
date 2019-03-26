@@ -65,12 +65,15 @@ def get_tracks():
     limit = 2
     
     def determine_origin():
-        # This ensures that the session for just_upvoted is defined
-        # If it isn't defined, a keyerror will result when the user is taken to get_tracks
+        # If the just_upvoted session doesn't exist, this probably means the request is a fresh visit to the site 
         if 'just_upvoted' not in session:
+            # This ensures that the session for just_upvoted is defined
+            # If it isn't defined, a keyerror will result when the user is taken to get_tracks
             session['just_upvoted'] = False
+            # session.pagination also needs to be defined, otherwise a keyerror results
             session['pagination'] = 0
         # If the user has just come from upvoting a track
+        # The just_upvoted session will be true in this case
         elif session['just_upvoted']:
             # Set just_upvoted to true
             just_upvoted = session['just_upvoted']
