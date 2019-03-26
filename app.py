@@ -67,7 +67,9 @@ def get_tracks():
         session['pagination'] = 0
         pagination = session['pagination']
     
-    # Delete the just_upvoted session.
+    # Delete the hold_pagination session.
+    # If this session is needed again, it will be created by either upvote_track, next_tracks or prev_tracks
+    # For all other use cases it is redundant
     session.pop('hold_pagination', None)
         
     session['ranking'] = [1,2,3,4,5]
