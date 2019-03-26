@@ -91,11 +91,6 @@ def get_tracks():
     starting_track = tracks_collection.find().sort('upvotes', pymongo.DESCENDING)
     last_track = starting_track[offset]['upvotes']
     
-    # tracks = tracks_collection.find(
-    #                                 # Sort by upvotes descending
-    #                                 {'_id': {'$gte': last_track}}).sort(
-    #                                     'upvotes', pymongo.DESCENDING).limit(limit)
-    
     # Sort the tracks collection by upvotes with the highest upvoted track first. Limit to 5 results
     tracks = tracks_collection.find().sort(
                                             'upvotes', pymongo.DESCENDING).skip(
