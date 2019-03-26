@@ -64,33 +64,14 @@ def get_tracks():
     # Set the limit for the number of tracks returned
     limit = 2
     
-    def determine_origin():
-        # If the just_upvoted session doesn't exist, this probably means the request is a fresh visit to the site 
-        if 'just_upvoted' not in session:
-            # This ensures that the session for just_upvoted is defined
-            # If it isn't defined, a keyerror will result when the user is taken to get_tracks
-            session['just_upvoted'] = False
-            # session.pagination also needs to be defined, otherwise a keyerror results
-            session['pagination'] = 0
-        # If the user has just come from upvoting a track
-        # The just_upvoted session will be true in this case
-        elif session['just_upvoted']:
-            # Set just_upvoted to true
-            just_upvoted = session['just_upvoted']
-        elif not session['just_upvoted']:
-            return
-        else:
-            # Else the user has not come from upvoting a track
-            # This means they are fresh coming to tracks.html or they have clicked refresh
-            session['pagination'] = 0
-            
-    determine_origin()
-        
-    # Whatever the outcome of the if statement above, assign pagination to the value of session.pagination
-    pagination = session['pagination']
+    if 'hold_pagination' in session:
+        pagination = session['pagination']
+    else:
+        session['pagination'] = 0
+        pagination = session['pagination']
     
-    # Reset the just_upvoted session. This ensures pagination gets wiped ready to start afresh
-    session['just_upvoted'] = False
+    # Delete the just_upvoted session.
+    session.pop('hold_pagination', None)
         
     session['ranking'] = [1,2,3,4,5]
     ranking = session['ranking']
@@ -114,12 +95,14 @@ def get_tracks():
 @app.route('/next_tracks')
 def next_tracks():
     session['pagination'] += 5
+    session['hold_pagination'] = True
     
     return redirect(url_for('get_tracks'))
                             
 @app.route('/prev_tracks')
 def prev_tracks():
     session['pagination'] -= 5
+    session['hold_pagination'] = True
     
     return redirect(url_for('get_tracks'))
 
@@ -178,7 +161,7 @@ def upvote_track(track_id):
         {'$inc': { 'upvotes': 1 }}
     )
     
-    session['just_upvoted'] = True
+    session['hold_pagination'] = True
     
     return redirect(url_for('get_tracks'))
  
