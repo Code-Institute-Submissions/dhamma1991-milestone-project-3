@@ -52,8 +52,15 @@ def get_tracks():
     # Get the tracks collection
     tracks_collection = mongo.db.tracks
     # Get the number of items in tracks_collection
-    tracks_col_count = tracks_collection.count()
+    # This is used within tracks.html to determine whether to show the 'next' button
+    # It would not make sense to show the next button if there are no more tracks to view
+    tracks_col_count = tracks_collection.count() 
     
+    
+    # hold_pagination will only ever be in session if the user has come from next_tracks, prev_tracks or upvote_track
+    # In which case, ensure the pagination value currently in the session is used to show the user the correct tracks
+    # If hold_pagination does not exist, this means the user has come to tracks.html some other way, presumably by refreshing the page or clicking a nav link
+    # This means the pagination should be set to 0 to ensure the user is seeing the first top 5 tracks
     if 'hold_pagination' in session:
         pagination = session['pagination']
     else:
