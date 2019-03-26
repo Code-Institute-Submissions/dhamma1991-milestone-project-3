@@ -73,14 +73,13 @@ def get_tracks():
     if session['just_upvoted']:
         # Set just_upvoted to true
         just_upvoted = session['just_upvoted']
-        # Keep the pagination the user was on
-        # This has the effect of loading the same 5 tracks the user was viewing when they clicked upvote
-        pagination = session['pagination']
     else:
         # Else the user has not come from upvoting a track
         # This means they are fresh coming to tracks.html, or they have clicked refresh
         session['pagination'] = 0
-        pagination = session['pagination']
+        
+    # Whatever the outcome of the if statement above, assign pagination to the value of session.pagination
+    pagination = session['pagination']
     
     # Reset the just_upvoted session. This ensures pagination gets wiped ready to start afresh
     session['just_upvoted'] = False

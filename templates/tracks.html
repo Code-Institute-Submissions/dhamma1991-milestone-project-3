@@ -46,7 +46,9 @@
         <!-- /Accordion Container -->
         
         <!-- Previous arrow -->
-        <a href="{{ url_for('prev_tracks') }}">Previous</a>
+        {% if pagination == 0 %}
+            {{ <a href="{{ url_for('prev_tracks') }}">Previous</a> }}
+        {% endif %}
         <!-- Next arrow -->
         <a href="{{ url_for('next_tracks') }}">Next</a>
         {{ pagination }}
