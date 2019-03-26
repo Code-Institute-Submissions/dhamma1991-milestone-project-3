@@ -59,10 +59,10 @@ def get_tracks():
     
     # hold_pagination will only ever be in session if the user has come from next_tracks, prev_tracks or upvote_track
     # In which case, ensure the pagination value currently in the session is used to show the user the correct tracks
-    # If hold_pagination does not exist, this means the user has come to tracks.html some other way, presumably by refreshing the page or clicking a nav link
-    # This means the pagination should be set to 0 to ensure the user is seeing the first top 5 tracks
     if 'hold_pagination' in session:
         pagination = session['pagination']
+    # If hold_pagination does not exist, this means the user has come to tracks.html some other way, presumably by refreshing the page or clicking a nav link
+    # This means the pagination should be set to 0 to ensure the user is seeing the first top 5 tracks
     else:
         session['pagination'] = 0
         pagination = session['pagination']
