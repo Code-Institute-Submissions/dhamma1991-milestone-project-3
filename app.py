@@ -69,6 +69,7 @@ def get_tracks():
         # If it isn't defined, a keyerror will result when the user is taken to get_tracks
         if 'just_upvoted' not in session:
             session['just_upvoted'] = False
+            session['pagination'] = 0
         # If the user has just come from upvoting a track
         elif session['just_upvoted']:
             # Set just_upvoted to true
