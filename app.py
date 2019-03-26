@@ -61,6 +61,8 @@ def get_tracks():
     # Set the limit for the number of tracks returned
     limit = 2
     
+    # This ensures that the session for just_upvoted is defined
+    # If it isn't defined, a keyerror will result when the user is taken to get_tracks
     if 'just_upvoted' not in session:
         session['just_upvoted'] = False
     
