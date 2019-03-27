@@ -120,7 +120,7 @@ def sort_tracks_date_added_asc():
     
 @app.route('/add_track')
 def add_track():
-    return render_template('add-track.html') 
+    return render_template('add-track.html', genres=mongo.db.genres.find())
     
 @app.route('/insert_track', methods=['POST']) # Because you're using POST here, you have to set that via methods
 def insert_track():
