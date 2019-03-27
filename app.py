@@ -155,6 +155,19 @@ def upvote_track(track_id):
     session['hold_pagination'] = True
     
     return redirect(url_for('get_tracks'))
+    
+@app.route('/edit_track/<track_id>')
+# This function essential gets the task that matches this task id
+def edit_track(track_id):
+    # So we want to find one particular task from the task collection
+    # We're looking for a match for the ID
+    # We wrap task_id with ObjectId in order to make it a format acceptable to mongodb
+    the_track = mongo.db.tasks.find_one({"_id": ObjectId(track_id)})
+    # We also need a list of all the categories in order to populate the edit form
+    # all_cats = mongo.db.categories.find()
+    # Render edit_task.html and pass across the_task and cats
+    # REMEMBER TO ASSIGN CAT = THE_CAT (OR MAYBE GENRE = THE_GENRE) IF YOU MAKE GENRES INTO A DROPDOWN
+    return render_template('edit-track.html', track = the_track)
  
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
