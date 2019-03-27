@@ -156,7 +156,7 @@ def insert_genre():
             'genre': request.form.get('genre')    
         }
     )
-    return redirect(url_for('/add_track'))
+    return redirect(url_for('add_track'))
     
 @app.route('/upvote_track/<track_id>', methods=['POST'])
 def upvote_track(track_id):
