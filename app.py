@@ -171,7 +171,7 @@ def edit_track(track_id):
     
 @app.route('/insert_edited_track/<track_id>', methods=["POST"])
 # We pass in the task_id as that is the hook into the 'primary key' (not strictly correct terminology as this is not a relational database)
-def update_track(track_id):
+def insert_edited_track(track_id):
     tracks = mongo.db.tracks
     tracks.update( {'_id': ObjectId(track_id)},
     {
