@@ -89,9 +89,14 @@
             // function goToAddGenre() {
             //     window.location.href = "{{ url_for('add_genre') }}";
             // }
-            
-            $('select').val('add-genre-link').change(function() {
-                alert("It worked!")
+            /* This functionality would be easier with a click event
+                Unfortunately however, Chrome doesn't work with click events on select options */
+            $('select').change(function() {
+                var selectVal = $('select').val()
+                console.log(selectVal)
+                if (selectVal == 'add-genre-link') {
+                window.location.href = "{{ url_for('add_genre') }}";
+                }
             });
         </script>
         <!-- /SCRIPTS -->
