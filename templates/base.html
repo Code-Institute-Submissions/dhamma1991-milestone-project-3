@@ -86,9 +86,13 @@
             document.getElementById("copyright").innerHTML = theDate;
         </script>
         <script>
-            function goToAddGenre() {
-                window.location.href = "{{ url_for('add_genre') }}";
-            }
+            // function goToAddGenre() {
+            //     window.location.href = "{{ url_for('add_genre') }}";
+            // }
+            
+            $('select').val('add-genre-link').change(function() {
+                alert("It worked!")
+            });
         </script>
         <!-- /SCRIPTS -->
     </body>
