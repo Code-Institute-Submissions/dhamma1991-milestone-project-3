@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main>
+        <div class="row">
+            <form action="{{ url_for('insert_track') }}" method="POST" class="col s12"> <!-- The form will call the insert_track function located in app.py -->
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">assignment</i>
+                        <input id="track_title" name="track_title" type="text" class="validate">
+                        <label for="track_title">Track Title</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">category</i>
+                        <input id="track_title" name="track_title" type="text" class="validate">
+                        <label for="icon_prefix">Genre</label>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Add Track
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+        <a id="add-genre-link" href="{{ url_for('get_tracks') }}">Add a Genre</a>
+    </main>
+{% endblock %}
