@@ -87,7 +87,7 @@
                 //Unfortunately however, Chrome doesn't work with click events on select options
                 
                 // Listen for a change on the Genre select box
-                $('select').change(function() {
+                $('#genre').change(function() {
                     var selectVal = $('select').val()
                     console.log(selectVal)
                     if (selectVal == 'add-genre-link') {
