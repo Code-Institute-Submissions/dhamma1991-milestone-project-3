@@ -85,6 +85,11 @@
             var theDate = new Date().getFullYear();
             document.getElementById("copyright").innerHTML = theDate;
         </script>
+        <script>
+            function goToAddGenre() {
+                window.location.href = "{{ url_for('add_genre') }}";
+            }
+        </script>
         <!-- /SCRIPTS -->
     </body>
 </html>
