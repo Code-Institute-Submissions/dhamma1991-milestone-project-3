@@ -168,6 +168,20 @@ def edit_track(track_id):
     # Render edit_task.html and pass across the_task and cats
     # REMEMBER TO ASSIGN CAT = THE_CAT (OR MAYBE GENRE = THE_GENRE) IF YOU MAKE GENRES INTO A DROPDOWN
     return render_template('edit-track.html', track = the_track)
+    
+@app.route('/insert_edited_track/<track_id>', methods=["POST"])
+# We pass in the task_id as that is the hook into the 'primary key' (not strictly correct terminology as this is not a relational database)
+def update_track(track_id):
+    tracks = mongo.db.tracks
+    tracks.update( {'_id': ObjectId(track_id)},
+    {
+        'track_title':request.form.get('track_title'), # Access the tasks collection
+        'artist':request.form.get('artist'),
+        'youtube_link': request.form.get('youtube_link'),
+        'year': request.form.get('year'),
+        'genre':request.form.get('genre')
+    })
+    return redirect(url_for('get_tracks'))
  
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
