@@ -72,32 +72,34 @@
             $(document).ready(function(){
                 /* Accordion */
                 $('.collapsible').collapsible();
+                
                 /* Mobile Nav Button */
                 $(".button-collapse").sideNav();
+                
                 /* Parallax Effect */
                 $('.parallax').parallax();
+                
                 /* Materialize Select */
                 $('select').material_select();
+                
+                /* Add a Genre Dropdown Option Redirect */
+                //This functionality would be easier with a click event
+                //Unfortunately however, Chrome doesn't work with click events on select options
+                
+                // Listen for a change on the Genre select box
+                $('select').change(function() {
+                    var selectVal = $('select').val()
+                    console.log(selectVal)
+                    if (selectVal == 'add-genre-link') {
+                    window.location.href = "{{ url_for('add_genre') }}";
+                    }
+                });
             });
         </script>
         <!-- Get the current year to be used for the copyright date in the footer -->
         <script>
             var theDate = new Date().getFullYear();
             document.getElementById("copyright").innerHTML = theDate;
-        </script>
-        <script>
-            // function goToAddGenre() {
-            //     window.location.href = "{{ url_for('add_genre') }}";
-            // }
-            /* This functionality would be easier with a click event
-                Unfortunately however, Chrome doesn't work with click events on select options */
-            $('select').change(function() {
-                var selectVal = $('select').val()
-                console.log(selectVal)
-                if (selectVal == 'add-genre-link') {
-                window.location.href = "{{ url_for('add_genre') }}";
-                }
-            });
         </script>
         <!-- /SCRIPTS -->
     </body>
