@@ -170,16 +170,35 @@ def edit_track(track_id):
     return render_template('edit-track.html', track = the_track)
     
 @app.route('/insert_edited_track/<track_id>', methods=["POST"])
-# We pass in the task_id as that is the hook into the 'primary key' (not strictly correct terminology as this is not a relational database)
 def insert_edited_track(track_id):
+    # Get the tracks collection
     tracks = mongo.db.tracks
+    
+    # In order for the edit to work properly, some values that the user should not be eligible to update (e.g. upvotes) need to be retrieved from the the database prior to update
+    # If not, update will delete any old key/values that aren't explicitly passed through with the update
+    # In order to do this, find() is used to grab a cursor of the track being edited
+    old_values = tracks.find({"_id": ObjectId(track_id)})
+    
+    # Loop through the cursor and get the values the user shouldn't be able to change
+    # Once tracks.update occurs, any values not specified within the update won't be added to the database
+    # That would mean the track would lose its upvotes, date_added and date_added_raw
+    for item in old_values:
+        upvotes = item['upvotes']
+        date_added = item['date_added']
+        date_added_raw = item['date_added_raw']
+    
+    # Do the update
     tracks.update( {'_id': ObjectId(track_id)},
     {
-        'track_title':request.form.get('track_title'), # Access the tasks collection
+        'track_title':request.form.get('track_title'),
         'artist':request.form.get('artist'),
         'youtube_link': request.form.get('youtube_link'),
         'year': request.form.get('year'),
-        'genre':request.form.get('genre')
+        'genre':request.form.get('genre'),
+        # These last three are the same values as what were created when the track was added to the database initially
+        'upvotes': upvotes,
+        'date_added': date_added,
+        'date_added_raw': date_added_raw
     })
     return redirect(url_for('get_tracks'))
  
