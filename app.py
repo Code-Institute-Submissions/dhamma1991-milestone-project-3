@@ -162,7 +162,7 @@ def edit_track(track_id):
     # So we want to find one particular task from the task collection
     # We're looking for a match for the ID
     # We wrap task_id with ObjectId in order to make it a format acceptable to mongodb
-    the_track = mongo.db.tasks.find_one({"_id": ObjectId(track_id)})
+    the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
     # We also need a list of all the categories in order to populate the edit form
     # all_cats = mongo.db.categories.find()
     # Render edit_task.html and pass across the_task and cats
