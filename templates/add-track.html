@@ -26,12 +26,14 @@
                         <label for="icon_prefix">Year</label>
                     </div>
                     <div class="input-field col s6">
+                        <i class="material-icons prefix">category</i>
                         <select id="genre" name="genre">
                             <option value="" disabled selected>Genre</option> <!-- This option won't be selectable but serves as a visual clue as to what the user should do -->
                             {% for genre in genres %}
                             <!-- If we have 4 genres we'll have 4 options, if we have 10 genres we'll have 10 options and so on -->
                             <option value="{{ genre.genre }}">{{ genre.genre }}</option> <!-- The value here is what will be submitted to the form -->
                             {% endfor %}
+                            <option value="#add-genre-link">Add a Genre</option>
                         </select>
                     </div>
                 </div>
@@ -40,5 +42,6 @@
                 </button>
             </form>
         </div>
+        <a id="add-genre-link" href="{{ url_for('get_tracks') }}">Add a Genre</a>
     </main>
 {% endblock %}
