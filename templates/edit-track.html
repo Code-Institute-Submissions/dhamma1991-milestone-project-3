@@ -30,7 +30,17 @@
             </div>
             <div class="input-field col s6">
                 <i class="material-icons prefix">category</i>
-                <input id="genre" name="genre" type="text" class="validate" value="{{ track.genre }}">
+                <select id="genre" name="genre">
+                    <option value="" disabled selected>Genre</option>
+                    {% for genre in genres %}
+                    <!-- On the Edit Track page the user wants to see the current genre for the track as the default value -->
+                    {% if genre.genre == track.genre %} <!-- If there is a match between the task's category and the category currently bering iterated over, that iteratation will have the selected attribute -->
+                    <option value="{{ genre.genre }}" selected>{{ genre.genre }}</option>
+                    {% else %} <!-- Else render the category without the select option -->
+                    <option value="{{ genre.genre }}">{{ genre.genre }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
                 <label for="icon_prefix">Genre</label>
             </div>
             
