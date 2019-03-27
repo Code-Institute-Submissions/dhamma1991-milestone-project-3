@@ -148,6 +148,16 @@ def insert_track():
     )
     return redirect(url_for('get_tracks')) # Once submitted, we redirect to the get_tasks function so that we can view our collection
     
+@app.route('/insert_genre', methods=['POST']) # Because you're using POST here, you have to set that via methods
+def insert_genre():
+    genres = mongo.db.genres
+    genres.insert_one(
+        {
+            'genre': request.form.get('genre')    
+        }
+    )
+    return redirect(url_for('/add_track'))
+    
 @app.route('/upvote_track/<track_id>', methods=['POST'])
 def upvote_track(track_id):
     tracks = mongo.db.tracks
