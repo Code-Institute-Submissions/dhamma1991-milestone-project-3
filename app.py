@@ -165,6 +165,7 @@ def edit_track(track_id):
     the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
     # We also need a list of all the categories in order to populate the edit form
     # all_cats = mongo.db.categories.find()
+    session['hold_pagination'] = True
     # Render edit_task.html and pass across the_task and cats
     # REMEMBER TO ASSIGN CAT = THE_CAT (OR MAYBE GENRE = THE_GENRE) IF YOU MAKE GENRES INTO A DROPDOWN
     return render_template('edit-track.html', track = the_track)
