@@ -57,7 +57,8 @@ def get_tracks():
     tracks_col_count = tracks_collection.count() 
     
     
-    # hold_pagination will only ever be in session if the user has come from next_tracks, prev_tracks or upvote_track
+    # hold_pagination will only ever be in session if the user has come from a url where it makes sense to keep the pagination
+    # Pagination is held for next_tracks, prev_tracks, upvote_track and edit_track
     # In which case, ensure the pagination value currently in the session is used to show the user the correct tracks
     if 'hold_pagination' in session:
         pagination = session['pagination']
