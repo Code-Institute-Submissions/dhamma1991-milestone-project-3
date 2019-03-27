@@ -56,13 +56,13 @@
             </div>
             <div class="footer-copyright">
                 <div class="container">
-                    © 2014 Copyright Text
+                    &#169;<span id="copyright"></span> Chris Hengmith
                     <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
                 </div>
             </div>
         </footer>
         
-        <!-- Scripts -->
+        <!-- SCRIPTS -->
         <!-- jQuery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Materialize -->
@@ -78,6 +78,11 @@
                 $('.parallax').parallax();
             });
         </script>
-        <!-- /Scripts -->
+        <!-- Get the current year to be used for the copyright date in the footer -->
+        <script>
+            var theDate = new Date().getFullYear();
+            document.getElementById("copyright").innerHTML = theDate;
+        </script>
+        <!-- /SCRIPTS -->
     </body>
 </html>
