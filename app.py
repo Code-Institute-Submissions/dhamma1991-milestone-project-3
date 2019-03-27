@@ -203,6 +203,14 @@ def insert_edited_track(track_id):
         'date_added_raw': date_added_raw
     })
     return redirect(url_for('get_tracks'))
+    
+@app.route('/delete_track/<track_id>')
+def delete_track(track_id):
+    # Use ObjectId to parse the task_id in a format acceptable to mongo
+    mongo.db.tracks.remove({'_id': ObjectId(track_id)})
+    session['hold_pagination'] = True
+    # Then go to the get_tasks function
+    return redirect(url_for('get_tracks'))
  
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
