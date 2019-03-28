@@ -3,7 +3,15 @@
 {% block content %}
 
 <h3>Edit Track</h3>
-
+{% with messages = get_flashed_messages() %} 
+    {% if messages %}
+        <ul class="flashes">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %} 
+{% endwith %}
 <div class="row">
     <!-- The task _id field is passed along into the update_task function -->
     <form action="{{ url_for('insert_edited_track', track_id=track._id) }}" method="POST" class="col s12">
@@ -33,12 +41,12 @@
                 <select id="genre" name="genre">
                     <option value="" disabled selected>Genre</option>
                     {% for genre in genres %}
-                    <!-- On the Edit Track page the user wants to see the current genre for the track as the default value -->
-                    {% if genre.genre == track.genre %} <!-- If there is a match between the task's category and the category currently bering iterated over, that iteratation will have the selected attribute -->
-                    <option value="{{ genre.genre }}" selected>{{ genre.genre }}</option>
-                    {% else %} <!-- Else render the category without the select option -->
-                    <option value="{{ genre.genre }}">{{ genre.genre }}</option>
-                    {% endif %}
+                        <!-- On the Edit Track page the user wants to see the current genre for the track as the default value -->
+                        {% if genre.genre == track.genre %} <!-- If there is a match between the task's category and the category currently bering iterated over, that iteratation will have the selected attribute -->
+                            <option value="{{ genre.genre }}" selected>{{ genre.genre }}</option>
+                        {% else %} <!-- Else render the category without the select option -->
+                            <option value="{{ genre.genre }}">{{ genre.genre }}</option>
+                        {% endif %}
                     {% endfor %}
                     <option value="add-genre-link">Add a Genre</option>
                 </select>

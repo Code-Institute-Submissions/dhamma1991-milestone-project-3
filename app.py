@@ -2,7 +2,7 @@
 import os
 
 # Allow full utilisation of Flask framework
-from flask import Flask, render_template, redirect, request, url_for, session
+from flask import Flask, render_template, redirect, request, url_for, session, flash
 
 # Allow database manipulation
 from flask_pymongo import PyMongo, pymongo
@@ -122,10 +122,6 @@ def sort_tracks_date_added_asc():
 def add_track():
     return render_template('add-track.html', genres=mongo.db.genres.find())
     
-@app.route('/add_genre')
-def add_genre():
-    return render_template('add-genre.html')
-    
 @app.route('/insert_track', methods=['POST']) # Because you're using POST here, you have to set that via methods
 def insert_track():
     # Format the timestamp that will be inserted into the record
@@ -148,6 +144,10 @@ def insert_track():
     )
     return redirect(url_for('get_tracks')) # Once submitted, we redirect to the get_tasks function so that we can view our collection
     
+@app.route('/add_genre')
+def add_genre():
+    return render_template('add-genre.html')
+    
 @app.route('/insert_genre', methods=['POST']) # Because you're using POST here, you have to set that via methods
 def insert_genre():
     genres = mongo.db.genres
@@ -156,7 +156,10 @@ def insert_genre():
             'genre': request.form.get('genre')    
         }
     )
-    return redirect(url_for('add_track'))
+    if 'genre_edit_track_id' not in session:
+        return redirect(url_for('add_track'))
+    else: 
+        return redirect(url_for('edit_track', track_id = session['genre_edit_track_id']))
     
 @app.route('/upvote_track/<track_id>', methods=['POST'])
 def upvote_track(track_id):
@@ -177,10 +180,17 @@ def edit_track(track_id):
     # So we want to find one particular task from the task collection
     # We're looking for a match for the ID
     # We wrap task_id with ObjectId in order to make it a format acceptable to mongodb
-    the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
+    if 'genre_edit_track_id' in session:
+        track_id = session['genre_edit_track_id']
+        the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
+        session.pop('genre_edit_track_id', None)
+    else:
+        the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
     # A list of all the genres is also needed in order to populate the edit form
     all_genres = mongo.db.genres.find()
     session['hold_pagination'] = True
+    session['genre_edit_track_id'] = track_id
+    flash(session['genre_edit_track_id'])
     # Render edit_task.html and pass across the_task and cats
     # REMEMBER TO ASSIGN CAT = THE_CAT (OR MAYBE GENRE = THE_GENRE) IF YOU MAKE GENRES INTO A DROPDOWN
     return render_template('edit-track.html', track = the_track, genres = all_genres)
