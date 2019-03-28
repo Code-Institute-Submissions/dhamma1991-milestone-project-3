@@ -2,7 +2,7 @@
 import os
 
 # Allow full utilisation of Flask framework
-from flask import Flask, render_template, redirect, request, url_for, session, flash
+from flask import Flask, render_template, redirect, request, url_for, session
 
 # Allow database manipulation
 from flask_pymongo import PyMongo, pymongo
@@ -156,9 +156,14 @@ def insert_genre():
             'genre': request.form.get('genre')    
         }
     )
+    # There are 2 places the user can be adding a genre from; adding a new track or editing an existing track
+    # If the genre_edit_track_id is not in session, that means the user is adding a new track
     if 'genre_edit_track_id' not in session:
+        # In which case, just take them back to add-track.html
         return redirect(url_for('add_track'))
+    # Else the user is currently editing a track
     else: 
+        # Take them back to edit-track.html, to the track they were editing before they added a new genre
         return redirect(url_for('edit_track', track_id = session['genre_edit_track_id']))
     
 @app.route('/upvote_track/<track_id>', methods=['POST'])
@@ -177,22 +182,26 @@ def upvote_track(track_id):
 @app.route('/edit_track/<track_id>')
 # This function essential gets the task that matches this task id
 def edit_track(track_id):
-    # So we want to find one particular task from the task collection
-    # We're looking for a match for the ID
-    # We wrap task_id with ObjectId in order to make it a format acceptable to mongodb
+    # If genre_edit_track_id is in session, that means the user is coming from just adding a genre
     if 'genre_edit_track_id' in session:
+        # Get the track_id from the session
         track_id = session['genre_edit_track_id']
+        # Find the track the user wants to edit
+        # Wrap track_id in ObjectId in order to make it acceptabke to mongodb
         the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
+        # Pop the session since it's no longer needed
         session.pop('genre_edit_track_id', None)
+    # If genre_edit_track_id is not in session, that means the user has not come from just adding a genre
     else:
+        # Grab the track_id from what was passed through
         the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
     # A list of all the genres is also needed in order to populate the edit form
     all_genres = mongo.db.genres.find()
+    # Hold pagination, once the user has finished editing they want go back to the 5 tracks they were viewing
     session['hold_pagination'] = True
+    # Establish a session for genre_edit in case the user ends up adding a new genre
     session['genre_edit_track_id'] = track_id
-    flash(session['genre_edit_track_id'])
-    # Render edit_task.html and pass across the_task and cats
-    # REMEMBER TO ASSIGN CAT = THE_CAT (OR MAYBE GENRE = THE_GENRE) IF YOU MAKE GENRES INTO A DROPDOWN
+    # Render edit_track.html and pass across the_track and all_genres
     return render_template('edit-track.html', track = the_track, genres = all_genres)
     
 @app.route('/insert_edited_track/<track_id>', methods=["POST"])
@@ -226,6 +235,10 @@ def insert_edited_track(track_id):
         'date_added': date_added,
         'date_added_raw': date_added_raw
     })
+    
+    # Pop the genre_edit_track_id session, the user won't need it again unless they come to editing a track again
+    session.pop('genre_edit_track_id', None)
+    
     return redirect(url_for('get_tracks'))
     
 @app.route('/delete_track/<track_id>')
