@@ -220,9 +220,9 @@ def upvote_track(sorting_order, track_id):
     
     return redirect(url_for('get_tracks', sorting_order = sorting_order))
     
-@app.route('/edit_track/<track_id>')
+@app.route('/edit_track/<sorting_order>/<track_id>')
 # This function essential gets the task that matches this task id
-def edit_track(track_id):
+def edit_track(sorting_order, track_id):
     # If genre_edit_track_id is in session, that means the user is coming from just adding a genre
     if 'genre_edit_track_id' in session:
         # Get the track_id from the session
@@ -243,10 +243,10 @@ def edit_track(track_id):
     # Establish a session for genre_edit in case the user ends up adding a new genre
     session['genre_edit_track_id'] = track_id
     # Render edit_track.html and pass across the_track and all_genres
-    return render_template('edit-track.html', track = the_track, genres = all_genres)
+    return render_template('edit-track.html', sorting_order = sorting_order, track = the_track, genres = all_genres)
     
-@app.route('/insert_edited_track/<track_id>', methods=["POST"])
-def insert_edited_track(track_id):
+@app.route('/insert_edited_track//<sorting_order>/<track_id>', methods=["POST"])
+def insert_edited_track(sorting_order, track_id):
     # Get the tracks collection
     tracks = mongo.db.tracks
     
@@ -280,7 +280,7 @@ def insert_edited_track(track_id):
     # Pop the genre_edit_track_id session, the user won't need it again unless they come to editing a track again
     session.pop('genre_edit_track_id', None)
     
-    return redirect(url_for('get_tracks'))
+    return redirect(url_for('get_tracks', sorting_order = sorting_order))
     
 @app.route('/delete_track/<track_id>')
 def delete_track(track_id):

@@ -6,7 +6,7 @@
 <main>
     <div class="row">
         <!-- The task _id field is passed along into the update_task function -->
-        <form action="{{ url_for('insert_edited_track', track_id=track._id) }}" method="POST" class="col s12">
+        <form action="{{ url_for('insert_edited_track', sorting_order = sorting_order, track_id = track._id) }}" method="POST" class="col s12">
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">assignment</i>
@@ -53,7 +53,7 @@
                     </button>
                 </div>
                 <div class="row">
-                    <button class="btn waves-effect waves-light" type="submit" name="{{ url_for('get_tracks') }}">Cancel Edit
+                    <button class="btn waves-effect waves-light" type="submit" name="{{ url_for('get_tracks', sorting_order = sorting_order) }}">Cancel Edit
                         <i class="material-icons right">send</i>
                     </button>
                 </div>
