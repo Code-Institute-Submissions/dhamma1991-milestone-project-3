@@ -182,7 +182,8 @@ def insert_track():
             'date_added_raw': datetime.now()
         }
     )
-    return redirect(url_for('get_tracks')) # Once submitted, we redirect to the get_tasks function so that we can view our collection
+    # Once submitted, redirect to the get_tracks function to view the collection using the default sorting order
+    return redirect(url_for('get_tracks', sorting_order = 1))
     
 @app.route('/add_genre')
 def add_genre():
