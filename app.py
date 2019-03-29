@@ -158,7 +158,7 @@ def add_track():
 @app.route('/insert_track', methods=['POST']) # Because you're using POST here, you have to set that via methods
 def insert_track():
     # Format the timestamp that will be inserted into the record
-    timestamp = datetime.now().strftime('%d %B %Y %H:%S')
+    timestamp = datetime.now().strftime('%d %B %Y %H:%M')
     # Get the tracks collection
     tracks = mongo.db.tracks
     # Insert the record using the fields from the form on add-track.html
