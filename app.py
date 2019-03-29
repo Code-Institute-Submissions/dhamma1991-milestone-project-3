@@ -24,6 +24,10 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 # Initialise PyMongo
 mongo = PyMongo(app)
 
+# # GLOBAL VARIABLES
+# """These are kept here to make things easier to change/update"""
+# # Pagination
+
 # Index Route
 @app.route('/index')
 @app.route('/')
@@ -47,11 +51,8 @@ def about():
     title = "DesertIsland | About"
     return render_template("about.html", title = title)
 
-@app.route('/get_tracks')
-def get_tracks():
-    # Pop the genre_edit_track_id session
-    # This is needed in case the user adds a genre when editing a track, but then doesn't go through with finishing the edit
-    session.pop('genre_edit_track_id', None)
+@app.route('/get_tracks/<sorting_order>')
+def get_tracks(sorting_order):
     # Get the tracks collection
     tracks_collection = mongo.db.tracks
     # Get the number of items in tracks_collection
@@ -60,7 +61,7 @@ def get_tracks():
     tracks_col_count = tracks_collection.count() 
     
     
-    # hold_pagination will only ever be in session if the user has come from a url where it makes sense to keep the pagination
+    # hold_pagination will only ever be in session if the user has come from a url where it makes sense to keep the pagination of content
     # Pagination is held for next_tracks, prev_tracks, upvote_track and edit_track
     # In which case, ensure the pagination value currently in the session is used to show the user the correct tracks
     if 'hold_pagination' in session:
@@ -72,13 +73,26 @@ def get_tracks():
         pagination = session['pagination']
         
     # Delete the hold_pagination session.
-    # If this session is needed again, it will be created by either upvote_track, next_tracks or prev_tracks
+    # If this session is needed again, it will be created by the appropriate function
     # For all other use cases it is redundant
     session.pop('hold_pagination', None)
-    
-    # Sort the tracks collection by upvotes with the highest upvoted track first. Limit to 5 results
-    tracks = tracks_collection.find().sort(
-                                            'upvotes', pymongo.DESCENDING).skip(
+
+    if sorting_order == '1':
+        # Sort the tracks collection by upvotes with the highest upvoted track first. Limit to 5 results
+        tracks = tracks_collection.find().sort(
+                                                'upvotes', pymongo.DESCENDING).skip(
+                                                                                    pagination).limit(5)
+    elif sorting_order == '2':
+        tracks = tracks_collection.find().sort(
+                                            'upvotes', pymongo.ASCENDING).skip(
+                                                                                pagination).limit(5)
+    elif sorting_order == '3':
+        tracks = tracks_collection.find().sort(
+                                            'date_added_raw', pymongo.ASCENDING).skip(
+                                                                                pagination).limit(5)
+    elif sorting_order == '4':
+        tracks = tracks_collection.find().sort(
+                                            'date_added_raw', pymongo.DESCENDING).skip(
                                                                                 pagination).limit(5)
     
     return render_template("tracks.html", 
@@ -103,23 +117,19 @@ def prev_tracks():
 
 @app.route('/sort_tracks_upvote_desc')
 def sort_tracks_upvote_desc():
-    tracks = mongo.db.tracks.find().sort('upvotes', pymongo.DESCENDING)
-    return render_template("tracks.html", tracks=tracks)
+    return redirect(url_for('get_tracks', sorting_order = 1))
     
 @app.route('/sort_tracks_upvote_asc')
 def sort_tracks_upvote_asc():
-    tracks = mongo.db.tracks.find().sort('upvotes', pymongo.ASCENDING)
-    return render_template("tracks.html", tracks=tracks)
+    return redirect(url_for('get_tracks', sorting_order = 2))
     
 @app.route('/sort_tracks_date_added_desc')
 def sort_tracks_date_added_desc():
-    tracks = mongo.db.tracks.find().sort('date_added_raw', pymongo.DESCENDING)
-    return render_template("tracks.html", tracks=tracks)
+    return redirect(url_for('get_tracks', sorting_order = 3))
     
 @app.route('/sort_tracks_date_added_asc')
 def sort_tracks_date_added_asc():
-    tracks = mongo.db.tracks.find().sort('date_added_raw', pymongo.ASCENDING)
-    return render_template("tracks.html", tracks=tracks)
+    return redirect(url_for('get_tracks', sorting_order = 4))
     
 @app.route('/add_track')
 def add_track():
