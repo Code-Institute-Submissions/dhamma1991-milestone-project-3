@@ -157,7 +157,12 @@ def add_track():
     
 @app.route('/insert_track', methods=['POST']) # Because you're using POST here, you have to set that via methods
 def insert_track():
+    """
+    This function takes the data the user inputs to the form on add-track.html and turns it into a new document in the database
+    """
     # Format the timestamp that will be inserted into the record
+    # The timestamp is a more user friendly version of the raw date object that is also created when a new document is created
+    # The timestamp is what is displayed to the user, the raw date object is used in the backend, mainly for sorting
     timestamp = datetime.now().strftime('%d %B %Y %H:%M')
     # Get the tracks collection
     tracks = mongo.db.tracks
@@ -169,9 +174,11 @@ def insert_track():
             'youtube_link': request.form.get('youtube_link'),
             'year': request.form.get('year'),
             'genre': request.form.get('genre'),
-            # Upvotes is set to 1 by default
+            # Upvotes is set to 1 by default. This idea is borrowed from Reddit, in that a user who uploads a track would presumably want to upvote it as well
             'upvotes': 1,
+            # date_added is the human friendly date
             'date_added': timestamp,
+            # date_added_raw is the python friendly date
             'date_added_raw': datetime.now()
         }
     )
