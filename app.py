@@ -55,11 +55,11 @@ def about():
 def get_tracks(sorting_order):
     # Get the tracks collection
     tracks_collection = mongo.db.tracks
+    
     # Get the number of items in tracks_collection
     # This is used within tracks.html to determine whether to show the 'next' button
     # It would not make sense to show the next button if there are no more tracks to view
     tracks_col_count = tracks_collection.count() 
-    
     
     # hold_pagination will only ever be in session if the user has come from a url where it makes sense to keep the pagination of content
     # Pagination is held for next_tracks, prev_tracks, upvote_track and edit_track
@@ -77,24 +77,37 @@ def get_tracks(sorting_order):
     # For all other use cases it is redundant
     session.pop('hold_pagination', None)
 
+    # The sorting_order variable is used to determine how to sort the tracks
+    # sorting_order = 1 means sort tracks by HIGHEST UPVOTES. This is the default sorting order
+    # sorting_order = 2 means sort tracks by LOWEST UPVOTES first
+    # sorting_order = 3 means sort tracks by date added to the database with the LATEST date first
+    # sorting_order = 4 means sort tracks by date added to the databse with the OLDEST date first
     if sorting_order == 1:
-        # Sort the tracks collection by upvotes with the highest upvoted track first. Limit to 5 results
+        # Find all tracks within the tracks collection. Sort by upvotes descending, skip using the value of pagination and limit
         tracks = tracks_collection.find().sort(
                                                 'upvotes', pymongo.DESCENDING).skip(
                                                                                     pagination).limit(5)
     elif sorting_order == 2:
+        # Find all tracks within the tracks collection. Sort by upvotes ascending, skip using the value of pagination and limit
         tracks = tracks_collection.find().sort(
                                             'upvotes', pymongo.ASCENDING).skip(
                                                                                 pagination).limit(5)
     elif sorting_order == 3:
+         # Find all tracks within the tracks collection. Sort by date_added_raw descending, skip using the value of pagination and limit
         tracks = tracks_collection.find().sort(
                                             'date_added_raw', pymongo.DESCENDING).skip(
                                                                                 pagination).limit(5)
     elif sorting_order == 4:
+        # Find all tracks within the tracks collection. Sort by date_added_raw ascending, skip using the value of pagination and limit
         tracks = tracks_collection.find().sort(
                                             'date_added_raw', pymongo.ASCENDING).skip(
                                                                                 pagination).limit(5)
     
+    # Render tracks.html
+    # tracks is the list of tracks to be rendered
+    # sorting_order is how they are to be sorted (corresponding to the system in the if/else statement above)
+    # pagination determines how many tracks are to be skipped. The user navigates through the pagination using the next and previous buttons on tracks.html
+    # tracks_col_count determines whether to hide the next and previous buttons. If the user has reached the end of the list it doesn't make sense and would be confusing for them to be able to click 'Next'
     return render_template("tracks.html", 
                             tracks = tracks,
                             sorting_order = sorting_order,
@@ -104,6 +117,9 @@ def get_tracks(sorting_order):
                             
 @app.route('/next_tracks/<int:sorting_order>')
 def next_tracks(sorting_order):
+    """
+    This function takes the user to the next 5 tracks, determined by the pagination the user is currently on and the sorting order they are currently using
+    """
     session['pagination'] += 5
     session['hold_pagination'] = True
     
@@ -111,6 +127,9 @@ def next_tracks(sorting_order):
                             
 @app.route('/prev_tracks/<int:sorting_order>')
 def prev_tracks(sorting_order):
+    """
+    This function takes the user to the previous 5 tracks, determined by the pagination the user is currently on and the sorting order they are currently using
+    """
     session['pagination'] -= 5
     session['hold_pagination'] = True
     
