@@ -51,7 +51,7 @@ def about():
     title = "DesertIsland | About"
     return render_template("about.html", title = title)
 
-@app.route('/get_tracks/<sorting_order>')
+@app.route('/get_tracks/<int:sorting_order>')
 def get_tracks(sorting_order):
     # Get the tracks collection
     tracks_collection = mongo.db.tracks
@@ -77,22 +77,22 @@ def get_tracks(sorting_order):
     # For all other use cases it is redundant
     session.pop('hold_pagination', None)
 
-    if sorting_order == '1':
+    if sorting_order == 1:
         # Sort the tracks collection by upvotes with the highest upvoted track first. Limit to 5 results
         tracks = tracks_collection.find().sort(
                                                 'upvotes', pymongo.DESCENDING).skip(
                                                                                     pagination).limit(5)
-    elif sorting_order == '2':
+    elif sorting_order == 2:
         tracks = tracks_collection.find().sort(
                                             'upvotes', pymongo.ASCENDING).skip(
                                                                                 pagination).limit(5)
-    elif sorting_order == '3':
-        tracks = tracks_collection.find().sort(
-                                            'date_added_raw', pymongo.ASCENDING).skip(
-                                                                                pagination).limit(5)
-    elif sorting_order == '4':
+    elif sorting_order == 3:
         tracks = tracks_collection.find().sort(
                                             'date_added_raw', pymongo.DESCENDING).skip(
+                                                                                pagination).limit(5)
+    elif sorting_order == 4:
+        tracks = tracks_collection.find().sort(
+                                            'date_added_raw', pymongo.ASCENDING).skip(
                                                                                 pagination).limit(5)
     
     return render_template("tracks.html", 
@@ -102,14 +102,14 @@ def get_tracks(sorting_order):
                             tracks_col_count = tracks_col_count
                             )
                             
-@app.route('/next_tracks/<sorting_order>')
+@app.route('/next_tracks/<int:sorting_order>')
 def next_tracks(sorting_order):
     session['pagination'] += 5
     session['hold_pagination'] = True
     
     return redirect(url_for('get_tracks', sorting_order = sorting_order))
                             
-@app.route('/prev_tracks/<sorting_order>')
+@app.route('/prev_tracks/<int:sorting_order>')
 def prev_tracks(sorting_order):
     session['pagination'] -= 5
     session['hold_pagination'] = True
