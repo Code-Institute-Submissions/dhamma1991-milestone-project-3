@@ -49,6 +49,9 @@ def about():
 
 @app.route('/get_tracks')
 def get_tracks():
+    # Pop the genre_edit_track_id session
+    # This is needed in case the user adds a genre when editing a track, but then doesn't go through with finishing the edit
+    session.pop('genre_edit_track_id', None)
     # Get the tracks collection
     tracks_collection = mongo.db.tracks
     # Get the number of items in tracks_collection
