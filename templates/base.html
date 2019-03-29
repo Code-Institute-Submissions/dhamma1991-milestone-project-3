@@ -88,21 +88,11 @@
                 /* Add a Genre Dropdown Option Redirect */
                 //This functionality would be easier with a click event
                 //Unfortunately however, Chrome doesn't work with click events on select options
-                
-                // Listen for a change on the Genre select box
-                $('#genre').change(function() {
-                    // Grab the current value of the select box
-                    var selectVal = $('select').val()
-                    console.log(selectVal)
-                    // If the select box's value is equal to 'add-genre-link'...
-                    if (selectVal == 'add-genre-link') {
-                        // Redirect the user to add-genre.html
-                        window.location.href = "{{ url_for('add_genre') }}";
-                    }
-                });
             });
         </script>
         <!-- Get the current year to be used for the copyright date in the footer -->
+        {% block genre_link_js %}
+        {% endblock %}
         <script>
             var theDate = new Date().getFullYear();
             document.getElementById("copyright").innerHTML = theDate;
