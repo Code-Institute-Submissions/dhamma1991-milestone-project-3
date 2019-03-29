@@ -180,8 +180,8 @@ def insert_genre():
         # Take them back to edit-track.html, to the track they were editing before they added a new genre
         return redirect(url_for('edit_track', track_id = session['genre_edit_track_id']))
     
-@app.route('/upvote_track/<track_id>', methods=['POST'])
-def upvote_track(track_id):
+@app.route('/upvote_track/<sorting_order>/<track_id>', methods=['POST'])
+def upvote_track(sorting_order, track_id):
     tracks = mongo.db.tracks
     tracks.update( 
         {'_id': ObjectId(track_id)},
@@ -191,7 +191,7 @@ def upvote_track(track_id):
     
     session['hold_pagination'] = True
     
-    return redirect(url_for('get_tracks'))
+    return redirect(url_for('get_tracks', sorting_order = sorting_order))
     
 @app.route('/edit_track/<track_id>')
 # This function essential gets the task that matches this task id
