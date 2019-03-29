@@ -3,70 +3,63 @@
 {% block content %}
 
 <h3>Edit Track</h3>
-{% with messages = get_flashed_messages() %} 
-    {% if messages %}
-        <ul class="flashes">
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %} 
-{% endwith %}
-<div class="row">
-    <!-- The task _id field is passed along into the update_task function -->
-    <form action="{{ url_for('insert_edited_track', track_id=track._id) }}" method="POST" class="col s12">
-        <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">assignment</i>
-                <input id="track_title" name="track_title" type="text" class="validate" value="{{ track.track_title }}">
-                <label for="track_title">Track Title</label>
-            </div>
-            <div class="input-field col s6">
-                <i class="material-icons prefix">brush</i>
-                <input id="artist" name="artist" type="text" class="validate" value="{{ track.artist }}">
-                <label for="artist">Artist</label>
-            </div>
-            <div class="input-field col s6">
-                <i class="material-icons prefix">music_video</i>
-                <input id="youtube_link" name="youtube_link" type="text" class="validate" value="{{ track.youtube_link }}">
-                <label for="youtube_link">YouTube Link</label>
-            </div>
-            <div class="input-field col s6">
-                <i class="material-icons prefix">calendar_today</i>
-                <input id="year" name="year" type="text" class="validate" value="{{ track.year }}">
-                <label for="icon_prefix">Year</label>
-            </div>
-            <div class="input-field col s6">
-                <i class="material-icons prefix">category</i>
-                <select id="genre" name="genre">
-                    <option value="" disabled selected>Genre</option>
-                    {% for genre in genres %}
-                        <!-- On the Edit Track page the user wants to see the current genre for the track as the default value -->
-                        {% if genre.genre == track.genre %} <!-- If there is a match between the task's category and the category currently bering iterated over, that iteratation will have the selected attribute -->
-                            <option value="{{ genre.genre }}" selected>{{ genre.genre }}</option>
-                        {% else %} <!-- Else render the category without the select option -->
-                            <option value="{{ genre.genre }}">{{ genre.genre }}</option>
-                        {% endif %}
-                    {% endfor %}
-                    <option value="add-genre-link">Add a Genre</option>
-                </select>
-                <label for="icon_prefix">Genre</label>
-            </div>
-            
-            
-            
+<main>
+    <div class="row">
+        <!-- The task _id field is passed along into the update_task function -->
+        <form action="{{ url_for('insert_edited_track', track_id=track._id) }}" method="POST" class="col s12">
             <div class="row">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Edit Track
-                    <i class="material-icons right">send</i>
-                </button>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">assignment</i>
+                    <input id="track_title" name="track_title" type="text" class="validate" value="{{ track.track_title }}">
+                    <label for="track_title">Track Title</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">brush</i>
+                    <input id="artist" name="artist" type="text" class="validate" value="{{ track.artist }}">
+                    <label for="artist">Artist</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">music_video</i>
+                    <input id="youtube_link" name="youtube_link" type="text" class="validate" value="{{ track.youtube_link }}">
+                    <label for="youtube_link">YouTube Link</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">calendar_today</i>
+                    <input id="year" name="year" type="text" class="validate" value="{{ track.year }}">
+                    <label for="icon_prefix">Year</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">category</i>
+                    <select id="genre" name="genre">
+                        <option value="" disabled selected>Genre</option>
+                        {% for genre in genres %}
+                            <!-- On the Edit Track page the user wants to see the current genre for the track as the default value -->
+                            {% if genre.genre == track.genre %} <!-- If there is a match between the task's category and the category currently bering iterated over, that iteratation will have the selected attribute -->
+                                <option value="{{ genre.genre }}" selected>{{ genre.genre }}</option>
+                            {% else %} <!-- Else render the category without the select option -->
+                                <option value="{{ genre.genre }}">{{ genre.genre }}</option>
+                            {% endif %}
+                        {% endfor %}
+                        <option value="add-genre-link">Add a Genre</option>
+                    </select>
+                    <label for="icon_prefix">Genre</label>
+                </div>
+                
+                
+                
+                <div class="row">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Edit Track
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+                <div class="row">
+                    <button class="btn waves-effect waves-light" type="submit" name="{{ url_for('get_tracks') }}">Cancel Edit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
             </div>
-            <div class="row">
-                <button class="btn waves-effect waves-light" type="submit" name="{{ url_for('get_tracks') }}">Cancel Edit
-                    <i class="material-icons right">send</i>
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
+</main>
 
 {% endblock %}
