@@ -97,23 +97,24 @@ def get_tracks(sorting_order):
     
     return render_template("tracks.html", 
                             tracks = tracks,
+                            sorting_order = sorting_order,
                             pagination = pagination,
                             tracks_col_count = tracks_col_count
                             )
                             
-@app.route('/next_tracks')
-def next_tracks():
+@app.route('/next_tracks/<sorting_order>')
+def next_tracks(sorting_order):
     session['pagination'] += 5
     session['hold_pagination'] = True
     
-    return redirect(url_for('get_tracks'))
+    return redirect(url_for('get_tracks', sorting_order = sorting_order))
                             
-@app.route('/prev_tracks')
-def prev_tracks():
+@app.route('/prev_tracks/<sorting_order>')
+def prev_tracks(sorting_order):
     session['pagination'] -= 5
     session['hold_pagination'] = True
     
-    return redirect(url_for('get_tracks'))
+    return redirect(url_for('get_tracks', sorting_order = sorting_order))
 
 @app.route('/sort_tracks_upvote_desc')
 def sort_tracks_upvote_desc():
