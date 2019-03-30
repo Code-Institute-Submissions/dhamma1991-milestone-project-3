@@ -3,22 +3,22 @@
 {% block content %}
     <main>
         <div class="row">
-            <form action="{{ url_for('insert_track') }}" method="POST" class="col s12" novalidate> <!-- The form will call the insert_track function located in app.py -->
+            <form action="{{ url_for('insert_track') }}" method="POST" class="col s12"> <!-- The form will call the insert_track function located in app.py -->
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">assignment</i>
                         <input id="track_title" name="track_title" type="text" class="validate" required>
-                        <label for="track_title">Track Title</label>
+                        <label for="track_title" data-error="Please enter the name of the track" data-success="right">Track Title</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">brush</i>
                         <input id="artist" name="artist" type="text" class="validate" required>
-                        <label for="artist">Artist</label>
+                        <label for="artist" data-error="Please enter the name of the artist of the track" data-success="right">Artist</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">music_video</i>
                         <input id="youtube_link" name="youtube_link" type="text" class="validate" required>
-                        <label for="youtube_link">YouTube Link</label>
+                        <label for="youtube_link" data-error="Please enter the artist of the track" data-success="right">YouTube Link</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">calendar_today</i>
