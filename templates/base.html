@@ -84,15 +84,9 @@
                 
                 /* Materialize Select */
                 $('select').material_select();
-                
-                /* Add a Genre Dropdown Option Redirect */
-                //This functionality would be easier with a click event
-                //Unfortunately however, Chrome doesn't work with click events on select options
             });
         </script>
         <!-- Get the current year to be used for the copyright date in the footer -->
-        {% block genre_link_js %}
-        {% endblock %}
         <script>
             var theDate = new Date().getFullYear();
             document.getElementById("copyright").innerHTML = theDate;

@@ -45,9 +45,10 @@
     </main>
 {% endblock %}
 
-<!-- GENRE LINK SCRIPT -->
-<!-- This script is identical to the one that can be found on edit-track.html -->
-<!-- The duplication here is necessary, since the script relies on a url_for which will not work if placed in an external .js file, according to https://stackoverflow.com/questions/43660461/using-url-for-in-a-javascript-file-with-jinja-flask -->
+<!-- ADD A GENRE DROPDOWN OPTION REDIRECT SCRIPT -->
+<!-- This script is a duplicate of the one found on edit-track.html -->
+<!-- Ideally I'd reference the script in both templates from an external .js file -->
+<!-- However, since Jinja templating (used with the url_for) will not work in an external .js file I opted for the inline option -->
 {% block genre_link_js %}
     <script>
         // Listen for a change on the Genre select box
@@ -61,5 +62,10 @@
                 window.location.href = "{{ url_for('add_genre') }}";
             }
         });
+        // This functionality would be easier with a click event
+        // Unfortunately however, Chrome doesn't work with click events on select options
     </script>
+{% endblock %}
+
+{% block form_validation_js %}
 {% endblock %}
