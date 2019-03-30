@@ -3,7 +3,7 @@
 {% block content %}
     <main>
         <div class="row">
-            <form action="{{ url_for('insert_track') }}" method="POST" class="col s12"> <!-- The form will call the insert_track function located in app.py -->
+            <form action="{{ url_for('insert_track') }}" method="POST" class="col s12" novalidate> <!-- The form will call the insert_track function located in app.py -->
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">assignment</i>
@@ -23,7 +23,7 @@
                     <div class="input-field col s6">
                         <i class="material-icons prefix">calendar_today</i>
                         <input id="year" name="year" type="text" class="validate" required pattern="[0-9][0-9][0-9][0-9]">
-                        <label for="icon_prefix">Year</label>
+                        <label for="icon_prefix" data-error="Please enter the year the track was first released in the format YYYY (e.g. 1976)" data-success="right">Year</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">category</i>
