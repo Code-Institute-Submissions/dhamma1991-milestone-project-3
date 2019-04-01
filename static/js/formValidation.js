@@ -3,6 +3,7 @@ var form  = document.getElementsByTagName('form')[0],
     artist = document.getElementById('artist'),
     youtube_link = document.getElementById('youtube_link'),
     year = document.getElementById('year'),
+    genre = document.getElementById('genre'),
     error = document.querySelector('.error');
 
 form.addEventListener("submit", function (event) {
@@ -41,4 +42,23 @@ form.addEventListener("submit", function (event) {
         // And we prevent the form from being sent by canceling the event
         event.preventDefault();
     }
+    if (!$('#genre').val()) {
+        $("#genre").removeClass("valid");
+        $("#genre").addClass("invalid");
+        $("#genre_label").addClass("active");
+        $("#genre").prop("aria-invalid", "true");
+        // And we prevent the form from being sent by canceling the event
+        event.preventDefault();
+        $('select').material_select();
+    }
 }, false);
+
+$('#genre').change(function() {
+    $("#genre").removeClass("invalid");
+    $("#genre").addClass("valid");
+    $("#genre_label").addClass("active");
+    $("#genre").prop("aria-invalid", "true");
+    // And we prevent the form from being sent by canceling the event
+    event.preventDefault();
+    $('select').material_select();
+})
