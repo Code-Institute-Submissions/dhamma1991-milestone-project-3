@@ -30,7 +30,9 @@
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">category</i>
-                    <select id="genre" name="genre" class="validate" required>
+                    <!-- No validation is necessary for the genre select box on the edit form since it is impossible to submit no value; there is automatically value populating the select box -->
+                    <!-- However, the script in formValidation.js will still provide visual feedback with a green underline if the select box is changed -->
+                    <select id="genre" name="genre">
                         <option value="" disabled selected>Genre</option>
                         {% for genre in genres %}
                             <!-- On the Edit Track page the user wants to see the current genre for the track as the default value -->
@@ -42,7 +44,7 @@
                         {% endfor %}
                         <option value="add-genre-link">Add a Genre</option>
                     </select>
-                    <label for="icon_prefix">Genre</label>
+                    <label for="genre">Genre</label>
                 </div>
                 
                 
