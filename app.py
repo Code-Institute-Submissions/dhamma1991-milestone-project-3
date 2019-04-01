@@ -42,11 +42,13 @@ def index():
     # This ensures the user can go to get_tracks cleanly
     session.clear()
     # Get the tracks collection
-    tracks = mongo.db.tracks
+    tracks = mongo.db.tracks.find()
     # Set the html title
     title = "DesertIsland | Home"
     return render_template("index.html", 
-                            tracks = tracks.aggregate([{ '$sort' : { 'upvotes' : -1} }]),
+                            # Sort all tracks by upvotes descending, limit to 3 results
+                            tracks = tracks.sort(
+                                                'upvotes', pymongo.DESCENDING).limit(3),
                             title = title
                             )
 
