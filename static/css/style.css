@@ -24,4 +24,11 @@ main {
     color: #fdfdfd;
     font-size: 3.56rem; }
 
+#nav-close {
+  float: right;
+  width: 65px;
+  margin-top: -6px; }
+  #nav-close a {
+    padding: 0 10px; }
+
 /*# sourceMappingURL=style.css.map */

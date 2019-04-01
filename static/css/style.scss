@@ -25,3 +25,12 @@ main {
         font-size: 3.56rem;
     }
 }
+
+#nav-close {
+    float: right;
+    width: 65px;
+    margin-top: -6px;
+    a {
+        padding: 0 10px;
+    }
+}
