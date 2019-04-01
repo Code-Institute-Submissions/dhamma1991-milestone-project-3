@@ -86,6 +86,7 @@
         
         <!-- BLOCK SCRIPTS-->
         <!-- Some scripts are not needed on all pages. To improve load times these scripts are added via block when needed -->
+        
         <!-- Genre Link Script. This turns the final option in the genre dropdowns on the add-track and edit-track forms into a link to add-genre.html -->
         {% block genre_link_js %}
         {% endblock %}
@@ -97,8 +98,8 @@
         <!-- Parallax Effect -->
         {% block parallax %}
         {% endblock %}
-        
         <!-- /BLOCK SCRIPTS -->
+        
         <!-- Get the current year to be used for the copyright date in the footer -->
         <script>
             var theDate = new Date().getFullYear();
