@@ -6,31 +6,31 @@
 <main>
     <div class="row">
         <!-- The task _id field is passed along into the update_task function -->
-        <form action="{{ url_for('insert_edited_track', sorting_order = sorting_order, track_id = track._id) }}" method="POST" class="col s12">
+        <form action="{{ url_for('insert_edited_track', sorting_order = sorting_order, track_id = track._id) }}" method="POST" class="col s12" novalidate>
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">assignment</i>
-                    <input id="track_title" name="track_title" type="text" class="validate" value="{{ track.track_title }}">
+                    <input id="track_title" name="track_title" type="text" class="validate" value="{{ track.track_title }}" required>
                     <label for="track_title">Track Title</label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">brush</i>
-                    <input id="artist" name="artist" type="text" class="validate" value="{{ track.artist }}">
+                    <input id="artist" name="artist" type="text" class="validate" value="{{ track.artist }}" required>
                     <label for="artist">Artist</label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">music_video</i>
-                    <input id="youtube_link" name="youtube_link" type="text" class="validate" value="{{ track.youtube_link }}">
+                    <input id="youtube_link" name="youtube_link" type="text" class="validate" value="{{ track.youtube_link }}" required>
                     <label for="youtube_link">YouTube Link</label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">calendar_today</i>
-                    <input id="year" name="year" type="text" class="validate" value="{{ track.year }}">
+                    <input id="year" name="year" type="text" class="validate" value="{{ track.year }}" required>
                     <label for="icon_prefix">Year</label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">category</i>
-                    <select id="genre" name="genre">
+                    <select id="genre" name="genre" class="validate" required>
                         <option value="" disabled selected>Genre</option>
                         {% for genre in genres %}
                             <!-- On the Edit Track page the user wants to see the current genre for the track as the default value -->
