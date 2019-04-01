@@ -19,6 +19,7 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'level-up'
 app.config["MONGO_URI"] = 'mongodb://admin:Strat3gic@ds127115.mlab.com:27115/level-up'
 
+# Secret key is needed in order to use session variables
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 # Initialise PyMongo
@@ -29,20 +30,23 @@ mongo = PyMongo(app)
 # # Pagination
 
 # Index Route
+"""
+This is the default route
+Render the home page
+Grab the current top 3 tracks by upvotes and display them on the home page
+"""
 @app.route('/index')
 @app.route('/')
 def index():
-    # Clear any session the user may have 
+    # Clear any session variables the user may have 
     # This ensures the user can go to get_tracks cleanly
     session.clear()
+    # Get the tracks collection
     tracks = mongo.db.tracks
+    # Set the html title
     title = "DesertIsland | Home"
     return render_template("index.html", 
-                            tracks = tracks.aggregate(
-                                                       [
-                                                         { '$sort' : { 'upvotes' : -1} }
-                                                       ]
-                                                    ),
+                            tracks = tracks.aggregate([{ '$sort' : { 'upvotes' : -1} }]),
                             title = title
                             )
 
