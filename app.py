@@ -143,22 +143,37 @@ def prev_tracks(sorting_order):
 
 @app.route('/sort_tracks_upvote_desc')
 def sort_tracks_upvote_desc():
+    """
+    Change the sorting order to show tracks with HIGHEST upvotes first. This is the default sorting order
+    """
     return redirect(url_for('get_tracks', sorting_order = 1))
     
 @app.route('/sort_tracks_upvote_asc')
 def sort_tracks_upvote_asc():
+    """
+    Change the sorting order to show tracks with LOWEST upvotes first
+    """
     return redirect(url_for('get_tracks', sorting_order = 2))
     
 @app.route('/sort_tracks_date_added_desc')
 def sort_tracks_date_added_desc():
+    """
+    Change the sorting order to show NEWEST tracks by date added first
+    """
     return redirect(url_for('get_tracks', sorting_order = 3))
     
 @app.route('/sort_tracks_date_added_asc')
 def sort_tracks_date_added_asc():
+    """
+    Change the sorting order to show OLDEST tracks by date added first
+    """
     return redirect(url_for('get_tracks', sorting_order = 4))
     
 @app.route('/add_track')
 def add_track():
+    """
+    Takes the user to add-track.html allowing them to add a new track to the database
+    """
     return render_template('add-track.html', genres=mongo.db.genres.find())
     
 @app.route('/insert_track', methods=['POST']) # Because you're using POST here, you have to set that via methods
