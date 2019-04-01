@@ -82,6 +82,12 @@
                 
                 /* Materialize Select */
                 $('select').material_select();
+                
+                /* Nav Close */
+                $('#nav-close').click(function() {
+                    /* Use sideNav method provided by Materialize */
+                    $('.button-collapse').sideNav('hide');
+                })
             });
         </script>
         
