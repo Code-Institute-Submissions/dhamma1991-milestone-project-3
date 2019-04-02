@@ -1,3 +1,7 @@
+# NEEDED ONLY FOR PRINTS
+from __future__ import print_function
+import sys
+
 # Allow configuration
 import os
 
@@ -57,7 +61,7 @@ def about():
     title = "DesertIsland | About"
     return render_template("about.html", title = title)
 
-@app.route('/get_tracks/<int:sorting_order>')
+@app.route('/get_tracks/<int:sorting_order>', methods = ['POST','GET'])
 def get_tracks(sorting_order):
     # Get the tracks collection
     tracks_collection = mongo.db.tracks
@@ -83,6 +87,59 @@ def get_tracks(sorting_order):
     # For all other use cases it is redundant
     session.pop('hold_pagination', None)
 
+    decade = request.form.get("decade-options-select")
+    
+    if decade == "1950s":
+        tracks_decade = tracks_collection.find({"$and": [
+                                {"year": {'$gte': 1950}}, 
+                                {"year": {'$lt': 1960}}
+                                ]
+                        })
+    elif decade == "1960s":
+        tracks_decade = tracks_collection.find({"$and": [
+                                {"year": {'$gte': 1960}}, 
+                                {"year": {'$lt': 1970}}
+                                ]
+                        })
+    elif decade == "1970s":
+        tracks_decade = tracks_collection.find({"$and": [
+                                {"year": {'$gte': 1970}}, 
+                                {"year": {'$lt': 1980}}
+                                ]
+                        })
+    elif decade == "1980s":
+        tracks_decade = tracks_collection.find({"$and": [
+                                {"year": {'$gte': 1980}}, 
+                                {"year": {'$lt': 1990}}
+                                ]
+                        })
+    elif decade == "1990s":
+        tracks_decade = tracks_collection.find({"$and": [
+                                {"year": {'$gte': 1990}}, 
+                                {"year": {'$lt': 2000}}
+                                ]
+                        })
+    elif decade == "2000s":
+        tracks_decade = tracks_collection.find({"$and": [
+                                {"year": {'$gte': 2000}}, 
+                                {"year": {'$lt': 2010}}
+                                ]
+                        })
+    elif decade == "2010s":
+        tracks_decade = tracks_collection.find({"$and": [
+                                {"year": {'$gte': 2010}}, 
+                                {"year": {'$lt': 2020}}
+                                ]
+                        })
+    elif decade == "pre1950":
+        tracks_decade = tracks_collection.find({"$and": [
+                                {"year": {'$gte': 2010}}, 
+                                {"year": {'$lt': 2020}}
+                                ]
+                        })
+    else:
+        tracks_decade = tracks_collection.find()
+    
     # The sorting_order variable is used to determine how to sort the tracks
     # sorting_order = 1 means sort tracks by HIGHEST UPVOTES. This is the default sorting order
     # sorting_order = 2 means sort tracks by LOWEST UPVOTES first
@@ -90,22 +147,22 @@ def get_tracks(sorting_order):
     # sorting_order = 4 means sort tracks by date added to the databse with the OLDEST date first
     if sorting_order == 1:
         # Find all tracks within the tracks collection. Sort by upvotes descending, skip using the value of pagination and limit
-        tracks = tracks_collection.find().sort(
+        tracks = tracks_decade.sort(
                                                 'upvotes', pymongo.DESCENDING).skip(
                                                                                     pagination).limit(5)
     elif sorting_order == 2:
         # Find all tracks within the tracks collection. Sort by upvotes ascending, skip using the value of pagination and limit
-        tracks = tracks_collection.find().sort(
+        tracks = tracks_decade.sort(
                                             'upvotes', pymongo.ASCENDING).skip(
                                                                                 pagination).limit(5)
     elif sorting_order == 3:
          # Find all tracks within the tracks collection. Sort by date_added_raw descending, skip using the value of pagination and limit
-        tracks = tracks_collection.find().sort(
+        tracks = tracks_decade.sort(
                                             'date_added_raw', pymongo.DESCENDING).skip(
                                                                                 pagination).limit(5)
     elif sorting_order == 4:
         # Find all tracks within the tracks collection. Sort by date_added_raw ascending, skip using the value of pagination and limit
-        tracks = tracks_collection.find().sort(
+        tracks = tracks_decade.sort(
                                             'date_added_raw', pymongo.ASCENDING).skip(
                                                                                 pagination).limit(5)
     
