@@ -90,9 +90,9 @@
             var selectVal = $('#decade-options-select').val()
             console.log(selectVal)
             // If the select box's value is equal to 'add-genre-link'...
-            if (selectVal == 'add-genre-link') {
+            if (selectVal == '1970s') {
                 // Redirect the user to add-genre.html
-                window.location.href = "{{ url_for('add_genre') }}";
+                window.location.href = "{{ url_for('get_tracks', sorting_order = sorting_order, decade_filter = '1970s' ) }}";
             }
         });
         // This functionality would be easier with a click event
