@@ -61,8 +61,8 @@ def about():
     title = "DesertIsland | About"
     return render_template("about.html", title = title)
 
-@app.route('/get_tracks/<int:sorting_order>', methods = ['POST','GET'])
-def get_tracks(sorting_order):
+@app.route('/get_tracks/<decade_filter>/<int:sorting_order>', methods = ['POST','GET'])
+def get_tracks(decade_filter, sorting_order):
     # Get the tracks collection
     tracks_collection = mongo.db.tracks
     
@@ -87,51 +87,51 @@ def get_tracks(sorting_order):
     # For all other use cases it is redundant
     session.pop('hold_pagination', None)
 
-    decade = request.form.get("decade-options-select")
+    # decade = request.form.get("decade-options-select")
     
-    if decade == "1950s":
-        tracks_decade = tracks_collection.find({"$and": [
-                                {"year": {'$gte': 1950}}, 
-                                {"year": {'$lt': 1960}}
-                                ]
-                        })
-    elif decade == "1960s":
-        tracks_decade = tracks_collection.find({"$and": [
-                                {"year": {'$gte': 1960}}, 
-                                {"year": {'$lt': 1970}}
-                                ]
-                        })
-    elif decade == "1970s":
-        tracks_decade = tracks_collection.find({"$and": [
-                                {"year": {'$gte': 1970}}, 
-                                {"year": {'$lt': 1980}}
-                                ]
-                        })
-    elif decade == "1980s":
-        tracks_decade = tracks_collection.find({"$and": [
-                                {"year": {'$gte': 1980}}, 
-                                {"year": {'$lt': 1990}}
-                                ]
-                        })
-    elif decade == "1990s":
-        tracks_decade = tracks_collection.find({"$and": [
-                                {"year": {'$gte': 1990}}, 
-                                {"year": {'$lt': 2000}}
-                                ]
-                        })
-    elif decade == "2000s":
-        tracks_decade = tracks_collection.find({"$and": [
-                                {"year": {'$gte': 2000}}, 
-                                {"year": {'$lt': 2010}}
-                                ]
-                        })
-    elif decade == "2010s":
+    if decade_filter == "pre1950s":
         tracks_decade = tracks_collection.find({"$and": [
                                 {"year": {'$gte': 2010}}, 
                                 {"year": {'$lt': 2020}}
                                 ]
                         })
-    elif decade == "pre1950":
+    elif decade_filter == "1950s":
+        tracks_decade = tracks_collection.find({"$and": [
+                                {"year": {'$gte': 1950}}, 
+                                {"year": {'$lt': 1960}}
+                                ]
+                        })
+    elif decade_filter == "1960s":
+        tracks_decade = tracks_collection.find({"$and": [
+                                {"year": {'$gte': 1960}}, 
+                                {"year": {'$lt': 1970}}
+                                ]
+                        })
+    elif decade_filter == "1970s":
+        tracks_decade = tracks_collection.find({"$and": [
+                                {"year": {'$gte': 1970}}, 
+                                {"year": {'$lt': 1980}}
+                                ]
+                        })
+    elif decade_filter == "1980s":
+        tracks_decade = tracks_collection.find({"$and": [
+                                {"year": {'$gte': 1980}}, 
+                                {"year": {'$lt': 1990}}
+                                ]
+                        })
+    elif decade_filter == "1990s":
+        tracks_decade = tracks_collection.find({"$and": [
+                                {"year": {'$gte': 1990}}, 
+                                {"year": {'$lt': 2000}}
+                                ]
+                        })
+    elif decade_filter == "2000s":
+        tracks_decade = tracks_collection.find({"$and": [
+                                {"year": {'$gte': 2000}}, 
+                                {"year": {'$lt': 2010}}
+                                ]
+                        })
+    elif decade_filter == "2010s":
         tracks_decade = tracks_collection.find({"$and": [
                                 {"year": {'$gte': 2010}}, 
                                 {"year": {'$lt': 2020}}
@@ -206,6 +206,13 @@ def prev_tracks(sorting_order):
     session['hold_pagination'] = True
     
     return redirect(url_for('get_tracks', sorting_order = sorting_order))
+    
+@app.route('/filter_1970s')
+def filter_1970s():
+    """
+    Change the sorting order to show tracks with HIGHEST upvotes first. This is the default sorting order
+    """
+    return redirect(url_for('get_tracks', decade_filter = 5))
 
 @app.route('/sort_tracks_upvote_desc')
 def sort_tracks_upvote_desc():
