@@ -291,7 +291,7 @@ def insert_edited_track(sorting_order, track_id):
         'track_title':request.form.get('track_title'),
         'artist':request.form.get('artist'),
         'youtube_link': request.form.get('youtube_link'),
-        'year': request.form.get('year'),
+        'year': int(request.form.get('year')),
         'genre':request.form.get('genre'),
         # These last three are the same values as what were created when the track was added to the database initially
         'upvotes': upvotes,
