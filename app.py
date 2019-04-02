@@ -109,6 +109,14 @@ def get_tracks(sorting_order):
                                             'date_added_raw', pymongo.ASCENDING).skip(
                                                                                 pagination).limit(5)
     
+    """TEST, CAN I GET DECADES?"""
+    # Get all tracks from the 70s
+    # tracks = tracks_collection.find({"$and": [
+    #                                 {"year": {'$gte': 1970}}, 
+    #                                 {"year": {'$lt': 1980}}
+    #                                 ]
+    #                         })
+    """END TEST"""
     # Render tracks.html
     # tracks is the list of tracks to be rendered
     # sorting_order is how they are to be sorted (corresponding to the system in the if/else statement above)
@@ -121,6 +129,7 @@ def get_tracks(sorting_order):
                             tracks_col_count = tracks_col_count
                             )
                             
+
 @app.route('/next_tracks/<int:sorting_order>')
 def next_tracks(sorting_order):
     """
