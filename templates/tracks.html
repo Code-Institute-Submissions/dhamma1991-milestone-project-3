@@ -3,9 +3,9 @@
 {% block content %}
     <main class="container">
         <div class="row">
-            <a class="col s3" href="{{ url_for('sort_tracks_upvote_desc') }}">Sort by Most Popular</a>
-            <a class="col s3" href="{{ url_for('sort_tracks_date_added_desc') }}">Sort by Date Added (Newest)</a>
-            <form method="POST" action="{{ url_for('get_tracks', sorting_order = sorting_order) }}" class="col s3">
+            <a class="col s3" href="{{ url_for('sort_tracks_upvote_desc', decade_filter = decade_filter) }}">Sort by Most Popular</a>
+            <a class="col s3" href="{{ url_for('sort_tracks_date_added_desc', decade_filter = decade_filter) }}">Sort by Date Added (Newest)</a>
+            <form method="POST" action="{{ url_for('get_tracks', sorting_order = sorting_order, decade_filter = decade_filter) }}" class="col s3">
                 <label for="decade-options-select">Filter tracks by decade</label>
                 <select id="decade-options-select" name="decade-options-select">
                     <option value="all" selected>Show All</option>
@@ -24,8 +24,8 @@
             </form>
         </div>
         <div class="row">
-            <a class="col s3" href="{{ url_for('sort_tracks_upvote_asc') }}">Sort by Least Popular</a>
-            <a class="col s3" href="{{ url_for('sort_tracks_date_added_asc') }}">Sort by Date Added (Oldest)</a>
+            <a class="col s3" href="{{ url_for('sort_tracks_upvote_asc', decade_filter = decade_filter) }}">Sort by Least Popular</a>
+            <a class="col s3" href="{{ url_for('sort_tracks_date_added_asc', decade_filter = decade_filter) }}">Sort by Date Added (Oldest)</a>
         </div>
         <!-- Accordion Container -->
         <ul class="collapsible">
