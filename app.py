@@ -181,6 +181,7 @@ def get_tracks(decade_filter, sorting_order):
     # tracks_col_count determines whether to hide the next and previous buttons. If the user has reached the end of the list it doesn't make sense and would be confusing for them to be able to click 'Next'
     return render_template("tracks.html", 
                             tracks = tracks,
+                            decade_filter = decade_filter,
                             sorting_order = sorting_order,
                             pagination = pagination,
                             tracks_col_count = tracks_col_count
