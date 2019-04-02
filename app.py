@@ -215,12 +215,12 @@ def filter_1970s():
     """
     return redirect(url_for('get_tracks', decade_filter = 5))
 
-@app.route('/sort_tracks_upvote_desc')
-def sort_tracks_upvote_desc():
+@app.route('/sort_tracks_upvote_desc/<decade_filter>')
+def sort_tracks_upvote_desc(decade_filter):
     """
     Change the sorting order to show tracks with HIGHEST upvotes first. This is the default sorting order
     """
-    return redirect(url_for('get_tracks', sorting_order = 1))
+    return redirect(url_for('get_tracks', sorting_order = 1, decade_filter = decade_filter))
     
 @app.route('/sort_tracks_upvote_asc')
 def sort_tracks_upvote_asc():

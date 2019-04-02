@@ -83,4 +83,19 @@
 
 <!-- Decade Link Script -->
 {% block decade_link_js %}
+    <script>
+        // Listen for a change on the Genre select box
+        $('#decade-options-select').change(function() {
+            // Grab the current value of the select box
+            var selectVal = $('#decade-options-select').val()
+            console.log(selectVal)
+            // If the select box's value is equal to 'add-genre-link'...
+            if (selectVal == 'add-genre-link') {
+                // Redirect the user to add-genre.html
+                window.location.href = "{{ url_for('add_genre') }}";
+            }
+        });
+        // This functionality would be easier with a click event
+        // Unfortunately however, Chrome doesn't work with click events on select options
+    </script>
 {% endblock %}
