@@ -33,7 +33,7 @@
                     <!-- Edit Button -->
                     <a href="{{url_for('edit_track', sorting_order = sorting_order, track_id = track._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
                     <!-- Delete Button -->
-                    <a href="{{url_for('delete_track', track_id=track._id)}}" class="waves-effect waves-light btn btn_small red">Delete</a>
+                    <a href="{{url_for('delete_track', track_id=track._id, sorting_order = sorting_order)}}" class="waves-effect waves-light btn btn_small red">Delete</a>
                 </div>
                 <!-- /Accordion Header -->
                 <!-- Accordion Body -->
