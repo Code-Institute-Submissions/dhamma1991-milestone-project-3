@@ -73,7 +73,7 @@
         {% endif %}
         <!-- Next arrow -->
         {% if pagination < tracks_col_count - 5 %}
-            <a href="{{ url_for('next_tracks', sorting_order = sorting_order) }}">Next</a>
+            <a href="{{ url_for('next_tracks', decade_filter = decade_filter, sorting_order = sorting_order) }}">Next</a>
         {% endif %}
         {{ pagination }}
         {{ tracks_col_count }}
