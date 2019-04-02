@@ -94,6 +94,10 @@
         <!-- BLOCK SCRIPTS-->
         <!-- Some scripts are not needed on all pages. To improve load times these scripts are added via block when needed -->
         
+        <!-- Decade Link Script -->
+        {% block decade_link_js %}
+        {% endblock %}
+        
         <!-- Genre Link Script. This turns the final option in the genre dropdowns on the add-track and edit-track forms into a link to add-genre.html -->
         {% block genre_link_js %}
         {% endblock %}
