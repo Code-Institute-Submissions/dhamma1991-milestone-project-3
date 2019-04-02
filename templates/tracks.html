@@ -90,9 +90,42 @@
             var selectVal = $('#decade-options-select').val()
             console.log(selectVal)
             // If the select box's value is equal to 'add-genre-link'...
-            if (selectVal == '1970s') {
-                // Redirect the user to add-genre.html
-                window.location.href = "{{ url_for('get_tracks', sorting_order = sorting_order, decade_filter = '1970s' ) }}";
+            switch (selectVal) {
+                case 'pre1950':
+                    window.location.href = "{{ url_for('get_tracks', sorting_order = sorting_order, decade_filter = 'pre1950' ) }}";
+                    break;
+            
+                case '1950s':
+                    window.location.href = "{{ url_for('get_tracks', sorting_order = sorting_order, decade_filter = '1950s' ) }}";
+                    break;
+            
+                case '1960s':
+                    window.location.href = "{{ url_for('get_tracks', sorting_order = sorting_order, decade_filter = '1960s' ) }}";
+                    break;
+            
+                case '1970s':
+                    window.location.href = "{{ url_for('get_tracks', sorting_order = sorting_order, decade_filter = '1970s' ) }}";
+                    break;
+                    
+                case '1980s':
+                    window.location.href = "{{ url_for('get_tracks', sorting_order = sorting_order, decade_filter = '1980s' ) }}";
+                    break;
+                    
+                case '1990s':
+                    window.location.href = "{{ url_for('get_tracks', sorting_order = sorting_order, decade_filter = '1990s' ) }}";
+                    break;
+                    
+                case '2000s':
+                    window.location.href = "{{ url_for('get_tracks', sorting_order = sorting_order, decade_filter = '2000s' ) }}";
+                    break;
+                    
+                case '2010s':
+                    window.location.href = "{{ url_for('get_tracks', sorting_order = sorting_order, decade_filter = '2010s' ) }}";
+                    break;
+                    
+                default:
+                    window.location.href = "{{ url_for('get_tracks', sorting_order = sorting_order, decade_filter = 'all' ) }}";
+                    break;
             }
         });
         // This functionality would be easier with a click event

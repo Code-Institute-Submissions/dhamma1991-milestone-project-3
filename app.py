@@ -89,7 +89,7 @@ def get_tracks(decade_filter, sorting_order):
 
     # decade = request.form.get("decade-options-select")
     
-    if decade_filter == "pre1950s":
+    if decade_filter == "pre1950":
         tracks_decade = tracks_collection.find({"$and": [
                                 {"year": {'$gte': 2010}}, 
                                 {"year": {'$lt': 2020}}
