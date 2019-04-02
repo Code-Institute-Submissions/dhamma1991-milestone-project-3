@@ -193,7 +193,7 @@ def insert_track():
             'track_title': request.form.get('track_title'), # Access the tasks collection
             'artist': request.form.get('artist'),
             'youtube_link': request.form.get('youtube_link'),
-            'year': request.form.get('year'),
+            'year': int(request.form.get('year')),
             'genre': request.form.get('genre'),
             # Upvotes is set to 1 by default. This idea is borrowed from Reddit, in that a user who uploads a track would presumably want to upvote it as well
             'upvotes': 1,
