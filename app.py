@@ -198,15 +198,15 @@ def next_tracks(decade_filter, sorting_order):
     
     return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
                             
-@app.route('/prev_tracks/<int:sorting_order>')
-def prev_tracks(sorting_order):
+@app.route('/prev_tracks/<decade_filter>/<int:sorting_order>')
+def prev_tracks(decade_filter, sorting_order):
     """
     This function takes the user to the previous 5 tracks, determined by the pagination the user is currently on and the sorting order they are currently using
     """
     session['pagination'] -= 5
     session['hold_pagination'] = True
     
-    return redirect(url_for('get_tracks', sorting_order = sorting_order))
+    return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
     
 @app.route('/filter_1970s')
 def filter_1970s():
