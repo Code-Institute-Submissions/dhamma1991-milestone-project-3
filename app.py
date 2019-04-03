@@ -291,7 +291,7 @@ def insert_genre():
     # Else the user is currently editing a track
     else: 
         # Take them back to edit-track.html, to the track they were editing before they added a new genre
-        return redirect(url_for('edit_track', track_id = session['genre_edit_track_id'], sorting_order = session['sorting_order']))
+        return redirect(url_for('edit_track', decade_filter = session['decade_filter'], track_id = session['genre_edit_track_id'], sorting_order = session['sorting_order']))
     
 @app.route('/upvote_track/<sorting_order>/<track_id>', methods=['POST'])
 def upvote_track(sorting_order, track_id):
@@ -329,6 +329,7 @@ def edit_track(sorting_order, decade_filter, track_id):
     # Establish a session for genre_edit in case the user ends up adding a new genre
     session['genre_edit_track_id'] = track_id
     session['sorting_order'] = sorting_order
+    session['decade_filter'] = decade_filter
     # Render edit_track.html and pass across the_track and all_genres
     return render_template('edit-track.html', decade_filter = decade_filter, sorting_order = sorting_order, track = the_track, genres = all_genres)
     
