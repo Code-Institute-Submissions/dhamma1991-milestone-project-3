@@ -5,6 +5,7 @@ var form  = document.getElementsByTagName('form')[0],
     year = document.getElementById('year'),
     genre = document.getElementById('genre'),
     user_name = document.getElementById('user_name'),
+    description = document.getElementById('description'),
     error = document.querySelector('.error');
 
 form.addEventListener("submit", function (event) {
@@ -57,6 +58,14 @@ form.addEventListener("submit", function (event) {
         $("#user_name").addClass("invalid");
         $("#user_name_label").addClass("active");
         $("#user_name").prop("aria-invalid", "true");
+        // And we prevent the form from being sent by canceling the event
+        event.preventDefault();
+    }
+    if (!description.validity.valid) {
+        $("#description").removeClass("valid");
+        $("#description").addClass("invalid");
+        $("#description_label").addClass("active");
+        $("#description").prop("aria-invalid", "true");
         // And we prevent the form from being sent by canceling the event
         event.preventDefault();
     }
