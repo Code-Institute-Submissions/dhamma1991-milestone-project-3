@@ -286,11 +286,12 @@ def insert_genre():
     # There are 2 places the user can be adding a genre from; adding a new track or editing an existing track
     # If the genre_edit_track_id is not in session, that means the user is adding a new track
     if 'genre_edit_track_id' not in session:
-        # In which case, just take them back to add-track.html
+        # In which case, just take them back to add-track.html to allow them to continue adding a track
         return redirect(url_for('add_track'))
     # Else the user is currently editing a track
     else: 
-        # Take them back to edit-track.html, to the track they were editing before they added a new genre
+        # Take them back to edit-track.html, to the track they were editing before they went to adding a new genre
+        # Pass through the session variables that were established by edit_track()
         return redirect(url_for('edit_track', decade_filter = session['decade_filter'], track_id = session['genre_edit_track_id'], sorting_order = session['sorting_order']))
     
 @app.route('/upvote_track/<sorting_order>/<track_id>', methods=['POST'])
@@ -324,13 +325,18 @@ def edit_track(sorting_order, decade_filter, track_id):
         the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
     # A list of all the genres is also needed in order to populate the edit form
     all_genres = mongo.db.genres.find()
+    
     # Hold pagination, once the user has finished editing they want go back to the 5 tracks they were viewing
     session['hold_pagination'] = True
-    # Establish a session for genre_edit in case the user ends up adding a new genre
+    
+    # Establish sessions for genre_edit in case the user ends up adding a new genre. Create variables that need to be passed back into edit_track once the user has finished adding a genre
+    # Session variables are used here because add_genre can be called from both add_track and edit_track
+    # If add_genre is called from add_track, default values for sorting_order and decade_filter can be hardcoded and they don't need to be passed through from anywhere
+    # Hence, the session variables here are used as "standby" variables
     session['genre_edit_track_id'] = track_id
     session['sorting_order'] = sorting_order
     session['decade_filter'] = decade_filter
-    # Render edit_track.html and pass across the_track and all_genres
+    # Render edit_track.html, pass through necessary variables
     return render_template('edit-track.html', decade_filter = decade_filter, sorting_order = sorting_order, track = the_track, genres = all_genres)
     
 @app.route('/insert_edited_track/<decade_filter>/<sorting_order>/<track_id>', methods=["POST"])
