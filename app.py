@@ -63,6 +63,11 @@ def about():
 
 @app.route('/get_tracks/<decade_filter>/<int:sorting_order>', methods = ['POST','GET'])
 def get_tracks(decade_filter, sorting_order):
+    """
+    This function renders the tracks on tracks.html
+    Tracks can be sorted and filtered by various criteria
+    The filter and sort values are passed into the function from other functions which redirect to here
+    """
     # Get the tracks collection
     tracks_collection = mongo.db.tracks
     
@@ -181,7 +186,7 @@ def get_tracks(decade_filter, sorting_order):
 @app.route('/next_tracks/<decade_filter>/<int:sorting_order>')
 def next_tracks(decade_filter, sorting_order):
     """
-    This function takes the user to the next 5 tracks, determined by the pagination the user is currently on and the sorting order they are currently using
+    This function takes the user to the next 5 tracks, determined by the pagination the user is currently on, the sorting order they are currently using as well as the filtering options set
     """
     session['pagination'] += 5
     session['hold_pagination'] = True
@@ -191,7 +196,7 @@ def next_tracks(decade_filter, sorting_order):
 @app.route('/prev_tracks/<decade_filter>/<int:sorting_order>')
 def prev_tracks(decade_filter, sorting_order):
     """
-    This function takes the user to the previous 5 tracks, determined by the pagination the user is currently on and the sorting order they are currently using
+    This function takes the user to the previous 5 tracks, determined by the pagination the user is currently on, the sorting order they are currently using as well as the filtering options set
     """
     session['pagination'] -= 5
     session['hold_pagination'] = True
@@ -236,7 +241,7 @@ def add_track():
 @app.route('/insert_track', methods=['POST']) # Because you're using POST here, you have to set that via methods
 def insert_track():
     """
-    This function takes the data the user inputs to the form on add-track.html and turns it into a new document in the database
+    This function gets the data the user inputs to the form on add-track.html and turns it into a new document in the database
     """
     # Format the timestamp that will be inserted into the record
     # The timestamp is a more user friendly version of the raw date object that is also created when a new document is created
@@ -265,6 +270,9 @@ def insert_track():
     
 @app.route('/add_genre')
 def add_genre():
+    """
+    Takes the user to add-genre.html, allowing them to add a new genre to the genre collection
+    """
     return render_template('add-genre.html')
     
 @app.route('/insert_genre', methods=['POST']) # Because you're using POST here, you have to set that via methods
