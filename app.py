@@ -261,7 +261,7 @@ def insert_track():
         }
     )
     # Once submitted, redirect to the get_tracks function to view the collection using the default sorting order
-    return redirect(url_for('get_tracks', sorting_order = 1))
+    return redirect(url_for('get_tracks', sorting_order = 1, decade_filter = 'all'))
     
 @app.route('/add_genre')
 def add_genre():
@@ -298,9 +298,9 @@ def upvote_track(sorting_order, track_id):
     
     return redirect(url_for('get_tracks', sorting_order = sorting_order))
     
-@app.route('/edit_track/<sorting_order>/<track_id>')
+@app.route('/edit_track/<decade_filter>/<sorting_order>/<track_id>')
 # This function essential gets the task that matches this task id
-def edit_track(sorting_order, track_id):
+def edit_track(sorting_order, decade_filter, track_id):
     # If genre_edit_track_id is in session, that means the user is coming from just adding a genre
     if 'genre_edit_track_id' in session:
         # Get the track_id from the session
@@ -322,10 +322,10 @@ def edit_track(sorting_order, track_id):
     session['genre_edit_track_id'] = track_id
     session['sorting_order'] = sorting_order
     # Render edit_track.html and pass across the_track and all_genres
-    return render_template('edit-track.html', sorting_order = sorting_order, track = the_track, genres = all_genres)
+    return render_template('edit-track.html', decade_filter = decade_filter, sorting_order = sorting_order, track = the_track, genres = all_genres)
     
-@app.route('/insert_edited_track//<sorting_order>/<track_id>', methods=["POST"])
-def insert_edited_track(sorting_order, track_id):
+@app.route('/insert_edited_track/<decade_filter>/<sorting_order>/<track_id>', methods=["POST"])
+def insert_edited_track(decade_filter, sorting_order, track_id):
     # Get the tracks collection
     tracks = mongo.db.tracks
     
@@ -359,7 +359,7 @@ def insert_edited_track(sorting_order, track_id):
     # Pop the genre_edit_track_id session, the user won't need it again unless they come to editing a track again
     session.pop('genre_edit_track_id', None)
     
-    return redirect(url_for('get_tracks', sorting_order = sorting_order))
+    return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
     
 @app.route('/delete_track/<track_id>/<sorting_order>')
 def delete_track(track_id, sorting_order):

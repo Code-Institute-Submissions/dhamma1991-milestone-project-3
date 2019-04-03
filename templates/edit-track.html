@@ -6,7 +6,7 @@
 <main>
     <div class="row">
         <!-- The task _id field is passed along into the update_task function -->
-        <form action="{{ url_for('insert_edited_track', sorting_order = sorting_order, track_id = track._id) }}" method="POST" class="col s12" novalidate>
+        <form action="{{ url_for('insert_edited_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id) }}" method="POST" class="col s12" novalidate>
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">assignment</i>
@@ -56,7 +56,7 @@
         </form>
         
         <div class="row">
-            <a href="{{ url_for('get_tracks', sorting_order = sorting_order) }}" class="btn red darken-3">Cancel Edit</a>
+            <a href="{{ url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order) }}" class="btn red darken-3">Cancel Edit</a>
             <i class="material-icons right">send</i>
         </div>
     </div>
