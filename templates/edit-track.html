@@ -25,7 +25,7 @@
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">calendar_today</i>
-                    <input id="year" name="year" type="text" class="validate" value="{{ track.year }}" required>
+                    <input id="year" name="year" type="text" class="validate" value="{{ track.year }}" required pattern="[0-9][0-9][0-9][0-9]" maxlength="4">
                     <label id="year_label" for="year" data-error="Please enter the year the track was first released in the format YYYY (e.g. 1976)" data-success="&#10004;">Year</label>
                 </div>
                 <div class="input-field col s6">
