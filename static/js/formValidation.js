@@ -4,6 +4,7 @@ var form  = document.getElementsByTagName('form')[0],
     youtube_link = document.getElementById('youtube_link'),
     year = document.getElementById('year'),
     genre = document.getElementById('genre'),
+    user_name = document.getElementById('user_name'),
     error = document.querySelector('.error');
 
 form.addEventListener("submit", function (event) {
@@ -50,6 +51,14 @@ form.addEventListener("submit", function (event) {
         // And we prevent the form from being sent by canceling the event
         event.preventDefault();
         $('select').material_select();
+    }
+    if (!user_name.validity.valid) {
+        $("#user_name").removeClass("valid");
+        $("#user_name").addClass("invalid");
+        $("#user_name_label").addClass("active");
+        $("#user_name").prop("aria-invalid", "true");
+        // And we prevent the form from being sent by canceling the event
+        event.preventDefault();
     }
 }, false);
 
