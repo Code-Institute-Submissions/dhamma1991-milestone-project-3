@@ -205,26 +205,26 @@ def sort_tracks_upvote_desc(decade_filter):
     """
     return redirect(url_for('get_tracks', sorting_order = 1, decade_filter = decade_filter))
     
-@app.route('/sort_tracks_upvote_asc')
-def sort_tracks_upvote_asc():
+@app.route('/sort_tracks_upvote_asc/<decade_filter>')
+def sort_tracks_upvote_asc(decade_filter):
     """
     Change the sorting order to show tracks with LOWEST upvotes first
     """
-    return redirect(url_for('get_tracks', sorting_order = 2))
+    return redirect(url_for('get_tracks', sorting_order = 2, decade_filter = decade_filter))
     
-@app.route('/sort_tracks_date_added_desc')
-def sort_tracks_date_added_desc():
+@app.route('/sort_tracks_date_added_desc/<decade_filter>')
+def sort_tracks_date_added_desc(decade_filter):
     """
     Change the sorting order to show NEWEST tracks by date added first
     """
-    return redirect(url_for('get_tracks', sorting_order = 3))
+    return redirect(url_for('get_tracks', sorting_order = 3, decade_filter = decade_filter))
     
-@app.route('/sort_tracks_date_added_asc')
-def sort_tracks_date_added_asc():
+@app.route('/sort_tracks_date_added_asc/<decade_filter>')
+def sort_tracks_date_added_asc(decade_filter):
     """
     Change the sorting order to show OLDEST tracks by date added first
     """
-    return redirect(url_for('get_tracks', sorting_order = 4))
+    return redirect(url_for('get_tracks', sorting_order = 4, decade_filter = decade_filter))
     
 @app.route('/add_track')
 def add_track():
