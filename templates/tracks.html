@@ -2,13 +2,14 @@
 
 {% block content %}
     <main class="container">
+        <h3>TEST</h3>
         <div class="row">
             <a class="col s3" href="{{ url_for('sort_tracks_upvote_desc', decade_filter = decade_filter) }}">Sort by Most Popular</a>
             <a class="col s3" href="{{ url_for('sort_tracks_date_added_desc', decade_filter = decade_filter) }}">Sort by Date Added (Newest)</a>
             <form method="POST" action="{{ url_for('get_tracks', sorting_order = sorting_order, decade_filter = decade_filter) }}" class="col s3">
                 <label for="decade-options-select">Filter tracks by decade</label>
                 <select id="decade-options-select" name="decade-options-select">
-                    <option value="all" selected>Show All</option>
+                    <option value="all">Show All</option>
                     <option value="pre1950">Pre-1950</option>
                     <option value="1950s">1950-1959</option>
                     <option value="1960s">1960-1969</option>
@@ -131,4 +132,70 @@
         // This functionality would be easier with a click event
         // Unfortunately however, Chrome doesn't work with click events on select options
     </script>
+    
+        {% if decade_filter == 'pre1950' %}
+            <script>
+                $(document).ready(function() {
+                    $("#decade-options-select option[value='pre1950']").prop("selected",true);
+                    $('#decade-options-select').material_select();
+                });
+            </script>
+        {% elif decade_filter == '1950s' %}
+            <script>
+                $(document).ready(function() {
+                    $("#decade-options-select option[value='pre1950']").prop("selected",true);
+                    $('#decade-options-select').material_select();
+                });
+            </script>
+        {% elif decade_filter == '1960s' %}
+            <script>
+                $(document).ready(function() {
+                    $("#decade-options-select option[value='1960s']").prop("selected",true);
+                    $('#decade-options-select').material_select();
+                });
+            </script>
+        {% elif decade_filter == '1970s' %}
+            <script>
+                $(document).ready(function() {
+                    $("#decade-options-select option[value='1970s']").prop("selected",true);
+                    $('#decade-options-select').material_select();
+                });
+            </script>
+        {% elif decade_filter == '1980s' %}
+            <script>
+                $(document).ready(function() {
+                    $("#decade-options-select option[value='1980s']").prop("selected",true);
+                    $('#decade-options-select').material_select();
+                });
+            </script>
+        {% elif decade_filter == '1990s' %}
+            <script>
+                $(document).ready(function() {
+                    $("#decade-options-select option[value='1990s']").prop("selected",true);
+                    $('#decade-options-select').material_select();
+                });
+            </script>
+        {% elif decade_filter == '2000s' %}
+            <script>
+                $(document).ready(function() {
+                    $("#decade-options-select option[value='2000s']").prop("selected",true);
+                    $('#decade-options-select').material_select();
+                });
+            </script>
+        {% elif decade_filter == '2010s' %}
+            <script>
+                $(document).ready(function() {
+                    $("#decade-options-select option[value='2010s']").prop("selected",true);
+                    $('#decade-options-select').material_select();
+                });
+            </script>
+        {% else %}
+            <script>
+                $(document).ready(function() {
+                    $("#decade-options-select option[value='all']").prop("selected",true);
+                    $('#decade-options-select').material_select();
+                });
+            </script>
+        {% endif %}
+
 {% endblock %}
