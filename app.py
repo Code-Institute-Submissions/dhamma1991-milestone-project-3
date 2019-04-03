@@ -296,8 +296,8 @@ def insert_genre():
         # Pass through the session variables that were established by edit_track()
         return redirect(url_for('edit_track', decade_filter = session['decade_filter'], track_id = session['genre_edit_track_id'], sorting_order = session['sorting_order']))
     
-@app.route('/upvote_track/<sorting_order>/<track_id>', methods=['POST'])
-def upvote_track(sorting_order, track_id):
+@app.route('/upvote_track/<decade_filter>/<sorting_order>/<track_id>', methods=['POST'])
+def upvote_track(decade_filter, sorting_order, track_id):
     tracks = mongo.db.tracks
     tracks.update( 
         {'_id': ObjectId(track_id)},
@@ -307,7 +307,7 @@ def upvote_track(sorting_order, track_id):
     
     session['hold_pagination'] = True
     
-    return redirect(url_for('get_tracks', sorting_order = sorting_order))
+    return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
     
 @app.route('/edit_track/<decade_filter>/<sorting_order>/<track_id>')
 # This function essential gets the task that matches this task id
