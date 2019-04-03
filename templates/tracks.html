@@ -2,7 +2,6 @@
 
 {% block content %}
     <main class="container">
-        <h3>TEST</h3>
         <div class="row">
             <a class="col s3" href="{{ url_for('sort_tracks_upvote_desc', decade_filter = decade_filter) }}">Sort by Most Popular</a>
             <a class="col s3" href="{{ url_for('sort_tracks_date_added_desc', decade_filter = decade_filter) }}">Sort by Date Added (Newest)</a>
