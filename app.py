@@ -86,8 +86,6 @@ def get_tracks(decade_filter, sorting_order):
     # If this session is needed again, it will be created by the appropriate function
     # For all other use cases it is redundant
     session.pop('hold_pagination', None)
-
-    # decade = request.form.get("decade-options-select")
     
     if decade_filter == "pre1950":
         tracks_decade = tracks_collection.find({"$and": [
@@ -165,15 +163,7 @@ def get_tracks(decade_filter, sorting_order):
         tracks = tracks_decade.sort(
                                             'date_added_raw', pymongo.ASCENDING).skip(
                                                                                 pagination).limit(5)
-    
-    """TEST, CAN I GET DECADES?"""
-    # Get all tracks from the 70s
-    # tracks = tracks_collection.find({"$and": [
-    #                                 {"year": {'$gte': 1970}}, 
-    #                                 {"year": {'$lt': 1980}}
-    #                                 ]
-    #                         })
-    """END TEST"""
+
     # Render tracks.html
     # tracks is the list of tracks to be rendered
     # sorting_order is how they are to be sorted (corresponding to the system in the if/else statement above)
