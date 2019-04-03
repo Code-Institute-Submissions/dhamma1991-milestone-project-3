@@ -207,13 +207,6 @@ def prev_tracks(decade_filter, sorting_order):
     session['hold_pagination'] = True
     
     return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
-    
-@app.route('/filter_1970s')
-def filter_1970s():
-    """
-    Change the sorting order to show tracks with HIGHEST upvotes first. This is the default sorting order
-    """
-    return redirect(url_for('get_tracks', decade_filter = 5))
 
 @app.route('/sort_tracks_upvote_desc/<decade_filter>')
 def sort_tracks_upvote_desc(decade_filter):
