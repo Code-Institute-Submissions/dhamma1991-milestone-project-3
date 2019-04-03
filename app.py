@@ -257,6 +257,8 @@ def insert_track():
             'youtube_link': request.form.get('youtube_link'),
             'year': int(request.form.get('year')),
             'genre': request.form.get('genre'),
+            'user_name': request.form.get('user_name'),
+            'description': request.form.get('description'),
             # Upvotes is set to 1 by default. This idea is borrowed from Reddit, in that a user who uploads a track would presumably want to upvote it as well
             'upvotes': 1,
             # date_added is the human friendly date
