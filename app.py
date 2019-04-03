@@ -70,12 +70,7 @@ def get_tracks(decade_filter, sorting_order):
     """
     # Get the tracks collection
     tracks_collection = mongo.db.tracks
-    
-    # Get the number of items in tracks_collection
-    # This is used within tracks.html to determine whether to show the 'next' button
-    # It would not make sense to show the next button if there are no more tracks to view
-    tracks_col_count = tracks_collection.count() 
-    
+
     # hold_pagination will only ever be in session if the user has come from a url where it makes sense to keep the pagination of content
     # Pagination is held for next_tracks, prev_tracks, upvote_track and edit_track
     # In which case, ensure the pagination value currently in the session is used to show the user the correct tracks
@@ -168,6 +163,11 @@ def get_tracks(decade_filter, sorting_order):
         tracks = tracks_decade.sort(
                                             'date_added_raw', pymongo.ASCENDING).skip(
                                                                                 pagination).limit(5)
+                                                                                
+    # Get the number of tracks as currently defined by the filtering
+    # This is used within tracks.html to determine whether to show the 'next' button
+    # It would not make sense to show the next button if there are no more tracks to view                                                                          
+    tracks_count = tracks.count() 
 
     # Render tracks.html
     # tracks is the list of tracks to be rendered
@@ -179,7 +179,7 @@ def get_tracks(decade_filter, sorting_order):
                             decade_filter = decade_filter,
                             sorting_order = sorting_order,
                             pagination = pagination,
-                            tracks_col_count = tracks_col_count
+                            tracks_count = tracks_count
                             )
                             
 
