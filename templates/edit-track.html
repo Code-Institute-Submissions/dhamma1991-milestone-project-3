@@ -10,17 +10,17 @@
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">assignment</i>
-                    <input id="track_title" name="track_title" type="text" class="validate" value="{{ track.track_title }}" required>
+                    <input id="track_title" name="track_title" type="text" class="validate" value="{{ track.track_title }}" required maxlength="500">
                     <label id="track_title_label" for="track_title" data-error="Please enter the name of the track" data-success="&#10004;">Track Title</label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">brush</i>
-                    <input id="artist" name="artist" type="text" class="validate" value="{{ track.artist }}" required>
+                    <input id="artist" name="artist" type="text" class="validate" value="{{ track.artist }}" required maxlength="100">
                     <label id="artist_label" for="artist" data-error="Please enter the name of the artist of the track" data-success="&#10004;">Artist</label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">music_video</i>
-                    <input id="youtube_link" name="youtube_link" type="text" class="validate" value="{{ track.youtube_link }}" required>
+                    <input id="youtube_link" name="youtube_link" type="text" class="validate" value="{{ track.youtube_link }}" required maxlength="45">
                     <label id="youtube_link_label" for="youtube_link" data-error="Please enter the url of a YouTube video for the track" data-success="&#10004;">YouTube Link</label>
                 </div>
                 <div class="input-field col s6">
