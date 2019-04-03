@@ -5,7 +5,7 @@
         <div class="row">
             <a class="col s3" href="{{ url_for('sort_tracks_upvote_desc', decade_filter = decade_filter) }}">Sort by Most Popular</a>
             <a class="col s3" href="{{ url_for('sort_tracks_date_added_desc', decade_filter = decade_filter) }}">Sort by Date Added (Newest)</a>
-            <form method="POST" action="{{ url_for('get_tracks', sorting_order = sorting_order, decade_filter = decade_filter) }}" class="col s3">
+            <div class="col s3">
                 <label for="decade-options-select">Filter tracks by decade</label>
                 <select id="decade-options-select" name="decade-options-select">
                     <option value="all">Show All</option>
@@ -18,10 +18,7 @@
                     <option value="2000s">2000-2009</option>
                     <option value="2010s">2010-2019</option>
                 </select>     
-                <button class="btn waves-effect waves-light" type="submit" name="action">Go
-                    <i class="material-icons right">send</i>
-                </button>
-            </form>
+            </div>
         </div>
         <div class="row">
             <a class="col s3" href="{{ url_for('sort_tracks_upvote_asc', decade_filter = decade_filter) }}">Sort by Least Popular</a>
