@@ -64,7 +64,7 @@
                 <div class="collapsible-body">
                     <span>Released in {{ track.year }}</span>
                     <p>{{ track.genre }}</p>
-                    <span>User {{ track.user_name }} says: {{ track.description|truncate(60) }}</span> <span><a href="">see more.</a></span>
+                    <span>User {{ track.user_name }} says: {{ track.description|truncate(60) }}</span> <span><a href="{{ url_for('track_detail') }}">see more.</a></span>
                 </div>
                 <!-- /Accordion Body -->
             </li>
@@ -95,6 +95,8 @@
             var selectVal = $('#decade-options-select').val()
             console.log(selectVal)
             // If the select box's value is equal to 'add-genre-link'...
+            
+            //Use one line, just pass in selectVal
             switch (selectVal) {
                 case 'pre1950':
                     window.location.href = "{{ url_for('get_tracks', sorting_order = sorting_order, decade_filter = 'pre1950' ) }}";
