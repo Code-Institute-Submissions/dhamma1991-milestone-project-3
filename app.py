@@ -61,10 +61,12 @@ def about():
     title = "DesertIsland | About"
     return render_template("about.html", title = title)
     
-@app.route('/track_detail')
-def track_detail():
+@app.route('/track_detail/<decade_filter>/<sorting_order>/<track_id>')
+def track_detail(decade_filter, sorting_order, track_id):
     title = "DesertIsland | About"
-    return render_template("track-detail.html", title = title)
+    # Grab the track_id from what was passed through
+    the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
+    return render_template("track-detail.html", title = title, decade_filter = decade_filter, sorting_order = sorting_order, track = the_track)
 
 @app.route('/get_tracks/<decade_filter>/<int:sorting_order>', methods = ['POST','GET'])
 def get_tracks(decade_filter, sorting_order):
