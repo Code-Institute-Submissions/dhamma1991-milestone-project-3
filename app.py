@@ -251,6 +251,8 @@ def insert_track():
     # Format the timestamp that will be inserted into the record
     # The timestamp is a more user friendly version of the raw date object that is also created when a new document is created
     # The timestamp is what is displayed to the user, the raw date object is used in the backend, mainly for sorting
+    
+    # You can use jinja to do this
     timestamp = datetime.now().strftime('%d %B %Y %H:%M')
     # Get the tracks collection
     tracks = mongo.db.tracks
