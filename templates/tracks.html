@@ -207,10 +207,10 @@
     <script>
         //Select the div elements that will wrap the embedded video
         var youtube = document.querySelectorAll( ".youtube" );
-        //Since I have 5 Youtube videos, iterate through each of the selected elements
+        //Since I have 5 Youtube videos per page, iterate through each of the selected elements
         for (var i = 0; i < youtube.length; i++) {
             // thumbnail image source.
-            var source = "https://img.youtube.com/vi/"+ youtube[i].dataset.embed +"/sddefault.jpg"; 
+            var source = "https://img.youtube.com/vi/"+ youtube[i].dataset.embed +"/mqdefault.jpg"; 
             
             // Load the image asynchronously
             var image = new Image();
