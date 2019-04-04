@@ -60,6 +60,11 @@ def index():
 def about():
     title = "DesertIsland | About"
     return render_template("about.html", title = title)
+    
+@app.route('/track_detail')
+def track_detail():
+    title = "DesertIsland | About"
+    return render_template("track-detail.html", title = title)
 
 @app.route('/get_tracks/<decade_filter>/<int:sorting_order>', methods = ['POST','GET'])
 def get_tracks(decade_filter, sorting_order):
