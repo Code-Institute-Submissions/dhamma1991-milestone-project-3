@@ -10,6 +10,9 @@ https://image.redbull.com/rbcom/010/2015-09-10/1331746937069_2/0100/0/1/dj-nu-ma
 justification for track_title maxlength
 http://klck1400.com/seeing_is_believing/2933
 
+lazy loading script
+https://webdesign.tutsplus.com/tutorials/how-to-lazy-load-embedded-youtube-videos--cms-26743
+
 
 
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ track.youtube_link|replace('https://www.youtube.com/watch?v=', '') }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
