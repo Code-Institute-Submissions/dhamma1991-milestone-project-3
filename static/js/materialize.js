@@ -4852,6 +4852,11 @@ if (Vel) {
       var uniqueID = Materialize.guid();
       $select.attr('data-select-id', uniqueID);
       var wrapper = $('<div class="select-wrapper"></div>');
+      // trick from https://github.com/Dogfalo/materialize/issues/6322#issuecomment-479157272
+      // to fix Chrome 73 bug
+      wrapper.click(function (e) {
+        e.stopPropagation();
+      });
       wrapper.addClass($select.attr('class'));
       if ($select.is(':disabled')) wrapper.addClass('disabled');
       var options = $('<ul id="select-options-' + uniqueID + '" class="dropdown-content select-dropdown ' + (multiple ? 'multiple-select-dropdown' : '') + '"></ul>'),
@@ -6346,7 +6351,8 @@ if (Vel) {
 
     // The state of the picker.
     STATE = {
-      id: ELEMENT.id || 'P' + Math.abs(~~(Math.random() * new Date()))
+      id: ELEMENT.id || 'P' + Math.abs(~~(Math.random() * new Date())),
+      handlingOpen: false
     },
 
 
@@ -6539,6 +6545,17 @@ if (Vel) {
 
           // Bind the document events.
           $document.on('click.' + STATE.id + ' focusin.' + STATE.id, function (event) {
+            // If the picker is currently midway through processing
+            // the opening sequence of events then don't handle clicks
+            // on any part of the DOM. This is caused by a bug in Chrome 73
+            // where a click event is being generated with the incorrect
+            // path in it.
+            // In short, if someone does a click that finishes after the
+            // new element is created then the path contains only the
+            // parent element and not the input element itself.
+            if (STATE.handlingOpen) {
+              return;
+            }
 
             var target = event.target;
 
@@ -6889,7 +6906,23 @@ if (Vel) {
         }).
 
         // Handle keyboard event based on the picker being opened or not.
-        on('keydown.' + STATE.id, handleKeydownEvent);
+        on('keydown.' + STATE.id, handleKeydownEvent)
+
+        // Mousedown handler to capture when the user starts interacting
+        // with the picker. This is used in working around a bug in Chrome 73.
+        .on('mousedown', function () {
+          STATE.handlingOpen = true;
+          var handler = function () {
+            // By default mouseup events are fired before a click event.
+            // By using a timeout we can force the mouseup to be handled
+            // after the corresponding click event is handled.
+            setTimeout(function () {
+              $(document).off('mouseup', handler);
+              STATE.handlingOpen = false;
+            }, 0);
+          };
+          $(document).on('mouseup', handler);
+        });
       }
 
       // Update the aria attributes.
