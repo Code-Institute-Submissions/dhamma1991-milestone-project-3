@@ -111,6 +111,7 @@ def get_tracks(decade_filter, sorting_order):
     # For all other use cases it is redundant
     session.pop('hold_pagination', None)
     
+    # Determine the tracks to return based on the decade filter, the value of which is determined by the select box on tracks.html
     if decade_filter == "pre1950":
         tracks_decade = tracks_collection.find({"$and": [
                                 {"year": {'$gte': 1000}}, 
@@ -472,17 +473,65 @@ def stats():
     # Count the number of tracks in the collection
     tracks_count = tracks_collection.count()
     
-    tracks_decade = tracks_collection.find({"$and": [
-                            {"year": {'$gte': 2010}}, 
-                            {"year": {'$lt': 2020}}
-                            ]
-                    })
+    # Get the most popular decade
+    # First, create a dictionary containing the counts of the number of tracks in each decade
+    decades_dict = { 
+        'd_pre1950': tracks_collection.find({"$and": [
+                                {"year": {'$gte': 1000}}, 
+                                {"year": {'$lt': 1950}}
+                                ]
+                        }).count(),
+        'd_pre1950': tracks_collection.find({"$and": [
+                                {"year": {'$gte': 1000}}, 
+                                {"year": {'$lt': 1950}}
+                                ]
+                        }).count(),
+        'd_1950s': tracks_collection.find({"$and": [
+                                {"year": {'$gte': 1950}}, 
+                                {"year": {'$lt': 1960}}
+                                ]
+                        }).count(),
+        'd_1960s': tracks_collection.find({"$and": [
+                                {"year": {'$gte': 1960}}, 
+                                {"year": {'$lt': 1970}}
+                                ]
+                        }).count(),
+        'd_1970s': tracks_collection.find({"$and": [
+                                {"year": {'$gte': 1970}}, 
+                                {"year": {'$lt': 1980}}
+                                ]
+                        }).count(),
+        'd_1980s': tracks_collection.find({"$and": [
+                                {"year": {'$gte': 1980}}, 
+                                {"year": {'$lt': 1990}}
+                                ]
+                        }).count(),
+        'd_1990s': tracks_collection.find({"$and": [
+                                {"year": {'$gte': 1990}}, 
+                                {"year": {'$lt': 2000}}
+                                ]
+                        }).count(),
+        'd_2000s': tracks_collection.find({"$and": [
+                                {"year": {'$gte': 2000}}, 
+                                {"year": {'$lt': 2010}}
+                                ]
+                        }).count(),
+        'd_2010s': tracks_collection.find({"$and": [
+                                {"year": {'$gte': 2010}}, 
+                                {"year": {'$lt': 2020}}
+                                ]
+                        }).count()
+    }
+
+    # Then get the max count, find the decade with the most tracks
+    most_pop_decade = max(decades_dict, key=decades_dict.get)
+    
     
     # Set the html title
     title = "DesertIsland | Stats"
     
     # Render the template, pass through necessary values
-    return render_template("stats.html", title = title, tracks_count = tracks_count)
+    return render_template("stats.html", title = title, tracks_count = tracks_count, most_pop_decade = most_pop_decade)
 
 # # # INITIALISE APP
 if __name__ == '__main__':
