@@ -1,4 +1,5 @@
 nav {
+    background-color: $themeColor; // Overwrite default Materialize theme color
     .nav-wrapper { //Built in Materialize class 
         margin-left: 10px;
         .brand-logo {

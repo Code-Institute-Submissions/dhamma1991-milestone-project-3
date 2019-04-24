@@ -47,6 +47,10 @@ body {
 main {
     flex: 1 0 auto;
 }
+
+.page-footer {
+    background-color: $themeColor; // Overwrite default Materialize theme color
+}
 /* /Sticky Footer */
 
 /* Overwrite Materialize base .container class */
