@@ -1,0 +1,13 @@
+.parallax-container {
+    height: 600px !important;
+    .parallax {
+        img {
+            display: inherit !important;
+        }
+    }
+    p {
+        margin-top: 10%;
+        color: $offWhite;
+        font-size: 3.56rem;
+    }
+}

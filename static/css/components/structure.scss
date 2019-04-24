@@ -37,6 +37,18 @@
 //     background-color: red;
 // }
 
+/* Sticky Footer */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+/* /Sticky Footer */
+
 /* Overwrite Materialize base .container class */
 /* Allows the adjustment of the width properties which in my opinion give too much margin */
 .container {

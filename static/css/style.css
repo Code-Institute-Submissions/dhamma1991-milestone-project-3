@@ -22,6 +22,16 @@
   margin-top: 0; }
 
 /* LAYOUT HELPER STYLES, DELETE WHEN NOT NEEDED */
+/* Sticky Footer */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+
+main {
+  flex: 1 0 auto; }
+
+/* /Sticky Footer */
 /* Overwrite Materialize base .container class */
 /* Allows the adjustment of the width properties which in my opinion give too much margin */
 .container {
@@ -40,13 +50,26 @@
   margin: 0;
   width: 100%; }
 
-nav {
-  /* Built in Materialize class */ }
-  nav .nav-wrapper {
-    margin-left: 10px; }
-  nav .brand-image {
-    height: 50px;
-    margin: 6px 0 0 230px; }
+nav .nav-wrapper {
+  margin-left: 10px; }
+  nav .nav-wrapper #nav-close {
+    float: right;
+    width: 65px;
+    margin-top: -6px; }
+    nav .nav-wrapper #nav-close a {
+      padding: 0 10px; }
+nav .brand-image {
+  height: 50px;
+  margin: 6px 0 0 230px; }
+
+.parallax-container {
+  height: 600px !important; }
+  .parallax-container .parallax img {
+    display: inherit !important; }
+  .parallax-container p {
+    margin-top: 10%;
+    color: #fdfdfd;
+    font-size: 3.56rem; }
 
 #youtube-iframe-container {
   /* Remove padding, this allows the video to sit snug with the sides of the page on the smallest viewports */
@@ -65,31 +88,6 @@ nav {
       #youtube-iframe-container iframe {
         width: 560px;
         height: 315px; } }
-
-/* Sticky Footer */
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column; }
-
-main {
-  flex: 1 0 auto; }
-
-.parallax-container {
-  height: 600px !important; }
-  .parallax-container .parallax img {
-    display: inherit !important; }
-  .parallax-container p {
-    margin-top: 10%;
-    color: #fdfdfd;
-    font-size: 3.56rem; }
-
-#nav-close {
-  float: right;
-  width: 65px;
-  margin-top: -6px; }
-  #nav-close a {
-    padding: 0 10px; }
 
 /* YOUTUBE LAZY LOADING */
 .youtube {

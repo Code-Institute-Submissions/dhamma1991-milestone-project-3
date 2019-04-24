@@ -1,7 +1,14 @@
 nav {
-    /* Built in Materialize class */
-    .nav-wrapper {
+    .nav-wrapper { //Built in Materialize class 
         margin-left: 10px;
+        #nav-close {
+            float: right;
+            width: 65px;
+            margin-top: -6px;
+            a {
+                padding: 0 10px;
+            }
+        }
     }
     .brand-image {
         height: 50px;
