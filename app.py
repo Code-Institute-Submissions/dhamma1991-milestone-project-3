@@ -29,11 +29,7 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 # Initialise PyMongo
 mongo = PyMongo(app)
 
-# # GLOBAL VARIABLES
-# """These are kept here to make things easier to change/update"""
-# # Pagination
-
-# Index Route
+# # # INDEX ROUTE
 @app.route('/index')
 @app.route('/')
 def index():
@@ -45,10 +41,14 @@ def index():
     # Clear any session variables the user may have 
     # This ensures the user can go to get_tracks cleanly
     session.clear()
+    
     # Get the tracks collection
     tracks = mongo.db.tracks.find()
+    
     # Set the html title
     title = "DesertIsland | Home"
+    
+    # Render the template, pass through necessary values
     return render_template("index.html", 
                             # Sort all tracks by upvotes descending, limit to 3 results
                             tracks = tracks.sort(
@@ -61,7 +61,10 @@ def about():
     """
     Render the About page
     """
+    # Set the html title
     title = "DesertIsland | About"
+    
+    # Render the template, pass through necessary values
     return render_template("about.html", title = title)
     
 @app.route('/track_detail/<decade_filter>/<sorting_order>/<track_id>')
@@ -205,9 +208,11 @@ def next_tracks(decade_filter, sorting_order):
     """
     This function takes the user to the next 5 tracks, determined by the pagination the user is currently on, the sorting order they are currently using as well as the filtering options set
     """
+    # Set pagination. If the user clicks 'next', pagination is increased by 5
     session['pagination'] += 5
     session['hold_pagination'] = True
     
+    # Render the template, pass through necessary values
     return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
                             
 @app.route('/prev_tracks/<decade_filter>/<int:sorting_order>')
@@ -215,9 +220,11 @@ def prev_tracks(decade_filter, sorting_order):
     """
     This function takes the user to the previous 5 tracks, determined by the pagination the user is currently on, the sorting order they are currently using as well as the filtering options set
     """
+    # Set pagination. If the user clicks 'previous', pagination is decreased by 5
     session['pagination'] -= 5
     session['hold_pagination'] = True
     
+    # Render the template, pass through necessary values
     return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
 
 @app.route('/sort_tracks_upvote_desc/<decade_filter>')
@@ -225,6 +232,7 @@ def sort_tracks_upvote_desc(decade_filter):
     """
     Change the sorting order to show tracks with HIGHEST upvotes first. This is the default sorting order
     """
+    # Render the template, pass through necessary values
     return redirect(url_for('get_tracks', sorting_order = 1, decade_filter = decade_filter))
     
 @app.route('/sort_tracks_upvote_asc/<decade_filter>')
@@ -232,6 +240,7 @@ def sort_tracks_upvote_asc(decade_filter):
     """
     Change the sorting order to show tracks with LOWEST upvotes first
     """
+    # Render the template, pass through necessary values
     return redirect(url_for('get_tracks', sorting_order = 2, decade_filter = decade_filter))
     
 @app.route('/sort_tracks_date_added_desc/<decade_filter>')
@@ -239,6 +248,7 @@ def sort_tracks_date_added_desc(decade_filter):
     """
     Change the sorting order to show NEWEST tracks by date added first
     """
+    # Render the template, pass through necessary values
     return redirect(url_for('get_tracks', sorting_order = 3, decade_filter = decade_filter))
     
 @app.route('/sort_tracks_date_added_asc/<decade_filter>')
@@ -246,6 +256,7 @@ def sort_tracks_date_added_asc(decade_filter):
     """
     Change the sorting order to show OLDEST tracks by date added first
     """
+    # Render the template, pass through necessary values
     return redirect(url_for('get_tracks', sorting_order = 4, decade_filter = decade_filter))
     
 @app.route('/add_track')
@@ -253,6 +264,7 @@ def add_track():
     """
     Takes the user to add-track.html allowing them to add a new track to the database
     """
+    # Render the template, pass through necessary values
     return render_template('add-track.html', genres=mongo.db.genres.find())
     
 @app.route('/insert_track', methods=['POST']) # Because you're using POST here, you have to set that via methods
@@ -286,6 +298,7 @@ def insert_track():
             'date_added_raw': datetime.now()
         }
     )
+    
     # Once submitted, redirect to the get_tracks function to view the collection using the default sorting order
     return redirect(url_for('get_tracks', sorting_order = 1, decade_filter = 'all'))
     
@@ -294,10 +307,14 @@ def add_genre():
     """
     Takes the user to add-genre.html, allowing them to add a new genre to the genre collection
     """
+    # Render the template
     return render_template('add-genre.html')
     
-@app.route('/insert_genre', methods=['POST']) # Because you're using POST here, you have to set that via methods
+@app.route('/insert_genre', methods=['POST'])
 def insert_genre():
+    """
+    Insert a new genre into the database
+    """
     genres = mongo.db.genres
     genres.insert_one(
         {
@@ -317,6 +334,9 @@ def insert_genre():
     
 @app.route('/upvote_track/<decade_filter>/<sorting_order>/<track_id>', methods=['POST'])
 def upvote_track(decade_filter, sorting_order, track_id):
+    """ 
+    Allows the user to upvote a track and saves the new upvote value
+    """
     tracks = mongo.db.tracks
     tracks.update( 
         {'_id': ObjectId(track_id)},
@@ -326,11 +346,16 @@ def upvote_track(decade_filter, sorting_order, track_id):
     
     session['hold_pagination'] = True
     
+    # Render the template, pass through necessary values
     return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
     
 @app.route('/edit_track/<decade_filter>/<sorting_order>/<track_id>')
 # This function essential gets the task that matches this task id
 def edit_track(sorting_order, decade_filter, track_id):
+    """
+    Determines which track the user wants to edit
+    Then takes them to edit-track.html
+    """
     # If genre_edit_track_id is in session, that means the user is coming from just adding a genre
     if 'genre_edit_track_id' in session:
         # Get the track_id from the session
@@ -362,6 +387,10 @@ def edit_track(sorting_order, decade_filter, track_id):
     
 @app.route('/insert_edited_track/<decade_filter>/<sorting_order>/<track_id>', methods=["POST"])
 def insert_edited_track(decade_filter, sorting_order, track_id):
+    """
+    Takes the data the user fills out within the form in edit-track.html
+    and saves the updated item to the database
+    """
     # Get the tracks collection
     tracks = mongo.db.tracks
     
@@ -395,14 +424,21 @@ def insert_edited_track(decade_filter, sorting_order, track_id):
     # Pop the genre_edit_track_id session, the user won't need it again unless they come to editing a track again
     session.pop('genre_edit_track_id', None)
     
+    # Go back to get_tracks
     return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
     
 @app.route('/delete_track/<decade_filter>/<sorting_order>/<track_id>')
 def delete_track(decade_filter, sorting_order, track_id):
-    # Use ObjectId to parse the task_id in a format acceptable to mongo
+    """
+    Deletes a track from the database
+    """
+    # Use ObjectId to parse the track_id in a format acceptable to mongo
     mongo.db.tracks.remove({'_id': ObjectId(track_id)})
+    
+    # Hold pagination so the user is taken back to the same tracks they were viewing (minus the one they just deleted)
     session['hold_pagination'] = True
-    # Then go to the get_tasks function
+    
+    # Return the updated list of tracks
     return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
 
 # # # DATABASE STATS
