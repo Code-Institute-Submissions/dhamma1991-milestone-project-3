@@ -1,6 +1,10 @@
 /* Imports */
-/* Colors */
 /* Mixin Vars */
+/* Colors */
+#youtube-iframe-container iframe {
+  margin: 0 auto;
+  display: block; }
+
 /* Media Queries 
 --------------------*/
 /* Materialize does not include an sr-only class (unlike Bootstrap) so one was added here */
@@ -28,7 +32,23 @@
 
 /* Sub-container. Overwrite Materialize styles in order to make use of containers within containers */
 .sub-container {
-  margin: 0; }
+  margin: 0;
+  width: 100%; }
+
+#youtube-iframe-container {
+  /* Remove padding, this allows the video to sit snug with the sides of the page on the smallest viewports */
+  padding: 0; }
+  #youtube-iframe-container iframe {
+    width: 300px;
+    height: 183px; }
+    @media (min-width: 601px) {
+      #youtube-iframe-container iframe {
+        width: 450px;
+        height: 275px; } }
+    @media (min-width: 993px) {
+      #youtube-iframe-container iframe {
+        width: 560px;
+        height: 315px; } }
 
 /* Sticky Footer */
 body {

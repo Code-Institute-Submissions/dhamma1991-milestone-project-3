@@ -1,0 +1,17 @@
+#youtube-iframe-container {
+    /* Remove padding, this allows the video to sit snug with the sides of the page on the smallest viewports */
+    padding: 0;
+    iframe {
+        @extend %force-center;
+        width: 300px;
+        height: 183px;
+        @include mqWidth($medBreakpoint) {
+            width: 450px;
+            height: 275px;
+        }
+        @include mqWidth($larBreakpoint) {
+            width: 560px;
+            height: 315px;
+        }
+    }
+}
