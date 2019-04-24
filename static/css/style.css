@@ -54,11 +54,9 @@ main {
 nav .nav-wrapper {
   margin-left: 10px; }
   nav .nav-wrapper .brand-logo {
-    /* Overwrite Materialize's default font size, making it smaller */
     font-size: 1.7rem; }
     @media (min-width: 600px) {
       nav .nav-wrapper .brand-logo {
-        /* On medium and above, increase the font-size to Materialize default */
         font-size: 2.1rem; } }
   nav .nav-wrapper #nav-close {
     float: right;
@@ -66,18 +64,17 @@ nav .nav-wrapper {
     margin-top: -6px; }
     nav .nav-wrapper #nav-close a {
       padding: 0 10px; }
+      nav .nav-wrapper #nav-close a i {
+        line-height: 54px; }
 nav .brand-image {
   height: 40px;
   margin: 6px 0 0 220px; }
   @media (min-width: 600px) {
     nav .brand-image {
-      /* On medium and above, increase the size of the image slightly */
       height: 50px;
-      /* As the logo text increases in the size, need to move the image further away or it will overlap */
       margin-left: 260px; } }
   @media (min-width: 992px) {
     nav .brand-image {
-      /* The nav layout expands on large and above, move the image to fit the layout */
       margin-left: 270px; } }
   @media (min-width: 993px) {
     nav .brand-image {
@@ -87,7 +84,6 @@ nav .brand-image {
       margin-left: 225px; } }
   @media (min-width: 1200px) {
     nav .brand-image {
-      /* The logo text increases in size slightly at xl+. Increase margin to compensate */
       margin-left: 230px; } }
 
 .parallax-container {
