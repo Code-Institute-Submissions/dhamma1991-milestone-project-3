@@ -34,14 +34,14 @@ mongo = PyMongo(app)
 # # Pagination
 
 # Index Route
-"""
-This is the default route
-Render the home page
-Grab the current top 3 tracks by upvotes and display them on the home page
-"""
 @app.route('/index')
 @app.route('/')
 def index():
+    """
+    This is the default route
+    Render the home page
+    Grab the current top 3 tracks by upvotes and display them on the home page
+    """
     # Clear any session variables the user may have 
     # This ensures the user can go to get_tracks cleanly
     session.clear()
@@ -58,14 +58,24 @@ def index():
 
 @app.route('/about')
 def about():
+    """
+    Render the About page
+    """
     title = "DesertIsland | About"
     return render_template("about.html", title = title)
     
 @app.route('/track_detail/<decade_filter>/<sorting_order>/<track_id>')
 def track_detail(decade_filter, sorting_order, track_id):
-    title = "DesertIsland | About"
+    """
+    Render the detailed view for each track, displaying all database fields
+    """
     # Grab the track_id from what was passed through
     the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
+    
+    # Format the page title
+    title = "DesertIsland | " + the_track.get("artist") + " - " + the_track.get('track_title')
+    
+    # Render the template, pass through necessary values
     return render_template("track-detail.html", title = title, decade_filter = decade_filter, sorting_order = sorting_order, track = the_track)
 
 @app.route('/get_tracks/<decade_filter>/<int:sorting_order>', methods = ['POST','GET'])
