@@ -4,7 +4,7 @@ These styles are related to the YouTube videos found throughout the app
 
 */
 
-.youtube-iframe-container {
+.td-youtube-iframe-container {
     /* Remove padding, this allows the video to sit snug with the sides of the page on the smallest viewports.
         Materialize default padding will be inherited from .row and .col on medium and above */
     @include mqMaxWidth($medBreakpoint - 1) { // Use - 1 in order for the media query to stop just as Materialize's medium sizes kick in
