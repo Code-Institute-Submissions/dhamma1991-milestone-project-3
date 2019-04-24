@@ -2,7 +2,7 @@
 /* Mixin Vars */
 /* Match Materialize breakpoints */
 /* Colors */
-#youtube-iframe-container iframe {
+.youtube-iframe-container iframe {
   margin: 0 auto;
   display: block; }
 
@@ -109,21 +109,21 @@ nav {
 These styles are related to the YouTube videos found throughout the app
 
 */
-#youtube-iframe-container {
+.youtube-iframe-container {
   /* Remove padding, this allows the video to sit snug with the sides of the page on the smallest viewports.
       Materialize default padding will be inherited from .row and .col on medium and above */ }
   @media (max-width: 599px) {
-    #youtube-iframe-container {
+    .youtube-iframe-container {
       padding: 0; } }
-  #youtube-iframe-container iframe {
+  .youtube-iframe-container iframe {
     width: 300px;
     height: 183px; }
     @media (min-width: 600px) {
-      #youtube-iframe-container iframe {
+      .youtube-iframe-container iframe {
         width: 450px;
         height: 275px; } }
     @media (min-width: 992px) {
-      #youtube-iframe-container iframe {
+      .youtube-iframe-container iframe {
         width: 560px;
         height: 315px; } }
 
