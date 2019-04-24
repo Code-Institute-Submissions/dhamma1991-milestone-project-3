@@ -5,24 +5,35 @@
     <h1>{{ track.artist }} - {{ track.track_title }}</h1>
     <div class="row">
         <div class="col s12 xl7">
-            {{ track.description }}
-            <div class="container">
+            <p>{{ track.description }}</p>
+            <div class="container sub-container">
                 <div class="row">
-                    <div class="three3 col m5">
-                        {{ track.year }}
+                    <div class="three3 col s6">
+                        <p>{{ track.year }}</p>
                     </div>
-                    <div class="four4 col m2">
-                        {{ track.upvotes }}
+                    <div class="four4 col s6">
+                        <form action="{{ url_for('upvote_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id) }}" method="POST">
+                            <button type="submit">
+                                <i class="material-icons">arrow_upward</i>
+                            </button>
+                            <span>{{ track.upvotes }}</span>
+                        </form>
                     </div>
                 </div>
                 <div class="five5 row">
-                        {{ track.genre }}
+                    <div class="col s12">
+                        <p>{{ track.genre }}</p>
+                    </div>
                 </div>
                 <div class="six6 row">
-                    {{ track.user_name }}
+                    <div class="col s12">
+                        <p>{{ track.user_name }}</p>
+                    </div>
                 </div>
                 <div class="seven7 row">
-                    {{ track.date_added }}
+                    <div class="col s12">
+                        <p>{{ track.date_added }}</p>
+                    </div>
                 </div>
             </div>
         </div>

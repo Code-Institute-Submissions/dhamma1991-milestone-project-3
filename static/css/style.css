@@ -97,5 +97,8 @@ main {
 @media only screen and (min-width: 993px) {
   .container {
     width: 85%; } }
+/* Sub-container. Overwrite Materialize styles in order to make use of containers within containers */
+.sub-container {
+  margin: 0; }
 
 /*# sourceMappingURL=style.css.map */
