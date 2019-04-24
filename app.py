@@ -394,7 +394,14 @@ def delete_track(decade_filter, sorting_order, track_id):
     session['hold_pagination'] = True
     # Then go to the get_tasks function
     return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
- 
+
+# # # DATABASE STATS
+@app.route('/stats')
+def stats():
+    title = "DesertIsland | Stats"
+    return render_template("stats.html", title = title)
+
+# # # INITIALISE APP
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
     port=int(os.environ.get('PORT')),
