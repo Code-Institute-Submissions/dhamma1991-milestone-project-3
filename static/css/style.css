@@ -1,5 +1,6 @@
 /* Imports */
 /* Mixin Vars */
+/* Match Materialize breakpoints */
 /* Colors */
 #youtube-iframe-container iframe {
   margin: 0 auto;
@@ -77,6 +78,12 @@ nav .brand-image {
   @media (min-width: 992px) {
     nav .brand-image {
       /* The nav layout expands on large and above, move the image to fit the layout */
+      margin-left: 270px; } }
+  @media (min-width: 993px) {
+    nav .brand-image {
+      /* This may seem weird, but it addresses a bug in Materialize where the brand-logo element font-size increases, 1px BEFORE
+          the nav switches around to it's 'large' layout 
+          In order to stop the image obscuring the text, extra margin had to be applied for the previous mqWidth */
       margin-left: 225px; } }
   @media (min-width: 1200px) {
     nav .brand-image {

@@ -29,6 +29,12 @@ nav {
         }
         @include mqWidth($larBreakpoint) {
             /* The nav layout expands on large and above, move the image to fit the layout */ 
+            margin-left: 270px;
+        }
+        @include mqWidth($larBreakpoint + 1px) {
+            /* This may seem weird, but it addresses a bug in Materialize where the brand-logo element font-size increases, 1px BEFORE
+                the nav switches around to it's 'large' layout 
+                In order to stop the image obscuring the text, extra margin had to be applied for the previous mqWidth */ 
             margin-left: 225px;
         }
         @include mqWidth($xlBreakpoint) {
