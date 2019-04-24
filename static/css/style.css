@@ -58,6 +58,8 @@ nav .nav-wrapper {
     @media (min-width: 600px) {
       nav .nav-wrapper .brand-logo {
         font-size: 2.1rem; } }
+  nav .nav-wrapper .side-nav li:nth-child(2) {
+    width: 78%; }
   nav .nav-wrapper #nav-close {
     float: right;
     width: 65px;
