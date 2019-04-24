@@ -19,24 +19,28 @@
     <body>
         <header>
             <nav>
+                <!-- Nav Wrapper -->
                 <div class="nav-wrapper">
-                    <!--<div class="logo-wrapper">-->
-                        <a href="{{ url_for('index') }}" class="brand-logo">DESERTISLAND</a>
-                        <a href="{{ url_for('index') }}" class="brand-logo"><img class="brand-image" src="static/images/logo.png"></a>
-                    <!--</div>-->
-                    <!--<a href="{{ url_for('index') }}"><img class="brand-image" src="static/images/logo.png"></a>-->
+                    <!-- Logo -->
+                    <a href="{{ url_for('index') }}" class="brand-logo">DESERTISLAND</a>
+                    <a href="{{ url_for('index') }}" class="brand-logo"><img class="brand-image" src="static/images/logo.png"></a>
+                    <!-- /Logo -->
+                    
+                    <!-- Nav Links -->
                     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="{{ url_for('sort_tracks_upvote_desc', decade_filter = 'all') }}">All Tracks</a></li>
                         <li><a href="{{ url_for('add_track') }}">Add a Track!</a></li>
                         <li><a href="{{ url_for('about') }}">About Us</a></li>
                     </ul>
+                    
                     <ul class="side-nav" id="mobile-demo">
                         <li id="nav-close"><a><i class="material-icons">close</i></a></li>
                         <li><a href="{{ url_for('sort_tracks_upvote_desc', decade_filter = 'all') }}">All Tracks</a></li>
                         <li><a href="{{ url_for('add_track') }}">Add a Track!</a></li>
                         <li><a href="{{ url_for('about') }}">About Us</a></li>
                     </ul>
+                    <!-- /Nav Links -->
                 </div>
             </nav>
         </header>
