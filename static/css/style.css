@@ -1,3 +1,9 @@
+/* Imports */
+/* Colors */
+/* Mixin Vars */
+/* Media Queries 
+--------------------*/
+/* Materialize does not include an sr-only class (unlike Bootstrap) so one was added here */
 .sr-only {
   position: absolute;
   left: -10000px;
@@ -5,6 +11,24 @@
   width: 1px;
   height: 1px;
   overflow: hidden; }
+
+/* LAYOUT HELPER STYLES, DELETE WHEN NOT NEEDED */
+/* Overwrite Materialize base .container class */
+/* Allows the adjustment of the width properties which in my opinion give too much margin */
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 95%; }
+  @media (min-width: 601px) {
+    .container {
+      width: 90%; } }
+  @media (min-width: 993px) {
+    .container {
+      width: 85%; } }
+
+/* Sub-container. Overwrite Materialize styles in order to make use of containers within containers */
+.sub-container {
+  margin: 0; }
 
 /* Sticky Footer */
 body {
@@ -82,23 +106,5 @@ main {
   width: 100%;
   top: 0;
   left: 0; }
-
-/* LAYOUT HELPER STYLES, DELETE WHEN NOT NEEDED */
-/* Overwrite Materialize base .container class */
-/* Allows the adjustment of the width properties which in my opinion give too much margin */
-.container {
-  margin: 0 auto;
-  max-width: 1280px;
-  width: 95%; }
-
-@media only screen and (min-width: 601px) {
-  .container {
-    width: 90%; } }
-@media only screen and (min-width: 993px) {
-  .container {
-    width: 85%; } }
-/* Sub-container. Overwrite Materialize styles in order to make use of containers within containers */
-.sub-container {
-  margin: 0; }
 
 /*# sourceMappingURL=style.css.map */

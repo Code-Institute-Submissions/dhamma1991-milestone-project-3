@@ -1,5 +1,9 @@
+/* Imports */
 @import "helpers/variables.scss";
+@import "helpers/mixins.scss";
 @import "helpers/helper-classes.scss";
+
+@import "components/structure";
 
 /* Sticky Footer */
 body {
@@ -86,66 +90,4 @@ main {
     width: 100%;
     top: 0;
     left: 0;
-}
-
-/* LAYOUT HELPER STYLES, DELETE WHEN NOT NEEDED */
-// .one1 {
-//     width: 100px;
-//     height: 100px;
-//     background-color: red;
-// }
-
-// .two2 {
-//     width: 100px;
-//     height: 100px;  
-//     background-color: blue;
-// }
-
-// .three3{
-//     width: 100px;
-//     height: 100px;
-//     background-color: green;
-// }
-// .four4 {
-//     width: 100px;
-//     height: 100px;
-//     background-color: yellow;
-// }
-// .five5 {
-//     width: 100px;
-//     height: 100px;
-//     background-color: pink;
-// }
-// .six6 {
-//     width: 100px;
-//     height: 100px;
-//     background-color: cyan;
-// }
-// .seven7 {
-//     width: 100px;
-//     height: 100px;
-//     background-color: red;
-// }
-
-/* Overwrite Materialize base .container class */
-/* Allows the adjustment of the width properties which in my opinion give too much margin */
-.container {
-  margin: 0 auto;
-  max-width: 1280px;
-  width: 95%;
-}
-@media only screen and (min-width: 601px) {
-  .container {
-    width: 90%;
-  }
-}
-@media only screen and (min-width: 993px) {
-  .container {
-    width: 85%;
-  }
-}
-
-/* Sub-container. Overwrite Materialize styles in order to make use of containers within containers */
-.sub-container {
-    margin: 0;
 }
