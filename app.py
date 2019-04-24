@@ -38,6 +38,7 @@ def index():
     Render the home page
     Grab the current top 3 tracks by upvotes and display them on the home page
     """
+    
     # Clear any session variables the user may have 
     # This ensures the user can go to get_tracks cleanly
     session.clear()
@@ -61,6 +62,7 @@ def about():
     """
     Render the About page
     """
+    
     # Set the html title
     title = "DesertIsland | About"
     
@@ -72,6 +74,7 @@ def track_detail(decade_filter, sorting_order, track_id):
     """
     Render the detailed view for each track, displaying all database fields
     """
+    
     # Grab the track_id from what was passed through
     the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
     
@@ -88,6 +91,7 @@ def get_tracks(decade_filter, sorting_order):
     Tracks can be sorted and filtered by various criteria
     The filter and sort values are passed into the function from other functions which redirect to here
     """
+    
     # Get the tracks collection
     tracks_collection = mongo.db.tracks
 
@@ -109,8 +113,8 @@ def get_tracks(decade_filter, sorting_order):
     
     if decade_filter == "pre1950":
         tracks_decade = tracks_collection.find({"$and": [
-                                {"year": {'$gte': 2010}}, 
-                                {"year": {'$lt': 2020}}
+                                {"year": {'$gte': 1000}}, 
+                                {"year": {'$lt': 1950}}
                                 ]
                         })
     elif decade_filter == "1950s":
@@ -208,6 +212,7 @@ def next_tracks(decade_filter, sorting_order):
     """
     This function takes the user to the next 5 tracks, determined by the pagination the user is currently on, the sorting order they are currently using as well as the filtering options set
     """
+    
     # Set pagination. If the user clicks 'next', pagination is increased by 5
     session['pagination'] += 5
     session['hold_pagination'] = True
@@ -220,6 +225,7 @@ def prev_tracks(decade_filter, sorting_order):
     """
     This function takes the user to the previous 5 tracks, determined by the pagination the user is currently on, the sorting order they are currently using as well as the filtering options set
     """
+    
     # Set pagination. If the user clicks 'previous', pagination is decreased by 5
     session['pagination'] -= 5
     session['hold_pagination'] = True
@@ -232,6 +238,7 @@ def sort_tracks_upvote_desc(decade_filter):
     """
     Change the sorting order to show tracks with HIGHEST upvotes first. This is the default sorting order
     """
+    
     # Render the template, pass through necessary values
     return redirect(url_for('get_tracks', sorting_order = 1, decade_filter = decade_filter))
     
@@ -240,6 +247,7 @@ def sort_tracks_upvote_asc(decade_filter):
     """
     Change the sorting order to show tracks with LOWEST upvotes first
     """
+    
     # Render the template, pass through necessary values
     return redirect(url_for('get_tracks', sorting_order = 2, decade_filter = decade_filter))
     
@@ -248,6 +256,7 @@ def sort_tracks_date_added_desc(decade_filter):
     """
     Change the sorting order to show NEWEST tracks by date added first
     """
+    
     # Render the template, pass through necessary values
     return redirect(url_for('get_tracks', sorting_order = 3, decade_filter = decade_filter))
     
@@ -256,6 +265,7 @@ def sort_tracks_date_added_asc(decade_filter):
     """
     Change the sorting order to show OLDEST tracks by date added first
     """
+    
     # Render the template, pass through necessary values
     return redirect(url_for('get_tracks', sorting_order = 4, decade_filter = decade_filter))
     
@@ -264,6 +274,7 @@ def add_track():
     """
     Takes the user to add-track.html allowing them to add a new track to the database
     """
+    
     # Render the template, pass through necessary values
     return render_template('add-track.html', genres=mongo.db.genres.find())
     
@@ -272,6 +283,7 @@ def insert_track():
     """
     This function gets the data the user inputs to the form on add-track.html and turns it into a new document in the database
     """
+    
     # Format the timestamp that will be inserted into the record
     # The timestamp is a more user friendly version of the raw date object that is also created when a new document is created
     # The timestamp is what is displayed to the user, the raw date object is used in the backend, mainly for sorting
@@ -307,6 +319,7 @@ def add_genre():
     """
     Takes the user to add-genre.html, allowing them to add a new genre to the genre collection
     """
+    
     # Render the template
     return render_template('add-genre.html')
     
@@ -315,6 +328,7 @@ def insert_genre():
     """
     Insert a new genre into the database
     """
+    
     genres = mongo.db.genres
     genres.insert_one(
         {
@@ -337,6 +351,7 @@ def upvote_track(decade_filter, sorting_order, track_id):
     """ 
     Allows the user to upvote a track and saves the new upvote value
     """
+    
     tracks = mongo.db.tracks
     tracks.update( 
         {'_id': ObjectId(track_id)},
@@ -356,6 +371,7 @@ def edit_track(sorting_order, decade_filter, track_id):
     Determines which track the user wants to edit
     Then takes them to edit-track.html
     """
+    
     # If genre_edit_track_id is in session, that means the user is coming from just adding a genre
     if 'genre_edit_track_id' in session:
         # Get the track_id from the session
@@ -391,6 +407,7 @@ def insert_edited_track(decade_filter, sorting_order, track_id):
     Takes the data the user fills out within the form in edit-track.html
     and saves the updated item to the database
     """
+    
     # Get the tracks collection
     tracks = mongo.db.tracks
     
@@ -432,6 +449,7 @@ def delete_track(decade_filter, sorting_order, track_id):
     """
     Deletes a track from the database
     """
+    
     # Use ObjectId to parse the track_id in a format acceptable to mongo
     mongo.db.tracks.remove({'_id': ObjectId(track_id)})
     
@@ -444,8 +462,27 @@ def delete_track(decade_filter, sorting_order, track_id):
 # # # DATABASE STATS
 @app.route('/stats')
 def stats():
+    """
+    Returns the stats template, populated with statistical values for the current database
+    """
+    
+    # Get the tracks collection
+    tracks_collection = mongo.db.tracks
+    
+    # Count the number of tracks in the collection
+    tracks_count = tracks_collection.count()
+    
+    tracks_decade = tracks_collection.find({"$and": [
+                            {"year": {'$gte': 2010}}, 
+                            {"year": {'$lt': 2020}}
+                            ]
+                    })
+    
+    # Set the html title
     title = "DesertIsland | Stats"
-    return render_template("stats.html", title = title)
+    
+    # Render the template, pass through necessary values
+    return render_template("stats.html", title = title, tracks_count = tracks_count)
 
 # # # INITIALISE APP
 if __name__ == '__main__':
