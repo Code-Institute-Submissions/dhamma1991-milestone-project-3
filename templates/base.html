@@ -20,7 +20,11 @@
         <header>
             <nav>
                 <div class="nav-wrapper">
-                    <a href="{{ url_for('index') }}" class="brand-logo">DESERTISLAND</a>
+                    <!--<div class="logo-wrapper">-->
+                        <a href="{{ url_for('index') }}" class="brand-logo">DESERTISLAND</a>
+                        <a href="{{ url_for('index') }}" class="brand-logo"><img class="brand-image" src="static/images/logo.png"></a>
+                    <!--</div>-->
+                    <!--<a href="{{ url_for('index') }}"><img class="brand-image" src="static/images/logo.png"></a>-->
                     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="{{ url_for('sort_tracks_upvote_desc', decade_filter = 'all') }}">All Tracks</a></li>

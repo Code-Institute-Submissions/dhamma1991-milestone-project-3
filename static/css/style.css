@@ -40,6 +40,17 @@
   margin: 0;
   width: 100%; }
 
+nav {
+  /* Built in Materialize class */
+  /* Built in Materialize class */ }
+  nav .nav-wrapper {
+    margin-left: 10px; }
+  nav .brand-logo {
+    /* Add height to Materialize default declarations for this class */ }
+  nav .brand-image {
+    height: 50px;
+    margin: 6px 0 0 230px; }
+
 #youtube-iframe-container {
   /* Remove padding, this allows the video to sit snug with the sides of the page on the smallest viewports */
   /* Materialize default padding will be inherited from .row and .col on medium and above */ }
