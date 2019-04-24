@@ -104,9 +104,14 @@ nav {
     background-color: rgba(0, 0, 0, 0.7);
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; }
 
+/*
+
+These styles are related to the YouTube videos found throughout the app
+
+*/
 #youtube-iframe-container {
-  /* Remove padding, this allows the video to sit snug with the sides of the page on the smallest viewports */
-  /* Materialize default padding will be inherited from .row and .col on medium and above */ }
+  /* Remove padding, this allows the video to sit snug with the sides of the page on the smallest viewports.
+      Materialize default padding will be inherited from .row and .col on medium and above */ }
   @media (max-width: 599px) {
     #youtube-iframe-container {
       padding: 0; } }
