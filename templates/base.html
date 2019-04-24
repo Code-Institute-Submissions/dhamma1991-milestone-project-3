@@ -58,12 +58,11 @@
                         <p class="grey-text text-lighten-4">The World's Favorite Songs, Voted By You</p>
                     </div>
                     <div class="col l4 offset-l2 s12">
-                        <h5 class="white-text">Links</h5>
                         <ul>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                            <li><a class="grey-text text-lighten-3" href="{{ url_for('sort_tracks_upvote_desc', decade_filter = 'all') }}">Charts</a></li>
+                            <li><a class="grey-text text-lighten-3" href="{{ url_for('add_track') }}">Add a Track</a></li>
+                            <li><a class="grey-text text-lighten-3" href="{{ url_for('about') }}">About Us</a></li>
+                            <li><a class="grey-text text-lighten-3" href="{{ url_for('stats') }}">Database Stats</a></li>
                         </ul>
                     </div>
                 </div>
@@ -71,7 +70,6 @@
             <div class="footer-copyright">
                 <div class="container">
                     &#169;<span id="copyright"></span> Chris Hengmith
-                    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
                 </div>
             </div>
         </footer>
