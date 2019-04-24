@@ -1,7 +1,43 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<main>
+<main class="container">
     <h1>{{ track.artist }} - {{ track.track_title }}</h1>
+    <div class="row">
+        <div class="col s12 xl7">
+            {{ track.description }}
+            <div class="container">
+                <div class="row">
+                    <div class="three3 col m5">
+                        {{ track.year }}
+                    </div>
+                    <div class="four4 col m2">
+                        {{ track.upvotes }}
+                    </div>
+                </div>
+                <div class="five5 row">
+                        {{ track.genre }}
+                </div>
+                <div class="six6 row">
+                    {{ track.user_name }}
+                </div>
+                <div class="seven7 row">
+                    {{ track.date_added }}
+                </div>
+            </div>
+        </div>
+        <div class="col s12 xl5">
+            <iframe width="504" height="283" src="https://www.youtube.com/embed/{{ track.youtube_link|replace('https://www.youtube.com/watch?v=', '') }}" 
+                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+    <!--<div class="row">-->
+    <!--    <div class="three3 col m5"></div>-->
+    <!--    <div class="four4 col m2"></div>-->
+    <!--</div>-->
+    <!--<div class="five5 row"></div>-->
+    <!--<div class="six6 row"></div>-->
+    <!--<div class="seven7 row"></div>-->
 </main>
 {% endblock %}
