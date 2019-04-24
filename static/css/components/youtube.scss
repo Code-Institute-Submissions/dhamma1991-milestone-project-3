@@ -4,6 +4,16 @@ These styles are related to the YouTube videos found throughout the app
 
 */
 
+/* Index YouTube Styles */
+.ix-youtube-iframe-container {
+    iframe {
+        width: 560px;
+        height: 315px;
+    }
+}
+/* /Index YouTube Styles */
+
+/* Track Detail YouTube Styles */
 .td-youtube-iframe-container {
     /* Remove padding, this allows the video to sit snug with the sides of the page on the smallest viewports.
         Materialize default padding will be inherited from .row and .col on medium and above */
@@ -24,6 +34,7 @@ These styles are related to the YouTube videos found throughout the app
         }
     }
 }
+/* /Track Detail YouTube Styles */
 
 /* YOUTUBE LAZY LOADING */
 .youtube {
