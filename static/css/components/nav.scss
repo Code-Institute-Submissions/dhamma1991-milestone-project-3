@@ -1,6 +1,14 @@
 nav {
     .nav-wrapper { //Built in Materialize class 
         margin-left: 10px;
+        .brand-logo {
+            /* Overwrite Materialize's default font size, making it smaller */
+            font-size: 1.7rem;
+            @include mqWidth($medBreakpoint) {
+                /* On medium and above, increase the font-size to Materialize default */
+                font-size: 2.1rem;
+            }
+        }
         #nav-close {
             float: right;
             width: 65px;
@@ -11,7 +19,21 @@ nav {
         }
     }
     .brand-image {
-        height: 50px;
-        margin: 6px 0 0 230px;
+        height: 40px;
+        margin: 6px 0 0 220px;
+        @include mqWidth($medBreakpoint) {
+            /* On medium and above, increase the size of the image slightly */
+            height: 50px;
+            /* As the logo text increases in the size, need to move the image further away or it will overlap */
+            margin-left: 260px;
+        }
+        @include mqWidth($larBreakpoint) {
+            /* The nav layout expands on large and above, move the image to fit the layout */ 
+            margin-left: 225px;
+        }
+        @include mqWidth($xlBreakpoint) {
+            /* The logo text increases in size slightly at xl+. Increase margin to compensate */ 
+            margin-left: 230px;
+        }
     }
 }

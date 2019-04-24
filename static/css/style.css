@@ -38,10 +38,10 @@ main {
   margin: 0 auto;
   max-width: 1280px;
   width: 95%; }
-  @media (min-width: 601px) {
+  @media (min-width: 600px) {
     .container {
       width: 90%; } }
-  @media (min-width: 993px) {
+  @media (min-width: 992px) {
     .container {
       width: 85%; } }
 
@@ -52,6 +52,13 @@ main {
 
 nav .nav-wrapper {
   margin-left: 10px; }
+  nav .nav-wrapper .brand-logo {
+    /* Overwrite Materialize's default font size, making it smaller */
+    font-size: 1.7rem; }
+    @media (min-width: 600px) {
+      nav .nav-wrapper .brand-logo {
+        /* On medium and above, increase the font-size to Materialize default */
+        font-size: 2.1rem; } }
   nav .nav-wrapper #nav-close {
     float: right;
     width: 65px;
@@ -59,8 +66,22 @@ nav .nav-wrapper {
     nav .nav-wrapper #nav-close a {
       padding: 0 10px; }
 nav .brand-image {
-  height: 50px;
-  margin: 6px 0 0 230px; }
+  height: 40px;
+  margin: 6px 0 0 220px; }
+  @media (min-width: 600px) {
+    nav .brand-image {
+      /* On medium and above, increase the size of the image slightly */
+      height: 50px;
+      /* As the logo text increases in the size, need to move the image further away or it will overlap */
+      margin-left: 260px; } }
+  @media (min-width: 992px) {
+    nav .brand-image {
+      /* The nav layout expands on large and above, move the image to fit the layout */
+      margin-left: 225px; } }
+  @media (min-width: 1200px) {
+    nav .brand-image {
+      /* The logo text increases in size slightly at xl+. Increase margin to compensate */
+      margin-left: 230px; } }
 
 .parallax-container {
   height: 600px !important; }
@@ -74,17 +95,17 @@ nav .brand-image {
 #youtube-iframe-container {
   /* Remove padding, this allows the video to sit snug with the sides of the page on the smallest viewports */
   /* Materialize default padding will be inherited from .row and .col on medium and above */ }
-  @media (max-width: 600px) {
+  @media (max-width: 599px) {
     #youtube-iframe-container {
       padding: 0; } }
   #youtube-iframe-container iframe {
     width: 300px;
     height: 183px; }
-    @media (min-width: 601px) {
+    @media (min-width: 600px) {
       #youtube-iframe-container iframe {
         width: 450px;
         height: 275px; } }
-    @media (min-width: 993px) {
+    @media (min-width: 992px) {
       #youtube-iframe-container iframe {
         width: 560px;
         height: 315px; } }
