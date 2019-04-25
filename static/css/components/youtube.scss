@@ -36,7 +36,10 @@ These styles are related to the YouTube videos found throughout the app
 }
 /* /Track Detail YouTube Styles */
 
-/* YOUTUBE LAZY LOADING */
+/* YouTube Lazy Loading */
+// Style the thumbnail images that appear on tracks.html
+// Make them look like videos when they are in fact images, when clicked on video is loaded
+// This allows the user to see that there is video media present, but saves on bandwidth
 .youtube {
     background-color: #000;
     margin-bottom: 30px;
@@ -88,3 +91,4 @@ These styles are related to the YouTube videos found throughout the app
     top: 0;
     left: 0;
 }
+/* /YouTube Lazy Loading */

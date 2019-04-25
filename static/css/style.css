@@ -135,7 +135,7 @@ These styles are related to the YouTube videos found throughout the app
         height: 315px; } }
 
 /* /Track Detail YouTube Styles */
-/* YOUTUBE LAZY LOADING */
+/* YouTube Lazy Loading */
 .youtube {
   background-color: #000;
   margin-bottom: 30px;
@@ -186,5 +186,7 @@ These styles are related to the YouTube videos found throughout the app
   width: 100%;
   top: 0;
   left: 0; }
+
+/* /YouTube Lazy Loading */
 
 /*# sourceMappingURL=style.css.map */
