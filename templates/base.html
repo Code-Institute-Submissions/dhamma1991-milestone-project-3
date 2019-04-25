@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ title }}</title>
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
-    <!-- Materialize CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">   
-    <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{{ title }}</title>
+        <!-- Icons -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+        <!-- Materialize CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">   
+        <!-- Custom Stylesheet -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        
+        <!-- jQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     
     <body>
@@ -74,7 +74,7 @@
             </div>
         </footer>
         
-        <!-- SCRIPTS -->
+        <!-- Scripts -->
         <!-- jQuery -->
         <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
         <!-- Materialize -->
@@ -99,7 +99,7 @@
             });
         </script>
         
-        <!-- BLOCK SCRIPTS-->
+        <!-- Block Scripts-->
         <!-- Some scripts are not needed on all pages. To improve load times these scripts are added via block when needed -->
         
         <!-- Decade Link Script -->
@@ -120,13 +120,13 @@
         
         {% block youtube_lazy_loading %}
         {% endblock %}
-        <!-- /BLOCK SCRIPTS -->
+        <!-- /Block Scripts -->
         
         <!-- Get the current year to be used for the copyright date in the footer -->
         <script>
             var theDate = new Date().getFullYear();
             document.getElementById("copyright").innerHTML = theDate;
         </script>
-        <!-- /SCRIPTS -->
+        <!-- /Scripts -->
     </body>
 </html>

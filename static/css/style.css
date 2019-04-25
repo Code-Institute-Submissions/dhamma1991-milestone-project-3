@@ -47,6 +47,8 @@ main {
 
 .page-footer {
   background-color: #ff6302; }
+  .page-footer h5 {
+    font-family: adumuregular; }
 
 /* /Sticky Footer */
 /* Overwrite Materialize base .container class */

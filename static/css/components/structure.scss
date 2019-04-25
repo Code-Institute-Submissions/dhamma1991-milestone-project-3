@@ -50,6 +50,9 @@ main {
 
 .page-footer {
     background-color: $themeColor; // Overwrite default Materialize theme color
+    h5 {
+        font-family: adumuregular;
+    }
 }
 /* /Sticky Footer */
 
