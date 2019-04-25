@@ -4,6 +4,7 @@ These styles are related to the unique content for the index page
 
 */
 
+/* Parallax Styles */
 .parallax-container {
     height: 600px !important;
     .parallax {
@@ -19,7 +20,9 @@ These styles are related to the unique content for the index page
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
 }
+/* /Parallax Styles */
 
+/* Top Tracks Section */
 .ix-top-tracks {
     p {
         font-weight: 400;
@@ -30,6 +33,11 @@ These styles are related to the unique content for the index page
             width: 300px;
             height: 183px;
             
+            @include mqWidth($medBreakpoint) {
+                width: 450px;
+                height: 274px;
+            }
+            
             @include mqWidth($larBreakpoint) {
                 width: 392px;
                 height: 221px;
@@ -38,3 +46,4 @@ These styles are related to the unique content for the index page
     }
     /* /YouTube Styles */
 }
+/* /Top Tracks Section */

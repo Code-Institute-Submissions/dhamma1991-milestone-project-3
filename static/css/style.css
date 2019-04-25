@@ -42,10 +42,10 @@ main {
   margin: 0 auto;
   max-width: 1280px;
   width: 95%; }
-  @media (min-width: 600px) {
+  @media (min-width: 601px) {
     .container {
       width: 90%; } }
-  @media (min-width: 992px) {
+  @media (min-width: 999px) {
     .container {
       width: 85%; } }
 
@@ -60,7 +60,7 @@ nav {
     margin-left: 10px; }
     nav .nav-wrapper .brand-logo {
       font-size: 1.7rem; }
-      @media (min-width: 600px) {
+      @media (min-width: 601px) {
         nav .nav-wrapper .brand-logo {
           font-size: 2.1rem; } }
     nav .nav-wrapper .side-nav li:nth-child(2) {
@@ -76,20 +76,20 @@ nav {
   nav .brand-image {
     height: 40px;
     margin: 6px 0 0 220px; }
-    @media (min-width: 600px) {
+    @media (min-width: 601px) {
       nav .brand-image {
         height: 50px;
         margin-left: 260px; } }
-    @media (min-width: 992px) {
+    @media (min-width: 999px) {
       nav .brand-image {
         margin-left: 270px; } }
-    @media (min-width: 993px) {
+    @media (min-width: 1000px) {
       nav .brand-image {
         /* This may seem weird, but it addresses a bug in Materialize where the brand-logo element font-size increases, 1px BEFORE
             the nav switches around to it's 'large' layout 
             In order to stop the image obscuring the text, extra margin had to be applied for the previous mqWidth */
         margin-left: 225px; } }
-    @media (min-width: 1200px) {
+    @media (min-width: 1201px) {
       nav .brand-image {
         margin-left: 230px; } }
 
@@ -98,6 +98,7 @@ nav {
 These styles are related to the unique content for the index page 
 
 */
+/* Parallax Styles */
 .parallax-container {
   height: 600px !important; }
   .parallax-container .parallax img {
@@ -109,6 +110,8 @@ These styles are related to the unique content for the index page
     background-color: rgba(0, 0, 0, 0.7);
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; }
 
+/* /Parallax Styles */
+/* Top Tracks Section */
 .ix-top-tracks {
   /* YouTube Styles */
   /* /YouTube Styles */ }
@@ -117,42 +120,37 @@ These styles are related to the unique content for the index page
   .ix-top-tracks .ix-youtube-iframe-container iframe {
     width: 300px;
     height: 183px; }
-    @media (min-width: 992px) {
+    @media (min-width: 601px) {
+      .ix-top-tracks .ix-youtube-iframe-container iframe {
+        width: 450px;
+        height: 274px; } }
+    @media (min-width: 999px) {
       .ix-top-tracks .ix-youtube-iframe-container iframe {
         width: 392px;
         height: 221px; } }
 
+/* /Top Tracks Section */
 /*
 
 These styles are related to the YouTube videos found throughout the app
 
 */
-/* Index YouTube Styles */
-.ix-youtube-iframe-container iframe {
-  width: 300px;
-  height: 183px; }
-  @media (min-width: 992px) {
-    .ix-youtube-iframe-container iframe {
-      width: 392px;
-      height: 221px; } }
-
-/* /Index YouTube Styles */
 /* Track Detail YouTube Styles */
 .td-youtube-iframe-container {
   /* Remove padding, this allows the video to sit snug with the sides of the page on the smallest viewports.
       Materialize default padding will be inherited from .row and .col on medium and above */ }
-  @media (max-width: 599px) {
+  @media (max-width: 600px) {
     .td-youtube-iframe-container {
       padding: 0; } }
   .td-youtube-iframe-container iframe {
     width: 300px;
     height: 183px;
     /* Gradually grow the size of the iframe as the page size increases */ }
-    @media (min-width: 600px) {
+    @media (min-width: 601px) {
       .td-youtube-iframe-container iframe {
         width: 450px;
         height: 275px; } }
-    @media (min-width: 992px) {
+    @media (min-width: 999px) {
       .td-youtube-iframe-container iframe {
         width: 560px;
         height: 315px; } }

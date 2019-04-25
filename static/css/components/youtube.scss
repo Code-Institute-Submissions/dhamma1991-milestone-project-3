@@ -4,20 +4,6 @@ These styles are related to the YouTube videos found throughout the app
 
 */
 
-/* Index YouTube Styles */
-.ix-youtube-iframe-container {
-    iframe {
-        width: 300px;
-        height: 183px;
-        
-        @include mqWidth($larBreakpoint) {
-            width: 392px;
-            height: 221px;
-        }
-    }
-}
-/* /Index YouTube Styles */
-
 /* Track Detail YouTube Styles */
 .td-youtube-iframe-container {
     /* Remove padding, this allows the video to sit snug with the sides of the page on the smallest viewports.
