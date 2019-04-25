@@ -21,6 +21,20 @@ These styles are related to the unique content for the index page
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
 }
+
+.parallax-divider { // This is the orange bar below the parallax image
+    height: 56px; // Match Materialize's default height for nav
+    background-color: #ff6302;
+    
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    
+    border-top: 1px solid black;
+    
+    @include mqWidth($medBreakpoint) {
+        height: 64px; // Grow height of divider with height of nav
+    }
+}
 /* /Parallax Styles */
 
 /* Top Tracks Section */
