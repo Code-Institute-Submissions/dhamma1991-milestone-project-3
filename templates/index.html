@@ -16,28 +16,26 @@
         <div class="divider"></div>
         
         <!-- Current Top 3 Tracks Section -->
-        <ssection class="container">
-            <div class="center-align">
-                <h2>Current Top 3 Tracks</h2>
-                
-                <div>
-                    {% for track in tracks %}
-                        <!-- Limit the returned tracks to 3.
-                             Since the list has already been sorted by upvotes descending in app.py 
-                             the returned tracks will be the 3 highest upvoted tracks 
-                        -->
-                        {% if loop.index <= 3 %}
-                            <div class="ix-youtube-iframe-container">
-                                <iframe src="https://www.youtube.com/embed/{{ track.youtube_link|replace('https://www.youtube.com/watch?v=', '') }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                
-                <!-- View More Link -->
-                <a href="{{ url_for('sort_tracks_upvote_desc', decade_filter = 'all') }}">View More</a>
-                <!-- /View More Link -->
+        <ssection class="container center-align">
+            <h2>Current Top 3 Tracks</h2>
+            
+            <div>
+                {% for track in tracks %}
+                    <!-- Limit the returned tracks to 3.
+                         Since the list has already been sorted by upvotes descending in app.py 
+                         the returned tracks will be the 3 highest upvoted tracks 
+                    -->
+                    {% if loop.index <= 3 %}
+                        <div class="ix-youtube-iframe-container">
+                            <iframe src="https://www.youtube.com/embed/{{ track.youtube_link|replace('https://www.youtube.com/watch?v=', '') }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
+            
+            <!-- View More Link -->
+            <a href="{{ url_for('sort_tracks_upvote_desc', decade_filter = 'all') }}">View More</a>
+            <!-- /View More Link -->
         </div>
         <!-- /Current Top 3 Tracks Section -->
         
