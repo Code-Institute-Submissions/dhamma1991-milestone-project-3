@@ -16,7 +16,7 @@
         <div class="divider"></div>
         
         <!-- Current Top 3 Tracks Section -->
-        <ssection class="container center-align">
+        <section class="container center-align">
             <h2>Current Top 3 Tracks</h2>
         
             {% for track in tracks %}
@@ -34,7 +34,7 @@
             <!-- View More Link -->
             <a href="{{ url_for('sort_tracks_upvote_desc', decade_filter = 'all') }}">View More</a>
             <!-- /View More Link -->
-        </div>
+        </section>
         <!-- /Current Top 3 Tracks Section -->
         
         <!-- Bottom Parallax Image -->
