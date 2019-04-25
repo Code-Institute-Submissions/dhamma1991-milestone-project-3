@@ -128,6 +128,10 @@ These styles are related to the unique content for the index page
       .ix-top-tracks .ix-youtube-iframe-container iframe {
         width: 392px;
         height: 221px; } }
+    @media (min-width: 1201px) {
+      .ix-top-tracks .ix-youtube-iframe-container iframe {
+        width: 470px;
+        height: 265px; } }
 
 /* /Top Tracks Section */
 /*

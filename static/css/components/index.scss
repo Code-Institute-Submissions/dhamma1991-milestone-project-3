@@ -42,6 +42,11 @@ These styles are related to the unique content for the index page
                 width: 392px;
                 height: 221px;
             }
+            
+            @include mqWidth($xlBreakpoint) {
+                width: 470px;
+                height: 265px;
+            }
         }
     }
     /* /YouTube Styles */
