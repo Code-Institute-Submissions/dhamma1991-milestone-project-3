@@ -24,6 +24,11 @@ These styles are related to the unique content for the index page
 
 /* Top Tracks Section */
 .ix-top-tracks {
+    .divider:nth-of-type(1) { // Target the 1st divider element
+        /* Modify the default Materialize divider styles to give more of an underline effect */
+        height: 3px;
+        background-color: black;
+    }
     .row { // Target each individual top track row
         margin-top: 20px;
         p {

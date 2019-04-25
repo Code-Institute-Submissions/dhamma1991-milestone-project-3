@@ -115,6 +115,10 @@ These styles are related to the unique content for the index page
 .ix-top-tracks {
   /* YouTube Styles */
   /* /YouTube Styles */ }
+  .ix-top-tracks .divider:nth-of-type(1) {
+    /* Modify the default Materialize divider styles to give more of an underline effect */
+    height: 3px;
+    background-color: black; }
   .ix-top-tracks .row {
     margin-top: 20px; }
     .ix-top-tracks .row p {
