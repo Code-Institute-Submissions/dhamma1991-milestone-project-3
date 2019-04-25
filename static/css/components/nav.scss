@@ -3,7 +3,10 @@ nav {
     .nav-wrapper { //Built in Materialize class 
         margin-left: 10px;
         .brand-logo {
-            font-size: 1.7rem; // Overwrite Materialize's default font size, making it smaller
+            font: {
+                family: 'adumuregular';
+                size: 1.7rem; // Overwrite Materialize's default font size, making it smaller
+            };
             @include mqWidth($medBreakpoint) {
                 font-size: 2.1rem; //On medium and above, increase the font-size to Materialize default 
             }

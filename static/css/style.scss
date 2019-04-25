@@ -1,10 +1,19 @@
-/* Imports */
+/* IMPORTS */
+
+/* Fonts */
+@import "fonts/adumu/adumu.scss";
+/* /Fonts */
+
+/* Helpers */
 @import "helpers/variables.scss";
 @import "helpers/placeholders.scss";
 @import "helpers/mixins.scss";
 @import "helpers/helper-classes.scss";
+/* /Helpers */
 
+/* Components */
 @import "components/structure";
 @import "components/nav";
 @import "components/index";
 @import "components/youtube";
+/* /Components */

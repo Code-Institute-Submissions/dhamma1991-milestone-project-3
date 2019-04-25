@@ -12,6 +12,7 @@ These styles are related to the unique content for the index page
             display: inherit !important;
         }
     }
+    
     p {
         margin-top: 10%;
         color: $offWhite;
@@ -29,21 +30,26 @@ These styles are related to the unique content for the index page
         height: 3px;
         background-color: black;
     }
+    
     .row { // Target each individual top track row
         margin-top: 20px;
         p {
             font-weight: 400;
+            
             @include mqWidth($larBreakpoint) {
                 text-align: left;
             }
         }
+        
         span {
             display: block; // Ensures text-align works properly
+            
             @include mqWidth($larBreakpoint) {
                 text-align: left;
             }    
         }
     }
+    
     /* YouTube Styles */
     .ix-youtube-iframe-container {
         iframe {
@@ -74,5 +80,9 @@ These styles are related to the unique content for the index page
         }
     }
     /* /YouTube Styles */
+    
+    .view-more-link {
+        font-weight: 600;
+    }
 }
 /* /Top Tracks Section */
