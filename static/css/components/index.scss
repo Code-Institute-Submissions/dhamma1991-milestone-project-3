@@ -7,18 +7,24 @@ These styles are related to the unique content for the index page
 /* Parallax Styles */
 .parallax-container {
     height: 100vh !important; // Force overwrite applied to the declaration in Materialize's css
-    .parallax {
-        img {
-            display: inherit !important;
-        }
-    }
     
-    p {
-        margin-top: 10%;
-        color: $offWhite;
-        font-size: 3.56rem;
-        background-color: rgba(0,0,0,0.7);
-        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    /* Comment this back in if something breaks? */
+    // .parallax {
+    //     img {
+    //         display: inherit !important;
+    //     }
+    // }
+    
+    div:nth-child(2) {
+        height: inherit;
+        p {
+            // margin-top: 10%;
+            width: 100vw;
+            color: $offWhite;
+            font-size: 3.56rem;
+            background-color: rgba(0,0,0,0.7);
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        }    
     }
 }
 
