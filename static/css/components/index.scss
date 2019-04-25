@@ -24,8 +24,14 @@ These styles are related to the unique content for the index page
 
 /* Top Tracks Section */
 .ix-top-tracks {
+    .row { // Target each individual top track row
+        margin-top: 20px;
+    }
     p {
         font-weight: 400;
+        @include mqWidth($larBreakpoint) {
+            text-align: left;
+        }
     }
     /* YouTube Styles */
     .ix-youtube-iframe-container {
