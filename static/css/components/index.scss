@@ -24,4 +24,17 @@ These styles are related to the unique content for the index page
     p {
         font-weight: 400;
     }
+    /* YouTube Styles */
+    .ix-youtube-iframe-container {
+        iframe {
+            width: 300px;
+            height: 183px;
+            
+            @include mqWidth($larBreakpoint) {
+                width: 392px;
+                height: 221px;
+            }
+        }
+    }
+    /* /YouTube Styles */
 }
