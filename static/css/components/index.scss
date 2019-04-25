@@ -1,3 +1,9 @@
+/*
+
+These styles are related to the unique content for the index page 
+
+*/
+
 .parallax-container {
     height: 600px !important;
     .parallax {
@@ -11,5 +17,11 @@
         font-size: 3.56rem;
         background-color: rgba(0,0,0,0.7);
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+}
+
+.ix-top-tracks {
+    p {
+        font-weight: 400;
     }
 }

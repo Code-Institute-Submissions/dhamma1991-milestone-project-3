@@ -1,8 +1,11 @@
 /* Mixin Vars */
-/* Match Materialize breakpoints */
+// Match Materialize breakpoints
 $medBreakpoint: 600px;
 $larBreakpoint: 992px;
 $xlBreakpoint: 1200px;
+
+/* Structural */
+$appMinWidth: 320px;
 
 /* Colors */
 $offWhite: #fdfdfd;

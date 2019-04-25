@@ -16,8 +16,8 @@
         <div class="divider"></div>
         
         <!-- Current Top 3 Tracks Section -->
-        <section class="container center-align">
-            <h2>Current Top 3 Tracks</h2>
+        <section class="container ix-top-tracks">
+            <h2 class="center-align">Current Top 3 Tracks</h2>
         
             {% for track in tracks %}
                 <!-- Limit the returned tracks to 3.
@@ -25,9 +25,19 @@
                      the returned tracks will be the 3 highest upvoted tracks 
                 -->
                 {% if loop.index <= 3 %}
-                    <div class="ix-youtube-iframe-container">
-                        <iframe src="https://www.youtube.com/embed/{{ track.youtube_link|replace('https://www.youtube.com/watch?v=', '') }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="row center-align">
+                        <div class="col s12 l6">
+                            <p class="flow-text">{{ loop.index }}. {{ track.artist}} - {{ track.track_title }}</p>
+                        </div>
+                        
+                        <div class="ix-youtube-iframe-container col s12 l6">
+                            <iframe src="https://www.youtube.com/embed/{{ track.youtube_link|replace('https://www.youtube.com/watch?v=', '') }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
                     </div>
+                    
+                    {% if loop.index <= 2 %}
+                        <div class="divider"></div>
+                    {% endif %}
                 {% endif %}
             {% endfor %}
             
