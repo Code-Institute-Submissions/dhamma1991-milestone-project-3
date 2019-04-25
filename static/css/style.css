@@ -123,7 +123,7 @@ These styles are related to the unique content for the index page
 */
 /* Parallax Styles */
 .parallax-container {
-  height: 600px !important; }
+  height: 100vh !important; }
   .parallax-container .parallax img {
     display: inherit !important; }
   .parallax-container p {

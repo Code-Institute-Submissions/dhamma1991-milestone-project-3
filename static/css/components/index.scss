@@ -6,7 +6,7 @@ These styles are related to the unique content for the index page
 
 /* Parallax Styles */
 .parallax-container {
-    height: 600px !important;
+    height: 100vh !important; // Force overwrite applied to the declaration in Materialize's css
     .parallax {
         img {
             display: inherit !important;
