@@ -119,19 +119,25 @@ These styles are related to the unique content for the index page
     font-weight: 400; }
   .ix-top-tracks .ix-youtube-iframe-container iframe {
     width: 300px;
-    height: 183px; }
+    height: 183px;
+    /* Gradually adjust the size of the YouTube iframes based on the width of the page */ }
     @media (min-width: 601px) {
       .ix-top-tracks .ix-youtube-iframe-container iframe {
         width: 450px;
         height: 274px; } }
     @media (min-width: 993px) {
       .ix-top-tracks .ix-youtube-iframe-container iframe {
+        /* The layout changes to 6 6 columns here, hence the size gets smaller */
         width: 392px;
         height: 221px; } }
     @media (min-width: 1201px) {
       .ix-top-tracks .ix-youtube-iframe-container iframe {
         width: 470px;
         height: 265px; } }
+    @media (min-width: 1750px) {
+      .ix-top-tracks .ix-youtube-iframe-container iframe {
+        width: 659px;
+        height: 371px; } }
 
 /* /Top Tracks Section */
 /*
