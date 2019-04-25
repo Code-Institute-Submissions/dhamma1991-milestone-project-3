@@ -7,8 +7,13 @@ These styles are related to the YouTube videos found throughout the app
 /* Index YouTube Styles */
 .ix-youtube-iframe-container {
     iframe {
-        width: 560px;
-        height: 315px;
+        width: 300px;
+        height: 183px;
+        
+        @include mqWidth($larBreakpoint) {
+            width: 392px;
+            height: 221px;
+        }
     }
 }
 /* /Index YouTube Styles */
@@ -24,10 +29,13 @@ These styles are related to the YouTube videos found throughout the app
         @extend %force-center;
         width: 300px;
         height: 183px;
+        
+        /* Gradually grow the size of the iframe as the page size increases */  
         @include mqWidth($medBreakpoint) {
             width: 450px;
             height: 275px;
         }
+        
         @include mqWidth($larBreakpoint) {
             width: 560px;
             height: 315px;

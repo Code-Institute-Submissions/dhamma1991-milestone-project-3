@@ -111,8 +111,12 @@ These styles are related to the YouTube videos found throughout the app
 */
 /* Index YouTube Styles */
 .ix-youtube-iframe-container iframe {
-  width: 560px;
-  height: 315px; }
+  width: 300px;
+  height: 183px; }
+  @media (min-width: 992px) {
+    .ix-youtube-iframe-container iframe {
+      width: 392px;
+      height: 221px; } }
 
 /* /Index YouTube Styles */
 /* Track Detail YouTube Styles */
@@ -124,7 +128,8 @@ These styles are related to the YouTube videos found throughout the app
       padding: 0; } }
   .td-youtube-iframe-container iframe {
     width: 300px;
-    height: 183px; }
+    height: 183px;
+    /* Gradually grow the size of the iframe as the page size increases */ }
     @media (min-width: 600px) {
       .td-youtube-iframe-container iframe {
         width: 450px;
