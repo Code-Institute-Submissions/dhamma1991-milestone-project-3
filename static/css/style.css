@@ -9,17 +9,18 @@
   font-style: normal; }
 /* /Fonts */
 /* Helpers */
-/* Mixin Vars */
-/* Structural */
+/* Mixin */
+/* /Mixin */
 /* Colors */
+/* /Colors */
+/* Misc */
+/* /Misc */
 .td-youtube-iframe-container iframe {
   margin: 0 auto;
   display: block; }
 
-/* Media Queries 
---------------------*/
-/* This mixin used for most media queries, using responsive design principles of mobile first */
-/* Similiar to above mixin. In some cases functionality is easier to implement with max width */
+/* Media Queries */
+/* /Media Queries */
 /* Materialize does not include an sr-only class (unlike Bootstrap) so one was added here */
 .sr-only {
   position: absolute;
@@ -53,7 +54,9 @@ main {
 .container {
   margin: 0 auto;
   max-width: 1280px;
-  width: 95%; }
+  width: 95%;
+  /* This mixin used for most media queries, using responsive design principles of mobile first */
+  /* This mixin used for most media queries, using responsive design principles of mobile first */ }
   @media (min-width: 601px) {
     .container {
       width: 90%; } }
@@ -72,7 +75,8 @@ nav {
     margin-left: 10px; }
     nav .nav-wrapper .brand-logo {
       font-family: 'adumuregular';
-      font-size: 1.7rem; }
+      font-size: 1.7rem;
+      /* This mixin used for most media queries, using responsive design principles of mobile first */ }
       @media (min-width: 601px) {
         nav .nav-wrapper .brand-logo {
           font-size: 2.1rem; } }
@@ -88,7 +92,11 @@ nav {
           line-height: 54px; }
   nav .brand-image {
     height: 40px;
-    margin: 6px 0 0 220px; }
+    margin: 6px 0 0 220px;
+    /* This mixin used for most media queries, using responsive design principles of mobile first */
+    /* This mixin used for most media queries, using responsive design principles of mobile first */
+    /* This mixin used for most media queries, using responsive design principles of mobile first */
+    /* This mixin used for most media queries, using responsive design principles of mobile first */ }
     @media (min-width: 601px) {
       nav .brand-image {
         height: 50px;
@@ -128,7 +136,8 @@ These styles are related to the unique content for the index page
   background-color: #ff6302;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-  border-top: 1px solid black; }
+  border-top: 1px solid black;
+  /* This mixin used for most media queries, using responsive design principles of mobile first */ }
   @media (min-width: 601px) {
     .parallax-divider {
       height: 64px; } }
@@ -145,19 +154,25 @@ These styles are related to the unique content for the index page
   .ix-top-tracks .row {
     margin-top: 20px; }
     .ix-top-tracks .row p {
-      font-weight: 400; }
+      font-weight: 400;
+      /* This mixin used for most media queries, using responsive design principles of mobile first */ }
       @media (min-width: 993px) {
         .ix-top-tracks .row p {
           text-align: left; } }
     .ix-top-tracks .row span {
-      display: block; }
+      display: block;
+      /* This mixin used for most media queries, using responsive design principles of mobile first */ }
       @media (min-width: 993px) {
         .ix-top-tracks .row span {
           text-align: left; } }
   .ix-top-tracks .ix-youtube-iframe-container iframe {
     width: 300px;
     height: 183px;
-    /* Gradually adjust the size of the YouTube iframes based on the width of the page */ }
+    /* Gradually adjust the size of the YouTube iframes based on the width of the page */
+    /* This mixin used for most media queries, using responsive design principles of mobile first */
+    /* This mixin used for most media queries, using responsive design principles of mobile first */
+    /* This mixin used for most media queries, using responsive design principles of mobile first */
+    /* This mixin used for most media queries, using responsive design principles of mobile first */ }
     @media (min-width: 601px) {
       .ix-top-tracks .ix-youtube-iframe-container iframe {
         width: 450px;
@@ -187,14 +202,17 @@ These styles are related to the YouTube videos found throughout the app
 /* Track Detail YouTube Styles */
 .td-youtube-iframe-container {
   /* Remove padding, this allows the video to sit snug with the sides of the page on the smallest viewports.
-      Materialize default padding will be inherited from .row and .col on medium and above */ }
+      Materialize default padding will be inherited from .row and .col on medium and above */
+  /* Similiar to above mixin. In some cases functionality is easier to implement with max width */ }
   @media (max-width: 600px) {
     .td-youtube-iframe-container {
       padding: 0; } }
   .td-youtube-iframe-container iframe {
     width: 300px;
     height: 183px;
-    /* Gradually grow the size of the iframe as the page size increases */ }
+    /* Gradually grow the size of the iframe as the page size increases */
+    /* This mixin used for most media queries, using responsive design principles of mobile first */
+    /* This mixin used for most media queries, using responsive design principles of mobile first */ }
     @media (min-width: 601px) {
       .td-youtube-iframe-container iframe {
         width: 450px;

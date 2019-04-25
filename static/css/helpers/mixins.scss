@@ -1,16 +1,15 @@
-/* Media Queries 
---------------------*/
-
-/* This mixin used for most media queries, using responsive design principles of mobile first */
+/* Media Queries */
 @mixin mqWidth($mqWidth) {
+    /* This mixin used for most media queries, using responsive design principles of mobile first */
     @media (min-width: $mqWidth) {
         @content
     }
 }
 
-/* Similiar to above mixin. In some cases functionality is easier to implement with max width */
 @mixin mqMaxWidth($mqWidth) {
+    /* Similiar to above mixin. In some cases functionality is easier to implement with max width */
     @media (max-width: $mqWidth) {
         @content
     }
 }
+/* /Media Queries */

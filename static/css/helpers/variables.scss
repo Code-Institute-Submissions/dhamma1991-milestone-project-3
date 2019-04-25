@@ -1,13 +1,16 @@
-/* Mixin Vars */
+/* Mixin */
 // Match Materialize breakpoints
 $medBreakpoint: 601px;
 $larBreakpoint: 993px;
 $xlBreakpoint: 1201px;
 $xxlBreakpoint: 1750px; // Custom, this is not a Materialise breakpoint,
-
-/* Structural */
-// $appMinWidth: 320px;
+/* /Mixin */
 
 /* Colors */
 $offWhite: #fdfdfd;
 $themeColor: #ff6302;
+/* /Colors */
+
+/* Misc */
+$navBoxShadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+/* /Misc */
