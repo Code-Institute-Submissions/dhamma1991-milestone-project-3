@@ -117,11 +117,16 @@ These styles are related to the unique content for the index page
   /* /YouTube Styles */ }
   .ix-top-tracks .row {
     margin-top: 20px; }
-  .ix-top-tracks p {
-    font-weight: 400; }
-    @media (min-width: 993px) {
-      .ix-top-tracks p {
-        text-align: left; } }
+    .ix-top-tracks .row p {
+      font-weight: 400; }
+      @media (min-width: 993px) {
+        .ix-top-tracks .row p {
+          text-align: left; } }
+    .ix-top-tracks .row span {
+      display: block; }
+      @media (min-width: 993px) {
+        .ix-top-tracks .row span {
+          text-align: left; } }
   .ix-top-tracks .ix-youtube-iframe-container iframe {
     width: 300px;
     height: 183px;
