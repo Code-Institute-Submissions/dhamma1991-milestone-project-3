@@ -45,7 +45,7 @@ main {
   @media (min-width: 601px) {
     .container {
       width: 90%; } }
-  @media (min-width: 999px) {
+  @media (min-width: 993px) {
     .container {
       width: 85%; } }
 
@@ -80,10 +80,10 @@ nav {
       nav .brand-image {
         height: 50px;
         margin-left: 260px; } }
-    @media (min-width: 999px) {
+    @media (min-width: 993px) {
       nav .brand-image {
         margin-left: 270px; } }
-    @media (min-width: 1000px) {
+    @media (min-width: 994px) {
       nav .brand-image {
         /* This may seem weird, but it addresses a bug in Materialize where the brand-logo element font-size increases, 1px BEFORE
             the nav switches around to it's 'large' layout 
@@ -124,7 +124,7 @@ These styles are related to the unique content for the index page
       .ix-top-tracks .ix-youtube-iframe-container iframe {
         width: 450px;
         height: 274px; } }
-    @media (min-width: 999px) {
+    @media (min-width: 993px) {
       .ix-top-tracks .ix-youtube-iframe-container iframe {
         width: 392px;
         height: 221px; } }
@@ -150,7 +150,7 @@ These styles are related to the YouTube videos found throughout the app
       .td-youtube-iframe-container iframe {
         width: 450px;
         height: 275px; } }
-    @media (min-width: 999px) {
+    @media (min-width: 993px) {
       .td-youtube-iframe-container iframe {
         width: 560px;
         height: 315px; } }
