@@ -8,12 +8,14 @@ $xxlBreakpoint: 1750px; // Custom, this is not a Materialise breakpoint,
 
 /* Colors */
 $offWhite: #fdfdfd;
+$materializeFontBlack: rgba(0,0,0,0.87); // Used primarily to set fonts to the same color as Materialize's default font color
 $themeColor: #ff6302;
 /* /Colors */
 
 /* Misc */
 // First 3 shadows are copied from default Materialize nav box-shadow. Last 3 are the same but reversed, so the element has both top and bottom shadow
-$navBoxShadow: // Bottom Shadow
+// This variable is used to give the parallax-dividers a similar shadow effect to the nav
+$navBoxShadowPlus: // Bottom Shadow
                 0 2px 2px 0 rgba(0,0,0,0.14),
                 0 1px 5px 0 rgba(0,0,0,0.12), 
                 0 3px 1px -2px rgba(0,0,0,0.2),

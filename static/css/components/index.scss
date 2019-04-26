@@ -36,8 +36,8 @@ These styles are related to the unique content for the index page
 .parallax-divider { // This is the orange bar below the parallax image
     height: 56px; // Match Materialize's default height for nav
     background-color: #ff6302;
-    box-shadow: $navBoxShadow;
-    -webkit-box-shadow: $navBoxShadow;
+    box-shadow: $navBoxShadowPlus;
+    -webkit-box-shadow: $navBoxShadowPlus;
     border-top: 1px solid black;
     
     @include mqWidth($medBreakpoint) {
@@ -62,6 +62,10 @@ These styles are related to the unique content for the index page
             
             @include mqWidth($larBreakpoint) {
                 text-align: left;
+            }
+            
+            a {
+                color: $materializeFontBlack;
             }
         }
         
