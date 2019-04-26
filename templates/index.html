@@ -29,13 +29,23 @@
         
             {% for track in tracks %}
                 <!-- Limit the returned tracks to 3.
-                     Since the list has already been sorted by upvotes descending in app.py 
+                     Since the list has already been sorted by upvotes descending in app.py, 
                      the returned tracks will be the 3 highest upvoted tracks 
                 -->
                 {% if loop.index <= 3 %}
                     <div class="row center-align">
                         <div class="col s12 l6">
-                            <p class="flow-text reset-margin-top"><a href="{{ url_for('track_detail', decade_filter = 'all', sorting_order = 1, track_id = track._id) }}">{{ loop.index }}. {{ track.artist}} - {{ track.track_title }}</a></p>
+                            <p class="flow-text reset-margin-top">
+                                <!-- If the user clicks on the artist - track text in the list of top 3, they will be taken to that particular track's track-detail page. 
+                                    The track detail view requires a decade_filter and sorting_order, 
+                                    this is for the benefit of the chart's page (to keep the values for decade_filter and sorting_order the user has currently set).
+                                    However, coming from the index the user hasn't changed decade_filter or sorting order,
+                                    so these values can just be defaults -->
+                                <a href="{{ url_for('track_detail', decade_filter = 'all', sorting_order = 1, track_id = track._id) }}">
+                                    {{ loop.index }}. {{ track.artist}} - {{ track.track_title }}
+                                </a>
+                            </p>
+                                
                             <span class="flow-text">{{ track.upvotes }} upvotes</span>
                         </div>
                         
