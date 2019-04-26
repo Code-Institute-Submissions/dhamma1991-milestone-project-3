@@ -3,10 +3,9 @@
 {% block content %}
     <main class="container">
         <div class="row">
-            <a class="col s3" href="{{ url_for('sort_tracks_upvote_desc', decade_filter = decade_filter) }}">Sort by Most Popular</a>
-            <a class="col s3" href="{{ url_for('sort_tracks_date_added_desc', decade_filter = decade_filter) }}">Sort by Date Added (Newest)</a>
             <div class="col s3">
                 <label for="decade-options-select">Filter tracks by decade</label>
+                
                 <select id="decade-options-select" name="decade-options-select">
                     <option value="all">Show All</option>
                     <option value="pre1950">Pre-1950</option>
@@ -20,10 +19,20 @@
                 </select>     
             </div>
         </div>
-        <div class="row">
-            <a class="col s3" href="{{ url_for('sort_tracks_upvote_asc', decade_filter = decade_filter) }}">Sort by Least Popular</a>
-            <a class="col s3" href="{{ url_for('sort_tracks_date_added_asc', decade_filter = decade_filter) }}">Sort by Date Added (Oldest)</a>
-        </div>
+        
+        <!-- Dropdown Trigger -->
+        <p>SORT:</p>
+        
+        <a class='dropdown-button' href='#' data-activates='sort-dropdown'>[sort goes here]<i class="material-icons">arrow_drop_down</i></a>
+        
+        <!-- Dropdown Structure -->
+        <ul id='sort-dropdown' class='dropdown-content'>
+            <li><a class="col s3" href="{{ url_for('sort_tracks_upvote_desc', decade_filter = decade_filter) }}">Sort by Most Popular</a></li>
+            <li><a class="col s3" href="{{ url_for('sort_tracks_date_added_desc', decade_filter = decade_filter) }}">Sort by Date Added (Newest)</a></li>
+            <li><a class="col s3" href="{{ url_for('sort_tracks_upvote_asc', decade_filter = decade_filter) }}">Sort by Least Popular</a></li>
+            <li><a class="col s3" href="{{ url_for('sort_tracks_date_added_asc', decade_filter = decade_filter) }}">Sort by Date Added (Oldest)</a></li>
+        </ul>
+
         <!-- Accordion Container -->
         <ul class="collapsible">
             {% for track in tracks %} <!-- For each track in the database -->
