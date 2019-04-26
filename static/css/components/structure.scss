@@ -53,6 +53,8 @@ body {
     
     .page-footer {
         background-color: $themeColor; // Overwrite default Materialize theme color
+        box-shadow: $navBoxShadowTop; // Set shadow above footer, similar to the Materialize default nav shadow
+        -webkit-box-shadow: $navBoxShadowTop;
         
         h5 {
             font-family: adumuregular;
@@ -65,8 +67,8 @@ body {
 }
 /* /Sticky Footer */
 
-/* Overwrite Materialize base .container class */
-/* Allows the adjustment of the width properties which in my opinion give too much margin */
+/* Overwrite Materialize base .container class
+    Allows the adjustment of the width properties which in my opinion give too much margin */
 .container {
     margin: 0 auto;
     max-width: 1280px;
