@@ -295,6 +295,8 @@ These styles are related to the pages for the forms allowing the user to add a t
   padding: 0 1rem 0 0;
   min-width: 15rem;
   margin-bottom: 25px; }
+.btn-container .cancel-insert-btn {
+  background-color: red; }
 
 /* /Components */
 
