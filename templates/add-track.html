@@ -3,72 +3,88 @@
 {% block content %}
     <main class="container">
         <h1 class="center-align">Submit a Song to DesertIsland</h1>
-        <div class="row">
+        
+        <!-- Form -->
+        <form action="{{ url_for('insert_track') }}" method="POST" class="col s12" novalidate>
             <!-- The form will call the insert_track function located in app.py -->
-            <form action="{{ url_for('insert_track') }}" method="POST" class="col s12" novalidate>
-                <div class="row">
-                    <div class="input-field col s12 l6">
-                        <i class="material-icons prefix">assignment</i>
-                        <input id="track_title" name="track_title" type="text" class="validate" required maxlength="500">
-                        <label id="track_title_label" for="track_title" data-error="Please enter the name of the track" data-success="&#10004;">Track Title</label>
-                    </div>
-                    <div class="input-field col s12 l6">
-                        <i class="material-icons prefix">brush</i>
-                        <input id="artist" name="artist" type="text" class="validate" required maxlength="100">
-                        <label id="artist_label" for="artist" data-error="Please enter the name of the artist of the track" data-success="&#10004;">Artist</label>
-                    </div>
-                    <div class="input-field col s12 l6">
-                        <i class="material-icons prefix">music_video</i>
-                        <input id="youtube_link" name="youtube_link" type="text" class="validate" required maxlength="45">
-                        <label id="youtube_link_label" for="youtube_link" data-error="Please enter the url of a YouTube video for the track" data-success="&#10004;">YouTube Link</label>
-                    </div>
-                    <div class="input-field col s12 l6">
-                        <i class="material-icons prefix">calendar_today</i>
-                        <input id="year" name="year" type="text" class="validate" required pattern="[0-9][0-9][0-9][0-9]" maxlength="4">
-                        <label id="year_label" for="year" data-error="Please enter the year the track was first released in the format YYYY (e.g. 1976)" data-success="&#10004;">Year</label>
-                    </div>
-                    <div class="input-field col s12 l6">
-                        <i class="material-icons prefix">category</i>
-                        <label id="genre_label" for="genre" data-error="Please select a genre" data-success="&#10004;" style="visibility: hidden;">Genre</label>
-                        <select id="genre" name="genre" class="validate" required>
-                            <option value="" disabled selected>Genre</option> <!-- This option won't be selectable but serves as a visual clue as to what the user should do -->
-                            {% for genre in genres %}
-                            <!-- If we have 4 genres in the database we'll have 4 options, if we have 10 genres in the database we'll have 10 options and so on -->
-                            <option value="{{ genre.genre }}">{{ genre.genre }}</option> <!-- The value here is what will be submitted to the form -->
-                            {% endfor %}
-                            <option value="add-genre-link">Add a Genre</option>
-                        </select>
-                    </div>
-                    <div class="input-field col s12 l6">
-                        <i class="material-icons prefix">account_box</i>
-                        <input id="user_name" name="user_name" type="text" class="validate" required maxlength="100">
-                        <label id="user_name_label" for="user_name" data-error="Please enter your name" data-success="&#10004;">Your Name</label>
-                    </div>
-                    
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">description</i>
-                        <textarea id="description" name="description" class="validate materialize-textarea" required maxlength="1000"></textarea>
-                        <label id="description_label" for="description" data-error="Please enter why you love this track!" data-success="&#10004;">And why does this song deserve to be here? (max 1,000 characters)</label>
-                    </div>
+            <div class="row">
+                <div class="input-field col s12 l6">
+                    <i class="material-icons prefix">assignment</i>
+                    <input id="track_title" name="track_title" type="text" class="validate" required maxlength="500">
+                    <label id="track_title_label" for="track_title" data-error="Please enter the name of the track" data-success="&#10004;">Track Title</label>
                 </div>
                 
-                <div class="row btn-container center-align">
-                    <!-- Submit Button -->
-                    <div class="s12">
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Add Track<i class="material-icons right">send</i></button>   
-                    </div>
-                    <!-- /Submit Button -->
-                    
-                    <!-- Cancel 'Button' -->
-                    <a href="{{ url_for('index') }}" class="btn red darken-3">Cancel Add Track<i class="material-icons right">close</i></a>
-                    <!-- /Cancel 'Button' -->
+                <div class="input-field col s12 l6">
+                    <i class="material-icons prefix">brush</i>
+                    <input id="artist" name="artist" type="text" class="validate" required maxlength="100">
+                    <label id="artist_label" for="artist" data-error="Please enter the name of the artist of the track" data-success="&#10004;">Artist</label>
                 </div>
-            </form>
+            </div>
+                
+            <div class="row">
+                <div class="input-field col s12 l6">
+                    <i class="material-icons prefix">music_video</i>
+                    <input id="youtube_link" name="youtube_link" type="text" class="validate" required maxlength="45">
+                    <label id="youtube_link_label" for="youtube_link" data-error="Please enter the url of a YouTube video for the track" data-success="&#10004;">YouTube Link</label>
+                </div>
+                
+                <div class="input-field col s12 l6">
+                    <i class="material-icons prefix">calendar_today</i>
+                    <input id="year" name="year" type="text" class="validate" required pattern="[0-9][0-9][0-9][0-9]" maxlength="4">
+                    <label id="year_label" for="year" data-error="Please enter the year the track was first released in the format YYYY (e.g. 1976)" data-success="&#10004;">Year</label>
+                </div>
+            </div>
+                
+            <div class="row">
+                <div class="input-field col s12 l6">
+                    <i class="material-icons prefix">category</i>
+                    
+                    <label id="genre_label" for="genre" data-error="Please select a genre" data-success="&#10004;" style="visibility: hidden;">Genre</label>
+                    
+                    <select id="genre" name="genre" class="validate" required>
+                        <option value="" disabled selected>Genre</option> <!-- This option won't be selectable but serves as a visual clue as to what the user should do -->
+                        {% for genre in genres %}
+                            <!-- If there are 4 genres in the database there'll be 4 options, if there are 10 genres there'll be 10 options and so on -->
+                            <option value="{{ genre.genre }}">{{ genre.genre }}</option> <!-- The value here is what will be submitted to the form -->
+                        {% endfor %}
+                        <option value="add-genre-link">Add a Genre</option>
+                    </select>
+                    
+                </div>
+                
+                <div class="input-field col s12 l6">
+                    <i class="material-icons prefix">account_box</i>
+                    <input id="user_name" name="user_name" type="text" class="validate" required maxlength="100">
+                    <label id="user_name_label" for="user_name" data-error="Please enter your name" data-success="&#10004;">Your Name</label>
+                </div>
+            </div>
+                
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">description</i>
+                    <textarea id="description" name="description" class="validate materialize-textarea" required maxlength="1000"></textarea>
+                    <label id="description_label" for="description" data-error="Please enter why you love this track!" data-success="&#10004;">And why does this song deserve to be here? (max 1,000 characters)</label>
+                </div>
+            </div>
+            
+            <div class="row btn-container center-align">
+                <!-- Submit Button -->
+                <div class="s12 l6">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Add Track<i class="material-icons right">send</i></button>   
+                </div>
+                <!-- /Submit Button -->
+                
+                <!-- Cancel 'Button' -->
+                <div class="s12 l6">
+                    <a href="{{ url_for('index') }}" class="btn red darken-3">Cancel Add Track<i class="material-icons right">close</i></a>
+                </div>
+                <!-- /Cancel 'Button' -->
+            </div>
+        </form>
             
         <!--<div class="row">-->
             <!-- cancel button used to live here -->
         <!--</div>-->
-        </div>
     </main>
 {% endblock %}
 
