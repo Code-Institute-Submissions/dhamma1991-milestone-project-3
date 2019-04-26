@@ -108,8 +108,8 @@
             });
         </script>
         
-        <!-- Block Scripts-->
-        <!-- Some scripts are not needed on all pages. To improve load times these scripts are added via block when needed -->
+        <!-- Block Scripts
+            Some scripts are not needed on all pages. To improve load times these scripts are added via block when needed -->
         
         <!-- Decade Link Script -->
         {% block decade_link_js %}
@@ -137,5 +137,36 @@
             document.getElementById("copyright").innerHTML = theDate;
         </script>
         <!-- /Scripts -->
+    
+        <script>
+            // switch('{{ sorting_order }}') {
+            //     case '1': 
+            //         $('.dropdown-button p').text("Most Popular");
+            //     break;
+            //     case 2:
+            //         $('.dropdown-button p').text("Least Popular");
+            //     break;
+            //     case 3:
+            //         $('.dropdown-button p').text("Date Added (Newest)");
+            //     break;
+            //     case 4:
+            //         $('.dropdown-button p').text("Date Added (Oldest)");
+            //     break;
+            //     default:
+            //         $('.dropdown-button p').text("default Most Popular");
+            // }
+            
+            // Would of preferred switch statment here but for some reason that didn't work
+            if ('{{ sorting_order }}' == 1) {
+                $('.dropdown-button p').text("Most Popular");
+            } else if ('{{ sorting_order }}' == 2) {
+                $('.dropdown-button p').text("Least Popular");
+            } else if ('{{ sorting_order }}' == 3) {
+                $('.dropdown-button p').text("Date Added (Newest)");
+            } else if ('{{ sorting_order }}' == 4) {
+                $('.dropdown-button p').text("Date Added (Oldest)");
+            }
+        </script>
+        
     </body>
 </html>
