@@ -7,27 +7,27 @@
             <!-- The form will call the insert_track function located in app.py -->
             <form action="{{ url_for('insert_track') }}" method="POST" class="col s12" novalidate>
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field col s12 l6">
                         <i class="material-icons prefix">assignment</i>
                         <input id="track_title" name="track_title" type="text" class="validate" required maxlength="500">
                         <label id="track_title_label" for="track_title" data-error="Please enter the name of the track" data-success="&#10004;">Track Title</label>
                     </div>
-                    <div class="input-field col s6">
+                    <div class="input-field col s12 l6">
                         <i class="material-icons prefix">brush</i>
                         <input id="artist" name="artist" type="text" class="validate" required maxlength="100">
                         <label id="artist_label" for="artist" data-error="Please enter the name of the artist of the track" data-success="&#10004;">Artist</label>
                     </div>
-                    <div class="input-field col s6">
+                    <div class="input-field col s12 l6">
                         <i class="material-icons prefix">music_video</i>
                         <input id="youtube_link" name="youtube_link" type="text" class="validate" required maxlength="45">
                         <label id="youtube_link_label" for="youtube_link" data-error="Please enter the url of a YouTube video for the track" data-success="&#10004;">YouTube Link</label>
                     </div>
-                    <div class="input-field col s6">
+                    <div class="input-field col s12 l6">
                         <i class="material-icons prefix">calendar_today</i>
                         <input id="year" name="year" type="text" class="validate" required pattern="[0-9][0-9][0-9][0-9]" maxlength="4">
                         <label id="year_label" for="year" data-error="Please enter the year the track was first released in the format YYYY (e.g. 1976)" data-success="&#10004;">Year</label>
                     </div>
-                    <div class="input-field col s6">
+                    <div class="input-field col s12 l6">
                         <i class="material-icons prefix">category</i>
                         <label id="genre_label" for="genre" data-error="Please select a genre" data-success="&#10004;" style="visibility: hidden;">Genre</label>
                         <select id="genre" name="genre" class="validate" required>
@@ -39,7 +39,7 @@
                             <option value="add-genre-link">Add a Genre</option>
                         </select>
                     </div>
-                    <div class="input-field col s6">
+                    <div class="input-field col s12 l6">
                         <i class="material-icons prefix">account_box</i>
                         <input id="user_name" name="user_name" type="text" class="validate" required maxlength="100">
                         <label id="user_name_label" for="user_name" data-error="Please enter your name" data-success="&#10004;">Your Name</label>
