@@ -11,6 +11,7 @@ These styles are related to the YouTube videos found throughout the app
     @include mqMaxWidth($medBreakpoint - 1) { // Use - 1 in order for the media query to stop just as Materialize's medium sizes kick in
         padding: 0;
     }
+    
     iframe {
         @extend %force-center;
         width: 300px;

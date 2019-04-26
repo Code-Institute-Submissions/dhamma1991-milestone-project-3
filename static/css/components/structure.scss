@@ -42,18 +42,20 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-}
-
-main {
-    flex: 1 0 auto;
-}
-
-.page-footer {
-    background-color: $themeColor; // Overwrite default Materialize theme color
-    h5 {
-        font-family: adumuregular;
-        a {
-            color: $offWhite;
+    
+    main {
+        flex: 1 0 auto;
+    }
+    
+    .page-footer {
+        background-color: $themeColor; // Overwrite default Materialize theme color
+        
+        h5 {
+            font-family: adumuregular;
+            
+            a {
+                color: $offWhite;
+            }
         }
     }
 }
@@ -64,10 +66,12 @@ main {
 .container {
     margin: 0 auto;
     max-width: 1280px;
-    width: 95%;
+    width: 95%
+    
     @include mqWidth($medBreakpoint) {
         width: 90%;
     }
+    
     @include mqWidth($larBreakpoint) {
         width: 85%;
     }
