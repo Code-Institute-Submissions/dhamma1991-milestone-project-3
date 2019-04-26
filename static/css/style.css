@@ -283,6 +283,19 @@ These styles are related to the YouTube videos found throughout the app
   left: 0; }
 
 /* /YouTube Lazy Loading */
+/*
+
+These styles are related to the pages for the forms allowing the user to add a track to the database or edit an existing track
+
+*/
+.btn-container .btn {
+  /* Adjust default padding added by Materialize
+      Give some margin between the button text and the button's edges using min-width
+      This keeps both the submit and cancel buttons the same size */
+  padding: 0 1rem 0 0;
+  min-width: 15rem;
+  margin-bottom: 15px; }
+
 /* /Components */
 
 /*# sourceMappingURL=style.css.map */
