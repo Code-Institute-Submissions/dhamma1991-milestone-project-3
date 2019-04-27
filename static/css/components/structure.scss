@@ -105,3 +105,10 @@ body {
     margin: 0;
     width: 100%;
 }
+
+/* Style the upvote button found throughout the app */
+.upvote-button {
+    i {
+        margin-right: 0; // Remove the default margin applied by Mmaterialize
+    }
+}

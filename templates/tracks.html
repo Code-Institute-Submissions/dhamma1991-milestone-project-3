@@ -52,19 +52,22 @@
             <li>
                 <!-- Accordion Header -->
                 <div class="collapsible-header">
+                    <i class="material-icons">arrow_drop_down</i>
+                    
                     <!-- Rank. Artist - Title -->
                     <!-- Rank is determined by adding the current pagination value to the loop index -->
-                    <i class="material-icons">arrow_drop_down</i>
-                    {{ loop.index + pagination }}. {{ track.artist }} - {{ track.track_title }}
-                    <!-- /Artist - Title -->
+                    <span>{{ loop.index + pagination }}. {{ track.artist }} - {{ track.track_title }}</span>
+                    <!-- /Rank. Artist - Title -->
+                    
                     <!-- Upvote Button -->
                     <form action="{{ url_for('upvote_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id) }}" method="POST">
-                        <button type="submit">
+                        <button class="btn upvote-button" type="submit">
                             <i class="material-icons">arrow_upward</i>
                         </button>
                         {{ track.upvotes }}
                     </form>
                     <!-- /Upvote Button -->
+                    
                     {{ track.date_added }}
                     <!-- Edit Button -->
                     <a href="{{url_for('edit_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
