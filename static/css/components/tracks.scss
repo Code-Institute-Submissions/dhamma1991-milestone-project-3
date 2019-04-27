@@ -4,6 +4,7 @@ Styles relevant to the content within tracks.html
 
 */
 
+/* Sort and Filter Container */
 .sort-filter-container {
     margin-top: $defaultMargin;
     font-size: 1.3rem; // Boosted from Materialize default
@@ -31,9 +32,13 @@ Styles relevant to the content within tracks.html
         }
     } 
 }
+/* /Sort and Filter Container */
 
 .track-container {
     li {
         list-style-type: none;
+        .rank-number {
+            font-weight: 500;
+        }
     }
 }

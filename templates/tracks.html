@@ -47,14 +47,14 @@
         <!-- /Sort and Filter -->
         
         <!-- Track Container -->
-        <section class="track-container">
+        <section class="track-container flow-text">
             {% for track in tracks %} <!-- For each track in the database -->
                 <li>
                     <!-- Accordion Header -->
                     
                     <!-- Rank. Artist - Title -->
                     <!-- Rank is determined by adding the current pagination value to the loop index -->
-                    <span>{{ loop.index + pagination }}. {{ track.artist }} - {{ track.track_title }}</span>
+                    <span class="rank-number">{{ loop.index + pagination }}. </span><span>{{ track.artist }} - {{ track.track_title }}</span>
                     <!-- /Rank. Artist - Title -->
                     
                     <!-- Upvote Button -->
