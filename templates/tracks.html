@@ -35,10 +35,10 @@
             
                 <!-- Dropdown Content -->
                 <ul id='sort-dropdown' class='dropdown-content'>
-                    <li><a class="col s3" href="{{ url_for('sort_tracks_upvote_desc', decade_filter = decade_filter) }}">Sort by Most Popular</a></li>
-                    <li><a class="col s3" href="{{ url_for('sort_tracks_date_added_desc', decade_filter = decade_filter) }}">Sort by Date Added (Newest)</a></li>
-                    <li><a class="col s3" href="{{ url_for('sort_tracks_upvote_asc', decade_filter = decade_filter) }}">Sort by Least Popular</a></li>
-                    <li><a class="col s3" href="{{ url_for('sort_tracks_date_added_asc', decade_filter = decade_filter) }}">Sort by Date Added (Oldest)</a></li>
+                    <li><a class="col s3" href="{{ url_for('sort_tracks_upvote_desc', decade_filter = decade_filter) }}">Most Popular</a></li>
+                    <li><a class="col s3" href="{{ url_for('sort_tracks_date_added_desc', decade_filter = decade_filter) }}">Date Added (Newest)</a></li>
+                    <li><a class="col s3" href="{{ url_for('sort_tracks_upvote_asc', decade_filter = decade_filter) }}">Least Popular</a></li>
+                    <li><a class="col s3" href="{{ url_for('sort_tracks_date_added_asc', decade_filter = decade_filter) }}">Date Added (Oldest)</a></li>
                 </ul>
                 <!-- /Dropdown Content -->
             </div>
