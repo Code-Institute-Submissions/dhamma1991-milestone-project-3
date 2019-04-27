@@ -255,11 +255,58 @@ Styles relevant to the content within tracks.html
         
     for each track in the database */
 .track-container li {
-  list-style-type: none; }
+  list-style-type: none;
+  /* YouTube Lazy Loading
+      Style the thumbnail images that appear on tracks.html.
+      Make them look like videos when they are in fact images, when clicked on video is loaded.
+      This allows the user to see that there is video media present, but saves on bandwidth */
+  /* /YouTube Lazy Loading */ }
   .track-container li .rank-artist-title {
     font-weight: 500; }
   .track-container li small {
     display: block; }
+  .track-container li .youtube {
+    background-color: #000;
+    margin-bottom: 30px;
+    position: relative;
+    padding-top: 56.25%;
+    overflow: hidden;
+    cursor: pointer; }
+    .track-container li .youtube img {
+      width: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0.7;
+      cursor: pointer;
+      position: absolute; }
+    .track-container li .youtube .play-button {
+      width: 90px;
+      height: 60px;
+      background-color: #333;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+      z-index: 1;
+      opacity: 0.8;
+      border-radius: 6px;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0); }
+      .track-container li .youtube .play-button:before {
+        content: "";
+        border-style: solid;
+        border-width: 15px 0 15px 26.0px;
+        border-color: transparent transparent transparent #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0); }
+    .track-container li .youtube iframe {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0; }
 
 /*
 
@@ -290,83 +337,6 @@ Styles used within track-detail.html
         height: 315px; } }
 
 /* /Track Detail YouTube Styles */
-/*
-
-These styles are related to the YouTube videos found throughout the app
-
-*/
-/* Track Detail YouTube Styles */
-.td-youtube-iframe-container {
-  /* Remove padding, this allows the video to sit snug with the sides of the page on the smallest viewports.
-      Materialize default padding will be inherited from .row and .col on medium and above */
-  /* Similiar to above mixin. In some cases functionality is easier to implement with max width */ }
-  @media (max-width: 600px) {
-    .td-youtube-iframe-container {
-      padding: 0; } }
-  .td-youtube-iframe-container iframe {
-    width: 300px;
-    height: 183px;
-    /* Gradually grow the size of the iframe as the page size increases */
-    /* This mixin used for most media queries, using responsive design principles of mobile first */
-    /* This mixin used for most media queries, using responsive design principles of mobile first */ }
-    @media (min-width: 601px) {
-      .td-youtube-iframe-container iframe {
-        width: 450px;
-        height: 275px; } }
-    @media (min-width: 993px) {
-      .td-youtube-iframe-container iframe {
-        width: 560px;
-        height: 315px; } }
-
-/* /Track Detail YouTube Styles */
-/* YouTube Lazy Loading
-    Style the thumbnail images that appear on tracks.html.
-    Make them look like videos when they are in fact images, when clicked on video is loaded.
-    This allows the user to see that there is video media present, but saves on bandwidth */
-.youtube {
-  background-color: #000;
-  margin-bottom: 30px;
-  position: relative;
-  padding-top: 56.25%;
-  overflow: hidden;
-  cursor: pointer; }
-  .youtube img {
-    width: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0.7;
-    cursor: pointer;
-    position: absolute; }
-  .youtube .play-button {
-    width: 90px;
-    height: 60px;
-    background-color: #333;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-    z-index: 1;
-    opacity: 0.8;
-    border-radius: 6px;
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0); }
-    .youtube .play-button:before {
-      content: "";
-      border-style: solid;
-      border-width: 15px 0 15px 26.0px;
-      border-color: transparent transparent transparent #fff;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate3d(-50%, -50%, 0); }
-  .youtube iframe {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0; }
-
-/* /YouTube Lazy Loading */
 /*
 
 These styles are related to the pages for the forms allowing the user to add a track to the database or edit an existing track
