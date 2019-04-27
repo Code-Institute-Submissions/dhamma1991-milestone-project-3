@@ -34,12 +34,31 @@ Styles relevant to the content within tracks.html
 }
 /* /Sort and Filter Container */
 
+/* Track Container
+    In here is contained the:
+    
+        rank
+        artist
+        title
+        upvote button
+        upvote count
+        user who submitted
+        date added
+        edit button
+        delete button
+        youtube lazy loading vid
+        
+    for each track in the database */
 .track-container {
     li {
         list-style-type: none;
         
         .rank-artist-title {
-            font-weight: 500;
+            font-weight: 500; // Emphasise the <rank>. <artist> - <title>
+        }
+        
+        small {
+            display: block;
         }
     }
 }

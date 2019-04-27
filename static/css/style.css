@@ -239,10 +239,27 @@ Styles relevant to the content within tracks.html
     font-size: 18px; }
 
 /* /Sort and Filter Container */
+/* Track Container
+    In here is contained the:
+    
+        rank
+        artist
+        title
+        upvote button
+        upvote count
+        user who submitted
+        date added
+        edit button
+        delete button
+        youtube lazy loading vid
+        
+    for each track in the database */
 .track-container li {
   list-style-type: none; }
   .track-container li .rank-artist-title {
     font-weight: 500; }
+  .track-container li small {
+    display: block; }
 
 /*
 
