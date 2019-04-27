@@ -263,6 +263,35 @@ Styles relevant to the content within tracks.html
 
 /*
 
+Styles used within track-detail.html
+
+*/
+/* Track Detail YouTube Styles */
+.td-youtube-iframe-container {
+  /* Remove padding, this allows the video to sit snug with the sides of the page on the smallest viewports.
+      Materialize default padding will be inherited from .row and .col on medium and above */
+  /* Similiar to above mixin. In some cases functionality is easier to implement with max width */ }
+  @media (max-width: 600px) {
+    .td-youtube-iframe-container {
+      padding: 0; } }
+  .td-youtube-iframe-container iframe {
+    width: 300px;
+    height: 183px;
+    /* Gradually grow the size of the iframe as the page size increases */
+    /* This mixin used for most media queries, using responsive design principles of mobile first */
+    /* This mixin used for most media queries, using responsive design principles of mobile first */ }
+    @media (min-width: 601px) {
+      .td-youtube-iframe-container iframe {
+        width: 450px;
+        height: 275px; } }
+    @media (min-width: 993px) {
+      .td-youtube-iframe-container iframe {
+        width: 560px;
+        height: 315px; } }
+
+/* /Track Detail YouTube Styles */
+/*
+
 These styles are related to the YouTube videos found throughout the app
 
 */
