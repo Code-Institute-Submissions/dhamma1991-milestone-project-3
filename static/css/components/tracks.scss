@@ -53,11 +53,19 @@ Styles relevant to the content within tracks.html
     li {
         list-style-type: none;
         
+        &:nth-of-type(n + 2) { // Target all but the first track
+            margin-top: $defaultMargin; // The first track doesn't need any top margin because it has no track above it
+        }
+        
         .rank-artist-title {
             font-weight: 500; // Emphasise the <rank>. <artist> - <title>
         }
         
-        small {
+        .btn { // The upvote, edit, and delete buttons
+            margin: $defaultMargin 0;
+        }
+        
+        small { // The submitted by <user> and date added text
             display: block;
         }
         
@@ -67,7 +75,7 @@ Styles relevant to the content within tracks.html
         This allows the user to see that there is video media present, but saves on bandwidth */
     .youtube { // The wrapper
         background-color: #000;
-        margin-bottom: 30px;
+        margin-bottom: $defaultMargin;
         position: relative;
         padding-top: 56.25%;
         overflow: hidden;

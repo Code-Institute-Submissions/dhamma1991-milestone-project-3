@@ -266,13 +266,17 @@ Styles relevant to the content within tracks.html
       Make them look like videos when they are in fact images, when clicked on video is loaded.
       This allows the user to see that there is video media present, but saves on bandwidth */
   /* /YouTube Lazy Loading */ }
+  .track-container li:nth-of-type(n + 2) {
+    margin-top: 15px; }
   .track-container li .rank-artist-title {
     font-weight: 500; }
+  .track-container li .btn {
+    margin: 15px 0; }
   .track-container li small {
     display: block; }
   .track-container li .youtube {
     background-color: #000;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     position: relative;
     padding-top: 56.25%;
     overflow: hidden;
