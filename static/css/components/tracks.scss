@@ -75,11 +75,15 @@ Styles relevant to the content within tracks.html
         This allows the user to see that there is video media present, but saves on bandwidth */
     .youtube { // The wrapper
         background-color: #000;
-        margin-bottom: $defaultMargin;
+        margin: $defaultMargin auto;
         position: relative;
-        padding-top: 56.25%;
+        // padding-top: 56.25%;
         overflow: hidden;
         cursor: pointer;
+        max-width: 730px;
+        min-width: 287px;
+        max-height: 411px;
+        min-height: 161px;
         
         img { // The image
             width: 100%;
@@ -87,7 +91,7 @@ Styles relevant to the content within tracks.html
             left: 0;
             opacity: 0.7;
             cursor: pointer;
-            position: absolute;
+            // position: absolute;
         }
             
         .play-button { // The play button background
