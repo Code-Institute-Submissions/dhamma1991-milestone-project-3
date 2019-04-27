@@ -255,6 +255,7 @@
 
 {% block youtube_lazy_loading %}
     <script>
+        /* Script courtesy of https://webdesign.tutsplus.com/tutorials/how-to-lazy-load-embedded-youtube-videos--cms-26743 with modifications */
         //Select the div elements that will wrap the embedded video
         var youtube = document.querySelectorAll( ".youtube" );
         //Since I have 5 Youtube videos per page, iterate through each of the selected elements
@@ -271,6 +272,7 @@
                         
             youtube[i].addEventListener( "click", function() {
          
+                // Create the iframe
                 var iframe = document.createElement( "iframe" );
          
                     iframe.setAttribute( "frameborder", "0" );
