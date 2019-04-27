@@ -1,0 +1,13 @@
+/*
+
+Styles relevant to the content within tracks.html
+
+*/
+
+.sort-container {
+    font-size: 1.5rem; // Boost the size of the sort dropdown and label text
+    
+    .material-icons {
+        font-size: 18px; // Adjust the default size for the material icons. Lines up with the dropdown text better
+    }
+}

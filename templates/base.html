@@ -115,6 +115,10 @@
         {% block decade_link_js %}
         {% endblock %}
         
+        <!-- Sorting Order Text Change -->
+        {% block sorting_order_text_js %}
+        {% endblock %}
+        
         <!-- Genre Link Script. This turns the final option in the genre dropdowns on the add-track and edit-track forms into a link to add-genre.html -->
         {% block genre_link_js %}
         {% endblock %}
@@ -137,36 +141,5 @@
             document.getElementById("copyright").innerHTML = theDate;
         </script>
         <!-- /Scripts -->
-    
-        <script>
-            // switch('{{ sorting_order }}') {
-            //     case '1': 
-            //         $('.dropdown-button p').text("Most Popular");
-            //     break;
-            //     case 2:
-            //         $('.dropdown-button p').text("Least Popular");
-            //     break;
-            //     case 3:
-            //         $('.dropdown-button p').text("Date Added (Newest)");
-            //     break;
-            //     case 4:
-            //         $('.dropdown-button p').text("Date Added (Oldest)");
-            //     break;
-            //     default:
-            //         $('.dropdown-button p').text("default Most Popular");
-            // }
-            
-            // Would of preferred switch statment here but for some reason that didn't work
-            if ('{{ sorting_order }}' == 1) {
-                $('.dropdown-button p').text("Most Popular");
-            } else if ('{{ sorting_order }}' == 2) {
-                $('.dropdown-button p').text("Least Popular");
-            } else if ('{{ sorting_order }}' == 3) {
-                $('.dropdown-button p').text("Date Added (Newest)");
-            } else if ('{{ sorting_order }}' == 4) {
-                $('.dropdown-button p').text("Date Added (Oldest)");
-            }
-        </script>
-        
     </body>
 </html>

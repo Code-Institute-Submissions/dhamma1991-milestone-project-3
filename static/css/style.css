@@ -35,6 +35,11 @@
 
 /* /Helpers */
 /* Components */
+/*
+
+Styles that are common across multiple pages
+
+*/
 /* LAYOUT HELPER STYLES, DELETE WHEN NOT NEEDED */
 /* Sticky Footer */
 body {
@@ -205,6 +210,16 @@ These styles are related to the unique content for the index page
     font-weight: 600; }
 
 /* /Top Tracks Section */
+/*
+
+Styles relevant to the content within tracks.html
+
+*/
+.sort-container {
+  font-size: 1.5rem; }
+  .sort-container .material-icons {
+    font-size: 18px; }
+
 /*
 
 These styles are related to the YouTube videos found throughout the app

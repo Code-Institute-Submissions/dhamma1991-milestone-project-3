@@ -3,7 +3,26 @@
 {% block content %}
     <main class="container">
         <div class="row">
-            <div class="col s3">
+            <div class="col s12 sort-container">
+                <span>SORT:</span>
+                
+                <!-- Dropdown Trigger -->
+                <a class='dropdown-button' href='#' data-activates='sort-dropdown'>
+                    <span class="sort-text"></span>
+                    <i class="material-icons">arrow_drop_down</i>
+                </a>
+                <!-- /Dropdown Trigger -->
+            
+                <!-- Dropdown Content -->
+                <ul id='sort-dropdown' class='dropdown-content'>
+                    <li><a class="col s3" href="{{ url_for('sort_tracks_upvote_desc', decade_filter = decade_filter) }}">Sort by Most Popular</a></li>
+                    <li><a class="col s3" href="{{ url_for('sort_tracks_date_added_desc', decade_filter = decade_filter) }}">Sort by Date Added (Newest)</a></li>
+                    <li><a class="col s3" href="{{ url_for('sort_tracks_upvote_asc', decade_filter = decade_filter) }}">Sort by Least Popular</a></li>
+                    <li><a class="col s3" href="{{ url_for('sort_tracks_date_added_asc', decade_filter = decade_filter) }}">Sort by Date Added (Oldest)</a></li>
+                </ul>
+                <!-- /Dropdown Content -->
+            </div>
+            <div class="col s12">
                 <label for="decade-options-select">Filter tracks by decade</label>
                 
                 <select id="decade-options-select" name="decade-options-select">
@@ -19,20 +38,6 @@
                 </select>     
             </div>
         </div>
-        
-        <!-- Dropdown Trigger -->
-        <p>SORT:</p>
-        
-        <a class='dropdown-button' href='#' data-activates='sort-dropdown'><p>[sort goes here]</p><i class="material-icons">arrow_drop_down</i></a>
-        
-        <!-- Dropdown Structure -->
-        <ul id='sort-dropdown' class='dropdown-content'>
-            <li><a class="col s3" href="{{ url_for('sort_tracks_upvote_desc', decade_filter = decade_filter) }}">Sort by Most Popular</a></li>
-            <li><a class="col s3" href="{{ url_for('sort_tracks_date_added_desc', decade_filter = decade_filter) }}">Sort by Date Added (Newest)</a></li>
-            <li><a class="col s3" href="{{ url_for('sort_tracks_upvote_asc', decade_filter = decade_filter) }}">Sort by Least Popular</a></li>
-            <li><a class="col s3" href="{{ url_for('sort_tracks_date_added_asc', decade_filter = decade_filter) }}">Sort by Date Added (Oldest)</a></li>
-        </ul>
-
         <!-- Accordion Container -->
         <ul class="collapsible">
             {% for track in tracks %} <!-- For each track in the database -->
@@ -89,6 +94,8 @@
         {% if pagination < tracks_count - 5 %}
             <a href="{{ url_for('next_tracks', decade_filter = decade_filter, sorting_order = sorting_order) }}">Next</a>
         {% endif %}
+        
+        <!-- Remember to delete these??? -->
         {{ pagination }}
         {{ tracks_col_count }}
         {{ rankings }}
@@ -242,6 +249,21 @@
                     this.innerHTML = "";
                     this.appendChild( iframe );
             } );
+        }
+    </script>
+{% endblock %}
+
+{% block sorting_order_text_js %}
+    <script>
+        // Would of preferred switch statment here but for some reason that didn't work
+        if ('{{ sorting_order }}' == 1) {
+            $('.dropdown-button span').text("Most Popular");
+        } else if ('{{ sorting_order }}' == 2) {
+            $('.dropdown-button span').text("Least Popular");
+        } else if ('{{ sorting_order }}' == 3) {
+            $('.dropdown-button span').text("Date Added (Newest)");
+        } else if ('{{ sorting_order }}' == 4) {
+            $('.dropdown-button span').text("Date Added (Oldest)");
         }
     </script>
 {% endblock %}
