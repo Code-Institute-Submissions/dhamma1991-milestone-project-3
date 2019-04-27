@@ -65,7 +65,7 @@ Styles relevant to the content within tracks.html
         Style the thumbnail images that appear on tracks.html.
         Make them look like videos when they are in fact images, when clicked on video is loaded.
         This allows the user to see that there is video media present, but saves on bandwidth */
-    .youtube {
+    .youtube { // The wrapper
         background-color: #000;
         margin-bottom: 30px;
         position: relative;
@@ -73,7 +73,7 @@ Styles relevant to the content within tracks.html
         overflow: hidden;
         cursor: pointer;
         
-        img {
+        img { // The image
             width: 100%;
             top: 0;
             left: 0;
@@ -82,7 +82,7 @@ Styles relevant to the content within tracks.html
             position: absolute;
         }
             
-        .play-button {
+        .play-button { // The play button background
             width: 90px;
             height: 60px;
             background-color: #333;
@@ -96,7 +96,7 @@ Styles relevant to the content within tracks.html
             left: 50%;
             transform: translate3d( -50%, -50%, 0 );
             
-            &:before {
+            &:before { // The play button icon
                 content: "";
                 border-style: solid;
                 border-width: 15px 0 15px 26.0px;
@@ -108,7 +108,7 @@ Styles relevant to the content within tracks.html
             }
         }
             
-        iframe {
+        iframe { // The actual YouTube video
             position: absolute;
             height: 100%;
             width: 100%;
