@@ -7,8 +7,12 @@ $xxlBreakpoint: 1750px; // Custom, this is not a Materialise breakpoint,
 /* /Mixin */
 
 /* Colors */
+/* Materialize Colors */
+// These vars used primarily to set fonts to the same colors as Materialize's default font colors
+$materializeFontBlack: rgba(0,0,0,0.87);
+$materializeLinkBlue: #039be5; 
+/* /Materialize Colors */
 $offWhite: #fdfdfd;
-$materializeFontBlack: rgba(0,0,0,0.87); // Used primarily to set fonts to the same color as Materialize's default font color
 $themeColor: #ff6302;
 /* /Colors */
 

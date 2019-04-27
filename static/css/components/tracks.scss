@@ -20,6 +20,7 @@ Styles relevant to the content within tracks.html
                 /* To make the filter dropdown and sort dropdown have matching font size, a declaration must be made here as well
                     to override the Materialize default */
                 font-size: 1.3rem;
+                color: $materializeLinkBlue;
             }
         }
     }
