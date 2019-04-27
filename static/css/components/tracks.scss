@@ -4,10 +4,29 @@ Styles relevant to the content within tracks.html
 
 */
 
-.sort-container {
-    font-size: 1.5rem; // Boost the size of the sort dropdown and label text
+.sort-filter-container {
+    margin-top: $defaultMargin;
+    font-size: 1.3rem; // Boosted from Materialize default
     
-    .material-icons {
-        font-size: 18px; // Adjust the default size for the material icons. Lines up with the dropdown text better
+    .filter-container {
+        margin-bottom: $defaultMargin;
+        
+        label { // The filter select label
+            font-size: 0.9rem;
+        }
+        
+        .select-wrapper { // The filter select wrapper
+            input {
+                /* To make the filter dropdown and sort dropdown have matching font size, a declaration must be made here as well
+                    to override the Materialize default */
+                font-size: 1.3rem;
+            }
+        }
     }
+    
+    .sort-container {
+        .material-icons {
+            font-size: 18px; // Adjust the default size for the material icons. Lines up with the dropdown text better
+        }
+    } 
 }

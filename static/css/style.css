@@ -13,6 +13,7 @@
 /* /Mixin */
 /* Colors */
 /* /Colors */
+/* Structural */
 /* Box Shadows */
 /* /Box Shadows */
 .td-youtube-iframe-container iframe {
@@ -215,9 +216,18 @@ These styles are related to the unique content for the index page
 Styles relevant to the content within tracks.html
 
 */
-.sort-container {
-  font-size: 1.5rem; }
-  .sort-container .material-icons {
+.sort-filter-container {
+  margin-top: 15px;
+  font-size: 1.3rem; }
+  .sort-filter-container .filter-container {
+    margin-bottom: 15px; }
+    .sort-filter-container .filter-container label {
+      font-size: 0.9rem; }
+    .sort-filter-container .filter-container .select-wrapper input {
+      /* To make the filter dropdown and sort dropdown have matching font size, a declaration must be made here as well
+          to override the Materialize default */
+      font-size: 1.3rem; }
+  .sort-filter-container .sort-container .material-icons {
     font-size: 18px; }
 
 /*

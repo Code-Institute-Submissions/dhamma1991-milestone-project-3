@@ -12,6 +12,9 @@ $materializeFontBlack: rgba(0,0,0,0.87); // Used primarily to set fonts to the s
 $themeColor: #ff6302;
 /* /Colors */
 
+/* Structural */
+$defaultMargin: 15px; // The default margin between elements
+
 /* Box Shadows */
 // First 3 shadows are copied from default Materialize nav box-shadow. Last 3 are the same but reversed, so the element has both top and bottom shadow
 // This variable is used to give the parallax-dividers a similar shadow effect to the nav
