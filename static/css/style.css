@@ -241,7 +241,7 @@ Styles relevant to the content within tracks.html
 /* /Sort and Filter Container */
 .track-container li {
   list-style-type: none; }
-  .track-container li .rank-number {
+  .track-container li .rank-artist-title {
     font-weight: 500; }
 
 /*

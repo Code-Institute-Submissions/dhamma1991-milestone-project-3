@@ -52,7 +52,7 @@
                 <li>
                     <!-- Rank. Artist - Title
                         Rank is determined by adding the current pagination value to the loop index -->
-                    <span class="rank-number">{{ loop.index + pagination }}. </span><span>{{ track.artist }} - {{ track.track_title }}</span>
+                    <span class="rank-artist-title">{{ loop.index + pagination }}. {{ track.artist }} - {{ track.track_title }}</span>
                     <!-- /Rank. Artist - Title -->
                     
                     <form action="{{ url_for('upvote_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id) }}" method="POST">
