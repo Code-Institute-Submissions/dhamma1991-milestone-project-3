@@ -50,28 +50,39 @@
         <section class="track-container flow-text">
             {% for track in tracks %} <!-- For each track in the database -->
                 <li>
-                    <!-- Accordion Header -->
-                    
-                    <!-- Rank. Artist - Title -->
-                    <!-- Rank is determined by adding the current pagination value to the loop index -->
+                    <!-- Rank. Artist - Title
+                        Rank is determined by adding the current pagination value to the loop index -->
                     <span class="rank-number">{{ loop.index + pagination }}. </span><span>{{ track.artist }} - {{ track.track_title }}</span>
                     <!-- /Rank. Artist - Title -->
                     
-                    <!-- Upvote Button -->
                     <form action="{{ url_for('upvote_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id) }}" method="POST">
+                        <!-- Upvote Button -->
                         <button class="btn upvote-button" type="submit">
                             <i class="material-icons">arrow_upward</i>
                         </button>
-                        {{ track.upvotes }}
+                        <!-- /Upvote Button -->
+                        
+                        <!-- Upvote Count -->
+                        <span>{{ track.upvotes }}</span>
+                        <!-- /Upvote Count -->
                     </form>
-                    <!-- /Upvote Button -->
                     
-                    {{ track.date_added }}
+                    <!-- Date Added Text -->
+                    <span>{{ track.date_added }}</span>
+                    <!-- /Date Added Text -->
+                    
                     <!-- Edit Button -->
                     <a href="{{url_for('edit_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
+                    <!-- /Edit Button -->
+                    
                     <!-- Delete Button -->
                     <a href="{{url_for('delete_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id=track._id)}}" class="waves-effect waves-light btn btn_small red">Delete</a>
+                    <!-- /Delete Button -->
+                    
+                    <!-- Submitted By <User> -->
                     <span>Submitted by {{ track.user_name }}</span>
+                    <!-- /Submitted By <User> -->
+                    
                     <!-- YouTube Video -->
                     <!-- (1) video wrapper -->
                     <div class="youtube" data-embed="{{ track.youtube_link|replace('https://www.youtube.com/watch?v=', '') }}"> 
@@ -81,13 +92,22 @@
                          
                     </div>
                     <!-- /YouTube Video -->
-                    <!-- /Accordion Header -->
                     
-                    <!-- Accordion Body -->
+                    <!-- "Released In" Text -->
                     <span>Released in {{ track.year }}</span>
+                    <!-- /"Released In" Text -->
+                    
+                    <!-- Genre -->
                     <p>{{ track.genre }}</p>
-                    <span>User {{ track.user_name }} says: {{ track.description|truncate(60) }}</span> <span><a href="{{ url_for('track_detail', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id) }}">see more.</a></span>
-                    <!-- /Accordion Body -->
+                    <!-- /Genre -->
+                    
+                    <!-- Truncated Desciption -->
+                    <span>User {{ track.user_name }} says: {{ track.description|truncate(60) }}</span> 
+                    
+                    <span>
+                        <a href="{{ url_for('track_detail', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id) }}">see more.</a>
+                    </span>
+                    <!-- /Truncated Desciption -->
                 </li>
             {% endfor %}
         </section>
