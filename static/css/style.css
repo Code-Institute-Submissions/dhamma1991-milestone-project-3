@@ -237,6 +237,9 @@ Styles relevant to the content within tracks.html
   .sort-filter-container .sort-container .material-icons {
     font-size: 18px; }
 
+.track-container li {
+  list-style-type: none; }
+
 /*
 
 These styles are related to the YouTube videos found throughout the app
