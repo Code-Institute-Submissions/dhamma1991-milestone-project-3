@@ -3,6 +3,7 @@
 {% block content %}
 <main class="container">
     <h1 class="center-align">Edit Song</h1>
+    
         <!-- Form -->
         <form action="{{ url_for('insert_edited_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id) }}" method="POST" class="col s12" novalidate>
             <div class="row">
@@ -36,8 +37,9 @@
                     <label id="year_label" for="year" data-error="Please enter the year the track was first released in the format YYYY (e.g. 1976)" data-success="&#10004;">Year</label>
                 </div>
                 
-                <div class="input-field col s12 l6">
+                <div class="input-field col s12">
                     <i class="material-icons prefix">category</i>
+                    
                     <!-- No validation is necessary for the genre select box on the edit form since it is impossible to submit no value; there is automatically a value populating the select box -->
                     <!-- However, the script in formValidation.js will still provide visual feedback with a green underline if the select box is changed -->
                     <label id="genre_label" for="genre" style="visibility: hidden;">Genre</label>
@@ -62,12 +64,10 @@
                 </div>
                 
                 <!-- Track Description -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">description</i>
-                        <textarea id="description" name="description" class="validate materialize-textarea" value="{{ track.description }}" required maxlength="1000">{{ track.description }}</textarea>
-                        <label id="description_label" for="description" data-error="Please enter why you love this track!" data-success="&#10004;">And why does this song deserve to be here? (max 1,000 characters)</label>
-                    </div>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">description</i>
+                    <textarea id="description" name="description" class="validate materialize-textarea" value="{{ track.description }}" required maxlength="1000">{{ track.description }}</textarea>
+                    <label id="description_label" for="description" data-error="Please enter why you love this track!" data-success="&#10004;">And why does this song deserve to be here? (max 1,000 characters)</label>
                 </div>
                 <!-- /Track Description -->
                 
