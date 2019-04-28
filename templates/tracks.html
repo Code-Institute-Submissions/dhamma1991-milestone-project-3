@@ -48,7 +48,7 @@
         
         <!-- Track Container -->
         <section class="track-container flow-text center-align">
-            {% if tracks %} <!-- If tracks are found using the user's filter -->
+            {% if tracks_count > 0 %} <!-- If tracks are found using the user's filter -->
                 {% for track in tracks %} <!-- For each track in the database -->
                     <li>
                         <!-- Rank. Artist - Title
@@ -116,8 +116,8 @@
                     <div class="divider"></div>
                 {% endfor %}
             {% else %} <!-- Else no tracks have been found, this means that no track currently exists that meets the current filter's requirements -->
-                <p>Looks like there's no music for that period yet!</p>
-                <p>Maybe you could <a href="{{ url_for('add_tracks') }}">add one?</a></p>
+                <p>Looks like there's no songs for that period yet!</p>
+                <p>Maybe you could <a href="{{ url_for('add_track') }}">add one?</a></p>
             {% endif %}
         </section>
         <!-- /Track Container -->

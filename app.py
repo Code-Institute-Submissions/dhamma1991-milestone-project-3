@@ -191,7 +191,8 @@ def get_tracks(decade_filter, sorting_order):
                                                                                 
     # Get the number of tracks as currently defined by the filtering
     # This is used within tracks.html to determine whether to show the 'next' button
-    # It would not make sense to show the next button if there are no more tracks to view                                                                          
+    # It would not make sense to show the next button if there are no more tracks to view  
+    # Also determines whether to show a message if no tracks have been found for a particular filter
     tracks_count = tracks.count() 
 
     # Render tracks.html
