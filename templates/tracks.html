@@ -117,14 +117,17 @@
         </section>
         <!-- /Track Container -->
         
-        <!-- Previous arrow -->
+        <!-- Previous Link -->
         {% if pagination %}
             <a href="{{ url_for('prev_tracks', decade_filter = decade_filter, sorting_order = sorting_order) }}">Previous</a>
         {% endif %}
-        <!-- Next arrow -->
+        <!-- /Previous Link -->
+        
+        <!-- Next Link -->
         {% if pagination < tracks_count - 5 %}
             <a href="{{ url_for('next_tracks', decade_filter = decade_filter, sorting_order = sorting_order) }}">Next</a>
         {% endif %}
+        <!-- /Next Link -->
         
         <!-- Remember to delete these??? -->
         {{ pagination }}
