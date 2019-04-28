@@ -118,11 +118,11 @@
         <!-- /Track Container -->
         
         <!-- Next and Previous Links -->
-        <div class="row center-align">
+        <div class="row center-align next-prev-links">
             <!-- Previous Link -->
             <div class="col s6">
             {% if pagination %}
-                <a href="{{ url_for('prev_tracks', decade_filter = decade_filter, sorting_order = sorting_order) }}">Previous</a>
+                <a href="{{ url_for('prev_tracks', decade_filter = decade_filter, sorting_order = sorting_order) }}">PREVIOUS</a>
             {% endif %}
             </div>
             <!-- /Previous Link -->
@@ -130,7 +130,7 @@
             <!-- Next Link -->
             <div class="col s6">
             {% if pagination < tracks_count - 5 %}
-                <a href="{{ url_for('next_tracks', decade_filter = decade_filter, sorting_order = sorting_order) }}">Next</a>
+                <a href="{{ url_for('next_tracks', decade_filter = decade_filter, sorting_order = sorting_order) }}">NEXT</a>
             {% endif %}
             </div>
             <!-- /Next Link -->

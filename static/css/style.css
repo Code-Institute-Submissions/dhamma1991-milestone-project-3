@@ -319,6 +319,9 @@ Styles relevant to the content within tracks.html
       top: 0;
       left: 0; }
 
+.next-prev-links {
+  font-size: 2rem; }
+
 /*
 
 Styles used within track-detail.html
