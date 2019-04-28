@@ -42,7 +42,7 @@
                     
                     <!-- No validation is necessary for the genre select box on the edit form since it is impossible to submit no value; there is automatically a value populating the select box -->
                     <!-- However, the script in formValidation.js will still provide visual feedback with a green underline if the select box is changed -->
-                    <label id="genre_label" for="genre" style="visibility: hidden;">Genre</label>
+                    <label id="genre_label" for="genre">Genre</label>
                     
                     <select id="genre" name="genre">
                         <!-- The user must pick a genre, they can just pick 'Genre' -->
@@ -70,7 +70,7 @@
                     <label id="description_label" for="description" data-error="Please enter why you love this track!" data-success="&#10004;">And why does this song deserve to be here? (max 1,000 characters)</label>
                 </div>
                 <!-- /Track Description -->
-                
+            </div>
                 <div class="row">
                     <button class="btn waves-effect waves-light" type="submit" name="action">Edit Track
                         <i class="material-icons right">send</i>
