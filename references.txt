@@ -13,6 +13,10 @@ http://klck1400.com/seeing_is_believing/2933
 lazy loading script
 https://webdesign.tutsplus.com/tutorials/how-to-lazy-load-embedded-youtube-videos--cms-26743
 
+NOTE: Can probably do a nice reference section listing all the media you used from canva
+logo
+https://www.canva.com/media/MACy4VY-bGc
+
 # # TECHNOLOGIES
 font squirrel
 https://www.fontsquirrel.com/tools/webfont-generator
