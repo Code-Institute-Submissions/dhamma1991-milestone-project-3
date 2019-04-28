@@ -116,6 +116,7 @@
                     <div class="divider"></div>
                 {% endfor %}
             {% else %} <!-- Else no tracks have been found, this means that no track currently exists that meets the current filter's requirements -->
+                <img src="{{ url_for('static', filename='images/smiley.png') }}">
                 <p>Looks like there's no songs for that period yet!</p>
                 <p>Maybe you could <a href="{{ url_for('add_track') }}">add one?</a></p>
             {% endif %}
