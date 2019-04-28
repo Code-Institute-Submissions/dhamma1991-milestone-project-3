@@ -420,21 +420,25 @@ def insert_edited_track(decade_filter, sorting_order, track_id):
     
     # Loop through the cursor and get the values the user shouldn't be able to change
     # Once tracks.update occurs, any values not specified within the update won't be added to the database
-    # That would mean the track would lose its upvotes, date_added and date_added_raw
+    # That would mean the track would lose its upvotes, date_added, date_added_raw and user_name
     for item in old_values:
         upvotes = item['upvotes']
         date_added = item['date_added']
         date_added_raw = item['date_added_raw']
+        user_name = item['user_name']
     
     # Do the update
     tracks.update( {'_id': ObjectId(track_id)},
     {
-        'track_title':request.form.get('track_title'),
-        'artist':request.form.get('artist'),
+        'track_title': request.form.get('track_title'),
+        'artist': request.form.get('artist'),
         'youtube_link': request.form.get('youtube_link'),
         'year': int(request.form.get('year')),
-        'genre':request.form.get('genre'),
-        # These last three are the same values as what were created when the track was added to the database initially
+        'genre': request.form.get('genre'),
+        'description': request.form.get('description'),
+        # These last four are the same values as what were created when the track was added to the database initially
+        # Editing a user name is not an option. It's not desirable for users to steal someone's track upload!
+        'user_name': user_name,
         'upvotes': upvotes,
         'date_added': date_added,
         'date_added_raw': date_added_raw

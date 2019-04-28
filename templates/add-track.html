@@ -52,10 +52,12 @@
                     
                     <select id="genre" name="genre" class="validate" required>
                         <option value="" disabled selected>Genre</option> <!-- This option won't be selectable but serves as a visual clue as to what the user should do -->
+                        
                         {% for genre in genres %}
                             <!-- If there are 4 genres in the database there'll be 4 options, if there are 10 genres there'll be 10 options and so on -->
                             <option value="{{ genre.genre }}">{{ genre.genre }}</option> <!-- The value here is what will be submitted to the form -->
                         {% endfor %}
+                        
                         <option value="add-genre-link">Add a Genre</option>
                     </select>
                     
