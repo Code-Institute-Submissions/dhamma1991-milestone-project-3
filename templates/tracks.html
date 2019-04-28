@@ -250,45 +250,52 @@
                 });
             </script>
         {% endif %}
-
 {% endblock %}
 
+<!-- Lazy Loading YouTube Script -->
 {% block youtube_lazy_loading %}
     <script>
         /* Script courtesy of https://webdesign.tutsplus.com/tutorials/how-to-lazy-load-embedded-youtube-videos--cms-26743 with modifications */
         //Select the div elements that will wrap the embedded video
-        var youtube = document.querySelectorAll( ".youtube" );
-        //Since I have 5 Youtube videos per page, iterate through each of the selected elements
+        var youtube = document.querySelectorAll(".youtube");
+        
+        //Since there are 5 Youtube videos per page, iterate through each of the selected elements
         for (var i = 0; i < youtube.length; i++) {
-            // thumbnail image source.
-            var source = "https://img.youtube.com/vi/"+ youtube[i].dataset.embed +"/mqdefault.jpg"; 
+            var source = "https://img.youtube.com/vi/"+ youtube[i].dataset.embed +"/mqdefault.jpg"; // thumbnail image source. 
             
             // Load the image asynchronously
             var image = new Image();
-                image.src = source;
-                image.addEventListener( "load", function() {
-                    youtube[ i ].appendChild( image );
-                }( i ) );
-                        
-            youtube[i].addEventListener( "click", function() {
+            image.src = source;
+            image.addEventListener("load", function() {
+                youtube[ i ].appendChild(image);
+            }(i) );
+                    
+            youtube[i].addEventListener("click", function() {
+            /* Get the current height of the youtube container (any container will do because they should all be the same height)
+                This is a custom edit to this script to prevent the iframe from collapsing and losing its height */
+                var height = document.getElementsByClassName("youtube")[0].clientHeight;
+                
+                var iframe = document.createElement("iframe"); // Create the iframe
          
-                // Create the iframe
-                var iframe = document.createElement( "iframe" );
-         
-                    iframe.setAttribute( "frameborder", "0" );
-                    iframe.setAttribute( "allowfullscreen", "" );
-                    iframe.setAttribute( "src", "https://www.youtube.com/embed/"+ this.dataset.embed +"?rel=0&showinfo=0&autoplay=1" );
-         
-                    this.innerHTML = "";
-                    this.appendChild( iframe );
+                // Set necessary attributes
+                iframe.setAttribute("frameborder", "0");
+                iframe.setAttribute("allowfullscreen", "");
+                iframe.setAttribute("height", height);
+                iframe.setAttribute("src", "https://www.youtube.com/embed/"+ this.dataset.embed +"?rel=0&showinfo=0&autoplay=1");
+     
+                this.innerHTML = ""; // Clear everything inside the .youtube div
+                this.appendChild(iframe); // Append the iframe created above
+                this.style.height = height.toString() + "px"; // Set the height of the container
             } );
         }
     </script>
 {% endblock %}
+<!-- /Lazy Loading YouTube Script -->
 
+<!-- Sorting Order Text Script -->
 {% block sorting_order_text_js %}
     <script>
-        // Would of preferred switch statment here but for some reason that didn't work
+        // Would of preferred a switch statment here but for some reason that didn't work
         if ('{{ sorting_order }}' == 1) {
             $('.dropdown-button span').text("Most Popular");
         } else if ('{{ sorting_order }}' == 2) {
@@ -300,3 +307,4 @@
         }
     </script>
 {% endblock %}
+<!-- /Sorting Order Text Script -->
