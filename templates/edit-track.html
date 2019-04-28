@@ -99,7 +99,7 @@
             // If the select box's value is equal to 'add-genre-link'...
             if (selectVal == 'add-genre-link') {
                 // Redirect the user to add-genre.html
-                window.location.href = "{{ url_for('add_genre') }}";
+                window.location.href = "{{ url_for('add_genre', track_id = track._id) }}";
             }
         });
     </script>
