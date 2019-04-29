@@ -6,7 +6,7 @@ import sys
 import os
 
 # Allow full utilisation of Flask framework
-from flask import Flask, render_template, redirect, request, url_for, session
+from flask import Flask, render_template, redirect, request, url_for, session, flash
 
 # Allow database manipulation
 from flask_pymongo import PyMongo, pymongo
@@ -416,6 +416,9 @@ def insert_track():
             'date_added_raw': datetime.now()
         }
     )
+    
+    # Feedback to the user the track was successfully submitted
+    flash('Track added successfully!')
     
     # Once submitted, redirect to the get_tracks function to view the collection using the default sorting order
     return redirect(url_for('get_tracks', sorting_order = 1, decade_filter = 'all'))
