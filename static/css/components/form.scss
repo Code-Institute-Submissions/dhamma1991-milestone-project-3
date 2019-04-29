@@ -6,37 +6,35 @@ These styles are related to the pages for the forms allowing the user to add a t
 
 /* Form */
 form {
-    // label {
-    //     font-size: 1rem!important; // Ensure the labels are all the same size
+    // .input-field {
+    //     margin-top: 2rem; // Up from 1 rem default in Materialize
     // }
     
-    /* Genre Label */
     // The genre label is unique in that it is for a dropdown element
     #genre_label {
         top: -26px; // Position the label so it doesm't overlap with the dropdown
-    }
-    /* /Genre Label */
-}
-/* /Form */
-
-.btn-container {
-    .btn {
-        /* Adjust default padding added by Materialize
-            Give some margin between the button text and the button's edges using min-width
-            This keeps both the submit and cancel buttons the same size */
-        padding: 0 1rem 0 0; // Keep some padding on the right for the sake of the icons
-        min-width: 15rem;
-        margin-bottom: 25px; // Give some space between the buttons
+        // font-size: 0.8rem; // Match the font size of the other label elements
     }
     
-    .cancel-insert-btn {
-        background-color: red;
+    #description_label {
+        // font-size: 0.8rem; // Match the font size of the other label elements
     }
-    // .waves-effect.waves-red {
-    //     .waves-ripple {
-    //      /* The alpha value allows the text and background color
-    //      of the button to still show through. */
-    //       background-color: rgba(242, 69, 69, 0.65);
-    //     }
-    // }
+    
+    /* Form Buttons */
+    .btn-container {
+        .btn {
+            /* Adjust default padding added by Materialize
+                Give some margin between the button text and the button's edges using min-width
+                This keeps both the submit and cancel buttons the same size */
+            padding: 0 1rem 0 0; // Keep some padding on the right for the sake of the icons
+            min-width: 15rem;
+            margin-bottom: 25px; // Give some space between the buttons
+        }
+        
+        .cancel-insert-btn {
+            background-color: red;
+        }
+    }
+    /* /Form Buttons */
 }
+/* /Form */

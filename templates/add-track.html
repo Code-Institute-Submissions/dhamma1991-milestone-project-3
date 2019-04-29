@@ -8,15 +8,17 @@
         <form action="{{ url_for('insert_track') }}" method="POST" class="col s12" novalidate>
             <!-- The form will call the insert_track function located in app.py -->
             <div class="row">
+                <!-- Track Title -->
                 <div class="input-field col s12 l6">
                     <i class="material-icons prefix">assignment</i>
                     
                     <input id="track_title" name="track_title" type="text" class="validate" required maxlength="500">
                     
                     <label id="track_title_label" for="track_title" data-error="Please enter the name of the track" data-success="&#10004;">Track Title</label>
-                    
                 </div>
+                <!-- /Track Title -->
                 
+                <!-- Artist -->
                 <div class="input-field col s12 l6">
                     <i class="material-icons prefix">brush</i>
                     
@@ -24,9 +26,11 @@
                     
                     <label id="artist_label" for="artist" data-error="Please enter the name of the artist of the track" data-success="&#10004;">Artist</label>
                 </div>
+                <!-- /Artist -->
             </div>
                 
             <div class="row">
+                <!-- YouTube Link -->
                 <div class="input-field col s12 l6">
                     <i class="material-icons prefix">music_video</i>
                     
@@ -34,7 +38,9 @@
                     
                     <label id="youtube_link_label" for="youtube_link" data-error="Please enter the url of a YouTube video for the track" data-success="&#10004;">YouTube Link</label>
                 </div>
+                <!-- /YouTube Link -->
                 
+                <!-- Year Released -->
                 <div class="input-field col s12 l6">
                     <i class="material-icons prefix">calendar_today</i>
                     
@@ -42,9 +48,11 @@
                     
                     <label id="year_label" for="year" data-error="Please enter the year the track was first released in the format YYYY (e.g. 1976)" data-success="&#10004;">Year</label>
                 </div>
+                <!-- /Year Released -->
             </div>
                 
             <div class="row">
+                <!-- Genre -->
                 <div class="input-field col s12 l6">
                     <i class="material-icons prefix">category</i>
                     
@@ -60,16 +68,19 @@
                         
                         <option value="add-genre-link">Add a Genre</option>
                     </select>
-                    
                 </div>
+                <!-- /Genre -->
                 
+                <!-- User -->
                 <div class="input-field col s12 l6">
                     <i class="material-icons prefix">account_box</i>
                     <input id="user_name" name="user_name" type="text" class="validate" required maxlength="100">
                     <label id="user_name_label" for="user_name" data-error="Please enter your name" data-success="&#10004;">Your Name</label>
                 </div>
+                <!-- /User -->
             </div>
                 
+            <!-- Description -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">description</i>
@@ -77,11 +88,16 @@
                     <label id="description_label" for="description" data-error="Please enter why you love this track!" data-success="&#10004;">And why does this song deserve to be here? (max 1,000 characters)</label>
                 </div>
             </div>
+            <!-- /Description -->
             
+            <!-- Button Container -->
             <div class="row btn-container center-align">
                 <!-- Submit Button -->
                 <div class="col s12 l6">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Add Song<i class="material-icons right">send</i></button>   
+                    <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Add Song
+                        <i class="material-icons right">send</i>
+                    </button>   
                 </div>
                 <!-- /Submit Button -->
                 
@@ -96,11 +112,8 @@
                 </div>
                 <!-- /Cancel Button -->
             </div>
+            <!-- /Button Container -->
         </form>
-            
-        <!--<div class="row">-->
-            <!-- cancel button used to live here -->
-        <!--</div>-->
     </main>
 {% endblock %}
 

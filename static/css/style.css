@@ -358,22 +358,21 @@ These styles are related to the pages for the forms allowing the user to add a t
 */
 /* Form */
 form {
-  /* Genre Label */
-  /* /Genre Label */ }
+  /* Form Buttons */
+  /* /Form Buttons */ }
   form #genre_label {
     top: -26px; }
+  form .btn-container .btn {
+    /* Adjust default padding added by Materialize
+        Give some margin between the button text and the button's edges using min-width
+        This keeps both the submit and cancel buttons the same size */
+    padding: 0 1rem 0 0;
+    min-width: 15rem;
+    margin-bottom: 25px; }
+  form .btn-container .cancel-insert-btn {
+    background-color: red; }
 
 /* /Form */
-.btn-container .btn {
-  /* Adjust default padding added by Materialize
-      Give some margin between the button text and the button's edges using min-width
-      This keeps both the submit and cancel buttons the same size */
-  padding: 0 1rem 0 0;
-  min-width: 15rem;
-  margin-bottom: 25px; }
-.btn-container .cancel-insert-btn {
-  background-color: red; }
-
 /* /Components */
 
 /*# sourceMappingURL=style.css.map */
