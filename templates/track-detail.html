@@ -3,24 +3,35 @@
 {% block content %}
 <main class="container">
     <h1 class="center-align">{{ track.artist }} - {{ track.track_title }}</h1>
+    
     <div class="row">
         <div class="col s12 xl6">
             <p class="reset-margin-top">{{ track.description }}</p>
+            
             <div class="container sub-container">
                 <div class="row">
-                    <div class="three3 col s6">
+                    <div class="col s6">
                         <p>{{ track.year }}</p>
                     </div>
-                    <div class="four4 col s6">
+                    
+                    <div class="col s6">
+                        <!-- Upvote Button Form -->
                         <form action="{{ url_for('upvote_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id) }}" method="POST">
-                            <button type="submit">
+                            <!-- Upvote Button -->
+                            <button class="btn upvote-button" type="submit" title="Upvote">
                                 <i class="material-icons">arrow_upward</i>
                             </button>
+                            <!-- /Upvote Button -->
+                            
+                            <!-- Upvote Count -->
                             <span>{{ track.upvotes }}</span>
+                            <!-- /Upvote Count -->
                         </form>
+                        <!-- /Upvote Button Form -->
                     </div>
                 </div>
-                <div class="five5 row">
+                
+                <div class="row">
                     <div class="col s12">
                         <p>{{ track.genre }}</p>
                     </div>
