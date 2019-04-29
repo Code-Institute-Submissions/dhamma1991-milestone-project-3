@@ -86,22 +86,6 @@
                         <a href="{{url_for('delete_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id=track._id)}}" class="waves-effect waves-light btn btn_small red">Delete</a>
                         <!-- /Delete Button -->
                         
-                        <!-- "Released In" Text -->
-                        <!--<span>Released in {{ track.year }}</span>-->
-                        <!-- /"Released In" Text -->
-                        
-                        <!-- Genre -->
-                        <!--<p>{{ track.genre }}</p>-->
-                        <!-- /Genre -->
-                        
-                        <!-- Truncated Desciption -->
-                        <!--<span>User {{ track.user_name }} says: {{ track.description|truncate(60) }}</span> -->
-                        
-                        <!--<span>-->
-                        <!--    <a href="{{ url_for('track_detail', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id) }}">see more.</a>-->
-                        <!--</span>-->
-                        <!-- /Truncated Desciption -->
-                        
                         <!-- YouTube Video -->
                         <!-- (1) video wrapper -->
                         <div class="youtube" data-embed="{{ track.youtube_link|replace('https://www.youtube.com/watch?v=', '') }}"> 
