@@ -43,20 +43,46 @@ Styles that are common across multiple pages
 //     background-color: red;
 // }
 
-/* Sticky Footer */
 body {
+    /* Sticky Footer */
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     
     main {
         flex: 1 0 auto;
+        /* /Sticky Footer */
         
         h1 {
             font-size: 3rem; // Overwrite Materialize default
         }
     }
+        
+    /* Container  
+        Overwrite Materialize base .container class
+        Allows the adjustment of the width properties which in my opinion give too much margin */
+    .container {
+        margin: 0 auto;
+        max-width: 1280px;
+        width: 95%;
+        
+        @include mqWidth($medBreakpoint) {
+            width: 90%;
+        }
+        
+        @include mqWidth($larBreakpoint) {
+            width: 85%;
+        }
+        
+        /* Sub-container. Overwrite Materialize styles in order to make use of containers within containers */
+        .sub-container {
+            margin: 0;
+            width: 100%;
+        }
+    }
+    /* /Container */
     
+    /* Footer */
     .page-footer {
         background-color: $themeColor; // Overwrite default Materialize theme color
         box-shadow: $navBoxShadowTop; // Set shadow above footer, similar to the Materialize default nav shadow
@@ -70,23 +96,23 @@ body {
             }
         }
     }
-}
-/* /Sticky Footer */
-
-/* Overwrite Materialize base .container class
-    Allows the adjustment of the width properties which in my opinion give too much margin */
-.container {
-    margin: 0 auto;
-    max-width: 1280px;
-    width: 95%;
+    /* /Footer */
     
-    @include mqWidth($medBreakpoint) {
-        width: 90%;
+    /* Buttons */
+    /* Upvote Button */
+    .upvote-button {
+        i {
+            margin-right: 0; // Remove the default margin applied by Mmaterialize
+        }
     }
+    /* /Upvote Button */
     
-    @include mqWidth($larBreakpoint) {
-        width: 85%;
+    /* Edit and Delete Buttons */
+    .edit-delete-btn {
+        min-width: 120px; // Ensure both edit and delete buttons are the same width
     }
+    /* /Edit and Delete Buttons */
+    /* /Buttons */
 }
 
 // @media only screen and (min-width: 601px) {
@@ -99,16 +125,3 @@ body {
 //     width: 85%;
 //   }
 // }
-
-/* Sub-container. Overwrite Materialize styles in order to make use of containers within containers */
-.sub-container {
-    margin: 0;
-    width: 100%;
-}
-
-/* Style the upvote button found throughout the app */
-.upvote-button {
-    i {
-        margin-right: 0; // Remove the default margin applied by Mmaterialize
-    }
-}
