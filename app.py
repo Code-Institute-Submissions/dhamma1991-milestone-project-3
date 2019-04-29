@@ -29,7 +29,7 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 # Initialise PyMongo
 mongo = PyMongo(app)
 
-# # # INDEX ROUTE
+""" INDEX PAGE """
 @app.route('/index')
 @app.route('/')
 def index():
@@ -56,7 +56,9 @@ def index():
                                                 'upvotes', pymongo.DESCENDING).limit(3),
                             title = title
                             )
+""" /INDEX PAGE """
 
+""" ABOUT PAGE """
 @app.route('/about')
 def about():
     """
@@ -68,22 +70,9 @@ def about():
     
     # Render the template, pass through necessary values
     return render_template("about.html", title = title)
-    
-@app.route('/track_detail/<decade_filter>/<sorting_order>/<track_id>')
-def track_detail(decade_filter, sorting_order, track_id):
-    """
-    Render the detailed view for each track, displaying all database fields
-    """
-    
-    # Grab the track_id from what was passed through
-    the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
-    
-    # Format the page title
-    title = "DesertIsland | " + the_track.get("artist") + " - " + the_track.get('track_title')
-    
-    # Render the template, pass through necessary values
-    return render_template("track-detail.html", title = title, decade_filter = decade_filter, sorting_order = sorting_order, track = the_track)
+""" /ABOUT PAGE """
 
+""" GET_TRACKS """
 @app.route('/get_tracks/<decade_filter>/<int:sorting_order>', methods = ['POST','GET'])
 def get_tracks(decade_filter, sorting_order):
     """
@@ -216,8 +205,9 @@ def get_tracks(decade_filter, sorting_order):
                             tracks_count = tracks_count,
                             title = title
                             )
-                            
+""" /GET_TRACKS """                    
 
+""" NEXT TRACKS """
 @app.route('/next_tracks/<decade_filter>/<int:sorting_order>')
 def next_tracks(decade_filter, sorting_order):
     """
@@ -230,7 +220,9 @@ def next_tracks(decade_filter, sorting_order):
     
     # Render the template, pass through necessary values
     return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
-                            
+""" /NEXT TRACKS """         
+
+""" PREV TRACKS """
 @app.route('/prev_tracks/<decade_filter>/<int:sorting_order>')
 def prev_tracks(decade_filter, sorting_order):
     """
@@ -243,7 +235,9 @@ def prev_tracks(decade_filter, sorting_order):
     
     # Render the template, pass through necessary values
     return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
+""" /PREV TRACKS """
 
+""" SORT TRACKS UPVOTES DESC """
 @app.route('/sort_tracks_upvote_desc/<decade_filter>')
 def sort_tracks_upvote_desc(decade_filter):
     """
@@ -252,7 +246,9 @@ def sort_tracks_upvote_desc(decade_filter):
     
     # Render the template, pass through necessary values
     return redirect(url_for('get_tracks', sorting_order = 1, decade_filter = decade_filter))
-    
+""" /SORT TRACKS UPVOTES DESC """
+
+""" SORT TRACKS UPVOTES ASC """
 @app.route('/sort_tracks_upvote_asc/<decade_filter>')
 def sort_tracks_upvote_asc(decade_filter):
     """
@@ -261,7 +257,9 @@ def sort_tracks_upvote_asc(decade_filter):
     
     # Render the template, pass through necessary values
     return redirect(url_for('get_tracks', sorting_order = 2, decade_filter = decade_filter))
+""" /SORT TRACKS UPVOTES ASC """
     
+""" SORT TRACKS DATE_ADDED DESC """
 @app.route('/sort_tracks_date_added_desc/<decade_filter>')
 def sort_tracks_date_added_desc(decade_filter):
     """
@@ -270,7 +268,9 @@ def sort_tracks_date_added_desc(decade_filter):
     
     # Render the template, pass through necessary values
     return redirect(url_for('get_tracks', sorting_order = 3, decade_filter = decade_filter))
-    
+""" /SORT TRACKS DATE_ADDED DESC """
+  
+""" SORT TRACKS DATE_ADDED ASC """  
 @app.route('/sort_tracks_date_added_asc/<decade_filter>')
 def sort_tracks_date_added_asc(decade_filter):
     """
@@ -279,7 +279,26 @@ def sort_tracks_date_added_asc(decade_filter):
     
     # Render the template, pass through necessary values
     return redirect(url_for('get_tracks', sorting_order = 4, decade_filter = decade_filter))
+""" /SORT TRACKS DATE_ADDED ASC """
     
+""" TRACK DETAIL PAGE """
+@app.route('/track_detail/<decade_filter>/<sorting_order>/<track_id>')
+def track_detail(decade_filter, sorting_order, track_id):
+    """
+    Render the detailed view for each track, displaying all database fields
+    """
+    
+    # Grab the track_id from what was passed through
+    the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
+    
+    # Format the page title
+    title = "DesertIsland | " + the_track.get("artist") + " - " + the_track.get('track_title')
+    
+    # Render the template, pass through necessary values
+    return render_template("track-detail.html", title = title, decade_filter = decade_filter, sorting_order = sorting_order, track = the_track)
+""" /TRACK DETAIL PAGE """
+    
+""" ADD TRACK PAGE """
 @app.route('/add_track')
 def add_track():
     """
@@ -288,7 +307,9 @@ def add_track():
     
     # Render the template, pass through necessary values
     return render_template('add-track.html', genres=mongo.db.genres.find())
+""" /ADD TRACK PAGE """
     
+""" INSERT TRACK """
 @app.route('/insert_track', methods=['POST']) # Because you're using POST here, you have to set that via methods
 def insert_track():
     """
@@ -324,7 +345,9 @@ def insert_track():
     
     # Once submitted, redirect to the get_tracks function to view the collection using the default sorting order
     return redirect(url_for('get_tracks', sorting_order = 1, decade_filter = 'all'))
+""" /INSERT TRACK """ 
 
+""" ADD GENRE PAGE """
 # add_genre might not always need a track_id; track_id is only needed if the user is coming to add_genre from editing a track
 @app.route('/add_genre', defaults={'track_id': None})
 @app.route('/add_genre/<track_id>')
@@ -335,7 +358,9 @@ def add_genre(track_id):
     
     # Render the template
     return render_template('add-genre.html', track_id = track_id)
+""" /ADD GENRE PAGE """
  
+""" INSERT GENRE """
 # If track_id hasn't been passed through, set a default of None
 @app.route('/insert_genre', defaults={'track_id': None}, methods=['POST'])   
 @app.route('/insert_genre/<track_id>', methods=['POST'])
@@ -360,7 +385,9 @@ def insert_genre(track_id):
     else: 
         # In which case, just take them back to add-track.html to allow them to continue adding a track
         return redirect(url_for('add_track'))
+""" /INSERT GENRE """
 
+""" UPVOTE TRACK """
 # Tracks can be upvoted from both the charts page and the track-detail page
 # This first route is for a charts page upvote
 @app.route('/upvote_track/<decade_filter>/<sorting_order>/<track_id>', defaults={'track_detail': False}, methods=['POST'])
@@ -391,7 +418,9 @@ def upvote_track(decade_filter, sorting_order, track_id, track_detail):
     else:
         # Render tracks.html, pass through necessary values to ensure the same decade_filter and sorting_order is set
         return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
-    
+""" /UPVOTE TRACK """
+
+""" EDIT TRACK PAGE """
 @app.route('/edit_track/<decade_filter>/<sorting_order>/<track_id>')
 # This function essential gets the task that matches this task id
 def edit_track(sorting_order, decade_filter, track_id):
@@ -428,7 +457,9 @@ def edit_track(sorting_order, decade_filter, track_id):
     session['decade_filter'] = decade_filter
     # Render edit_track.html, pass through necessary variables
     return render_template('edit-track.html', decade_filter = decade_filter, sorting_order = sorting_order, track = the_track, genres = all_genres)
+""" /EDIT TRACK """ 
     
+""" INSERT EDITED TRACK """
 @app.route('/insert_edited_track/<decade_filter>/<sorting_order>/<track_id>', methods=["POST"])
 def insert_edited_track(decade_filter, sorting_order, track_id):
     """
@@ -475,7 +506,9 @@ def insert_edited_track(decade_filter, sorting_order, track_id):
     
     # Go back to get_tracks
     return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
+""" /INSERT EDITED TRACK """    
     
+""" DELETE TRACK """
 @app.route('/delete_track/<decade_filter>/<sorting_order>/<track_id>')
 def delete_track(decade_filter, sorting_order, track_id):
     """
@@ -490,8 +523,9 @@ def delete_track(decade_filter, sorting_order, track_id):
     
     # Return the updated list of tracks
     return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
+""" /DELETE TRACK """
 
-# # # DATABASE STATS
+""" DATABASE STATS PAGE """
 @app.route('/stats')
 def stats():
     """
@@ -563,9 +597,11 @@ def stats():
     
     # Render the template, pass through necessary values
     return render_template("stats.html", title = title, tracks_count = tracks_count, most_pop_decade = most_pop_decade)
+""" /DATABASE STATS """
 
-# # # INITIALISE APP
+""" INITIALISE APP """
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
     port=int(os.environ.get('PORT')),
     debug=True)
+""" /INITIALISE APP """
