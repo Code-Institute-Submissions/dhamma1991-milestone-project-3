@@ -6,20 +6,11 @@ These styles are related to the pages for the forms allowing the user to add a t
 
 /* Form */
 form {
-    // .input-field {
-    //     margin-top: 2rem; // Up from 1 rem default in Materialize
-    // }
-    
     // The genre label is unique in that it is for a dropdown element
     #genre_label {
         top: -26px; // Position the label so it doesm't overlap with the dropdown
-        // font-size: 0.8rem; // Match the font size of the other label elements
     }
-    
-    #description_label {
-        // font-size: 0.8rem; // Match the font size of the other label elements
-    }
-    
+
     /* Form Buttons */
     .btn-container {
         .btn {
