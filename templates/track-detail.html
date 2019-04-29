@@ -2,17 +2,23 @@
 
 {% block content %}
 <main class="container">
+    <!-- Artist - Title -->
     <h1 class="center-align">{{ track.artist }} - {{ track.track_title }}</h1>
+    <!-- /Artist - Title -->
     
     <div class="row">
         <div class="col s12 xl6">
+            <!-- Track Description -->
             <p class="reset-margin-top">{{ track.description }}</p>
+            <!-- /Track Description -->
             
             <div class="container sub-container">
                 <div class="row">
+                    <!-- Year Released -->
                     <div class="col s6">
                         <p>{{ track.year }}</p>
                     </div>
+                    <!-- /Year Released -->
                     
                     <div class="col s6">
                         <!-- Upvote Button Form -->
@@ -31,35 +37,39 @@
                     </div>
                 </div>
                 
+                <!-- Genre -->
                 <div class="row">
                     <div class="col s12">
                         <p>{{ track.genre }}</p>
                     </div>
                 </div>
-                <div class="six6 row">
+                <!-- /Genre -->
+                
+                <!-- User Name -->
+                <div class="row">
                     <div class="col s12">
                         <p>{{ track.user_name }}</p>
                     </div>
                 </div>
-                <div class="seven7 row">
+                <!-- /User Name -->
+                
+                <!-- Date Added -->
+                <div class="row">
                     <div class="col s12">
                         <p>{{ track.date_added }}</p>
                     </div>
                 </div>
+                <!-- /Date Added -->
             </div>
         </div>
+        
+        <!-- YouTube Video -->
         <div class="col s12 xl6 td-youtube-iframe-container">
             <iframe src="https://www.youtube.com/embed/{{ track.youtube_link|replace('https://www.youtube.com/watch?v=', '') }}" 
                 frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
             </iframe>
         </div>
+        <!-- /YouTube Video -->
     </div>
-    <!--<div class="row">-->
-    <!--    <div class="three3 col m5"></div>-->
-    <!--    <div class="four4 col m2"></div>-->
-    <!--</div>-->
-    <!--<div class="five5 row"></div>-->
-    <!--<div class="six6 row"></div>-->
-    <!--<div class="seven7 row"></div>-->
 </main>
 {% endblock %}
