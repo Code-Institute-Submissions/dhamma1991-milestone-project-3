@@ -8,6 +8,12 @@
     overflow: hidden;
 }
 
+/* Used when it is desirable to remove the margin added by some Materialize classes */
 .reset-margin-top {
     margin-top: 0;
+}
+
+/* Used to space elements */
+.default-margin-top {
+    margin-top: $defaultMargin;
 }

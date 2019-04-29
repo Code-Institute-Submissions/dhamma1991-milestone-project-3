@@ -38,8 +38,13 @@ SCSS Variables
   height: 1px;
   overflow: hidden; }
 
+/* Used when it is desirable to remove the margin added by some Materialize classes */
 .reset-margin-top {
   margin-top: 0; }
+
+/* Used to space elements */
+.default-margin-top {
+  margin-top: 15px; }
 
 /* /Helpers */
 /* Components */
@@ -276,8 +281,6 @@ Styles relevant to the content within tracks.html
     margin-top: 15px; }
   .track-container li .rank-artist-title {
     font-weight: 500; }
-  .track-container li .btn {
-    margin: 15px 0; }
   .track-container li small {
     display: block; }
   .track-container li .youtube {
