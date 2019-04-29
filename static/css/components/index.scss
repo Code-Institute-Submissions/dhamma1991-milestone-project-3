@@ -63,10 +63,6 @@ These styles are related to the unique content for the index page
             @include mqWidth($larBreakpoint) {
                 text-align: left;
             }
-            
-            a {
-                color: $materializeFontBlack;
-            }
         }
         
         span {
