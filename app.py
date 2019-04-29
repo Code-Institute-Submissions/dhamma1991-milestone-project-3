@@ -198,18 +198,23 @@ def get_tracks(decade_filter, sorting_order):
     # It would not make sense to show the next button if there are no more tracks to view  
     # Also determines whether to show a message if no tracks have been found for a particular filter
     tracks_count = tracks.count() 
+    
+    # Set the html title
+    title = "DesertIsland | Charts"
 
     # Render tracks.html
     # tracks is the list of tracks to be rendered
     # sorting_order is how they are to be sorted (corresponding to the system in the if/else statement above)
     # pagination determines how many tracks are to be skipped. The user navigates through the pagination using the next and previous buttons on tracks.html
     # tracks_col_count determines whether to hide the next and previous buttons. If the user has reached the end of the list it doesn't make sense and would be confusing for them to be able to click 'Next'
+    # title is the html title
     return render_template("tracks.html", 
                             tracks = tracks,
                             decade_filter = decade_filter,
                             sorting_order = sorting_order,
                             pagination = pagination,
-                            tracks_count = tracks_count
+                            tracks_count = tracks_count,
+                            title = title
                             )
                             
 
