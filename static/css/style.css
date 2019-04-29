@@ -59,6 +59,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  /* Style the flashed messages provided by Flask */
   /* Container  
       Overwrite Materialize base .container class
       Allows the adjustment of the width properties which in my opinion give too much margin */
@@ -76,6 +77,9 @@ body {
     /* /Sticky Footer */ }
     body main h1 {
       font-size: 3rem; }
+  body .flashes {
+    margin-top: 0;
+    font-weight: 500; }
   body .container {
     margin: 0 auto;
     max-width: 1280px;

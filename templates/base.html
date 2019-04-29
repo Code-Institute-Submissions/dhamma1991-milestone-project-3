@@ -49,7 +49,7 @@
             
             {% with messages = get_flashed_messages() %} 
                 {% if messages %}
-                    <ul class="flashes">
+                    <ul class="flashes center-align card-panel teal accent-1 flow-text">
                         {% for message in messages %}
                             <li>{{ message }}</li>
                         {% endfor %}
