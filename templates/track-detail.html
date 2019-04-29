@@ -16,7 +16,7 @@
                     
                     <div class="col s6">
                         <!-- Upvote Button Form -->
-                        <form action="{{ url_for('upvote_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id) }}" method="POST">
+                        <form action="{{ url_for('upvote_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id, track_detail = True) }}" method="POST">
                             <!-- Upvote Button -->
                             <button class="btn upvote-button" type="submit" title="Upvote">
                                 <i class="material-icons">arrow_upward</i>

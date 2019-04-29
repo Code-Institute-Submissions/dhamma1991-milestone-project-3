@@ -360,24 +360,37 @@ def insert_genre(track_id):
     else: 
         # In which case, just take them back to add-track.html to allow them to continue adding a track
         return redirect(url_for('add_track'))
-    
-@app.route('/upvote_track/<decade_filter>/<sorting_order>/<track_id>', methods=['POST'])
-def upvote_track(decade_filter, sorting_order, track_id):
+
+# Tracks can be upvoted from both the charts page and the track-detail page
+# This first route is for a charts page upvote
+@app.route('/upvote_track/<decade_filter>/<sorting_order>/<track_id>', defaults={'track_detail': False}, methods=['POST'])
+# Second route is for a track-detail upvote
+@app.route('/upvote_track/<decade_filter>/<sorting_order>/<track_id>/<track_detail>', methods=['POST'])
+def upvote_track(decade_filter, sorting_order, track_id, track_detail):
     """ 
     Allows the user to upvote a track and saves the new upvote value
     """
     
-    tracks = mongo.db.tracks
-    tracks.update( 
+    tracks = mongo.db.tracks # Get the tracks collection
+    
+    tracks.update(  #  Update the collection
         {'_id': ObjectId(track_id)},
         # Increment the value of the upvote key by 1
         {'$inc': { 'upvotes': 1 }}
     )
     
+    # Hold pagination, for if a user is upvoting from the charts page
     session['hold_pagination'] = True
     
-    # Render the template, pass through necessary values
-    return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
+    # If the user is upvoting from a track_detail page
+    if track_detail:
+        # Ensure the user stays on the same track-detail page
+        return redirect(url_for('track_detail', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track_id))
+        
+    # Else the user is upvoting from the charts page
+    else:
+        # Render tracks.html, pass through necessary values to ensure the same decade_filter and sorting_order is set
+        return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
     
 @app.route('/edit_track/<decade_filter>/<sorting_order>/<track_id>')
 # This function essential gets the task that matches this task id
