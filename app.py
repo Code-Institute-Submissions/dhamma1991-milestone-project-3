@@ -149,6 +149,7 @@ def stats():
             
         # Convert the results of the pipeline into a list, extract the first value (the highest count)
         most_freq_list = list(tracks_collection.aggregate(most_freq_pipeline))[0]
+        
         # Get the value from the resultant dictionary
         return most_freq_list['_id']
         
@@ -156,6 +157,8 @@ def stats():
     most_freq_artist = most_freq('$artist')
     # And user_name
     most_freq_user = most_freq('$user_name')
+    # And genre
+    most_freq_genre = most_freq('$genre')
         
         
         
@@ -194,6 +197,7 @@ def stats():
         most_pop_decade = most_pop_decade, 
         most_freq_artist = most_freq_artist,
         most_freq_user = most_freq_user,
+        most_freq_genre = most_freq_genre,
         all_upvotes = all_upvotes)
 """ /DATABASE STATS """
 
