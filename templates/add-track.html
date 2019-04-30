@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <h1 class="center-align">Submit a Track to DesertIsland</h1>
+    
     <main class="container">
-        <h1 class="center-align">Submit a Track to DesertIsland</h1>
-        
         <!-- Form -->
         <form action="{{ url_for('insert_track') }}" method="POST" class="col s12" novalidate>
             <!-- The form will call the insert_track function located in app.py -->

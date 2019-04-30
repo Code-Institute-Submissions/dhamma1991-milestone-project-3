@@ -49,13 +49,13 @@ body {
     min-height: 100vh;
     flex-direction: column;
     
+    h1 {
+        font-size: 3rem; // Overwrite Materialize default
+    }
+    
     main {
         flex: 1 0 auto;
         /* /Sticky Footer */
-        
-        h1 {
-            font-size: 3rem; // Overwrite Materialize default
-        }
     }
     
     /* Style the flashed messages provided by Flask */

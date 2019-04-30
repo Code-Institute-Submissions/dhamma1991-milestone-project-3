@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <!-- The heading won't display on the page for most users for stylistic reasons.
+        Screen reader users however benefit from heading tags -->
+    <h1 class="sr-only">Home</h1>
     <main>
-        <!-- The heading won't display on the page for most users for stylistic reasons.
-            Screen reader users however still benefit from know what page they are on 
-        -->
-        <h1 class="sr-only">Home</h1>
-        
         <!-- Top Parallax Image -->
         <div class="parallax-container">
             <div class="parallax">

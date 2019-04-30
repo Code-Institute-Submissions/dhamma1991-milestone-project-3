@@ -1,9 +1,9 @@
 {% extends 'base.html' %} 
 
 {% block content %}
+    <h1 class="center-align">Edit Track</h1>
+    
     <main class="container">
-        <h1 class="center-align">Edit Track</h1>
-        
         <!-- Form -->
         <form action="{{ url_for('insert_edited_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id) }}" method="POST" class="col s12" novalidate>
             <div class="row">
