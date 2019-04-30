@@ -6,6 +6,6 @@ Styles used within stats.html
 
 .stats-container {
     .row {
-        margin-bottom: 0;
+        margin-bottom: 0; // Remove Materialize default margin, keep the rows compact
     }
 }
