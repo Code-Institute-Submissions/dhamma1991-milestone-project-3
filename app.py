@@ -17,6 +17,9 @@ from bson.objectid import ObjectId
 # Allow date and time manipulation
 from datetime import datetime, timedelta
 
+# For database querying
+from bson.son import SON
+
 # Initialise Flask
 app = Flask(__name__)
 # Connect to Database
@@ -136,14 +139,25 @@ def stats():
     }
 
     # Then get the max count, find the decade with the most tracks
-    most_pop_decade = max(decades_dict, key=decades_dict.get)
+    most_freq_decade = max(decades_dict, key=decades_dict.get)
     
-    
+    # Establish a pipeline for the most frequent artist
+    most_freq_artist_pipeline = [
+        {"$unwind": "$artist"},
+        {"$group": {"_id": "$artist", "count": {"$sum": 1}}},
+        {"$sort": SON([("count", -1), ("_id", -1)])}
+    ]
+        
+    # Convert the results of the pipeline into a list, extract the first value (the artist with the highest count)
+    most_freq_artist_list = list(tracks_collection.aggregate(most_freq_artist_pipeline))[0]
+    # Get the artist name from the resultant dictionary
+    most_freq_artist = most_freq_artist_list['_id']
+
     # Set the html title
     title = "DesertIsland | Stats"
     
     # Render the template, pass through necessary values
-    return render_template("stats.html", title = title, tracks_count = tracks_count, most_pop_decade = most_pop_decade)
+    return render_template("stats.html", title = title, tracks_count = tracks_count, most_freq_decade = most_freq_decade, most_freq_artist = most_freq_artist)
 """ /DATABASE STATS """
 
 """ GET_TRACKS """

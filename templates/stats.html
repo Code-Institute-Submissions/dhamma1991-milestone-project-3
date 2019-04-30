@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <main>
-        <p>{{ tracks_count }}</p>
-        <p>{{ most_pop_decade }}</p>
+    <main class="container">
+        <p>Number of tracks in database: {{ tracks_count }}</p>
+        <p>Decade with the most tracks uploaded: {{ most_freq_decade }}</p>
+        <p>Artist with the most uploaded tracks: {{ most_freq_artist }}</p>
     </main>
 {% endblock %}
