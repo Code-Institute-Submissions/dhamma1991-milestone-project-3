@@ -137,19 +137,24 @@ def stats():
     most_pop_decade = max(decades_dict, key=decades_dict.get)
     
     def most_freq(key_name):
-        # Establish a pipeline for the most frequent artist
+        """
+        Function that can be used to find the most frequent values for a given key in the database
+        """
+        # Establish a pipeline
         most_freq_pipeline = [
             {"$unwind": key_name},
             {"$group": {"_id": key_name, "count": {"$sum": 1}}},
             {"$sort": SON([("count", -1), ("_id", -1)])}
         ]
             
-        # Convert the results of the pipeline into a list, extract the first value (the artist with the highest count)
+        # Convert the results of the pipeline into a list, extract the first value (the highest count)
         most_freq_list = list(tracks_collection.aggregate(most_freq_pipeline))[0]
-        # Get the artist name from the resultant dictionary
+        # Get the value from the resultant dictionary
         return most_freq_list['_id']
         
+    # Call most_freq for artist
     most_freq_artist = most_freq('$artist')
+    # And user_name
     most_freq_user = most_freq('$user_name')
         
         
