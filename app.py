@@ -147,12 +147,29 @@ def stats():
     most_freq_artist_list = list(tracks_collection.aggregate(most_freq_artist_pipeline))[0]
     # Get the artist name from the resultant dictionary
     most_freq_artist = most_freq_artist_list['_id']
+    
+    # This would return an array of all 'distinct' upvote values, e.g. if there were 2 tracks with 10 upvotes, only one 10 would get returned
+    # all_upvotes = tracks_collection.distinct('upvotes')
+    
+    # Get the total number of upvotes cast on the app
+    # First, get a list of all the upvote values
+    all_upvotes_list = list(tracks_collection.find( { },
+                                    { 'upvotes': 1, '_id' :0 }
+                                ))
+    
+    # Iterate through the list and sum the values
+    all_upvotes = sum(item['upvotes'] for item in all_upvotes_list)
 
     # Set the html title
     title = "DesertIsland | Stats"
     
     # Render the template, pass through necessary values
-    return render_template("stats.html", title = title, tracks_count = tracks_count, most_freq_decade = most_freq_decade, most_freq_artist = most_freq_artist)
+    return render_template("stats.html", 
+        title = title, 
+        tracks_count = tracks_count, 
+        most_freq_decade = most_freq_decade, 
+        most_freq_artist = most_freq_artist,
+        all_upvotes = all_upvotes)
 """ /DATABASE STATS """
 
 """ GET_TRACKS """
