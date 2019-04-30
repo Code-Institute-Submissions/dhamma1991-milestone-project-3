@@ -3,13 +3,41 @@
 {% block content %}
     <h1 class="center-align">DesertIsland - Stats</h1>
     
-    <main class="container">
-        <p>Number of tracks in database: {{ tracks_count }}</p>
-        <p>Decade with the most tracks uploaded: {{ most_pop_decade }}</p>
-        <p>Artist with the most uploaded tracks: {{ most_freq_artist }}</p>
-        <p>User who has made the most submissions: {{ most_freq_user }}</p>
-        <p>Genre with the most tracks: {{ most_freq_genre }}</p>
-        <p>Total number of Likes for all tracks: {{ all_upvotes }}</p>
-        <p>Most Liked Artist: {{ most_pop_artist._id }} with {{ most_pop_artist.upvotes }} Likes</p>
+    <main class="container stats-container">
+        <div class="row">
+            <div class="col s12 l6">
+                <p>Total number of tracks uploaded: {{ tracks_count }}</p>      
+            </div>
+            
+            <div class="col s12 l6">
+                <p>Decade with the most tracks uploaded: {{ most_pop_decade }}</p>      
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col s12 l6">
+                <p>Artist with the most uploaded tracks: {{ most_freq_artist }}</p>  
+            </div>
+            
+            <div class="col s12 l6">
+                <p>User who has made the most submissions: {{ most_freq_user }}</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col s12 l6">
+                <p>Genre with the most tracks: {{ most_freq_genre }}</p>           
+            </div>
+            
+            <div class="col s12 l6">
+                <p>Total number of Likes for all tracks: {{ all_upvotes }}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 l6">
+                <p>Most Liked Artist: {{ most_pop_artist._id }} with {{ most_pop_artist.upvotes }} Likes</p>
+            </div>
+        </div>
     </main>
 {% endblock %}

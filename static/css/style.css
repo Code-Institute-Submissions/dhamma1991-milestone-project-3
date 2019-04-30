@@ -387,6 +387,14 @@ form {
     background-color: red; }
 
 /* /Form */
+/*
+
+Styles used within stats.html
+
+*/
+.stats-container .row {
+  margin-bottom: 0; }
+
 /* /Components */
 
 /*# sourceMappingURL=style.css.map */
