@@ -96,11 +96,6 @@ def stats():
                                 {"year": {'$lt': 1950}}
                                 ]
                         }).count(),
-        'd_pre1950': tracks_collection.find({"$and": [
-                                {"year": {'$gte': 1000}}, 
-                                {"year": {'$lt': 1950}}
-                                ]
-                        }).count(),
         'd_1950s': tracks_collection.find({"$and": [
                                 {"year": {'$gte': 1950}}, 
                                 {"year": {'$lt': 1960}}
