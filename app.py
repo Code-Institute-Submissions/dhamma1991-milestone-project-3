@@ -20,6 +20,9 @@ from datetime import datetime, timedelta
 # For database querying
 from bson.son import SON
 
+# # # DELETE WHEN NOT NEEDED
+import pprint
+
 # Initialise Flask
 app = Flask(__name__)
 # Connect to Database
@@ -85,10 +88,12 @@ def stats():
     # Get the tracks collection
     tracks_collection = mongo.db.tracks
     
+    """ Total Number Of Tracks """
     # Count the number of tracks in the collection
     tracks_count = tracks_collection.count()
+    """ /Total Number Of Tracks """
     
-    # Get the most popular decade
+    """ Most Popular Decade By Number Of Tracks """
     # First, create a dictionary containing the counts of the number of tracks in each decade
     decades_dict = { 
         'Pre 1950s': tracks_collection.find({"$and": [
@@ -135,16 +140,22 @@ def stats():
 
     # Then get the max count, find the decade with the most tracks
     most_pop_decade = max(decades_dict, key=decades_dict.get)
+    """ /Most Popular Decade By Number Of Tracks """
     
+    """ Most Frequent """
     def most_freq(key_name):
         """
         Function that can be used to find the most frequent values for a given key in the database
         """
         # Establish a pipeline
         most_freq_pipeline = [
-            {"$unwind": key_name},
+            # Create new docs based on the key name
+            # # # MAY NOT BE NEDDED
+            # {"$unwind": key_name},
+            # Sum the counts of each key name
             {"$group": {"_id": key_name, "count": {"$sum": 1}}},
-            {"$sort": SON([("count", -1), ("_id", -1)])}
+            # Sort descending so highest is first
+            {"$sort": SON([("count", -1)])}
         ]
             
         # Convert the results of the pipeline into a list, extract the first value (the highest count)
@@ -159,6 +170,7 @@ def stats():
     most_freq_user = most_freq('$user_name')
     # And genre
     most_freq_genre = most_freq('$genre')
+    """ /Most Frequent """
         
         
         
@@ -178,7 +190,7 @@ def stats():
     # This would return an array of all 'distinct' upvote values, e.g. if there were 2 tracks with 10 upvotes, only one 10 would get returned
     # all_upvotes = tracks_collection.distinct('upvotes')
     
-    # Get the total number of upvotes cast on the app
+    """ Sum Of Upvotes For All Tracks """
     # First, get a list of all the upvote values
     all_upvotes_list = list(tracks_collection.find( { },
                                     { 'upvotes': 1, '_id' :0 }
@@ -186,6 +198,21 @@ def stats():
     
     # Iterate through the list and sum the values
     all_upvotes = sum(item['upvotes'] for item in all_upvotes_list)
+    """ /Sum Of Upvotes For All Tracks """
+    
+    """ Most Popular Artist By Likes """
+    most_pop_artist = list(tracks_collection.aggregate([
+        # Group by artist
+         { '$group': { 
+             '_id': "$artist", 
+             # Sum the upvotes
+             'upvotes': { 
+                 '$sum': '$upvotes' } } },
+        # Sort descending
+         { '$sort': { 
+             'upvotes': -1 } }
+                       ]))[0] # Grab the first item (the highest)
+    """ /Most Popular Artist By Likes """
 
     # Set the html title
     title = "DesertIsland | Stats"
@@ -198,7 +225,8 @@ def stats():
         most_freq_artist = most_freq_artist,
         most_freq_user = most_freq_user,
         most_freq_genre = most_freq_genre,
-        all_upvotes = all_upvotes)
+        all_upvotes = all_upvotes,
+        most_pop_artist = most_pop_artist)
 """ /DATABASE STATS """
 
 """ GET_TRACKS """
