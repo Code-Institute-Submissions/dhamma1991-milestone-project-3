@@ -134,19 +134,38 @@ def stats():
     }
 
     # Then get the max count, find the decade with the most tracks
-    most_freq_decade = max(decades_dict, key=decades_dict.get)
+    most_pop_decade = max(decades_dict, key=decades_dict.get)
     
-    # Establish a pipeline for the most frequent artist
-    most_freq_artist_pipeline = [
-        {"$unwind": "$artist"},
-        {"$group": {"_id": "$artist", "count": {"$sum": 1}}},
-        {"$sort": SON([("count", -1), ("_id", -1)])}
-    ]
+    def most_freq(key_name):
+        # Establish a pipeline for the most frequent artist
+        most_freq_artist_pipeline = [
+            {"$unwind": key_name},
+            {"$group": {"_id": key_name, "count": {"$sum": 1}}},
+            {"$sort": SON([("count", -1), ("_id", -1)])}
+        ]
+            
+        # Convert the results of the pipeline into a list, extract the first value (the artist with the highest count)
+        most_freq_list = list(tracks_collection.aggregate(most_freq_artist_pipeline))[0]
+        # Get the artist name from the resultant dictionary
+        return most_freq_list['_id']
         
-    # Convert the results of the pipeline into a list, extract the first value (the artist with the highest count)
-    most_freq_artist_list = list(tracks_collection.aggregate(most_freq_artist_pipeline))[0]
-    # Get the artist name from the resultant dictionary
-    most_freq_artist = most_freq_artist_list['_id']
+    most_freq_artist = most_freq('$artist')
+    most_freq_user = most_freq('$user_name')
+        
+        
+        
+    # # # OLD CODE FOR MOST FREQ ARTIST
+    # # Establish a pipeline for the most frequent artist
+    # most_freq_artist_pipeline = [
+    #     {"$unwind": "$artist"},
+    #     {"$group": {"_id": "$artist", "count": {"$sum": 1}}},
+    #     {"$sort": SON([("count", -1), ("_id", -1)])}
+    # ]
+        
+    # # Convert the results of the pipeline into a list, extract the first value (the artist with the highest count)
+    # most_freq_artist_list = list(tracks_collection.aggregate(most_freq_artist_pipeline))[0]
+    # # Get the artist name from the resultant dictionary
+    # most_freq_artist = most_freq_artist_list['_id']
     
     # This would return an array of all 'distinct' upvote values, e.g. if there were 2 tracks with 10 upvotes, only one 10 would get returned
     # all_upvotes = tracks_collection.distinct('upvotes')
@@ -167,8 +186,9 @@ def stats():
     return render_template("stats.html", 
         title = title, 
         tracks_count = tracks_count, 
-        most_freq_decade = most_freq_decade, 
+        most_pop_decade = most_pop_decade, 
         most_freq_artist = most_freq_artist,
+        most_freq_user = most_freq_user,
         all_upvotes = all_upvotes)
 """ /DATABASE STATS """
 
