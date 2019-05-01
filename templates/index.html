@@ -88,7 +88,12 @@
         <!-- Bottom Parallax Image -->
         <div class="parallax-container">
             <div class="parallax">
-                <img src="{{ url_for('static', filename='images/index_2.jpg') }}">
+                <picture>
+                    <source srcset="{{ url_for('static', filename='images/index_2_m.jpg') }}" media="(min-width: 600px) and (max-width: 992px)">
+                    <source srcset="{{ url_for('static', filename='images/index_2_l.jpg') }}" media="(min-width: 993px) and (max-width: 1200px)">
+                    <source srcset="{{ url_for('static', filename='images/index_2_xl.jpg') }}" media="(min-width: 1201px)">
+                    <img src="{{ url_for('static', filename='images/index_2_s.jpg') }}">                  
+                </picture>
             </div>
             
             <div class="valign-wrapper center-align">
