@@ -17,3 +17,28 @@
 .default-margin-top {
     margin-top: $defaultMargin;
 }
+
+/* Responsive Image Classes */
+// Display smaller images depending on the user's viewport width
+// Saves the user's bandwidth on viewports where a large image is unecessary
+.responsive-image-s {
+    display: none;
+    // Use the same breakpoints as the Materialize framework
+    @include responsiveDisplay(0px, 600px)
+}
+
+.responsive-image-m {
+    display: none;
+    @include responsiveDisplay(601px, 992px)
+}
+
+.responsive-image-l {
+    display: none;
+    @include responsiveDisplay(993px, 1200px)
+}
+
+.responsive-image-xl {
+    display: none;
+    @include responsiveDisplay(1201px, 10000px)
+}
+/* /Responsive Image Classes */

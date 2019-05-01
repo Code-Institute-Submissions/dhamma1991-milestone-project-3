@@ -88,7 +88,10 @@
         <!-- Scripts -->
         <!-- jQuery -->
         <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
-        <!-- Materialize -->
+        <!-- Materialize
+            The default Materialize JS has been modified, this is in order to accomplish responsive images within the parallax functionality
+            You can view the unminified modified JS in js/unminMaterialize.js
+            The minified version is referenced in this script to improve page load efficiency-->
         <script src="{{ url_for('static', filename='js/materialize.js') }}"></script>
         <!-- jQuery -->
         <script>

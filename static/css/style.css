@@ -46,6 +46,36 @@ SCSS Variables
 .default-margin-top {
   margin-top: 15px; }
 
+/* Responsive Image Classes */
+.responsive-image-s {
+  display: none;
+  /* This shows elements on certain viewport sizes. Used in conjunction with the responsive-image classes in helper-classes.scss */ }
+  @media (min-width: 0px) and (max-width: 600px) {
+    .responsive-image-s {
+      display: block; } }
+
+.responsive-image-m {
+  display: none;
+  /* This shows elements on certain viewport sizes. Used in conjunction with the responsive-image classes in helper-classes.scss */ }
+  @media (min-width: 601px) and (max-width: 992px) {
+    .responsive-image-m {
+      display: block; } }
+
+.responsive-image-l {
+  display: none;
+  /* This shows elements on certain viewport sizes. Used in conjunction with the responsive-image classes in helper-classes.scss */ }
+  @media (min-width: 993px) and (max-width: 1200px) {
+    .responsive-image-l {
+      display: block; } }
+
+.responsive-image-xl {
+  display: none;
+  /* This shows elements on certain viewport sizes. Used in conjunction with the responsive-image classes in helper-classes.scss */ }
+  @media (min-width: 1201px) and (max-width: 10000px) {
+    .responsive-image-xl {
+      display: block; } }
+
+/* /Responsive Image Classes */
 /* /Helpers */
 /* Components */
 /*

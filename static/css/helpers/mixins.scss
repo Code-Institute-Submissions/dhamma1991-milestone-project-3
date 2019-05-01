@@ -12,4 +12,11 @@
         @content
     }
 }
+
+@mixin responsiveDisplay($minWidth, $maxWidth) {
+    /* This shows elements on certain viewport sizes. Used in conjunction with the responsive-image classes in helper-classes.scss */
+    @media (min-width: $minWidth) and (max-width: $maxWidth) {
+        display: block;
+    }
+}
 /* /Media Queries */

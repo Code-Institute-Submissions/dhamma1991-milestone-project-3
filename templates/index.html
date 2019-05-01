@@ -4,17 +4,60 @@
     <!-- The heading won't display on the page for most users for stylistic reasons.
         Screen reader users however benefit from heading tags -->
     <h1 class="sr-only">Home</h1>
+    
     <main>
-        <!-- Top Parallax Image -->
+        <!-- Top Parallax Image 
+            Different containers are used depending on the viewports width
+            Ideally I'd target the images themselves and have multiple img elements within one container
+            However, the Materialize parallax JavaScript targets only the first img element within the parallax container, 
+            so in order to have only one container I'd have to modify the Materialize JS-->
         <div class="parallax-container">
             <div class="parallax">
-                <img src="{{ url_for('static', filename='images/index_1.jpg') }}">
+                <!-- <picture> element used here in accordance with the advice in Evgenia Manolova's answer in this stackoverflow thread:
+                    https://stackoverflow.com/questions/12158540/does-displaynone-prevent-an-image-from-loading
+                    In order for this to work with Materialize, the Materialize JS was modified -->
+                <picture>
+                    <source srcset="{{ url_for('static', filename='images/index_1_m.jpg') }}" media="(min-width: 600px) and (max-width: 992px)">
+                    <source srcset="{{ url_for('static', filename='images/index_1_l.jpg') }}" media="(min-width: 993px) and (max-width: 1200px)">
+                    <source srcset="{{ url_for('static', filename='images/index_1_xl.jpg') }}" media="(min-width: 1201px)">
+                    <img src="{{ url_for('static', filename='images/index_1_s.jpg') }}" alt="MDN">
+                </picture>
             </div>
             
             <div class="valign-wrapper center-align">
                 <p>The World's Favorite Songs, Voted By You</p>
             </div>
         </div>
+        
+        <!--<div class="parallax-container responsive-image-m">-->
+        <!--    <div class="parallax">-->
+        <!--        <img class="responsive-image-m" src="{{ url_for('static', filename='images/index_1_m.jpg') }}">-->
+        <!--    </div>-->
+            
+        <!--    <div class="valign-wrapper center-align">-->
+        <!--        <p>The World's Favorite Songs, Voted By You</p>-->
+        <!--    </div>-->
+        <!--</div>-->
+        
+        <!--<div class="parallax-container responsive-image-l">-->
+        <!--    <div class="parallax">-->
+        <!--        <img class="responsive-image-l" src="{{ url_for('static', filename='images/index_1_l.jpg') }}">-->
+        <!--    </div>-->
+            
+        <!--    <div class="valign-wrapper center-align">-->
+        <!--        <p>The World's Favorite Songs, Voted By You</p>-->
+        <!--    </div>-->
+        <!--</div>-->
+        
+        <!--<div class="parallax-container responsive-image-xl">-->
+        <!--    <div class="parallax">-->
+        <!--        <img class="responsive-image-xl" src="{{ url_for('static', filename='images/index_1_xl.jpg') }}">-->
+        <!--    </div>-->
+            
+        <!--    <div class="valign-wrapper center-align">-->
+        <!--        <p>The World's Favorite Songs, Voted By You</p>-->
+        <!--    </div>-->
+        <!--</div>-->
         <!-- /Top Parallax Image -->
         
         <div class="divider parallax-divider"></div>
