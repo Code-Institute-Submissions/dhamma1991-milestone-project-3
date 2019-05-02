@@ -105,6 +105,7 @@ body {
     /* /Sticky Footer */ }
   body .flashes {
     margin-top: 0;
+    padding: 2px;
     font-weight: 500; }
   body .container {
     margin: 0 auto;
