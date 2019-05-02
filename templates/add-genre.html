@@ -5,7 +5,7 @@
             <form action="{{ url_for('insert_genre', track_id = track_id) }}" method="POST" class="col s12"> <!-- The form will call the insert_track function located in app.py -->
                 <div class="row">
                     <!-- Add Genre Input Field -->
-                    <div class="input-field col s6 offset-s3">
+                    <div class="input-field col s12">
                         <i class="material-icons prefix">category</i>
                         
                         <input id="genre" name="genre" type="text" class="validate">
@@ -14,14 +14,30 @@
                     </div>
                     <!-- /Add Genre Input Field -->
                 </div>
-                
-                <!-- Submit Button -->
-                <div class="row center-align">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Add Genre
-                        <i class="material-icons right">send</i>
-                    </button>
+
+                <!-- Button Container -->
+                <div class="row btn-container center-align">
+                    <!-- Submit Button -->
+                    <div class="col s12 l6">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Add Genre
+                            <i class="material-icons right">send</i>
+                        </button>                    
+                    </div>
+                    <!-- /Submit Button -->
+                    
+                    <!-- Cancel Button -->
+                    <div class="col s12 l6">
+                        <a href="{{ url_for('index') }}">
+                            <button class="btn waves-effect waves-light cancel-insert-btn" type="button">
+                                Cancel Add Genre
+                                <i class="material-icons right">close</i>
+                            </button>
+                        </a>
+                    </div>
+                    <!-- /Cancel Button -->
                 </div>
-                <!-- /Submit Button -->
+                <!-- /Button Container -->
+            
             </form>
     </main>
 {% endblock %}
