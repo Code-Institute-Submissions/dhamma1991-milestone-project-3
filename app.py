@@ -494,6 +494,26 @@ def add_genre(track_id):
         track_id = track_id,
         title = title)
 """ /ADD GENRE PAGE """
+
+""" CANCEL ADD GENRE """
+# Pass through track_id if needed, this is so the user goes back to the same track they were editing
+@app.route('/cancel_add_genre', defaults={'track_id': None})
+@app.route('/cancel_add_genre/<track_id>')
+def cancel_add_genre(track_id):
+    """
+    Cancels adding a genre, adding nothing to the database
+    Take the user back to either add_track or depending on where they were before going to add_genre
+    """
+    
+    # If track_id exists this means the user was editing a track
+    if track_id:
+        # Take them back to the track they were editing, pass through the required session variables 
+        return redirect(url_for('edit_track', track_id = track_id, decade_filter = session['decade_filter'], sorting_order = session['sorting_order']))
+    # If track_id doesn't exist, the user must be adding a new track
+    else:
+        # Take them back to add_track
+        return redirect(url_for('add_track'))
+""" /CANCEL ADD GENRE """
  
 """ INSERT GENRE """
 # If track_id hasn't been passed through, set a default of None
@@ -515,7 +535,7 @@ def insert_genre(track_id):
     if track_id:
         # Take them back to edit-track.html, to the track they were editing before they went to adding a new genre
         # Pass through the session variables that were established by edit_track()
-        return redirect(url_for('edit_track', decade_filter = session['decade_filter'], track_id = track_id, sorting_order = session['sorting_order']))
+        return redirect(url_for('edit_track', track_id = track_id, decade_filter = session['decade_filter'], sorting_order = session['sorting_order']))
     # Else the user is currently adding a new track
     else: 
         # In which case, just take them back to add-track.html to allow them to continue adding a track
@@ -565,19 +585,19 @@ def edit_track(sorting_order, decade_filter, track_id):
     """
     
     # If genre_edit_track_id is in session, that means the user is coming from just adding a genre
-    if 'genre_edit_track_id' in session:
-        # Get the track_id from the session
-        track_id = session['genre_edit_track_id']
-        # Find the track the user wants to edit
-        # Wrap track_id in ObjectId in order to make it acceptabke to mongodb
-        the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
-        # Pop the session since it's no longer needed
-        print(session['genre_edit_track_id'])
-        session.pop('genre_edit_track_id', None)
+    # if 'genre_edit_track_id' in session:
+    #     # Get the track_id from the session
+    #     track_id = session['genre_edit_track_id']
+    #     # Find the track the user wants to edit
+    #     # Wrap track_id in ObjectId in order to make it acceptabke to mongodb
+    #     the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
+    #     # Pop the session since it's no longer needed
+    #     print(session['genre_edit_track_id'])
+    #     session.pop('genre_edit_track_id', None)
     # If genre_edit_track_id is not in session, that means the user has not come from just adding a genre
-    else:
+    # else:
         # Grab the track_id from what was passed through
-        the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
+    the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
     # A list of all the genres is also needed in order to populate the edit form
     all_genres = mongo.db.genres.find()
     
