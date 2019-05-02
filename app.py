@@ -325,13 +325,13 @@ def get_tracks(decade_filter, sorting_order):
     # tracks_col_count determines whether to hide the next and previous buttons. If the user has reached the end of the list it doesn't make sense and would be confusing for them to be able to click 'Next'
     # title is the html title
     return render_template("tracks.html", 
-                            tracks = tracks,
-                            decade_filter = decade_filter,
-                            sorting_order = sorting_order,
-                            pagination = pagination,
-                            tracks_count = tracks_count,
-                            title = title
-                            )
+        tracks = tracks,
+        decade_filter = decade_filter,
+        sorting_order = sorting_order,
+        pagination = pagination,
+        tracks_count = tracks_count,
+        title = title
+        )
 """ /GET_TRACKS """                    
 
 """ NEXT TRACKS """
@@ -486,8 +486,13 @@ def add_genre(track_id):
     Takes the user to add-genre.html, allowing them to add a new genre to the genre collection
     """
     
+    # Set the html title
+    title = "DesertIsland | Add A New Genre"
+    
     # Render the template
-    return render_template('add-genre.html', track_id = track_id)
+    return render_template('add-genre.html', 
+        track_id = track_id,
+        title = title)
 """ /ADD GENRE PAGE """
  
 """ INSERT GENRE """
