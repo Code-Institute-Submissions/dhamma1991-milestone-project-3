@@ -1,7 +1,3 @@
-# NEEDED ONLY FOR PRINTS
-from __future__ import print_function
-import sys
-
 # Allow configuration
 import os
 
@@ -19,9 +15,6 @@ from datetime import datetime, timedelta
 
 # For database querying
 from bson.son import SON
-
-# # # DELETE WHEN NOT NEEDED
-import pprint
 
 # Initialise Flask
 app = Flask(__name__)
@@ -58,8 +51,7 @@ def index():
     # Render the template, pass through necessary values
     return render_template("index.html", 
                             # Sort all tracks by upvotes descending, limit to 3 results
-                            tracks = tracks.sort(
-                                                'upvotes', pymongo.DESCENDING).limit(3),
+                            tracks = tracks.sort('upvotes', pymongo.DESCENDING).limit(3),
                             title = title
                             )
 """ /INDEX PAGE """
@@ -94,6 +86,7 @@ def stats():
     """ /Total Number Of Tracks """
     
     """ Most Popular Decade By Number Of Tracks """
+    # Find the decade with the most number of tracks
     # First, create a dictionary containing the counts of the number of tracks in each decade
     decades_dict = { 
         'Pre 1950s': tracks_collection.find({"$and": [
@@ -149,9 +142,6 @@ def stats():
         """
         # Establish a pipeline
         most_freq_pipeline = [
-            # Create new docs based on the key name
-            # # # MAY NOT BE NEDDED
-            # {"$unwind": key_name},
             # Sum the counts of each key name
             {"$group": {"_id": key_name, "count": {"$sum": 1}}},
             # Sort descending so highest is first
@@ -171,24 +161,6 @@ def stats():
     # And genre
     most_freq_genre = most_freq('$genre')
     """ /Most Frequent """
-        
-        
-        
-    # # # OLD CODE FOR MOST FREQ ARTIST
-    # # Establish a pipeline for the most frequent artist
-    # most_freq_artist_pipeline = [
-    #     {"$unwind": "$artist"},
-    #     {"$group": {"_id": "$artist", "count": {"$sum": 1}}},
-    #     {"$sort": SON([("count", -1), ("_id", -1)])}
-    # ]
-        
-    # # Convert the results of the pipeline into a list, extract the first value (the artist with the highest count)
-    # most_freq_artist_list = list(tracks_collection.aggregate(most_freq_artist_pipeline))[0]
-    # # Get the artist name from the resultant dictionary
-    # most_freq_artist = most_freq_artist_list['_id']
-    
-    # This would return an array of all 'distinct' upvote values, e.g. if there were 2 tracks with 10 upvotes, only one 10 would get returned
-    # all_upvotes = tracks_collection.distinct('upvotes')
     
     """ Sum Of Upvotes For All Tracks """
     # First, get a list of all the upvote values
@@ -201,17 +173,14 @@ def stats():
     """ /Sum Of Upvotes For All Tracks """
     
     """ Most Popular Artist By Likes """
+    # Get a list of all the artists
     most_pop_artist = list(tracks_collection.aggregate([
         # Group by artist
-         { '$group': { 
-             '_id': "$artist", 
-             # Sum the upvotes
-             'upvotes': { 
-                 '$sum': '$upvotes' } } },
+         { '$group': { '_id': "$artist", 
+             # Sum the upvotes for each artist
+             'upvotes': { '$sum': '$upvotes' } } },
         # Sort descending
-         { '$sort': { 
-             'upvotes': -1 } }
-                       ]))[0] # Grab the first item (the highest)
+         { '$sort': { 'upvotes': -1 } }]))[0] # Grab the first item (the highest)
     """ /Most Popular Artist By Likes """
 
     # Set the html title
@@ -241,7 +210,8 @@ def get_tracks(decade_filter, sorting_order):
     # Get the tracks collection
     tracks_collection = mongo.db.tracks
 
-    # hold_pagination will only ever be in session if the user has come from a url where it makes sense to keep the pagination of content
+    # hold_pagination will only ever be in session if the user has come from a url where it makes sense to keep the pagination of content 
+    # (e.g. they've clicked 'Next' in the list of tracks)
     # Pagination is held for next_tracks, prev_tracks, upvote_track and edit_track
     # In which case, ensure the pagination value currently in the session is used to show the user the correct tracks
     if 'hold_pagination' in session:
