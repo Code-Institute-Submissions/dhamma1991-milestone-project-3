@@ -3,6 +3,8 @@
 {% block content %}
     <h1 class="center-align">Submit a Track to DesertIsland</h1>
     
+    {{ inserted_genre }}
+    
     <main class="container">
         <!-- Form -->
         <form action="{{ url_for('insert_track') }}" method="POST" class="col s12" novalidate>
@@ -59,12 +61,31 @@
                     <label id="genre_label" for="genre" data-error="Please select a genre" data-success="&#10004;">Genre</label>
                     
                     <select id="genre" name="genre" class="validate" required>
-                        <option value="" disabled selected>Please select:</option> <!-- This option won't be selectable but serves as a visual clue as to what the user should do -->
-                        
-                        {% for genre in genres %}
-                            <!-- If there are 4 genres in the database there'll be 4 options, if there are 10 genres there'll be 10 options and so on -->
-                            <option value="{{ genre.genre }}">{{ genre.genre }}</option> <!-- The value here is what will be submitted to the form -->
-                        {% endfor %}
+                        <!-- If the user has just inserted a genre -->
+                        {% if inserted_genre %}
+                            <!-- This option won't be selectable but serves as a visual clue as to what the user should do
+                                If the user has inserted a genre, this option won't be selected 
+                                but will be visible on the dropdown as a visual indicator of what the user should do -->
+                            <option value="" disabled >Please select:</option> 
+                            
+                            {% for genre in genres %}
+                                {% if genre.genre != inserted_genre %}
+                                <!-- If there are 4 genres in the database there'll be 4 options, if there are 10 genres there'll be 10 options and so on -->
+                                <option value="{{ genre.genre }}">{{ genre.genre }}</option> <!-- The value here is what will be submitted to the form -->
+                                {% endif %}
+                            {% endfor %}
+                            
+                            <option value="{{ inserted_genre }}" selected>{{ inserted_genre }}</option> <!-- The value here is what will be submitted to the form -->
+                            
+                        <!-- Else the user is coming to add_track fresh, and hasn't just inserted a genre -->  
+                        {% else %}
+                            <option value="" disabled selected >Please select:</option> 
+                            <!-- Also display an option for all the genres in the db -->
+                            {% for genre in genres %}
+                                <!-- If there are 4 genres in the database there'll be 4 options, if there are 10 genres there'll be 10 options and so on -->
+                                <option value="{{ genre.genre }}">{{ genre.genre }}</option> <!-- The value here is what will be submitted to the form -->
+                            {% endfor %}
+                        {% endif %}
                         
                         <option value="add-genre-link">Add a Genre</option>
                     </select>

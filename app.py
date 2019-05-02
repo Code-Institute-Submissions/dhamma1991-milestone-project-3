@@ -426,14 +426,20 @@ def track_detail(decade_filter, sorting_order, track_id):
 """ /TRACK DETAIL PAGE """
     
 """ ADD TRACK PAGE """
-@app.route('/add_track')
-def add_track():
+# If the user inserts a new genre from the add_track page, ensure the newly inserted genre gets set as the value for the genre dropdown box
+# To do this, it gets passed through from insert_genre
+# By default, the user hasn't inserted a new genre
+@app.route('/add_track', defaults={'inserted_genre': None})
+@app.route('/add_track/<inserted_genre>')
+def add_track(inserted_genre):
     """
     Takes the user to add-track.html allowing them to add a new track to the database
     """
     
     # Render the template, pass through necessary values
-    return render_template('add-track.html', genres=mongo.db.genres.find())
+    return render_template('add-track.html', 
+        genres=mongo.db.genres.find(),
+        inserted_genre = inserted_genre)
 """ /ADD TRACK PAGE """
     
 """ INSERT TRACK """
@@ -525,9 +531,12 @@ def insert_genre(track_id):
     """
     
     genres = mongo.db.genres
+    
+    inserted_genre = request.form.get('genre')
+    
     genres.insert_one(
         {
-            'genre': request.form.get('genre')    
+            'genre': inserted_genre
         }
     )
     
@@ -539,11 +548,16 @@ def insert_genre(track_id):
     if track_id:
         # Take them back to edit-track.html, to the track they were editing before they went to adding a new genre
         # Pass through the session variables that were established by edit_track()
-        return redirect(url_for('edit_track', track_id = track_id, decade_filter = session['decade_filter'], sorting_order = session['sorting_order']))
+        return redirect(url_for('edit_track', 
+            track_id = track_id, 
+            decade_filter = session['decade_filter'], 
+            sorting_order = session['sorting_order']))
+            
     # Else the user is currently adding a new track
     else: 
         # In which case, just take them back to add-track.html to allow them to continue adding a track
-        return redirect(url_for('add_track'))
+        return redirect(url_for('add_track',
+            inserted_genre = inserted_genre))
 """ /INSERT GENRE """
 
 """ UPVOTE TRACK """
