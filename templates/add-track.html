@@ -2,9 +2,7 @@
 
 {% block content %}
     <h1 class="center-align">Submit a Track to DesertIsland</h1>
-    
-    {{ inserted_genre }}
-    
+
     <main class="container">
         <!-- Form -->
         <form action="{{ url_for('insert_track') }}" method="POST" class="col s12" novalidate>
