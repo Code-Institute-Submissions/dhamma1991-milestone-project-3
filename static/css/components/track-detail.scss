@@ -13,7 +13,8 @@ Styles used within track-detail.html
     }
     
     iframe {
-        @extend %force-center;
+        margin: 0 auto;
+        display: block;
         width: 300px;
         height: 183px;
         
