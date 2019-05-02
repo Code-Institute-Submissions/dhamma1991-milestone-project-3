@@ -530,6 +530,10 @@ def insert_genre(track_id):
             'genre': request.form.get('genre')    
         }
     )
+    
+    # Feedback to the user the genre was successfully submitted
+    flash('Genre added successfully!')
+    
     # There are 2 places the user can be adding a genre from; adding a new track or editing an existing track
     # If track_id has a value, that means the user is editing a track
     if track_id:
