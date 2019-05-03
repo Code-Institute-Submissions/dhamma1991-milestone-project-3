@@ -50,6 +50,8 @@
             {% with messages = get_flashed_messages() %} 
                 {% if messages %}
                 <div class="flashes center-align card-panel teal accent-1">
+                    <i class="material-icons">close</i>
+                    
                     <ul>
                         {% for message in messages %}
                             <li>{{ message }}</li>

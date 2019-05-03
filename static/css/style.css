@@ -106,7 +106,14 @@ body {
   body .flashes {
     margin-top: 0;
     padding: 2px;
-    font-weight: 500; }
+    font-weight: 500;
+    /* Style the close icon */
+    /* Style the messages ul */ }
+    body .flashes i {
+      position: absolute;
+      right: 0%;
+      font-size: 18px;
+      cursor: pointer; }
     body .flashes ul {
       margin: 0; }
   body .container {
