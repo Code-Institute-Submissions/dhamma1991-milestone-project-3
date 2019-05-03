@@ -50,7 +50,7 @@
             {% with messages = get_flashed_messages() %} 
                 {% if messages %}
                 <div class="flashes center-align card-panel teal accent-1">
-                    <i class="material-icons">close</i>
+                    <i class="material-icons" onclick="this.parentNode.parentNode.removeChild(this.parentNode); return false;">close</i>
                     
                     <ul>
                         {% for message in messages %}
