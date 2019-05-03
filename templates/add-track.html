@@ -54,10 +54,15 @@
             <div class="row">
                 <!-- Genre -->
                 <div class="input-field col s12 l6">
+                    <!-- Icon -->
                     <i class="material-icons prefix">category</i>
+                    <!-- /Icon -->
                     
+                    <!-- Label -->
                     <label id="genre_label" for="genre" data-error="Please select a genre" data-success="&#10004;">Genre</label>
+                    <!-- /Label -->
                     
+                    <!-- Genre Select -->
                     <select id="genre" name="genre" class="validate" required>
                         <!-- If the user has just inserted a genre -->
                         {% if inserted_genre %}
@@ -67,26 +72,31 @@
                             <option value="" disabled >Please select:</option> 
                             
                             {% for genre in genres %}
-                                {% if genre.genre != inserted_genre %}
-                                <!-- If there are 4 genres in the database there'll be 4 options, if there are 10 genres there'll be 10 options and so on -->
-                                <option value="{{ genre.genre }}">{{ genre.genre }}</option> <!-- The value here is what will be submitted to the form -->
+                                <!-- If the genre value being iterated over is not the same as the genre that was inserted -->
+                                {% if genre.genre == inserted_genre %}
+                                    <!-- Then add the genre the user inserted as an option and have it selected 
+                                        Presumably if the user inserts a genre they want to use it as the track's genre -->
+                                    <option value="{{ inserted_genre }}" selected>{{ inserted_genre }}</option>
+                                    
+                                <!-- Else the genre being iterated over is not the genre the user inserted -->
+                                {% else %}
+                                    <!-- Render the other genres without the selected attribute -->
+                                    <option value="{{ genre.genre }}">{{ genre.genre }}</option>
                                 {% endif %}
                             {% endfor %}
-                            
-                            <option value="{{ inserted_genre }}" selected>{{ inserted_genre }}</option> <!-- The value here is what will be submitted to the form -->
                             
                         <!-- Else the user is coming to add_track fresh, and hasn't just inserted a genre -->  
                         {% else %}
                             <option value="" disabled selected >Please select:</option> 
-                            <!-- Also display an option for all the genres in the db -->
+                            <!-- Display an option for all the genres in the db -->
                             {% for genre in genres %}
-                                <!-- If there are 4 genres in the database there'll be 4 options, if there are 10 genres there'll be 10 options and so on -->
-                                <option value="{{ genre.genre }}">{{ genre.genre }}</option> <!-- The value here is what will be submitted to the form -->
+                                <option value="{{ genre.genre }}">{{ genre.genre }}</option>
                             {% endfor %}
                         {% endif %}
                         
                         <option value="add-genre-link">Add a Genre</option>
                     </select>
+                    <!-- /Genre Select -->
                 </div>
                 <!-- /Genre -->
                 
