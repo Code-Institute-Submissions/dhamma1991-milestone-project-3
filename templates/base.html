@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Meta Tags -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- /Meta Tags -->
+        
         <title>{{ title }}</title>
+        
+        <!-- Stylesheets -->
         <!-- Icons -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
         <!-- Materialize CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">   
         <!-- Custom Stylesheet -->
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <!-- /Stylesheets -->
         
-        <!-- jQuery -->
+        <!-- jQuery 
+            Loaded in the head to ensure scripts that depend on it can find it -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     
@@ -50,6 +57,7 @@
             {% with messages = get_flashed_messages() %} 
                 {% if messages %}
                 <div class="flashes center-align card-panel teal accent-1">
+                    <!-- This little bit of inline JS closes the flashed messages when the user clicks on the close icon -->
                     <i class="material-icons" onclick="this.parentNode.parentNode.removeChild(this.parentNode); return false;">close</i>
                     
                     <ul>
