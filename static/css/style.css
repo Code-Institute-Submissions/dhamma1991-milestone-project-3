@@ -107,6 +107,8 @@ body {
     margin-top: 0;
     padding: 2px;
     font-weight: 500; }
+    body .flashes ul {
+      margin: 0; }
   body .container {
     margin: 0 auto;
     max-width: 1280px;
