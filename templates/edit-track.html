@@ -53,29 +53,53 @@
             <!-- Genre -->
             <div class="row">
                 <div class="input-field col s12">
+                    <!-- Icon -->
                     <i class="material-icons prefix">category</i>
+                    <!-- /Icon -->
                     
-                    <!-- No validation is necessary for the genre select box on the edit form since it is impossible to submit no value; there is automatically a value populating the select box -->
-                    <!-- However, the script in formValidation.js will still provide visual feedback with a green underline if the select box is changed -->
+                    <!-- No validation is necessary for the genre select box on the edit form since it is impossible to submit no value;
+                        there is automatically a value populating the select box
+                        However, the script in formValidation.js will still provide visual feedback with a green underline if the select box is changed -->
+                    <!-- Label -->
                     <label id="genre_label" for="genre">Genre</label>
+                    <!-- /Label -->
                     
+                    <!-- Genre Select -->
                     <select id="genre" name="genre">
-                        <!-- The user must pick a genre, they can just pick 'Genre' -->
-                        <option value="" disabled selected>Please select:</option>
+                        <!-- If the user has just inserted a genre -->
+                        {% if inserted_genre %}
+                            <!-- This disabled option serves as a clue as to what the user should do when the dropdown is open -->
+                            <option value="" disabled>Please select:</option>
                         
-                        {% for genre in genres %}
-                            <!-- On the Edit Track page the user wants to see the current genre for the track as the default value -->
-                            {% if genre.genre == track.genre %} <!-- If there is a match, have the current genre selected -->
-                                <option value="{{ genre.genre }}" selected>{{ genre.genre }}</option>
-                                
-                            {% else %} <!-- Else render the other genres without the selected option -->
-                                <option value="{{ genre.genre }}">{{ genre.genre }}</option>
-                            {% endif %}
-                        {% endfor %}
+                            {% for genre in genres %}
+                                <!-- If the genre being iterated over matches the genre the user just inserted -->
+                                {% if genre.genre == inserted_genre %}
+                                    <!-- Set that genre as selected -->
+                                    <option value="{{ genre.genre }}" selected>{{ genre.genre }}</option>
+                                    
+                                {% else %}
+                                    <!-- Else render the other genres without the selected option -->
+                                    <option value="{{ genre.genre }}">{{ genre.genre }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        
+                        <!-- Else the user hasn't just inserted a genre and is coming to edit-track from elsewhere -->
+                        {% else %}
+                            {% for genre in genres %}
+                                <!-- On the Edit Track page the user wants to see the current genre for the track as the default value -->
+                                {% if genre.genre == track.genre %}
+                                    <option value="{{ genre.genre }}" selected>{{ genre.genre }}</option>
+                                    
+                                {% else %} <!-- Else render the other genres without the selected option -->
+                                    <option value="{{ genre.genre }}">{{ genre.genre }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
                         
                         <!-- Give the user the option to add another Genre -->
                         <option value="add-genre-link">Add a Genre</option>
                     </select>
+                    <!-- /Genre Select -->
                 </div>
             </div>
             <!-- /Genre -->

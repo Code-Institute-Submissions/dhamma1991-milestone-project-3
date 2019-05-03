@@ -480,7 +480,9 @@ def insert_track():
     flash('Track added successfully!')
     
     # Once submitted, redirect to the get_tracks function to view the collection using the default sorting order
-    return redirect(url_for('get_tracks', sorting_order = 1, decade_filter = 'all'))
+    return redirect(url_for('get_tracks', 
+        sorting_order = 1, 
+        decade_filter = 'all'))
 """ /INSERT TRACK """ 
 
 """ ADD GENRE PAGE """
@@ -551,7 +553,8 @@ def insert_genre(track_id):
         return redirect(url_for('edit_track', 
             track_id = track_id, 
             decade_filter = session['decade_filter'], 
-            sorting_order = session['sorting_order']))
+            sorting_order = session['sorting_order'],
+            inserted_genre = inserted_genre))
             
     # Else the user is currently adding a new track
     else: 
@@ -594,9 +597,9 @@ def upvote_track(decade_filter, sorting_order, track_id, track_detail):
 """ /UPVOTE TRACK """
 
 """ EDIT TRACK PAGE """
-@app.route('/edit_track/<decade_filter>/<sorting_order>/<track_id>')
-# This function essential gets the task that matches this task id
-def edit_track(sorting_order, decade_filter, track_id):
+@app.route('/edit_track/<decade_filter>/<sorting_order>/<track_id>', defaults={'inserted_genre': None})
+@app.route('/edit_track/<decade_filter>/<sorting_order>/<track_id>/<inserted_genre>')
+def edit_track(sorting_order, decade_filter, track_id, inserted_genre):
     """
     Determines which track the user wants to edit
     Then takes them to edit-track.html
@@ -629,7 +632,12 @@ def edit_track(sorting_order, decade_filter, track_id):
     session['sorting_order'] = sorting_order
     session['decade_filter'] = decade_filter
     # Render edit_track.html, pass through necessary variables
-    return render_template('edit-track.html', decade_filter = decade_filter, sorting_order = sorting_order, track = the_track, genres = all_genres)
+    return render_template('edit-track.html', 
+    decade_filter = decade_filter, 
+    sorting_order = sorting_order, 
+    track = the_track, 
+    genres = all_genres,
+    inserted_genre = inserted_genre)
 """ /EDIT TRACK """ 
     
 """ INSERT EDITED TRACK """
@@ -678,7 +686,9 @@ def insert_edited_track(decade_filter, sorting_order, track_id):
     session.pop('genre_edit_track_id', None)
     
     # Go back to get_tracks
-    return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
+    return redirect(url_for('get_tracks', 
+        decade_filter = decade_filter, 
+        sorting_order = sorting_order))
 """ /INSERT EDITED TRACK """    
     
 """ DELETE TRACK """
