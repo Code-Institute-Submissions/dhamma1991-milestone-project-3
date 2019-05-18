@@ -36,11 +36,11 @@
                     
                     <input id="youtube_link" name="youtube_link" type="text" class="validate" required>
                     
-                    <label id="youtube_link_label" for="youtube_link" data-error="Please enter the url of a YouTube video for the track" data-success="&#10004;">
+                    <label id="youtube_link_label" for="youtube_link" data-success="&#10004;">
                         YouTube Link
                     </label>
                     
-                    <span id="youtube-whats-this">
+                    <span id="youtube-whats-this" title="You can find this in the address bar when you have the YouTube video loaded in your browser">
                         <small>What's this?</small>
                     </span>
                 </div>
@@ -52,7 +52,7 @@
                     
                     <input id="year" name="year" type="text" class="validate" required pattern="[0-9][0-9][0-9][0-9]" maxlength="4">
                     
-                    <label id="year_label" for="year" data-error="Please enter the year the track was first released in the format YYYY (e.g. 1976)" data-success="&#10004;">Year</label>
+                    <label id="year_label" for="year" data-error="Please enter the year the track was first released in the format YYYY (e.g. 1976)" data-success="&#10004;">Year Released</label>
                 </div>
                 <!-- /Year Released -->
             </div>
@@ -176,4 +176,21 @@
 
 {% block form_validation_js %}
     <script src="{{ url_for('static', filename='js/formValidation.js') }}"></script>
+{% endblock %}
+
+{% block helper_tooltip %}
+    <!-- Load in jQuery UI -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    <!-- jQuery UI Script -->
+    <script>
+        $(function() {
+            // Target the YouTube URL 'What's this' span element
+            $('#youtube-whats-this').tooltip({
+                // Set the content of the tooltip
+                content: "<p>The URL of the YouTube video can be found in the address bar of your browser when you are viewing the video.</p><p>It will look something like this <em>https://www.youtube.com/watch?v=dQw4w9WgXcQ</em></p><p>Just copy the whole address and then paste it into the YouTube Link field on this form.</p>",
+            });
+        });
+    </script>
+    <!-- /jQuery UI Script -->
 {% endblock %}

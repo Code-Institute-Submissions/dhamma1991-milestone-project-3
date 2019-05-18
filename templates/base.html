@@ -16,6 +16,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">   
         <!-- Custom Stylesheet -->
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <!-- jQuery UI Styles -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <!-- /jQuery UI Styles -->
         <!-- /Stylesheets -->
         
         <!-- jQuery 
@@ -149,6 +152,11 @@
         <!-- Form Validation -->
         {% block form_validation_js %}
         {% endblock %}
+        
+        <!-- YouTube Form Input Helper Tooltip -->
+        {% block helper_tooltip %}
+        {% endblock %}
+        <!-- /YouTube Form Input Helper Tooltip -->
         
         <!-- Parallax Effect -->
         {% block parallax %}
