@@ -6,9 +6,19 @@ These styles are related to the pages for the forms allowing the user to add a t
 
 /* Form */
 form {
-    // The genre label is unique in that it is for a dropdown element
+    /* The genre label is unique in that it is for a dropdown element */
     #genre_label {
         top: -26px; // Position the label so it doesm't overlap with the dropdown
+    }
+    
+    /* Target the 'What's this?' helper on the YouTube form input */
+    #youtube-whats-this {
+        margin-left: 3rem;
+        position: relative;
+        bottom: 1rem;
+        /* Make the span look like a link */
+        color: $materializeLinkBlue;
+        cursor: pointer;
     }
 
     /* Form Buttons */

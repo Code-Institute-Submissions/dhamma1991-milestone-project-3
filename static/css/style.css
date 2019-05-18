@@ -410,10 +410,19 @@ These styles are related to the pages for the forms allowing the user to add a t
 */
 /* Form */
 form {
+  /* The genre label is unique in that it is for a dropdown element */
+  /* Target the 'What's this?' helper on the YouTube form input */
   /* Form Buttons */
   /* /Form Buttons */ }
   form #genre_label {
     top: -26px; }
+  form #youtube-whats-this {
+    margin-left: 3rem;
+    position: relative;
+    bottom: 1rem;
+    /* Make the span look like a link */
+    color: #039be5;
+    cursor: pointer; }
   form .btn-container .btn {
     /* Adjust default padding added by Materialize
         Give some margin between the button text and the button's edges using min-width
