@@ -1,18 +1,13 @@
-# Allow configuration
+# Use operating system dependant functionality
 import os
-
 # Allow full utilisation of Flask framework
 from flask import Flask, render_template, redirect, request, url_for, session, flash
-
 # Allow database manipulation
 from flask_pymongo import PyMongo, pymongo
-
 # Allow working with _id fields
 from bson.objectid import ObjectId
-
 # Allow date and time manipulation
 from datetime import datetime, timedelta
-
 # For database querying
 from bson.son import SON
 
