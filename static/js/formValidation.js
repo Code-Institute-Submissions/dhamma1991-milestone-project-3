@@ -9,15 +9,15 @@ var form  = document.getElementsByTagName('form')[0],
     error = document.querySelector('.error');
 
 form.addEventListener("submit", function (event) {
-  // Each time the user tries to send the data, we check
-  // if the email field is valid.
-//   if (!track_title.validity.valid || !artist.validity.valid || !youtube_link.validity.valid || !year.validity.valid)  {
+  // Each time the user tries to send the data, check
+  // if the fields are valid.
+  // If any field is not valid, apply the appropriate Materialize styles and
+  // prevent the form from being submitted
     if (!track_title.validity.valid) {
         $("#track_title").removeClass("valid");
         $("#track_title").addClass("invalid");
         $("#track_title_label").addClass("active");
         $("#track_title").prop("aria-invalid", "true");
-        // And we prevent the form from being sent by canceling the event
         event.preventDefault();
     }
     if (!artist.validity.valid) {
@@ -25,7 +25,6 @@ form.addEventListener("submit", function (event) {
         $("#artist").addClass("invalid");
         $("#artist_label").addClass("active");
         $("#artist").prop("aria-invalid", "true");
-        // And we prevent the form from being sent by canceling the event
         event.preventDefault();
     }
     if (!youtube_link.validity.valid) {
@@ -33,7 +32,6 @@ form.addEventListener("submit", function (event) {
         $("#youtube_link").addClass("invalid");
         $("#youtube_link_label").addClass("active");
         $("#youtube_link").prop("aria-invalid", "true");
-        // And we prevent the form from being sent by canceling the event
         event.preventDefault();
     }
     if (!year.validity.valid) {
@@ -41,7 +39,6 @@ form.addEventListener("submit", function (event) {
         $("#year").addClass("invalid");
         $("#year_label").addClass("active");
         $("#year").prop("aria-invalid", "true");
-        // And we prevent the form from being sent by canceling the event
         event.preventDefault();
     }
     if (!$('#genre').val()) {
@@ -49,7 +46,6 @@ form.addEventListener("submit", function (event) {
         $("#genre").addClass("invalid");
         $("#genre_label").addClass("active");
         $("#genre").prop("aria-invalid", "true");
-        // And we prevent the form from being sent by canceling the event
         event.preventDefault();
         $('select').material_select();
     }
@@ -58,7 +54,6 @@ form.addEventListener("submit", function (event) {
         $("#user_name").addClass("invalid");
         $("#user_name_label").addClass("active");
         $("#user_name").prop("aria-invalid", "true");
-        // And we prevent the form from being sent by canceling the event
         event.preventDefault();
     }
     if (!description.validity.valid) {
@@ -66,7 +61,6 @@ form.addEventListener("submit", function (event) {
         $("#description").addClass("invalid");
         $("#description_label").addClass("active");
         $("#description").prop("aria-invalid", "true");
-        // And we prevent the form from being sent by canceling the event
         event.preventDefault();
     }
 }, false);
@@ -76,7 +70,7 @@ $('#genre').change(function() {
     $("#genre").addClass("valid");
     $("#genre_label").addClass("active");
     $("#genre").prop("aria-invalid", "true");
-    // And we prevent the form from being sent by canceling the event
     event.preventDefault();
+    // With the select box, ensure the select is initialised again
     $('select').material_select();
 })
