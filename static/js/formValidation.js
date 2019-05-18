@@ -1,3 +1,4 @@
+// Grab the form inputs as variables
 var form  = document.getElementsByTagName('form')[0],
     track_title = document.getElementById('track_title'),
     artist = document.getElementById('artist'),
@@ -7,12 +8,34 @@ var form  = document.getElementsByTagName('form')[0],
     user_name = document.getElementById('user_name'),
     description = document.getElementById('description'),
     error = document.querySelector('.error');
+    
+/* With thanks to Manik Anora's answer in this stackoverflow thread https://stackoverflow.com/questions/28735459/how-to-validate-youtube-url-in-client-side-in-text-box
+    for this excellent function */
+function validateYouTubeUrl() {    
+    var url = $(youtube_link).val();
+    
+    if (url != undefined || url != '') {        
+        var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+        var match = url.match(regExp);
+        if (match && match[2].length == 11) {
+            return;
+        } else {
+            $("#youtube_link").removeClass("valid");
+            $("#youtube_link").addClass("invalid");
+            $("#youtube_link_label").addClass("active");
+            $("#youtube_link").prop("aria-invalid", "true");
+            event.preventDefault();
+        }
+    }
+}
 
 form.addEventListener("submit", function (event) {
   // Each time the user tries to send the data, check
   // if the fields are valid.
   // If any field is not valid, apply the appropriate Materialize styles and
   // prevent the form from being submitted
+  // The actions taken here are broadly the same for all form field inputs with the exception of
+  // the YouTube URL input, which uses the validateYouTubeUrl function defined above.
     if (!track_title.validity.valid) {
         $("#track_title").removeClass("valid");
         $("#track_title").addClass("invalid");
@@ -27,13 +50,9 @@ form.addEventListener("submit", function (event) {
         $("#artist").prop("aria-invalid", "true");
         event.preventDefault();
     }
-    if (!youtube_link.validity.valid) {
-        $("#youtube_link").removeClass("valid");
-        $("#youtube_link").addClass("invalid");
-        $("#youtube_link_label").addClass("active");
-        $("#youtube_link").prop("aria-invalid", "true");
-        event.preventDefault();
-    }
+    
+    validateYouTubeUrl();
+
     if (!year.validity.valid) {
         $("#year").removeClass("valid");
         $("#year").addClass("invalid");
