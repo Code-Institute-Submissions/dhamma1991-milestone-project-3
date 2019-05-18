@@ -14,11 +14,11 @@ from bson.son import SON
 # Initialise Flask
 app = Flask(__name__)
 # Connect to Database
-app.config["MONGO_DBNAME"] = 'level-up'
-app.config["MONGO_URI"] = 'mongodb://admin:Strat3gic@ds127115.mlab.com:27115/level-up'
+app.config["MONGO_DBNAME"] = os.environ.get('MONGO_DBNAME')
+app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 
-# Secret key is needed in order to use session variables
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+# Secret Key
+app.secret_key = os.environ.get('FLASK_SECRET_KEY')
 
 # Initialise PyMongo
 mongo = PyMongo(app)
@@ -27,6 +27,7 @@ mongo = PyMongo(app)
 @app.route('/index')
 @app.route('/')
 def index():
+    print(os.urandom(20))
     """
     This is the default route
     Render the home page
