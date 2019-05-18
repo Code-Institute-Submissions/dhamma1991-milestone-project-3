@@ -26,3 +26,7 @@ https://svgtopng.com/
 
 image optimizer
 https://imageresize.org/
+
+jQuery UI
+http://api.jqueryui.com/
+Used to get the tooltip effect found on the YouTube URL form input on the add and edit track forms
