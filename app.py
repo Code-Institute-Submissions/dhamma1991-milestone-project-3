@@ -596,7 +596,8 @@ def edit_track(sorting_order, decade_filter, track_id, inserted_genre):
     #     session.pop('genre_edit_track_id', None)
     # If genre_edit_track_id is not in session, that means the user has not come from just adding a genre
     # else:
-        # Grab the track_id from what was passed through
+    
+    # Grab the track from what was passed through
     the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
     # A list of all the genres is also needed in order to populate the edit form
     all_genres = mongo.db.genres.find()
@@ -662,6 +663,9 @@ def insert_edited_track(decade_filter, sorting_order, track_id):
     
     # Pop the genre_edit_track_id session, the user won't need it again unless they come to editing a track again
     session.pop('genre_edit_track_id', None)
+    
+    # Feedback to the user the track was successfully edited
+    flash('Track edited successfully!')
     
     # Go back to get_tracks
     return redirect(url_for('get_tracks', 
