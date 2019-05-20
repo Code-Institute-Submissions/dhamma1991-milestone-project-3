@@ -33,25 +33,64 @@
                 <div class="nav-wrapper">
                     <!-- Logo -->
                     <a href="{{ url_for('index') }}" class="brand-logo">DESERTISLAND</a>
-                    <a href="{{ url_for('index') }}" class="brand-logo"><img class="brand-image" src="{{ url_for('static', filename='images/logo.png') }}"></a>
+                    
+                    <a href="{{ url_for('index') }}" class="brand-logo">
+                        <img class="brand-image" src="{{ url_for('static', filename='images/logo.png') }}">
+                    </a>
                     <!-- /Logo -->
                     
                     <!-- Nav Links -->
-                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                    <ul class="right hide-on-med-and-down">
-                        <li><a href="{{ url_for('sort_tracks_upvote_desc', decade_filter = 'all') }}">Charts</a></li>
-                        <li><a href="{{ url_for('add_track') }}">Submit a Track!</a></li>
-                        <li><a href="{{ url_for('about') }}">Who We Are</a></li>
-                        <li><a href="{{ url_for('stats') }}">Database Stats</a></li>
-                    </ul>
+                    <!-- Nav Menu Icon -->
+                    <a href="#" data-activates="mobile-demo" class="button-collapse">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <!-- /Nav Menu Icon -->
                     
-                    <ul class="side-nav" id="mobile-demo">
-                        <li id="nav-close"><a><i class="material-icons">close</i></a></li>
-                        <li><a href="{{ url_for('sort_tracks_upvote_desc', decade_filter = 'all') }}">Charts</a></li>
-                        <li><a href="{{ url_for('add_track') }}">Submit a Track!</a></li>
-                        <li><a href="{{ url_for('about') }}">Who We Are</a></li>
-                        <li><a href="{{ url_for('stats') }}">Database Stats</a></li>
+                    <!-- Desktop Size Nav -->
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a href="{{ url_for('sort_tracks_upvote_desc', decade_filter = 'all') }}">Charts</a>
+                        </li>
+                        
+                        <li>
+                            <a href="{{ url_for('add_track') }}">Submit a Track!</a>
+                        </li>
+                        
+                        <li>
+                            <a href="{{ url_for('about') }}">Who We Are</a>
+                        </li>
+                        
+                        <li>
+                            <a href="{{ url_for('stats') }}">Database Stats</a>
+                        </li>
                     </ul>
+                    <!-- /Desktop Size Nav -->
+                    
+                    <!-- Tablet and Smaller Size Nav -->
+                    <ul class="side-nav" id="mobile-demo">
+                        <li id="nav-close">
+                            <a>
+                                <i class="material-icons">close</i>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="{{ url_for('sort_tracks_upvote_desc', decade_filter = 'all') }}">Charts</a>
+                        </li>
+                        
+                        <li>
+                            <a href="{{ url_for('add_track') }}">Submit a Track!</a>
+                        </li>
+                        
+                        <li>
+                            <a href="{{ url_for('about') }}">Who We Are</a>
+                        </li>
+                        
+                        <li>
+                            <a href="{{ url_for('stats') }}">Database Stats</a>
+                        </li>
+                    </ul>
+                    <!-- /Tablet and Smaller Size Nav -->
                     <!-- /Nav Links -->
                 </div>
                 <!-- /Nav Wrapper -->
@@ -73,32 +112,54 @@
             {% endwith %}
         </header>
         
+        <!-- Main Content Block -->
         {% block content %}
         {% endblock %}
+        <!-- /Main Content Block -->
         
+        <!-- Footer -->
         <footer class="page-footer">
             <div class="container">
                 <div class="row">
                     <div class="col l6 s12">
                         <h5 class="white-text"><a href="{{ url_for('index') }}">DESERTISLAND</a></h5>
+                        
                         <p class="grey-text text-lighten-4">The World's Favorite Songs, Voted By You</p>
                     </div>
+                    
+                    <!-- Footer Links -->
                     <div class="col l4 offset-l2 s12">
                         <ul>
-                            <li><a class="grey-text text-lighten-3" href="{{ url_for('sort_tracks_upvote_desc', decade_filter = 'all') }}">Charts</a></li>
-                            <li><a class="grey-text text-lighten-3" href="{{ url_for('add_track') }}">Submit a Track!</a></li>
-                            <li><a class="grey-text text-lighten-3" href="{{ url_for('about') }}">Who We Are</a></li>
-                            <li><a class="grey-text text-lighten-3" href="{{ url_for('stats') }}">Database Stats</a></li>
+                            <li>
+                                <a class="grey-text text-lighten-3" href="{{ url_for('sort_tracks_upvote_desc', decade_filter = 'all') }}">Charts</a>
+                            </li>
+                            
+                            <li>
+                                <a class="grey-text text-lighten-3" href="{{ url_for('add_track') }}">Submit a Track!</a>
+                            </li>
+                            
+                            <li>
+                                <a class="grey-text text-lighten-3" href="{{ url_for('about') }}">Who We Are</a>
+                            </li>
+                            
+                            <li>
+                                <a class="grey-text text-lighten-3" href="{{ url_for('stats') }}">Database Stats</a>
+                            </li>
                         </ul>
                     </div>
+                    <!-- /Footer Links -->
                 </div>
             </div>
+            
+            <!-- Footer Copyright -->
             <div class="footer-copyright">
                 <div class="container">
                     &#169;<span id="copyright"></span> Chris Hengmith
                 </div>
             </div>
+            <!-- /Footer Copyright -->
         </footer>
+        <!-- /Footer -->
         
         <!-- Scripts -->
         <!-- jQuery -->
