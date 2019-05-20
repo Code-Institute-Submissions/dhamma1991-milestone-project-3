@@ -6,6 +6,11 @@ Styles used within stats.html
 
 .stats-container {
     .row {
-        margin-bottom: 0; // Remove Materialize default margin, keep the rows compact
+        margin: 30px 0; // Space the rows out better
+        
+        /* Target the stats value */
+        strong {
+            font-size: 2rem;
+        }
     }
 }

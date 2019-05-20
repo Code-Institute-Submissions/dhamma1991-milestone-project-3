@@ -1,43 +1,77 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <!-- Page Heading -->
     <h1 class="center-align">DesertIsland - Stats</h1>
+    <!-- /Page Heading -->
     
-    <main class="container stats-container">
+    <main class="container stats-container center-align">
+        <!-- Total Number of Tracks Uploaded -->
         <div class="row">
-            <div class="col s12 l6">
-                <p>Total number of tracks uploaded: {{ tracks_count }}</p>      
-            </div>
+            <strong>{{ tracks_count }}</strong>
             
-            <div class="col s12 l6">
-                <p>Decade with the most tracks uploaded: {{ most_pop_decade }}</p>      
-            </div>
+            <p>Total number of tracks uploaded</p>
         </div>
+        <!-- /Total Number of Tracks Uploaded -->
         
-        <div class="row">
-            <div class="col s12 l6">
-                <p>Artist with the most uploaded tracks: {{ most_freq_artist }}</p>  
-            </div>
-            
-            <div class="col s12 l6">
-                <p>User who has made the most submissions: {{ most_freq_user }}</p>
-            </div>
-        </div>
+        <div class="divider"></div>
         
+        <!-- Most Frequent Decade -->
         <div class="row">
-            <div class="col s12 l6">
-                <p>Genre with the most tracks: {{ most_freq_genre }}</p>           
-            </div>
+            <strong>{{ most_pop_decade }}</strong>
             
-            <div class="col s12 l6">
-                <p>Total number of Likes for all tracks: {{ all_upvotes }}</p>
-            </div>
+            <p>Decade with the most tracks uploaded</p>     
         </div>
-
+        <!-- /Most Frequent Decade -->
+        
+        <div class="divider"></div>
+        
+        <!-- Most Frequent Artist -->
         <div class="row">
-            <div class="col s12 l6">
-                <p>Most Liked Artist: {{ most_pop_artist._id }} with {{ most_pop_artist.upvotes }} Likes</p>
-            </div>
+            <strong>{{ most_freq_artist }}</strong>
+            
+            <p>Artist with the most uploaded tracks</p> 
         </div>
+        <!-- /Most Frequent Artist -->
+        
+        <div class="divider"></div>
+        
+        <!-- Most Frequent User -->
+        <div class="row">
+            <strong>{{ most_freq_user }}</strong>
+            
+            <p>User who has made the most submissions</p>
+        </div>
+        <!-- /Most Frequent User -->
+        
+        <div class="divider"></div>
+        
+        <!-- Most Frequent Genre -->
+        <div class="row">
+            <strong>{{ most_freq_genre }}</strong>
+            
+            <p>Genre with the most tracks</p>     
+        </div>
+        <!-- Most Frequent Genre -->
+        
+        <div class="divider"></div>
+        
+        <!-- Total Likes -->
+        <div class="row">
+            <strong>{{ all_upvotes }}</strong>
+            
+            <p>Total number of Likes for all tracks</p>
+        </div>
+        <!-- /Total Likes -->
+        
+        <div class="divider"></div>
+        
+        <!-- Most Liked Artist -->
+        <div class="row">
+            <strong>{{ most_pop_artist._id }} with {{ most_pop_artist.upvotes }} Likes</strong>
+            
+            <p>Most Liked artist</p>
+        </div>
+        <!-- /Most Liked Artist -->
     </main>
 {% endblock %}

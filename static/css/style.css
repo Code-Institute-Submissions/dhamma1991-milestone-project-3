@@ -440,7 +440,10 @@ Styles used within stats.html
 
 */
 .stats-container .row {
-  margin-bottom: 0; }
+  margin: 30px 0;
+  /* Target the stats value */ }
+  .stats-container .row strong {
+    font-size: 2rem; }
 
 /* /Components */
 
