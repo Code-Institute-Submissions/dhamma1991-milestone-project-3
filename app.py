@@ -712,6 +712,9 @@ def confirm_delete_track(decade_filter, sorting_order, track_id):
     # Use ObjectId to parse the track_id in a format acceptable to mongo
     mongo.db.tracks.remove({'_id': ObjectId(track_id)})
     
+    # Feedback to the user
+    flash("Track deleted!")
+    
     # Go to the charts page
     return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
 """ /CONFIRM DELETE TRACK """
