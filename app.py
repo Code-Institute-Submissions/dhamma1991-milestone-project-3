@@ -461,7 +461,7 @@ def insert_track():
     )
     
     # Feedback to the user the track was successfully submitted
-    flash('Track added successfully!')
+    flash('Track submitted successfully!')
     
     # Once submitted, redirect to the get_tracks function to view the collection using the default sorting order
     return redirect(url_for('get_tracks', 

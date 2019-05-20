@@ -105,13 +105,13 @@ body {
     /* /Sticky Footer */ }
   body .flashes {
     margin-top: 0;
-    padding: 2px;
+    padding: 12px;
     font-weight: 500;
     /* Style the close icon */
     /* Style the messages ul */ }
     body .flashes i {
       position: absolute;
-      right: 0%;
+      right: 1%;
       font-size: 18px;
       cursor: pointer; }
     body .flashes ul {
