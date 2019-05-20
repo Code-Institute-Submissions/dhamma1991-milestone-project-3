@@ -677,17 +677,42 @@ def insert_edited_track(decade_filter, sorting_order, track_id):
 @app.route('/delete_track/<decade_filter>/<sorting_order>/<track_id>')
 def delete_track(decade_filter, sorting_order, track_id):
     """
+    Takes the user to the delete confirmation page
+    """
+    
+    # Hold pagination so the user is taken back to the same tracks they were viewing 
+    # (minus the one they just deleted) once they have confirmed deletion
+    # This session is technically only needed if the user deletes a track from the charts page
+    session['hold_pagination'] = True
+    
+    # Use ObjectId to parse the track_id in a format acceptable to mongo
+    the_track = mongo.db.tracks.find_one({'_id': ObjectId(track_id)})
+    
+    print(the_track.get('track_title'))
+    # # Format the page title
+    title = "DesertIsland | Confirm deletetion of " + the_track.get('artist') + " - " + the_track.get('track_title')
+    
+    # Render the template
+    return render_template('delete-confirm.html', 
+        track = the_track,
+        title = title)
+    
+    # # Return the updated list of tracks
+    # return redirect(url_for('confirm_delete_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track_id))
+""" /DELETE TRACK """
+
+""" CONFIRM DELETE TRACK """
+@app.route('/confirm_delete_track/<decade_filter>/<sorting_order>/<track_id>')
+def confirm_delete_track(decade_filter, sorting_order, track_id):
+    """
     Deletes a track from the database
     """
     # Use ObjectId to parse the track_id in a format acceptable to mongo
     mongo.db.tracks.remove({'_id': ObjectId(track_id)})
     
-    # Hold pagination so the user is taken back to the same tracks they were viewing (minus the one they just deleted)
-    session['hold_pagination'] = True
-    
     # Return the updated list of tracks
     return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
-""" /DELETE TRACK """
+""" /CONFIRM DELETE TRACK """
 
 """ INITIALISE APP """
 if __name__ == '__main__':
