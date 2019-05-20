@@ -694,6 +694,8 @@ def delete_track(decade_filter, sorting_order, track_id):
     # Render the template
     return render_template('delete-confirm.html', 
         track = the_track,
+        decade_filter = decade_filter,
+        sorting_order = sorting_order,
         title = title)
     
     # # Return the updated list of tracks
@@ -710,7 +712,7 @@ def confirm_delete_track(decade_filter, sorting_order, track_id):
     # Use ObjectId to parse the track_id in a format acceptable to mongo
     mongo.db.tracks.remove({'_id': ObjectId(track_id)})
     
-    # Return the updated list of tracks
+    # Go to the charts page
     return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
 """ /CONFIRM DELETE TRACK """
 
