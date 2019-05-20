@@ -679,7 +679,6 @@ def delete_track(decade_filter, sorting_order, track_id):
     """
     Takes the user to the delete confirmation page
     """
-    
     # Hold pagination so the user is taken back to the same tracks they were viewing 
     # (minus the one they just deleted) once they have confirmed deletion
     # This session is technically only needed if the user deletes a track from the charts page
@@ -706,6 +705,7 @@ def delete_track(decade_filter, sorting_order, track_id):
 def confirm_delete_track(decade_filter, sorting_order, track_id):
     """
     Deletes a track from the database
+    Then takes the user back to the charts page
     """
     # Use ObjectId to parse the track_id in a format acceptable to mongo
     mongo.db.tracks.remove({'_id': ObjectId(track_id)})
