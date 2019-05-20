@@ -61,7 +61,7 @@ body {
     /* Style the flashed messages provided by Flask */
     .flashes {
         margin-top: 0;
-        padding: 12px;
+        padding: 0;
         font-weight: 500;
         
         /* Style the close icon */
@@ -75,6 +75,20 @@ body {
         /* Style the messages ul */
         ul {
             margin: 0;
+            
+            /* Style the messages */
+            li {
+                padding: 12px;
+            }
+            
+            /* Style the different message categories */
+            .error-flash {
+                background-color: $errorRed;
+            }
+            
+            .success-flash {
+                background-color: $successTeal;
+            }
         }
     }
         

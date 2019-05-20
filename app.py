@@ -468,7 +468,7 @@ def insert_track():
         )
         
         # Feedback to the user the track was successfully submitted
-        flash('Track submitted successfully!')
+        flash('Track submitted successfully!', 'success')
         
         # Once submitted, redirect to the get_tracks function to view the collection using the default sorting order
         return redirect(url_for('get_tracks', 
@@ -478,7 +478,7 @@ def insert_track():
     # Handle an exception if a duplicate YouTube video attempts to get added to the db
     except pymongo.errors.DuplicateKeyError:
         # Feedback to the user something went wrong
-        flash('A track already exists with that YouTube link. Try a different track.')
+        flash('A track already exists with that YouTube link. Try a different track.', 'error')
         
         # Clear the form and go back to add_track
         return redirect('add_track')
@@ -539,7 +539,7 @@ def insert_genre(track_id):
     )
     
     # Feedback to the user the genre was successfully submitted
-    flash('Genre added successfully!')
+    flash('Genre added successfully!', 'success')
     
     # There are 2 places the user can be adding a genre from; adding a new track or editing an existing track
     # If track_id has a value, that means the user is editing a track
@@ -680,7 +680,7 @@ def insert_edited_track(decade_filter, sorting_order, track_id):
     session.pop('genre_edit_track_id', None)
     
     # Feedback to the user the track was successfully edited
-    flash('Track edited successfully!')
+    flash('Track edited successfully!', 'success')
     
     # Go back to get_tracks
     return redirect(url_for('get_tracks', 
@@ -728,7 +728,7 @@ def confirm_delete_track(decade_filter, sorting_order, track_id):
     mongo.db.tracks.remove({'_id': ObjectId(track_id)})
     
     # Feedback to the user
-    flash("Track deleted!")
+    flash('Track deleted!', 'success')
     
     # Go to the charts page
     return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))

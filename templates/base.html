@@ -96,15 +96,15 @@
             </nav>
             
             <!-- Flask Messages -->
-            {% with messages = get_flashed_messages() %} 
+            {% with messages = get_flashed_messages(with_categories = True) %} 
                 {% if messages %}
-                <div class="flashes center-align card-panel teal accent-1 flow-text">
+                <div class="flashes center-align card-panel flow-text">
                     <!-- This little bit of inline JS closes the flashed messages when the user clicks on the close icon -->
                     <i class="material-icons" onclick="this.parentNode.parentNode.removeChild(this.parentNode); return false;">close</i>
                     
                     <ul>
-                        {% for message in messages %}
-                            <li>{{ message }}</li>
+                        {% for category, message in messages %}
+                            <li class="{{ category }}-flash">{{ message }}</li>
                         {% endfor %}
                     </ul>
                 </div>
