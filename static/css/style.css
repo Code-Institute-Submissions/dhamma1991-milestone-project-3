@@ -113,7 +113,8 @@ body {
       position: absolute;
       right: 1%;
       font-size: 18px;
-      cursor: pointer; }
+      cursor: pointer;
+      margin-top: 0.5rem; }
     body .flashes ul {
       margin: 0;
       /* Style the messages */
