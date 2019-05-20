@@ -12,38 +12,36 @@
                 <p class="reset-margin-top">{{ track.description }}</p>
                 <!-- /Track Description -->
                 
+                <div class="divider"></div>
+                
                 <div class="container sub-container">
-                    <div class="row">
+                    <div class="row center-align default-margin-top">
                         <!-- Year Released -->
                         <div class="col s6">
                             <small>Released: {{ track.year }}</small>
                         </div>
                         <!-- /Year Released -->
-                    </div>
-                    
-                    <!-- Genre -->
-                    <div class="row">
-                        <div class="col s12">
+                        
+                        <!-- Genre -->
+                        <div class="col s6">
                             <small>Genre: {{ track.genre }}</small>
                         </div>
+                        <!-- /Genre -->
                     </div>
-                    <!-- /Genre -->
                     
-                    <!-- User Name -->
-                    <div class="row">
-                        <div class="col s12">
+                    <div class="row center-align">
+                        <!-- User Name -->
+                        <div class="col s6">
                             <small>Submitted By: {{ track.user_name }}</small>
                         </div>
-                    </div>
-                    <!-- /User Name -->
-                    
-                    <!-- Date Added -->
-                    <div class="row">
-                        <div class="col s12">
+                        <!-- /User Name -->
+                        
+                        <!-- Date Added -->
+                        <div class="col s6">
                             <small>Date Added: {{ track.date_added }}</small>
                         </div>
+                        <!-- /Date Added -->
                     </div>
-                    <!-- /Date Added -->
                 </div>
             </div>
             
