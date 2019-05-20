@@ -32,9 +32,14 @@ def index():
     Render the home page
     Grab the current top 3 tracks by upvotes and display them on the home page
     """
+    # The below line was run in order to create a db index preventing duplicate youtube videos from being uploaded
+    # mongo.db.tracks.create_index([('youtube_link', pymongo.ASCENDING)], unique=True)
+    
     # Clear any session variables the user may have 
     # This ensures the user can go to get_tracks cleanly
     session.clear()
+    
+    print(sorted(list(mongo.db.tracks.index_information())))
     
     # Get the tracks collection
     tracks = mongo.db.tracks.find()
@@ -441,32 +446,42 @@ def insert_track():
     timestamp = datetime.now().strftime('%d %B %Y %H:%M')
     # Get the tracks collection
     tracks = mongo.db.tracks
-    # Insert the record using the fields from the form on add-track.html
-    tracks.insert_one(
-        {
-            'track_title': request.form.get('track_title'), # Access the tasks collection
-            'artist': request.form.get('artist'),
-            'youtube_link': request.form.get('youtube_link'),
-            'year': int(request.form.get('year')),
-            'genre': request.form.get('genre'),
-            'user_name': request.form.get('user_name'),
-            'description': request.form.get('description'),
-            # Upvotes is set to 1 by default. This idea is borrowed from Reddit, in that a user who uploads a track would presumably want to upvote it as well
-            'upvotes': 1,
-            # date_added is the human friendly date
-            'date_added': timestamp,
-            # date_added_raw is the python friendly date
-            'date_added_raw': datetime.now()
-        }
-    )
-    
-    # Feedback to the user the track was successfully submitted
-    flash('Track submitted successfully!')
-    
-    # Once submitted, redirect to the get_tracks function to view the collection using the default sorting order
-    return redirect(url_for('get_tracks', 
-        sorting_order = 1, 
-        decade_filter = 'all'))
+
+    # Try inserting the record using the fields from the form on add-track.html
+    try:
+        tracks.insert_one(
+            {
+                'track_title': request.form.get('track_title'), # Access the tasks collection
+                'artist': request.form.get('artist'),
+                'youtube_link': request.form.get('youtube_link'),
+                'year': int(request.form.get('year')),
+                'genre': request.form.get('genre'),
+                'user_name': request.form.get('user_name'),
+                'description': request.form.get('description'),
+                # Upvotes is set to 1 by default. This idea is borrowed from Reddit, in that a user who uploads a track would presumably want to upvote it as well
+                'upvotes': 1,
+                # date_added is the human friendly date
+                'date_added': timestamp,
+                # date_added_raw is the python friendly date
+                'date_added_raw': datetime.now()
+            }
+        )
+        
+        # Feedback to the user the track was successfully submitted
+        flash('Track submitted successfully!')
+        
+        # Once submitted, redirect to the get_tracks function to view the collection using the default sorting order
+        return redirect(url_for('get_tracks', 
+            sorting_order = 1, 
+            decade_filter = 'all'))
+            
+    # Handle an exception if a duplicate YouTube video attempts to get added to the db
+    except pymongo.errors.DuplicateKeyError:
+        # Feedback to the user something went wrong
+        flash('A track already exists with that YouTube link. Try a different track.')
+        
+        # Clear the form and go back to add_track
+        return redirect('add_track')
 """ /INSERT TRACK """ 
 
 """ ADD GENRE PAGE """
