@@ -96,9 +96,10 @@
                 <!-- /Nav Wrapper -->
             </nav>
             
+            <!-- Flask Messages -->
             {% with messages = get_flashed_messages() %} 
                 {% if messages %}
-                <div class="flashes center-align card-panel teal accent-1">
+                <div class="flashes center-align card-panel teal accent-1 flow-text">
                     <!-- This little bit of inline JS closes the flashed messages when the user clicks on the close icon -->
                     <i class="material-icons" onclick="this.parentNode.parentNode.removeChild(this.parentNode); return false;">close</i>
                     
@@ -110,6 +111,7 @@
                 </div>
                 {% endif %} 
             {% endwith %}
+            <!-- /Flask Messages -->
         </header>
         
         <!-- Main Content Block -->
