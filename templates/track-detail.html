@@ -53,21 +53,21 @@
             </div>
             <!-- /YouTube Video -->
         
-            <!-- Upvote Button Form -->
+            <!-- Like Button Form -->
             <div class="col s12 xl6 center-align default-margin-top">
                 <form action="{{ url_for('upvote_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id, track_detail = True) }}" method="POST">
-                    <!-- Upvote Button -->
-                    <button class="btn upvote-button" type="submit" title="Upvote">
-                        <i class="material-icons">arrow_upward</i>
+                    <!-- Like Button -->
+                    <button class="btn upvote-button" type="submit" title="Like">
+                        <i class="material-icons">thumb_up</i>
                     </button>
-                    <!-- /Upvote Button -->
+                    <!-- /Like Button -->
                     
-                    <!-- Upvote Count -->
+                    <!-- Like Count -->
                     <span>{{ track.upvotes }}</span>
-                    <!-- /Upvote Count -->
+                    <!-- /Like Count -->
                 </form>
             </div>
-            <!-- /Upvote Button Form -->
+            <!-- /Like Button Form -->
         </div>
         
         <div class="row center-align">
