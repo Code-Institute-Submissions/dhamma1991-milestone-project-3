@@ -109,7 +109,7 @@
                 {% endfor %}
                 
             {% else %} <!-- Else no tracks have been found, this means that no track currently exists that meets the current filter's requirements -->
-                <img src="{{ url_for('static', filename='images/smiley.png') }}">
+                <img src="{{ url_for('static', filename='images/smiley.png') }}" alt="Smiley face cartoon">
                 
                 <p>Looks like there's no songs for that period yet!</p>
                 
