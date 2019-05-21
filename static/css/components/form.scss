@@ -8,8 +8,12 @@ These styles are related to the pages for the forms allowing the user to add a t
 form {
     /* The genre label is unique in that it is for a dropdown element */
     #genre_label {
-        top: -18px; // Position the label so it doesm't overlap with the dropdown
+        top: -26px; // Position the label so it doesm't overlap with the dropdown
+        &.active{
+            transform: translateY(14px) scale(0.8)!important; // Overwrite default Materialize translation. This stops the label from going too far away from the input
+        }
     }
+    
     
     /* Target the 'What's this?' helper on the YouTube form input */
     #youtube-whats-this {
