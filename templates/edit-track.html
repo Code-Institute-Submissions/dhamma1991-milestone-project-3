@@ -43,7 +43,8 @@
                 <div class="input-field col s12 l6">
                     <i class="material-icons prefix">calendar_today</i>
                     
-                    <input id="year" name="year" type="text" class="validate" value="{{ track.year }}" required pattern="[0-9][0-9][0-9][0-9]" maxlength="4">
+                    <!-- The regex pattern here ensures the year entered is 4 digits with a leading 1 (e.g. 1999) or 2 (e.g. 2012) -->
+                    <input id="year" name="year" type="text" class="validate" value="{{ track.year }}" required pattern="[12][0-9][0-9][0-9]" maxlength="4">
                     
                     <label id="year_label" for="year" data-error="Please enter the year the track was first released in the format YYYY (e.g. 1976)" data-success="&#10004;">Year Released</label>
                 </div>
