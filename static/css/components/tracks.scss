@@ -68,7 +68,9 @@ Styles relevant to the content within tracks.html
     /* YouTube Lazy Loading
         Style the thumbnail images that appear on tracks.html.
         Make them look like videos when they are in fact images, when clicked on video is loaded.
-        This allows the user to see that there is video media present, but saves on bandwidth */
+        This allows the user to see that there is video media present, but saves on bandwidth 
+        With thanks to https://webdesign.tutsplus.com/tutorials/how-to-lazy-load-embedded-youtube-videos--cms-26743 for the script
+        and base styles */
     .youtube { // The wrapper
         background-color: #000;
         margin: $defaultMargin auto;
