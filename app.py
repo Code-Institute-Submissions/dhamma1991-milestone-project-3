@@ -426,8 +426,12 @@ def add_track(inserted_genre):
     """
     Takes the user to add-track.html allowing them to add a new track to the database
     """
+    # Add a html title
+    title = "DesertIsland | Submit A Track"
+    
     # Render the template, pass through necessary values
-    return render_template('add-track.html', 
+    return render_template('add-track.html',
+        title = title,
         genres=mongo.db.genres.find(),
         inserted_genre = inserted_genre)
 """ /ADD TRACK PAGE """
@@ -626,13 +630,17 @@ def edit_track(sorting_order, decade_filter, track_id, inserted_genre):
     # Hence, the session variables here are used as "standby" variables
     session['sorting_order'] = sorting_order
     session['decade_filter'] = decade_filter
+    
+    title = "DesertIsland | Edit Track " + the_track.get("artist") + " - " + the_track.get('track_title') 
+    
     # Render edit_track.html, pass through necessary variables
-    return render_template('edit-track.html', 
-    decade_filter = decade_filter, 
-    sorting_order = sorting_order, 
-    track = the_track, 
-    genres = all_genres,
-    inserted_genre = inserted_genre)
+    return render_template('edit-track.html',
+        title = title,
+        decade_filter = decade_filter, 
+        sorting_order = sorting_order, 
+        track = the_track, 
+        genres = all_genres,
+        inserted_genre = inserted_genre)
 """ /EDIT TRACK """ 
     
 """ INSERT EDITED TRACK """
@@ -704,7 +712,7 @@ def delete_track(decade_filter, sorting_order, track_id):
     
     print(the_track.get('track_title'))
     # # Format the page title
-    title = "DesertIsland | Confirm deletetion of " + the_track.get('artist') + " - " + the_track.get('track_title')
+    title = "DesertIsland | Confirm Deletion of " + the_track.get('artist') + " - " + the_track.get('track_title')
     
     # Render the template
     return render_template('delete-confirm.html', 
