@@ -424,7 +424,8 @@ form {
   /* Form Buttons */
   /* /Form Buttons */ }
   form #genre_label {
-    top: -26px; }
+    top: -26px;
+    /* Target the genre label when the input has been clicked */ }
     form #genre_label.active {
       transform: translateY(14px) scale(0.8) !important; }
   form #youtube-whats-this {

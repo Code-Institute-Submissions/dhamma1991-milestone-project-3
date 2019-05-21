@@ -9,6 +9,8 @@ form {
     /* The genre label is unique in that it is for a dropdown element */
     #genre_label {
         top: -26px; // Position the label so it doesm't overlap with the dropdown
+        
+        /* Target the genre label when the input has been clicked */
         &.active{
             transform: translateY(14px) scale(0.8)!important; // Overwrite default Materialize translation. This stops the label from going too far away from the input
         }
