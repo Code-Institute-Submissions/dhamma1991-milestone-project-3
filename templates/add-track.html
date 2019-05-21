@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="center-align">Submit a Track to DesertIsland</h1>
-
     <main class="container">
+        <!-- Page Heading -->
+        <h1 class="center-align">Submit a Track to DesertIsland</h1>
+        <!-- /Page Heading -->
+        
+        <p class="center-align">Not sure about some details? Try searching for the track on <a href="https://www.wikipedia.org/" target="_blank">Wikipedia</a>.</p>
+        
         <!-- Form -->
         <form action="{{ url_for('insert_track') }}" method="POST" class="col s12" novalidate>
             <!-- The form will call the insert_track function located in app.py -->
