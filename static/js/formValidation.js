@@ -60,7 +60,11 @@ form.addEventListener("submit", function (event) {
         $("#year").prop("aria-invalid", "true");
         event.preventDefault();
     }
-    if (!$('#genre').val()) {
+    
+    // If the genre select has an empty value (is still on placeholder)
+    // or the user has 'Add a Genre' selected (possible if the user 
+    // uses the back button on their browser to exit add-genre.html)
+    if (!$('#genre').val() || $('#genre').val() == 'add-genre-link') {
         $("#genre").removeClass("valid");
         $("#genre").addClass("invalid");
         $("#genre_label").addClass("active");
@@ -68,6 +72,7 @@ form.addEventListener("submit", function (event) {
         event.preventDefault();
         $('select').material_select();
     }
+    
     if (!user_name.validity.valid) {
         $("#user_name").removeClass("valid");
         $("#user_name").addClass("invalid");
@@ -75,6 +80,7 @@ form.addEventListener("submit", function (event) {
         $("#user_name").prop("aria-invalid", "true");
         event.preventDefault();
     }
+    
     if (!description.validity.valid) {
         $("#description").removeClass("valid");
         $("#description").addClass("invalid");
