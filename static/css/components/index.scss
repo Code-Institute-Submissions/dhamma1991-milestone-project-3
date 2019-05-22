@@ -15,15 +15,17 @@ These styles are related to the unique content for the index page
     //     }
     // }
     
+    /* Target the div containing the text over the parallax image */
     div:nth-child(2) {
         height: inherit;
+        background-color: $parallaxOverlay;
         
         p {
             // margin-top: 10%;
             width: 100vw;
             color: $offWhite;
             font-size: 3.56rem;
-            background-color: rgba(0,0,0,0.7);
+            // background-color: rgba(0,0,0,0.7);
             text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
             
             a {
