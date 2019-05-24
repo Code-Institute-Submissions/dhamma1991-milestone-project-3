@@ -147,10 +147,8 @@
         $('#decade-options-select').change(function() {
             // Grab the current value of the select box
             var selectVal = $('#decade-options-select').val()
-            console.log(selectVal)
-            // If the select box's value is equal to 'add-genre-link'...
             
-            //Use one line, just pass in selectVal
+            // If the select box's value is equal to 'add-genre-link'...
             switch (selectVal) {
                 case 'pre1950':
                     window.location.href = "{{ url_for('get_tracks', sorting_order = sorting_order, decade_filter = 'pre1950' ) }}";
