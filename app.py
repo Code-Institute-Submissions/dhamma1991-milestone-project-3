@@ -4,6 +4,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for, session, flash
 # Allow database manipulation
 from flask_pymongo import PyMongo, pymongo
+from pymongo.collation import Collation
 # Allow working with _id fields
 from bson.objectid import ObjectId
 # Allow date and time manipulation
@@ -33,14 +34,21 @@ def index():
     Grab the current top 3 tracks by upvotes and display them on the home page
     """
     # The below lines were run in order to create db indexes preventing duplicate youtube videos and genres from being added
-    # mongo.db.tracks.create_index([('youtube_link', pymongo.ASCENDING)], unique=True)
-    mongo.db.genres.create_index([('genre', pymongo.ASCENDING)], unique=True)
+    
+    # mongo.db.tracks.create_index([('youtube_link', 
+    #     pymongo.ASCENDING)], 
+    #     unique=True)
+        
+    # mongo.db.genres.create_index([('genre', 
+    #     pymongo.ASCENDING)], 
+    #     unique=True, 
+    #     collation=Collation(locale = 'en', strength = 2))
+    
+    # print(sorted(list(mongo.db.genres.index_information())))
 
     # Clear any session variables the user may have 
     # This ensures the user can go to get_tracks cleanly
     session.clear()
-    
-    print(sorted(list(mongo.db.tracks.index_information())))
     
     # Get the tracks collection
     tracks = mongo.db.tracks.find()
