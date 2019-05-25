@@ -196,7 +196,6 @@ def stats():
         tracks_count = tracks_count, 
         most_pop_decade = most_pop_decade, 
         most_freq_artist = most_freq_artist,
-        most_freq_user = most_freq_user,
         most_freq_genre = most_freq_genre,
         all_upvotes = all_upvotes,
         most_pop_artist = most_pop_artist)
