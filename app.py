@@ -32,9 +32,10 @@ def index():
     Render the home page
     Grab the current top 3 tracks by upvotes and display them on the home page
     """
-    # The below line was run in order to create a db index preventing duplicate youtube videos from being uploaded
+    # The below lines were run in order to create db indexes preventing duplicate youtube videos and genres from being added
     # mongo.db.tracks.create_index([('youtube_link', pymongo.ASCENDING)], unique=True)
-    
+    mongo.db.genres.create_index([('genre', pymongo.ASCENDING)], unique=True)
+
     # Clear any session variables the user may have 
     # This ensures the user can go to get_tracks cleanly
     session.clear()
@@ -499,6 +500,15 @@ def add_genre(track_id):
     # Set the html title
     title = "DesertIsland | Add A New Genre"
     
+    # Establish a session for track_id
+    # This is needed in case the user tries to add a genre that already exists
+    # When that page gets reloaded after the message telling the user that the genre is duplicated
+    # and the user then successfully adds a non-duplicate genre
+    # They will get taken to add-track instead of edit-track
+    # The session makes sure they go back to edit-track if that's where they need to be
+    if track_id:
+        session['track_id'] = track_id
+    
     # Render the template
     return render_template('add-genre.html', 
         track_id = track_id,
@@ -536,31 +546,51 @@ def insert_genre(track_id):
     
     inserted_genre = request.form.get('genre')
     
-    genres.insert_one(
-        {
-            'genre': inserted_genre
-        }
-    )
+    try:
+        genres.insert_one(
+            {
+                'genre': inserted_genre
+            }
+        )
+        
+        # Feedback to the user the genre was successfully submitted
+        flash('Genre added successfully!', 'success')
+        
+        # There are 2 places the user can be adding a genre from; adding a new track or editing an existing track
+        # If track_id has a value, that means the user is editing a track
+        if track_id:
+            # Take them back to edit-track.html, to the track they were editing before they went to adding a new genre
+            # Pass through the session variables that were established by edit_track()
+            return redirect(url_for('edit_track', 
+                track_id = track_id, 
+                decade_filter = session['decade_filter'], 
+                sorting_order = session['sorting_order'],
+                inserted_genre = inserted_genre))
+                
+        # track_id may be in session of the user has previously failed to add a genre
+        # by attempting to add a duplicate genre
+        # In this case, do the same thing as the if block above
+        # but get the value for track_id from the session instead
+        elif 'track_id' in session:
+            return redirect(url_for('edit_track', 
+                track_id = session['track_id'], 
+                decade_filter = session['decade_filter'], 
+                sorting_order = session['sorting_order'],
+                inserted_genre = inserted_genre))
+                
+        # Else the user is currently adding a new track since track_id doesn't exist
+        else: 
+            # In which case, just take them back to add-track.html to allow them to continue adding a track
+            return redirect(url_for('add_track',
+                inserted_genre = inserted_genre))
+        
+    # Handle an exception if a duplicate genre attempts to get added to the db
+    except pymongo.errors.DuplicateKeyError:
+        # Feedback to the user something went wrong
+        flash('That genre already exists', 'error')
+        
+        return redirect(url_for('add_genre'))
     
-    # Feedback to the user the genre was successfully submitted
-    flash('Genre added successfully!', 'success')
-    
-    # There are 2 places the user can be adding a genre from; adding a new track or editing an existing track
-    # If track_id has a value, that means the user is editing a track
-    if track_id:
-        # Take them back to edit-track.html, to the track they were editing before they went to adding a new genre
-        # Pass through the session variables that were established by edit_track()
-        return redirect(url_for('edit_track', 
-            track_id = track_id, 
-            decade_filter = session['decade_filter'], 
-            sorting_order = session['sorting_order'],
-            inserted_genre = inserted_genre))
-            
-    # Else the user is currently adding a new track
-    else: 
-        # In which case, just take them back to add-track.html to allow them to continue adding a track
-        return redirect(url_for('add_track',
-            inserted_genre = inserted_genre))
 """ /INSERT GENRE """
 
 """ UPVOTE TRACK """
