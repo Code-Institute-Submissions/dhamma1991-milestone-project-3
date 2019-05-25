@@ -162,8 +162,6 @@ def stats():
         
     # Call most_freq for artist
     most_freq_artist = most_freq('$artist')
-    # And user_name
-    most_freq_user = most_freq('$user_name')
     # And genre
     most_freq_genre = most_freq('$genre')
     """ /Most Frequent """
