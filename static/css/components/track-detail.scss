@@ -17,6 +17,7 @@ Styles used within track-detail.html
         display: block;
         width: 300px;
         height: 183px;
+        border: none;
         
         /* Gradually grow the size of the iframe as the page size increases */  
         @include mqWidth($medBreakpoint) {
