@@ -2,9 +2,9 @@
 
 {% block content %}
     <main class="container">
-        <!-- The heading won't display on the page for most users for stylistic reasons.
-            Screen reader users however benefit from heading tags -->
-        <h1 class="sr-only">Charts</h1>
+        <!-- Page Heading -->
+        <h1 class="center-align">Charts</h1>
+        <!-- /Page Heading -->
     
         <!-- Sort and Filter -->
         <div class="row sort-filter-container">
@@ -51,10 +51,7 @@
         <!-- /Sort and Filter -->
         
         <!-- Track Container -->
-        <section class="track-container flow-text center-align">
-            <!-- Page Heading -->
-            <h1>Charts</h1>
-            <!-- /Page Heading -->
+        <div class="track-container flow-text center-align">
             
             {% if tracks_count > 0 %} <!-- If tracks are found using the user's filter -->
                 {% for track in tracks %} <!-- For each track in the database -->
@@ -119,7 +116,7 @@
                 
                 <p>Maybe you could <a href="{{ url_for('add_track') }}">add one?</a></p>
             {% endif %}
-        </section>
+        </div>
         <!-- /Track Container -->
         
         <!-- Next and Previous Links -->
