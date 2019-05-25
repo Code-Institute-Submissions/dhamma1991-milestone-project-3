@@ -79,7 +79,6 @@ SCSS Variables
 Styles that are common across multiple pages
 
 */
-/* LAYOUT HELPER STYLES, DELETE WHEN NOT NEEDED */
 body {
   /* Sticky Footer */
   display: flex;
