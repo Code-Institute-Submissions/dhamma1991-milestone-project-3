@@ -1,3 +1,9 @@
+/*
+
+Styles that relate to the nav elements across the app
+
+*/
+
 nav {
     background-color: $themeColor; // Overwrite default Materialize theme color
     
@@ -6,7 +12,7 @@ nav {
         
         .brand-logo {
             font: {
-                family: 'adumuregular';
+                family: 'adumuregular', sans-serif;
                 size: 1.7rem; // Overwrite Materialize's default font size, making it smaller
             };
             

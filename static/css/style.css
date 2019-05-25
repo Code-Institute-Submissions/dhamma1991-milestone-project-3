@@ -98,7 +98,9 @@ body {
   /* /Edit and Delete Buttons */
   /* /Buttons */ }
   body h1 {
-    font-size: 2rem; }
+    font-size: 3rem;
+    font-family: 'adumuregular', sans-serif;
+    text-transform: uppercase; }
   body main {
     flex: 1 0 auto;
     /* /Sticky Footer */ }
@@ -153,12 +155,17 @@ body {
   body .edit-delete-btn {
     min-width: 120px; }
 
+/*
+
+Styles that relate to the nav elements across the app
+
+*/
 nav {
   background-color: #ff6302; }
   nav .nav-wrapper {
     margin-left: 10px; }
     nav .nav-wrapper .brand-logo {
-      font-family: 'adumuregular';
+      font-family: 'adumuregular', sans-serif;
       font-size: 1.7rem;
       /* This mixin used for most media queries, using responsive design principles of mobile first */ }
       @media (min-width: 601px) {
