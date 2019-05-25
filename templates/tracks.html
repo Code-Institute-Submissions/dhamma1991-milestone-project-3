@@ -50,8 +50,8 @@
         </div>
         <!-- /Sort and Filter -->
         
-        <!-- Track Container -->
-        <div class="track-container flow-text center-align">
+        <!-- Tracks Container -->
+        <div class="tracks-container flow-text center-align">
             
             {% if tracks_count > 0 %} <!-- If tracks are found using the user's filter -->
                 {% for track in tracks %} <!-- For each track in the database -->
@@ -117,7 +117,7 @@
                 <p>Maybe you could <a href="{{ url_for('add_track') }}">add one?</a></p>
             {% endif %}
         </div>
-        <!-- /Track Container -->
+        <!-- /Tracks Container -->
         
         <!-- Next and Previous Links -->
         <div class="row center-align next-prev-links">
