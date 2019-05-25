@@ -321,8 +321,8 @@ Styles relevant to the content within tracks.html
         youtube lazy loading vid
         
     for each track in the database */
-.track-container li {
-  list-style-type: none;
+.track-container section {
+  /* Target the Rank. Artist - Title */
   /* YouTube Lazy Loading
       Style the thumbnail images that appear on tracks.html.
       Make them look like videos when they are in fact images, when clicked on video is loaded.
@@ -330,13 +330,24 @@ Styles relevant to the content within tracks.html
       With thanks to https://webdesign.tutsplus.com/tutorials/how-to-lazy-load-embedded-youtube-videos--cms-26743 for the script
       and base styles */
   /* /YouTube Lazy Loading */ }
-  .track-container li:nth-of-type(n + 2) {
+  .track-container section h2 {
+    font-size: 1.2rem;
+    /* Grow the text size with the viewport */
+    /* This mixin used for most media queries, using responsive design principles of mobile first */
+    /* This mixin used for most media queries, using responsive design principles of mobile first */ }
+    @media (min-width: 601px) {
+      .track-container section h2 {
+        font-size: 1.5rem; } }
+    @media (min-width: 993px) {
+      .track-container section h2 {
+        font-size: 2rem; } }
+  .track-container section:nth-of-type(n + 2) {
     margin-top: 15px; }
-  .track-container li .rank-artist-title {
+  .track-container section .rank-artist-title {
     font-weight: 500; }
-  .track-container li small {
+  .track-container section small {
     display: block; }
-  .track-container li .youtube {
+  .track-container section .youtube {
     background-color: #000;
     margin: 15px auto;
     position: relative;
@@ -346,14 +357,14 @@ Styles relevant to the content within tracks.html
     min-width: 287px;
     max-height: 411px;
     min-height: 161px; }
-    .track-container li .youtube img {
+    .track-container section .youtube img {
       width: 100%;
       height: 100%;
       top: 0;
       left: 0;
       opacity: 0.7;
       cursor: pointer; }
-    .track-container li .youtube .play-button {
+    .track-container section .youtube .play-button {
       width: 90px;
       height: 60px;
       background-color: #333;
@@ -366,7 +377,7 @@ Styles relevant to the content within tracks.html
       top: 50%;
       left: 50%;
       transform: translate3d(-50%, -50%, 0); }
-      .track-container li .youtube .play-button:before {
+      .track-container section .youtube .play-button:before {
         content: "";
         border-style: solid;
         border-width: 15px 0 15px 26.0px;
@@ -375,7 +386,7 @@ Styles relevant to the content within tracks.html
         top: 50%;
         left: 50%;
         transform: translate3d(-50%, -50%, 0); }
-    .track-container li .youtube iframe {
+    .track-container section .youtube iframe {
       position: absolute;
       width: 100%;
       top: 0;

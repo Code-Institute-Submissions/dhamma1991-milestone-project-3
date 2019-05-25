@@ -50,8 +50,20 @@ Styles relevant to the content within tracks.html
         
     for each track in the database */
 .track-container {
-    li {
-        list-style-type: none;
+    section {
+        /* Target the Rank. Artist - Title */
+        h2 {
+            font-size: 1.2rem;
+            
+            /* Grow the text size with the viewport */
+            @include mqWidth($medBreakpoint) {
+                font-size: 1.5rem;
+            }
+            
+            @include mqWidth($larBreakpoint) {
+                font-size: 2rem;
+            }
+        }
         
         &:nth-of-type(n + 2) { // Target all but the first track
             margin-top: $defaultMargin; // The first track doesn't need any top margin because it has no track above it
