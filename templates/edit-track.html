@@ -6,7 +6,13 @@
         <h1 class="center-align">Edit Track</h1>
         <!-- /Page Heading -->
         
-        <p class="center-align">Not sure about some details? Try searching for the track on <a href="https://www.wikipedia.org/" target="_blank">Wikipedia</a>.</p>
+        <!-- Instruction Text -->
+        <div class="center-align">
+            <p>Not sure about some details? Try searching for the track on <a href="https://www.wikipedia.org/" target="_blank">Wikipedia</a>.</p>  
+            
+            <p>Please check for correct grammar and spelling. Keep DesertIsland looking tidy!</p>
+        </div>
+        <!-- /Instruction Text -->
         
         <!-- Form -->
         <form action="{{ url_for('insert_edited_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id) }}" method="POST" class="col s12" novalidate>
@@ -73,9 +79,7 @@
                     <select id="genre" name="genre">
                         <!-- If the user has just inserted a genre -->
                         {% if inserted_genre %}
-                            <!-- This disabled option serves as a clue as to what the user should do when the dropdown is open -->
-                            <option value="" disabled>Please select:</option>
-                        
+                            <!-- Loop through the genres -->
                             {% for genre in genres %}
                                 <!-- If the genre being iterated over matches the genre the user just inserted -->
                                 {% if genre.genre == inserted_genre %}

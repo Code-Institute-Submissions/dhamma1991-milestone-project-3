@@ -16,6 +16,17 @@ form {
         }
     }
     
+    /* Target the add genre link within the genre select */
+    .select-wrapper {
+        ul {
+            li:last-child {
+                span {
+                    color: black; // Make the link stand out from the other options
+                }
+            }
+        }
+    }
+    
     
     /* Target the 'What's this?' helper on the YouTube form input */
     #youtube-whats-this {

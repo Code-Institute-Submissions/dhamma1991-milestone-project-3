@@ -6,7 +6,13 @@
         <h1 class="center-align">Submit a Track to DesertIsland</h1>
         <!-- /Page Heading -->
         
-        <p class="center-align">Not sure about some details? Try searching for the track on <a href="https://www.wikipedia.org/" target="_blank">Wikipedia</a>.</p>
+        <!-- Instruction Text -->
+        <div class="center-align">
+            <p>Not sure about some details? Try searching for the track on <a href="https://www.wikipedia.org/" target="_blank">Wikipedia</a>.</p>  
+            
+            <p>Please check for correct grammar and spelling. Keep DesertIsland looking tidy!</p>
+        </div>
+        <!-- /Instruction Text -->
         
         <!-- Form -->
         <form action="{{ url_for('insert_track') }}" method="POST" class="col s12" novalidate>

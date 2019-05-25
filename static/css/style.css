@@ -423,6 +423,7 @@ These styles are related to the pages for the forms allowing the user to add a t
 /* Form */
 form {
   /* The genre label is unique in that it is for a dropdown element */
+  /* Target the add genre link within the genre select */
   /* Target the 'What's this?' helper on the YouTube form input */
   /* Form Buttons */
   /* /Form Buttons */ }
@@ -431,6 +432,8 @@ form {
     /* Target the genre label when the input has been clicked */ }
     form #genre_label.active {
       transform: translateY(14px) scale(0.8) !important; }
+  form .select-wrapper ul li:last-child span {
+    color: black; }
   form #youtube-whats-this {
     margin-left: 3rem;
     position: relative;
