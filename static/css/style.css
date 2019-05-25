@@ -257,6 +257,7 @@ These styles are related to the unique content for the index page
   .ix-top-tracks .ix-youtube-iframe-container iframe {
     width: 300px;
     height: 183px;
+    border: none;
     /* Gradually adjust the size of the YouTube iframes based on the width of the page */
     /* This mixin used for most media queries, using responsive design principles of mobile first */
     /* This mixin used for most media queries, using responsive design principles of mobile first */

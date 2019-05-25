@@ -81,6 +81,7 @@ These styles are related to the unique content for the index page
         iframe {
             width: 300px;
             height: 183px;
+            border: none;
             
             /* Gradually adjust the size of the YouTube iframes based on the width of the page */
             @include mqWidth($medBreakpoint) {
