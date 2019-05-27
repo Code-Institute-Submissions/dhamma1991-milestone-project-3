@@ -2,6 +2,10 @@
 
 {% block content %}
     <main class="container">
+            <!-- Page Heading -->
+            <h1 class="center-align">Add A Genre</h1>
+            <!-- /Page Heading -->
+            
             <form action="{{ url_for('insert_genre', track_id = track_id) }}" method="POST" class="col s12"> <!-- The form will call the insert_track function located in app.py -->
                 <div class="row">
                     <!-- Add Genre Input Field -->
