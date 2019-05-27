@@ -434,6 +434,10 @@ Styles used within track-detail.html
         height: 315px; } }
 
 /* /Track Detail YouTube Styles */
+/* Back To Charts Link */
+.back-to-charts {
+  margin-top: 50px; }
+
 /*
 
 These styles are related to the pages for the forms allowing the user to add a track to the database or edit an existing track
