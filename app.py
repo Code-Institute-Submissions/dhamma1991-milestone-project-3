@@ -482,7 +482,7 @@ def insert_track():
         
         # Once submitted, redirect to the get_tracks function to view the collection using the default sorting order
         return redirect(url_for('get_tracks', 
-            sorting_order = 1, 
+            sorting_order = 3, 
             decade_filter = 'all'))
             
     # Handle an exception if a duplicate YouTube video attempts to get added to the db
