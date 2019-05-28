@@ -407,11 +407,13 @@ Styles relevant to the content within tracks.html
 Styles used within track-detail.html
 
 */
-/* Track Detail YouTube Styles */
+/* Track Detail YouTube Styles and Like Button */
 .td-youtube-iframe-container {
   /* Remove padding, this allows the video to sit snug with the sides of the page on the smallest viewports.
       Materialize default padding will be inherited from .row and .col on medium and above */
-  /* Similiar to above mixin. In some cases functionality is easier to implement with max width */ }
+  /* Similiar to above mixin. In some cases functionality is easier to implement with max width */
+  /* Like Button */
+  /* /Like Button */ }
   @media (max-width: 600px) {
     .td-youtube-iframe-container {
       padding: 0; } }
@@ -432,8 +434,20 @@ Styles used within track-detail.html
       .td-youtube-iframe-container iframe {
         width: 560px;
         height: 315px; } }
+  .td-youtube-iframe-container .like-button-form {
+    margin: 15px 0;
+    /* Match the YouTube iframe to ensure the Like button stays centered below the video */
+    min-width: 300px;
+    /* This mixin used for most media queries, using responsive design principles of mobile first */
+    /* This mixin used for most media queries, using responsive design principles of mobile first */ }
+    @media (min-width: 601px) {
+      .td-youtube-iframe-container .like-button-form {
+        min-width: 450px; } }
+    @media (min-width: 993px) {
+      .td-youtube-iframe-container .like-button-form {
+        min-width: 560px; } }
 
-/* /Track Detail YouTube Styles */
+/* /Track Detail YouTube Styles and Like Button */
 /* Back To Charts Link */
 .back-to-charts {
   margin-top: 50px; }

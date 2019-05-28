@@ -46,16 +46,12 @@
                 </div>
             </div>
             
-            <!-- YouTube Video -->
+            <!-- YouTube Video and Like Button -->
             <div class="col s12 xl6 td-youtube-iframe-container">
                 <iframe src="https://www.youtube.com/embed/{{ track.youtube_link|replace('https://www.youtube.com/watch?v=', '') }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                 </iframe>
-            </div>
-            <!-- /YouTube Video -->
-        
-            <!-- Like Button Form -->
-            <div class="col s12 xl6 center-align default-margin-top">
-                <form action="{{ url_for('upvote_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id, track_detail = True) }}" method="POST">
+                
+                <form class="center-align like-button-form" action="{{ url_for('upvote_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id, track_detail = True) }}" method="POST">
                     <!-- Like Button -->
                     <button class="btn upvote-button" type="submit" title="Like">
                         <i class="material-icons">thumb_up</i>
@@ -67,7 +63,7 @@
                     <!-- /Like Count -->
                 </form>
             </div>
-            <!-- /Like Button Form -->
+            <!-- /YouTube Video and Like Button -->
         </div>
         
         <div class="row center-align">
