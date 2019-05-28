@@ -664,6 +664,9 @@ def upvote_track(decade_filter, sorting_order, track_id, track_detail):
     # Hold pagination, for if a user is upvoting from the charts page
     session['hold_pagination'] = True
     
+    # Feedback to the user that the Like was successful
+    flash('Thanks for voting!', 'success')
+    
     # If the user is upvoting from a track_detail page
     if track_detail:
         # Ensure the user stays on the same track-detail page
