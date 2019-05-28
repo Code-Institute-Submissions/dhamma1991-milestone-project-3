@@ -97,13 +97,13 @@ body {
   /* Edit and Delete Buttons */
   /* /Edit and Delete Buttons */
   /* /Buttons */ }
+  body main {
+    flex: 1 0 auto;
+    /* /Sticky Footer */ }
   body h1 {
     font-size: 3rem;
     font-family: 'adumuregular', sans-serif;
     text-transform: uppercase; }
-  body main {
-    flex: 1 0 auto;
-    /* /Sticky Footer */ }
   body .flashes {
     margin-top: 0;
     padding: 0;
@@ -127,7 +127,7 @@ body {
       body .flashes ul .success-flash {
         background-color: #a7ffeb; }
   body .container {
-    margin: 0 auto;
+    margin: 0 auto 15px;
     max-width: 1280px;
     width: 95%;
     /* This mixin used for most media queries, using responsive design principles of mobile first */
