@@ -240,50 +240,78 @@ def get_tracks(decade_filter, sorting_order):
                                 {"year": {'$lt': 1950}}
                                 ]
                         })
+                        
+        # Set the decade filter text that is displayed as part of the tracks.html h1
+        decade_filter_text = "Pre-1950"
+        
     elif decade_filter == "1950s":
         tracks_decade = tracks_collection.find({"$and": [
                                 {"year": {'$gte': 1950}}, 
                                 {"year": {'$lt': 1960}}
                                 ]
                         })
+                        
+        decade_filter_text = "1950s"
+        
     elif decade_filter == "1960s":
         tracks_decade = tracks_collection.find({"$and": [
                                 {"year": {'$gte': 1960}}, 
                                 {"year": {'$lt': 1970}}
                                 ]
                         })
+                        
+        decade_filter_text = "1960s"
+        
     elif decade_filter == "1970s":
         tracks_decade = tracks_collection.find({"$and": [
                                 {"year": {'$gte': 1970}}, 
                                 {"year": {'$lt': 1980}}
                                 ]
                         })
+                        
+        decade_filter_text = "1970s"
+        
     elif decade_filter == "1980s":
         tracks_decade = tracks_collection.find({"$and": [
                                 {"year": {'$gte': 1980}}, 
                                 {"year": {'$lt': 1990}}
                                 ]
                         })
+                        
+        decade_filter_text = "1980s"
+        
     elif decade_filter == "1990s":
         tracks_decade = tracks_collection.find({"$and": [
                                 {"year": {'$gte': 1990}}, 
                                 {"year": {'$lt': 2000}}
                                 ]
                         })
+                        
+        decade_filter_text = "1990s"
+        
     elif decade_filter == "2000s":
         tracks_decade = tracks_collection.find({"$and": [
                                 {"year": {'$gte': 2000}}, 
                                 {"year": {'$lt': 2010}}
                                 ]
                         })
+                        
+        decade_filter_text = "2000s"
+        
     elif decade_filter == "2010s":
         tracks_decade = tracks_collection.find({"$and": [
                                 {"year": {'$gte': 2010}}, 
                                 {"year": {'$lt': 2020}}
                                 ]
                         })
+                        
+        decade_filter_text = "2010s"
+    
+    # Else the decade filter is currently set to "Show All"    
     else:
         tracks_decade = tracks_collection.find()
+        
+        decade_filter_text = "All Decades"
     
     # The sorting_order variable is used to determine how to sort the tracks
     # sorting_order = 1 means sort tracks by HIGHEST UPVOTES. This is the default sorting order
@@ -293,23 +321,38 @@ def get_tracks(decade_filter, sorting_order):
     if sorting_order == 1:
         # Find all tracks within the tracks collection. Sort by upvotes descending, skip using the value of pagination and limit
         tracks = tracks_decade.sort(
-                                                'upvotes', pymongo.DESCENDING).skip(
-                                                                                    pagination).limit(5)
+            'upvotes', pymongo.DESCENDING).skip(
+                pagination).limit(5)
+         
+        # Set the text to display as part of the heading on tracks.html       
+        sorting_order_text = "Most Popular"
+                
     elif sorting_order == 2:
         # Find all tracks within the tracks collection. Sort by upvotes ascending, skip using the value of pagination and limit
         tracks = tracks_decade.sort(
-                                            'upvotes', pymongo.ASCENDING).skip(
-                                                                                pagination).limit(5)
+            'upvotes', pymongo.ASCENDING).skip(
+                pagination).limit(5)
+
+        # Set the text to display as part of the heading on tracks.html           
+        sorting_order_text = "Least Popular"
+                
     elif sorting_order == 3:
          # Find all tracks within the tracks collection. Sort by date_added_raw descending, skip using the value of pagination and limit
         tracks = tracks_decade.sort(
-                                            'date_added_raw', pymongo.DESCENDING).skip(
-                                                                                pagination).limit(5)
+            'date_added_raw', pymongo.DESCENDING).skip(
+                pagination).limit(5)
+                
+        # Set the text to display as part of the heading on tracks.html           
+        sorting_order_text = "Date Added (Newest)"
+                
     elif sorting_order == 4:
         # Find all tracks within the tracks collection. Sort by date_added_raw ascending, skip using the value of pagination and limit
         tracks = tracks_decade.sort(
-                                            'date_added_raw', pymongo.ASCENDING).skip(
-                                                                                pagination).limit(5)
+            'date_added_raw', pymongo.ASCENDING).skip(
+                pagination).limit(5)
+                
+        # Set the text to display as part of the heading on tracks.html           
+        sorting_order_text = "Date Added (Oldest)"
                                                                                 
     # Get the number of tracks as currently defined by the filtering
     # This is used within tracks.html to determine whether to show the 'next' button
@@ -329,7 +372,9 @@ def get_tracks(decade_filter, sorting_order):
     return render_template("tracks.html", 
         tracks = tracks,
         decade_filter = decade_filter,
+        decade_filter_text = decade_filter_text,
         sorting_order = sorting_order,
+        sorting_order_text = sorting_order_text,
         pagination = pagination,
         tracks_count = tracks_count,
         title = title

@@ -103,7 +103,11 @@ body {
   body h1 {
     font-size: 3rem;
     font-family: 'adumuregular', sans-serif;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    /* Style subheadings */ }
+    body h1 span {
+      font-size: 1.5rem;
+      text-transform: capitalize; }
   body .flashes {
     margin-top: 0;
     padding: 0;

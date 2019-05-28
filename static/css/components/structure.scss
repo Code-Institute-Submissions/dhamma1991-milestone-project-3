@@ -19,6 +19,12 @@ body {
         font-size: 3rem; // Overwrite Materialize default
         font-family: 'adumuregular', sans-serif;
         text-transform: uppercase;
+        
+        /* Style subheadings */
+        span {
+            font-size: 1.5rem;
+            text-transform: capitalize;
+        }
     }
     
     /* Style the flashed messages provided by Flask */
