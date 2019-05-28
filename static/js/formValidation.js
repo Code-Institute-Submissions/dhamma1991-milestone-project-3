@@ -73,12 +73,18 @@ form.addEventListener("submit", function (event) {
         $('select').material_select();
     }
     
-    if (!user_name.validity.valid) {
-        $("#user_name").removeClass("valid");
-        $("#user_name").addClass("invalid");
-        $("#user_name_label").addClass("active");
-        $("#user_name").prop("aria-invalid", "true");
-        event.preventDefault();
+    /* Check that user_name exists before checking it is valid
+        user_name will not exist in the case of the edit track form,
+        in which case this if block prevents an error from occuring in the console
+        in the browser */
+    if (user_name) {
+        if (!user_name.validity.valid) {
+            $("#user_name").removeClass("valid");
+            $("#user_name").addClass("invalid");
+            $("#user_name_label").addClass("active");
+            $("#user_name").prop("aria-invalid", "true");
+            event.preventDefault();
+        }
     }
     
     if (!description.validity.valid) {
