@@ -5,6 +5,24 @@
     <h1 class="center-align">{{ track.artist }} - {{ track.track_title }}</h1>
     <!-- /Artist - Title -->
     
+    <!-- Edit and Delete Buttons -->
+    <div class="container">
+        <div class="row center-align">
+            <!-- Edit Button -->
+            <div class="col s6">
+                <a href="{{url_for('edit_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id)}}" class="waves-effect waves-light btn btn_small blue edit-delete-btn">Edit</a>
+            </div>
+            <!-- /Edit Button -->
+    
+            <!-- Delete Button -->
+            <div class="col s6">
+                <a href="{{url_for('delete_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id=track._id)}}" class="waves-effect waves-light btn btn_small red edit-delete-btn">Delete</a>
+            </div>
+            <!-- /Delete Button -->
+        </div>
+    </div>
+    <!-- /Edit and Delete Buttons -->
+    
     <main class="container">
         <div class="row flow-text">
             <div class="col s12 xl6">
@@ -64,20 +82,6 @@
                 </form>
             </div>
             <!-- /YouTube Video and Like Button -->
-        </div>
-        
-        <div class="row center-align">
-            <!-- Edit Button -->
-            <div class="col s6 xl3">
-                <a href="{{url_for('edit_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id)}}" class="waves-effect waves-light btn btn_small blue edit-delete-btn">Edit</a>
-            </div>
-            <!-- /Edit Button -->
-    
-            <!-- Delete Button -->
-            <div class="col s6 xl3">
-                <a href="{{url_for('delete_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id=track._id)}}" class="waves-effect waves-light btn btn_small red edit-delete-btn">Delete</a>
-            </div>
-            <!-- /Delete Button -->
         </div>
         
         <div class="row center-align flow-text back-to-charts">
