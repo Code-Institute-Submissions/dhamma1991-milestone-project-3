@@ -102,7 +102,7 @@ At the bottom of the page is the footer, containing the same nav links as the to
 ### Charts (tracks.html)
 The charts page essentially gives an overview of the objects in the tracks collection within the database. Each of these objects represents a track submitted by a user. You can view the full database schema within the mockups directory within the project.
 
-A for loop within tracks.html is used to render a number of <section> elements, with each <section> element representing a track. The list of tracks is determined by the [filter](#filter-system) and [sort](#sorting-system) systems. Each track contains the following:
+A for loop within tracks.html is used to render a number of <section> elements, with each <section> element representing a track. The list of tracks is determined by the [filter](#filter) and [sort](#sorting) systems. Each track contains the following:
 
 1.	The rank number of the track
 2.	Artist
@@ -144,7 +144,7 @@ This functionality is accomplished using a very nice piece of JavaScirpt courtes
 There are 5 tracks per page. If more than 5 tracks meet the criteria of the user’s current filter, then they will be available via pagination. In order to navigate through the tracks, the user can click the ‘Next’ and ‘Previous’ buttons located at the bottom of the charts page just above the footer. The Next and Previous buttons display dynamically; the Next button will not display if the user has reached the end of the list of tracks, and the Previous button will not display if the user is at the beginning of the list. 
 
 The pagination system is implemented using session variables, which get passed through to the template. This means that in some use cases, the pagination gets saved, meaning the user won’t always go back to the first 5 tracks. For example, if the user clicks the ‘Next’ button 3 times, and then decides to edit track 20, they probably do not want to be taken back to the first 5 tracks once they finish editing and return to the charts page. Rather, the pagination they were on is saved, and they go back to the 5 tracks they were viewing before clicking ‘Edit’.
-]<a name=”filter-system”></a>
+<a name=”filter”></a>
 **Filter System**
 
 Users are able to filter the tracks on the chart page by decade. Users are able to choose between the various decades by manipulating the decade filter box at the top of the page. The decades available range from music from before 1950, to each decade up to and encompassing the present day.
@@ -156,7 +156,7 @@ The decade filter dropdown on the frontend is a HTML select element populated by
 I personally find the switch statement used by the jQuery to pass the decade value to get_tracks a bit cumbersome. However, the value of the select box cannot be passed directly into url_for(get_tracks), since JavaScript cannot be evaluated in Jinja. An alternative would be to [use AJAX](https://stackoverflow.com/questions/36143283/pass-javascript-variable-to-flask-url-for), but AJAX was beyond the scope of this project.
 
 Once get_tracks has been called and the charts page re-rendered with the updated list of tracks, a further bit of jQuery ensures that the value of the decade select is set to the current decade. By default, the select box would again be set to ‘Show All’.
-<a name=”sorting-system”></a>
+<a name=”sorting”></a>
 **Sorting System**
 
 Users are able to sort the tracks on the chart page either by number of Likes (either ascending or descending) or Date Added (again either by ascending or descending). The sort dropdown at the top of the charts page, situated just below the decade filter dropdown, handles this functionality. The design of the sort dropdown was influenced by the design of the sort option for posts on Reddit.
