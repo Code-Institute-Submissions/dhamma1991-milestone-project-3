@@ -49,13 +49,10 @@
 [7.3. Acknowledgements](#acknowledgements)
 
 --------------------
-
 ## Introduction
 This project is a music database app called DesertIsland, where users submit their favourite music, which can then be voted on by other users. Built primarily with Flask on the backend, Materialize on the frontend, and MongoDB handling the database, the app features a chart system which dynamically alters the ranking of songs based on user feedback in the form of ‘Likes’. Each submitted track has an associated music video (from YouTube), so users are able to check out other’s submissions before they cast a vote. The charts can be filtered by decade, showing only tracks from the 90s for example, and can also be sorted by various criteria, and is not simply limited to showing the most popular tracks first. Users may also edit and delete submissions, and view detailed information about a submission.
-
 ## UX
 DesertIsland is aimed at music fans. The likely user is someone with a higher than average interest in music, and a desire to share their music taste with the world. The app serves as a way for users to see how much others share their taste in music, and also allows more casual users to see ‘what’s hot’, and what music fans generally agree on as good music.
-
 ### User Stories
 Three types of users have been identified as the typical user types for this app.
 
@@ -70,15 +67,14 @@ This type of user may or may not also be a hardcore sharer. They will however ha
 **Music Socialiate**
 
 This type of user is someone who is interested in the broader community surrounding music. They would likely be interested in social share capabilities, forums, and perhaps a messaging and ‘friend’ system. This type of user has not been catered for in the first release of the app, and the features they would require are planned for an updated release.
-
 ### Wireframes
-Prior to work beginning on the app, wireframes were created to aid the design progress and provide direction during actual coding. These can be found in the "mockups" folder in the root directory of the project.
+Prior to work beginning on the app, wireframes were created to aid the design process and provide direction during actual coding. These can be found in the "wireframes" folder in the root directory of the project.
 
-The wireframes served as the initial inspiration for the project, although the finished project diverges from them on several points. DC.js, Crossfilter and D3.js are versatile libraries, and this project was a learning exercise perhaps as much as it was an exercise in already acquired skills. The differences between the wireframes and the finished project are detailed throughout this readme.
+The wireframes are not a complete picture of how the app in its finished form looks. I do find wireframes very helpful in establishing the colour scheme and overall aesthetics of the app, as well as providing the general structure and layout of pages. However, often during development I find that features need to be added, or layouts tweaked in order to accommodate content in practicality. The wireframes merely serve as a ‘launch pad’ for the app. In addition, some pages do not feature an overly complex layout, in which case they have no wireframe. In other cases, I can picture the design in my head without concrete sketches.
 
+Along with designs for the app itself, within the wireframes directory you may find a sketch for the database schema.
 ## Features
 DesertIsland is a website built from multiple HTML pages, with the backend handled by the Python Flask framework. The bulk of the custom backend code within the project can be found within the app.py file.
-
 ### Navbar
 The main nav for the app is located at the top of every page, implemented by using Materialize classes. The nav is fairly basic, consisting of the DesertIsland brand logo and some links. On smaller viewports the nav collapses, with the links replaced by a menu icon. If the user clicks or taps on the icon, a sidenav appears on the left of the viewport where the user is able to view the navlinks. The user is able to close the sidenav by tapping or clicking off of the sidenav, or by clicking the close icon in the top right of the sidenav
 
@@ -106,7 +102,7 @@ At the bottom of the page is the footer, containing the same nav links as the to
 ### Charts (tracks.html)
 The charts page essentially gives an overview of the objects in the tracks collection within the database. Each of these objects represents a track submitted by a user. You can view the full database schema within the mockups directory within the project.
 
-A for loop within tracks.html is used to render a number of <section> elements, with each <section> element representing a track. The list of tracks is determined by the filter link and sort systems. Each track contains the following:
+A for loop within tracks.html is used to render a number of <section> elements, with each <section> element representing a track. The list of tracks is determined by the [filter](#filter-system) and [sort](#sorting-system) systems. Each track contains the following:
 
 1.	The rank number of the track
 2.	Artist
@@ -148,7 +144,7 @@ This functionality is accomplished using a very nice piece of JavaScirpt courtes
 There are 5 tracks per page. If more than 5 tracks meet the criteria of the user’s current filter, then they will be available via pagination. In order to navigate through the tracks, the user can click the ‘Next’ and ‘Previous’ buttons located at the bottom of the charts page just above the footer. The Next and Previous buttons display dynamically; the Next button will not display if the user has reached the end of the list of tracks, and the Previous button will not display if the user is at the beginning of the list. 
 
 The pagination system is implemented using session variables, which get passed through to the template. This means that in some use cases, the pagination gets saved, meaning the user won’t always go back to the first 5 tracks. For example, if the user clicks the ‘Next’ button 3 times, and then decides to edit track 20, they probably do not want to be taken back to the first 5 tracks once they finish editing and return to the charts page. Rather, the pagination they were on is saved, and they go back to the 5 tracks they were viewing before clicking ‘Edit’.
-
+]<a name=”filter-system”></a>
 **Filter System**
 
 Users are able to filter the tracks on the chart page by decade. Users are able to choose between the various decades by manipulating the decade filter box at the top of the page. The decades available range from music from before 1950, to each decade up to and encompassing the present day.
@@ -160,7 +156,7 @@ The decade filter dropdown on the frontend is a HTML select element populated by
 I personally find the switch statement used by the jQuery to pass the decade value to get_tracks a bit cumbersome. However, the value of the select box cannot be passed directly into url_for(get_tracks), since JavaScript cannot be evaluated in Jinja. An alternative would be to [use AJAX](https://stackoverflow.com/questions/36143283/pass-javascript-variable-to-flask-url-for), but AJAX was beyond the scope of this project.
 
 Once get_tracks has been called and the charts page re-rendered with the updated list of tracks, a further bit of jQuery ensures that the value of the decade select is set to the current decade. By default, the select box would again be set to ‘Show All’.
-
+<a name=”sorting-system”></a>
 **Sorting System**
 
 Users are able to sort the tracks on the chart page either by number of Likes (either ascending or descending) or Date Added (again either by ascending or descending). The sort dropdown at the top of the charts page, situated just below the decade filter dropdown, handles this functionality. The design of the sort dropdown was influenced by the design of the sort option for posts on Reddit.
@@ -181,7 +177,7 @@ A core part of the app is the Like system, which records the number of times a u
 
 This system was previous referred to as the ‘Upvote’ system, inspired by the system found on Reddit. This was changed during some initial testing; all of the four people who took part in the testing, bar one, did not know what an Upvote was, something I had (previously) assumed was obvious. This led me to decide, for the benefit of usability, to replace the word ‘Upvote’ with ‘Like’, in order to make DesertIsland’s system more in-tune with the systems of ubiquitous applications like Facebook and Instagram.
 
-‘Upvote’ can still be found referred to in the code in the backend, with only references to it in the frontend being replaced by ‘Like’. I didn’t see the need to invest the time or effort in changing the backend code, especially considering that ‘Upvote’ and ‘Like’ are synonyms.
+‘Upvote’ can still be found referred to in the code in the backend, as well as in the wireframes, with only references to it in the frontend being replaced by ‘Like’. I didn’t see the need to invest the time or effort in changing the backend code, especially considering that ‘Upvote’ and ‘Like’ are synonyms.
 
 Users are able to Like a track in two places on the app. The first place is on the charts page, which each track being rendered a long with a Like button. The second place is on the detail page for each track.
 
@@ -280,6 +276,10 @@ Firstly, users could track their uploads. Each user account would be associated 
 Secondly, edits and deletions could be tied to individual user accounts. The current system (of anyone being able to edit or delete any track) is simply not viable in the real world, and leaves the app open to being exploited and possibly destroyed by a single malicious user.
 
 In addition, a use authentication system would enable more ‘social’ features. This could be a messaging systems within the app that allows users to communicate with each other, as well as possibly a ‘friend’ or ‘follower’ system, which users could use to engage with fellow DesertIsland users to discuss uploads and music in general. 
+
+**Redundant ‘date_added_raw’ and ‘date_added’ fields**
+
+This refers to the schema of the database. Currently, there are two fields used to store data on the date that a track was uploaded. The field ‘date_added_raw’ is the Python format, whereas ‘date_added’ is a human-readable format. I’m aware it’s probably best to just store this data in raw format in the database, and then make it human-readable in the template or within app.py, thus eliminating the need for an extra field. This is how I would develop the app now, however, when I made the database this was very early on in the development process and my knowledge of Flask, MongoDB and databases in general is not what it is after making the project. I decided to keep the database schema in its current state in order to save time.
 
 ## How Existing Features Fulfil User Requirements
 This section details how the features implemented in the current release of the project meet the requirements for the users discussed in the UX section.
