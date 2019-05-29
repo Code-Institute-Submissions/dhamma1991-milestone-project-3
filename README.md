@@ -1,4 +1,10 @@
-# Milestone Project 3 – DESERTISLAND Music App built with the Flask framework
+
+
+
+
+grmockupserved asial inspiration for the project, although the finished project diverges from them on several points. DC.js, Crossfilter and D3.js are versatile libraries, and this project was a learning exercise perhaps as much as it was an exercise in already acquired skills. The differences between the wireframes and the finished project are detailed throughout this readme.
+
+ link# Milestone Project 3 – DESERTISLAND Music App built with the Flask framework
 
 ## Table Of Contents
 
@@ -8,13 +14,21 @@
 
 [2. UX](#ux)
 
-[2.1. Wireframes](#wireframes)
+[2.1. User Stories](#user-stories)
+
+[2.1.1 Hardcore Sharer](#hardcore-sharer)
+
+[2.1.2. Chart Observer](#chart-observer)
+
+[2.1.3. Music Socialite](#music-socialite)
+
+[2.2. Wireframes](#wireframes)
 
 ----------
 
 [3. Features](#features)
 
-[3.14. Features Left to Implement](#features-left-to-implement)
+[3.SOMETHING. Features Left to Implement](#features-left-to-implement)
 
 ----------
 
