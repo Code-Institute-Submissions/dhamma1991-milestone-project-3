@@ -145,8 +145,9 @@ There are 5 tracks per page. If more than 5 tracks meet the criteria of the user
 
 The pagination system is implemented using session variables, which get passed through to the template. This means that in some use cases, the pagination gets saved, meaning the user won’t always go back to the first 5 tracks. For example, if the user clicks the ‘Next’ button 3 times, and then decides to edit track 20, they probably do not want to be taken back to the first 5 tracks once they finish editing and return to the charts page. Rather, the pagination they were on is saved, and they go back to the 5 tracks they were viewing before clicking ‘Edit’.
 
-<a name=”filter”></a>
+<a name=”filter”>
 **Filter System**
+</a>
 
 Users are able to filter the tracks on the chart page by decade. Users are able to choose between the various decades by manipulating the decade filter box at the top of the page. The decades available range from music from before 1950, to each decade up to and encompassing the present day.
 
