@@ -159,8 +159,7 @@ I personally find the switch statement used by the jQuery to pass the decade val
 
 Once get_tracks has been called and the charts page re-rendered with the updated list of tracks, a further bit of jQuery ensures that the value of the decade select is set to the current decade. By default, the select box would again be set to ‘Show All’.
 
-<a name=”sorting”></a>
-**Sorting System**
+#### Sorting System
 
 Users are able to sort the tracks on the chart page either by number of Likes (either ascending or descending) or Date Added (again either by ascending or descending). The sort dropdown at the top of the charts page, situated just below the decade filter dropdown, handles this functionality. The design of the sort dropdown was influenced by the design of the sort option for posts on Reddit.
 
