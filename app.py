@@ -202,8 +202,9 @@ def stats():
 """ /DATABASE STATS """
 
 """ GET_TRACKS """
-@app.route('/get_tracks/<decade_filter>/<int:sorting_order>', methods = ['POST','GET'])
-def get_tracks(decade_filter, sorting_order):
+@app.route('/get_tracks/<decade_filter>/<int:sorting_order>', defaults = {'track_scroll_id': None}, methods = ['POST','GET'])
+@app.route('/get_tracks/<decade_filter>/<int:sorting_order>/<track_scroll_id>', methods = ['POST','GET'])
+def get_tracks(decade_filter, sorting_order, track_scroll_id):
     """
     This function renders the tracks on tracks.html
     Tracks can be sorted and filtered by various criteria
@@ -365,9 +366,12 @@ def get_tracks(decade_filter, sorting_order):
 
     # Render tracks.html
     # tracks is the list of tracks to be rendered
-    # sorting_order is how they are to be sorted (corresponding to the system in the if/else statement above)
+    # decade_filter ensures that only the tracks from the correct decade are displayed
+    # decade_filter_text and sorting_order_text renders the correct subtitle for the page
+    # sorting_order is how tracks are to be sorted (corresponding to the system in the if/else statement above)
     # pagination determines how many tracks are to be skipped. The user navigates through the pagination using the next and previous buttons on tracks.html
     # tracks_col_count determines whether to hide the next and previous buttons. If the user has reached the end of the list it doesn't make sense and would be confusing for them to be able to click 'Next'
+    # track_scroll_id ensures the user is scrolled to the correct track when the page reloads after a Like
     # title is the html title
     return render_template("tracks.html", 
         tracks = tracks,
@@ -377,6 +381,7 @@ def get_tracks(decade_filter, sorting_order):
         sorting_order_text = sorting_order_text,
         pagination = pagination,
         tracks_count = tracks_count,
+        track_scroll_id = track_scroll_id,
         title = title
         )
 """ /GET_TRACKS """                    
@@ -670,12 +675,20 @@ def upvote_track(decade_filter, sorting_order, track_id, track_detail):
     # If the user is upvoting from a track_detail page
     if track_detail:
         # Ensure the user stays on the same track-detail page
-        return redirect(url_for('track_detail', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track_id))
+        return redirect(url_for('track_detail', 
+            decade_filter = decade_filter, 
+            sorting_order = sorting_order, 
+            track_id = track_id))
         
     # Else the user is upvoting from the charts page
     else:
         # Render tracks.html, pass through necessary values to ensure the same decade_filter and sorting_order is set
-        return redirect(url_for('get_tracks', decade_filter = decade_filter, sorting_order = sorting_order))
+        # track_scroll_id is used to ensure the page doesn't scroll back to the top
+        # when the user clicks upvote
+        return redirect(url_for('get_tracks', 
+            decade_filter = decade_filter, 
+            sorting_order = sorting_order,
+            track_scroll_id = track_id))
 """ /UPVOTE TRACK """
 
 """ EDIT TRACK PAGE """

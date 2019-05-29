@@ -56,7 +56,7 @@
             
             {% if tracks_count > 0 %} <!-- If tracks are found using the user's filter -->
                 {% for track in tracks %} <!-- For each track in the database -->
-                    <section>
+                    <section id="track{{ track._id }}">
                         <!-- Rank. Artist - Title
                             Rank is determined by adding the current pagination value to the loop index -->
                         <a href="{{ url_for('track_detail', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id) }}">
@@ -65,7 +65,7 @@
                         <!-- /Rank. Artist - Title -->
                         
                         <!-- Like Button Form -->
-                        <form action="{{ url_for('upvote_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id) }}" method="POST" class="default-margin-top">
+                        <form action="{{ url_for('upvote_track', decade_filter = decade_filter, sorting_order = sorting_order, track_id = track._id, loop_index = loop.index) }}" method="POST" class="default-margin-top">
                             <!-- Like Button -->
                             <button class="btn upvote-button" type="submit" title="Like">
                                 <i class="material-icons">thumb_up</i>
@@ -139,10 +139,13 @@
             <!-- /Next Link -->
         </div>
         <!-- /Next and Previous Links -->
+        
+<span>{{ loop_index }} HELLO</span>
     </main>
 {% endblock %}
 
-<!-- Decade Link Script -->
+<!-- Decade Link Scripts 
+    These scripts handle the routing to the get_tracks view when the user changes the decade filter select -->
 {% block decade_link_js %}
     <script>
         // Listen for a change on the Genre select box
@@ -260,7 +263,9 @@
     {% endif %}
 {% endblock %}
 
-<!-- Lazy Loading YouTube Script -->
+<!-- Lazy Loading YouTube Script 
+    Handles rendering the YouTube video image thumbnails, as well as converting the image to an actual embedded YouTube
+    video when the user clicks on the image -->
 {% block youtube_lazy_loading %}
     <script>
         /* Script courtesy of https://webdesign.tutsplus.com/tutorials/how-to-lazy-load-embedded-youtube-videos--cms-26743 with modifications */
@@ -300,7 +305,8 @@
 {% endblock %}
 <!-- /Lazy Loading YouTube Script -->
 
-<!-- Sorting Order Text Script -->
+<!-- Sorting Order Text Script
+    Handles ensuring the text on the sorting order dropdown changes to match the current sorting order -->
 {% block sorting_order_text_js %}
     <script>
         // Would of preferred a switch statment here but for some reason that didn't work
@@ -316,3 +322,24 @@
     </script>
 {% endblock %}
 <!-- /Sorting Order Text Script -->
+
+<!-- Like Scroll Script
+    When a user Likes a track, default functionality is that the page reloads, with the scroll at the top of the page.
+    This script scrolls the page to the track the user just Liked.
+    If the track is 'promoted' to the next level of pagination this script essentially does nothing -->
+{% block like_scroll_script %}
+    {% if track_scroll_id %}
+        <script>
+            /* A try block is used here in order to handle a console error that will occur if the element that
+                scrollIntoView looks for doesn't exist */
+            try {
+                document.getElementById("track{{ track_scroll_id }}").scrollIntoView();
+            }
+            catch(err) {
+                /* Do nothing. If the id for the track doesn't exist
+                    this means the pagination for that track has changed
+                    and it is no longer on the current page */
+            }
+        </script>
+    {% endif %}
+{% endblock %}
