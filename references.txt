@@ -1,11 +1,5 @@
-index_1.jpg
-https://www.rollingstone.com/wp-content/uploads/2018/11/jimi-hendrix-performing-in-1969.jpg?crop=900:600&width=440
-
 Advice for sr-only class
 https://webaim.org/techniques/css/invisiblecontent/
-
-index_2.jpg
-https://image.redbull.com/rbcom/010/2015-09-10/1331746937069_2/0100/0/1/dj-nu-marks-gets-his-toys-out.jpg
 
 justification for track_title maxlength
 http://klck1400.com/seeing_is_believing/2933
