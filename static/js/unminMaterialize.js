@@ -6,7 +6,7 @@
  
  /* Note
   Changes have been made to this script to accommodate better responsive images for Parallax
-  These changes can be found in the function starting on line 2158 */
+  These changes can be found in the function starting on line 2518 */
   
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
