@@ -282,7 +282,7 @@ Materialize is a front-end framework based on Google’s philosophy of “materi
 A note on versions: the current stable version of Materialize is 1.0.0. This project makes use of an older version, 0.100.2. I was able to get client-side form validation for the add and edit track forms working only on the older version, and none of the learning materials I could find were applicable to the current version of Materialize, hence I was at a loss as to what exactly the problem was. I’m not sure what changed about 1.0.0. to complicate it in regard to form validation, but since the differences between the visual style and capabilities of 1.0.0 and 0.100.2 are small, I decided to stick with the older version.
 ### [Material Icons](https://material.io/tools/icons/?style=baseline)
 Included as part of the Materialize framework. Provides a useful set of icons that can be used to represent actions and items.
-### JavaScript 
+### [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 JavaScript is scattered throughout the project to enable DOM manipulation. Its primary purpose is to enable the user of jQuery, but there are some examples of pure JavaScript found within the app (e.g. the copyright date script found at the bottom of base.html, the YouTube lazy loading script, and the tracks.html scrollIntoView() script).
 ### [jQuery 3.2.1](https://jquery.com)
 The latest version of jQuery (at the time of writing) is 3.4.1. An older version was used in keeping with the version stipulated by [Materialize](http://archives.materializecss.com/0.100.2/getting-started.html).
@@ -294,7 +294,7 @@ jQuery is utilised by the project for a number of areas of functionality:
 3. The client-side form validation script.
 4. Enables the proper functionality of the decade filter and track sort on tracks.html.
 
-jQuery also enables user of [jQuery UI](#jquery-ui-1.12)
+jQuery also enables user of [jQuery UI](#jquery-ui-112)
 ### [jQuery UI 1.12](https://code.jquery.com/ui/)
 jQuery UI is a curated set of user interface interactions, effects, widgets, and themes built on top of the jQuery. 
 
