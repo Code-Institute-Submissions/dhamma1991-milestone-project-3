@@ -311,6 +311,7 @@ Without an authentication system, this type of user currently does not have a wa
 ### 5.2. Chart Observer
 </a>
 This type of user is served by tracks.html. The charts page allows them to clearly see where tracks sit in the various sorting orders. The decade filter allows them to refine the criteria and see what tracks are most popular in which decade. The charts page is designed to be as user-friendly as possible, so if the user spots something wrong with the listing of a track, they can edit that track, and then go back to the same 5 tracks they were viewing before the edit.
+
 <a name="music-socialite-features">
 ### 5.3. Music Socialiate
 </a>
