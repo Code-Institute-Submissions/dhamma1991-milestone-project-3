@@ -375,6 +375,8 @@ The app was primarily tested on Google Chrome version 74.0.3729.169 on a Windows
 
 In addition to Google Chrome's developer tools where mobile devices can be simulated, an iPhone 7 running iOS v11.3 was used to test the app with its native Safari browser. The website was also tested on Firefox v66.0.3, Safari v12.1.1 (on a MacBook Pro 15-inch Retina) and Edge v42.17134.1.0.
 
+The app was developed mobile first. I tend to always work on projects with the browser set to simulate a mobile device. I build the app from there, and when it looks right on the smaller viewports I make any changes it needs to work on the larger viewports.
+
 No issues were detected on any of the tested browsers in terms of either layout or functionality.
 
 In addition to modern browser testing, the app was tested on IE version 11.0.9600.19130. On this browser, none of the charts were rendered. After some searching, I found that DC.js is tested in IE but that [mine wasn’t the only issue] https://stackoverflow.com/questions/50047687/dc-js-im-facing-issues-rendering-the-dc-js-dashboards-in-ie-11) and that issues relating to DC.js working with IE [have been documented](https://github.com/dc-js/dc.js/issues/1334).
