@@ -2,11 +2,11 @@
 
 ## Table Of Contents
 
-[1. Introduction](#introduction)
+[1. Introduction](#1-introduction)
 
 ----------
 
-[2. UX](#ux)
+[2. UX](#2-ux)
 
 [2.1. User Stories](#user-stories)
 
