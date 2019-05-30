@@ -54,11 +54,11 @@
 
 [5. How Existing Features Fulfil User Requirements](#5-how-existing-features-fulfil-user-requirements)
 
-[5.1. Hardcore Sharer](#hardcore-sharer-features)
+[5.1. Hardcore Sharer](#51-hardcore-sharer)
 
-[5.2. Chart Observer](#chart-observer-features)
+[5.2. Chart Observer](#52-chart-observer)
 
-[5.3. Music Socialiate](#music-socialite-features)
+[5.3. Music Socialiate](#53-music-socialite)
 
 ----------
 [6. Technologies Used](#6-technologies-used)
@@ -301,20 +301,13 @@ Secondly, edits and deletions could be tied to individual user accounts. The cur
 In addition, a user authentication system would enable more ‘social’ features. This could be a messaging system within the app that allows users to communicate with each other, as well as possibly a ‘friend’ or ‘follower’ system, which users could use to engage with fellow DesertIsland users to discuss uploads and music in general. 
 ## 5. How Existing Features Fulfil User Requirements
 This section details how the features implemented in the current release of the project meet the requirements of the users discussed in the UX section.
-<a name="hardcore-sharer-features">
 ### 5.1. Hardcore Sharer
-</a>
 This type of user has multiple places where they are able to get to add-track.html. This link is available in the nav and in the footer across the app, in the 2nd parallax image text on index.html, and also if the user’s decade filter selection comes up with no tracks on tracks.html.
 
 Without an authentication system, this type of user currently does not have a way to track their uploads or Likes. This is a feature that could be added in a future release.
-<a name="chart-observer-features">
 ### 5.2. Chart Observer
-</a>
 This type of user is served by tracks.html. The charts page allows them to clearly see where tracks sit in the various sorting orders. The decade filter allows them to refine the criteria and see what tracks are most popular in which decade. The charts page is designed to be as user-friendly as possible, so if the user spots something wrong with the listing of a track, they can edit that track, and then go back to the same 5 tracks they were viewing before the edit.
-
-<a name="music-socialite-features">
 ### 5.3. Music Socialiate
-</a>
 The app currently does not possess any kind of social functionality, which was considered beyond the scope of the requirements for this project. Social functionality would be something added onto a future release.
 ## 6. Technologies Used
 ### [HTML5](https://www.w3.org/standards/webdesign/htmlcss)
