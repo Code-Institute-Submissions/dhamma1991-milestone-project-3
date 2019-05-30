@@ -22,6 +22,34 @@
 
 [3. Features](#features)
 
+[3.1. Navbar](#navbar)
+
+[3.2. Homepage (index.html)](#homepage-index.html)
+
+[3.3. Charts (tracks.html](#charts-tracks.html)
+
+[3.3.1. Rank Number of the Track](#rank-number-of-the-track)
+
+[3.3.2. Artist and Track Title](#artist-and-track-title)
+
+[3.3.3. Like Button and Like Count](#like-button-and-like-count)
+
+[3.3.4. Name of User Who Submitted and Date Submitted](#name-of-user-who-submitted-and-date-submitted)
+
+[3.3.5. Edit and Delete Buttons](#edit-and-delete-buttons)
+
+[3.3.6. Embedded YouTube Video](#embedded-youtube-video)
+
+[3.3.7. Pagination System](#pagination-system)
+
+[3.3.8. Filter System](#filter-system)
+
+[3.3.9. Sorting System](#sorting-system)
+
+[3.3.10. No Tracks Message](#no-tracks-message)
+
+[3.4. ‘Like’ System](#’like’-system)
+
 [3.SOMETHING. Features Left to Implement](#features-left-to-implement)
 
 ----------
@@ -57,31 +85,31 @@
 [7.3. Acknowledgements](#acknowledgements)
 
 --------------------
-## Introduction
+## 1. Introduction
 This project is a music database app called DesertIsland, where users submit their favourite music, which can then be voted on by other users. Built primarily with Flask on the backend, Materialize on the frontend, and MongoDB handling the database, the app features a chart system which dynamically alters the ranking of songs based on user feedback in the form of ‘Likes’. Each submitted track has an associated music video (from YouTube), so users are able to check out other’s submissions before they cast a vote. The charts can be filtered by decade, showing only tracks from the 90s for example, and can also be sorted by various criteria, and is not simply limited to showing the most popular tracks first. Users may also edit and delete submissions, and view detailed information about a submission.
-## UX
+## 2. UX
 DesertIsland is aimed at music fans. The likely user is someone with a higher than average interest in music, and a desire to share their music taste with the world. The app serves as a way for users to see how much others share their taste in music, and also allows more casual users to see ‘what’s hot’, and what music fans generally agree on as good music.
-### User Stories
+### 2.1. User Stories
 Three types of users have been identified as the typical user types for this app.
-#### Hardcore Sharer
+#### 2.1.1. Hardcore Sharer
 The hardcore sharer is someone who would make multiple submissions to DesertIsland. This type of user would be typically one who also engages heavily in social media in general. This user type would want a clear and easy way to submit music, and ideally, a way for them to track their uploads and the number of Likes they have acquired. 
-#### Chart Observer
+#### 2.1.2. Chart Observer
 This type of user may or may not also be a hardcore sharer. They will however have an above average interest in music, and be curious as to how the rankings of music on the app look, seeing whether they agree or disagree with other’s votes. This type of user would need to see a clearly organised charts page.
-#### Music Socialiate
+#### 2.1.3. Music Socialiate
 This type of user is someone who is interested in the broader community surrounding music. They would likely be interested in social share capabilities, forums, and perhaps a messaging and ‘friend’ system. This type of user has not been catered for in the first release of the app, and the features they would require are planned for an updated release.
-### Wireframes
+### 2.2. Wireframes
 Prior to work beginning on the app, wireframes were created to aid the design process and provide direction during actual coding. These can be found in the "wireframes" folder in the root directory of the project.
 
 The wireframes are not a complete picture of how the app in its finished form looks. I do find wireframes very helpful in establishing the colour scheme and overall aesthetics of the app, as well as providing the general structure and layout of pages. However, often during development I find that features need to be added which were not foreseen, or layouts tweaked in order to accommodate content in practicality. The wireframes merely serve as a ‘launch pad’ for the app. In addition, some pages do not feature an overly complex layout, in which case they have no wireframe. In other cases, I can picture the design in my head without concrete sketches.
 
 Along with designs for the app itself, within the wireframes directory you may find a sketch for the database schema.
-## Features
+## 3. Features
 DesertIsland is a website built from multiple HTML pages, with the backend handled by the Python Flask framework. The bulk of the custom backend code within the project can be found within the app.py file.
-### Navbar
+### 3.1. Navbar
 The main nav for the app is located at the top of every page, implemented by using Materialize classes. The nav is fairly basic, consisting of the DesertIsland brand logo and some links. On smaller viewports the nav collapses, with the links replaced by a menu icon. If the user clicks or taps on the icon, a sidenav appears on the left of the viewport where the user is able to view the navlinks. The user is able to close the sidenav by tapping or clicking off of the sidenav, or by clicking the close icon in the top right of the sidenav.
 
 The Materialize nav system by default does not include a close icon for the sidenav. I added this manually by adding a Material close icon, which is wired up to a method provided by Materialize called sideNav(‘hide’).
-### Homepage (index.html)
+### 3.2. Homepage (index.html)
 The homepage serves as the landing page for the app. An eye-catching image of Jimi Hendrix is used to draw the attention of users. The text on the image serves as a very brief, catchy, description as to what the app’s function is.
 
 The image makes use of Materialize’s parallax effect, meaning the image and the page scroll at different ‘speeds’. This effect is intended to help give the app a modern appearance.
@@ -99,7 +127,7 @@ The next section on the homepage is the current top 3 tracks on DesertIsland. Th
 Below the list of top 3 tracks there is a link to the charts page with the text ‘View The Full Charts’. This takes the user to the charts page. Below this link is another parallax image. This one contains a call to action, the text ‘Help Us Find The Most Loved Music Of All Time’, which contains a link through to add-track.html. 
 
 At the bottom of the page is the footer, containing the same nav links as the top navbar as well as some copyright info. Note the copyright date is auto-generated using JavaScript.
-### Charts (tracks.html)
+### 3.3. Charts (tracks.html)
 The charts page essentially gives an overview of the objects in the tracks collection within the database. Each of these objects represents a track submitted by a user. You can view a sketch of the database schema within the wireframes directory within the project.
 
 A for loop within tracks.html is used to render a number of <section> elements, with each <section> element representing a track. The list of tracks is determined by the [filter](#filter-system) and [sort](#sorting-system) systems. Each track contains the following:
@@ -112,25 +140,26 @@ A for loop within tracks.html is used to render a number of <section> elements, 
 6.	Date of submission
 7.	Edit and Delete buttons
 8.	An embedded YouTube video
-#### Rank Number of the Track
+
+#### 3.3.1. Rank Number of the Track
 This is determined by combining the index of the track loop, added to the current pagination. For example, if the user clicks ‘Next’ to view tracks 6 through 10, the rank number ‘6’ is determined by adding the loop index of that track (1) to the current pagination value (in this case 5). If the user clicks ‘Next’ again to see tracks 11 through 15, then the pagination values of 10 will be added to the loop indexes on the page to get the values 11 to 15.
-#### Artist and Track Title
+#### 3.3.2. Artist and Track Title
 Determined by the ‘tracks’ passed through from the backend.
-#### Like Button and Like Count
+#### 3.3.3. Like Button and Like Count
 The ‘Like Button’ is technically a form, with a submit button that goes to the upvote_track view within app.py. This view increments the upvote_count of the selected track by 1. The upvote button knows which track to modify by being tied to track.id. The icon used to represent a ‘Like’ (a thumbs-up icon common to the internet) is a Material Icon. Some JavaScript ensues that once the user ‘Likes’ a track, the scroll of the page stays on the track they just Liked. The JavaScript also depends on a bit of Flask functionality, you can read more details on this in the [Like Scroll Script section](#like-scroll-script) of this readme.
-#### Name of User Who Submitted and Date Submitted
+#### 3.3.4. Name of User Who Submitted and Date Submitted
 Retrieved from the track object and passed through to the template similarly to the artist and track title.
-#### Edit and Delete Buttons
+#### 3.3.5. Edit and Delete Buttons
 The Edit and Delete buttons take the user to the edit pages or delete confirmation pages respectively for the tracks. More information about the Edit and Delete functionality can be found [here for Edit](#edit-functionality) and [here for Delete](#delete-functionality).
-#### Embedded YouTube Video
+#### 3.3.6. Embedded YouTube Video
 The embedded YouTube videos that load initially are not technically videos at all, but image thumbnails. When the user clicks on the thumbnail, the YouTube video loads in its place. This was done to save on the user’s bandwidth, since loading 5 YouTube videos on a page simultaneously is very likely to affect the overall load time of the page. The image is made to look like a video by using css to generated a play icon.
 
 This functionality is accomplished using a very nice piece of JavaScirpt courtesy of [this article](https://webdesign.tutsplus.com/tutorials/how-to-lazy-load-embedded-youtube-videos--cms-26743). I modified the CSS provided by the article (CSS that styles the YouTube image) to fit with SCSS syntax, but the modifications to the JavaScript itself were minor. The images are responsive, and scale down to always fit the viewport’s width, scaling up to a maximum of 730px width, which fits with the layout of the page on larger viewport sizes. The video that loads in place of the image when the image is clicked on is sized to match the image’s size.
-#### Pagination System
+#### 3.3.7. Pagination System
 There are 5 tracks per page. If more than 5 tracks meet the criteria of the user’s current filter, then they will be available via pagination. In order to navigate through the tracks, the user can click the ‘Next’ and ‘Previous’ buttons located at the bottom of the charts page just above the footer. The Next and Previous buttons display dynamically; the Next button will not display if the user has reached the end of the list of tracks, and the Previous button will not display if the user is at the beginning of the list. 
 
 The pagination system is implemented using session variables, which get passed through to the template. This means that in some use cases, the pagination gets saved, meaning the user won’t always go back to the first 5 tracks. For example, if the user clicks the ‘Next’ button 3 times, and then decides to edit track 20, they probably do not want to be taken back to the first 5 tracks once they finish editing and return to the charts page. Rather, the pagination they were on is saved, and they go back to the 5 tracks they were viewing before clicking ‘Edit’.
-#### Filter System
+#### 3.3.8. Filter System
 Users are able to filter the tracks on the chart page by decade. Users are able to choose between the various decades by manipulating the decade filter box at the top of the page. The decades available range from music released before 1950, to each decade up to and encompassing the present decade.
 
 The decade filter system uses a combined jQuery/Flask solution in order to get the correct list of tracks for the user and ensure the decade filter displays the correct text, matching the user’s selection.
@@ -140,7 +169,7 @@ The decade filter on the frontend is a HTML select element populated by an optio
 I personally find the switch statement used by the jQuery to pass the decade value to get_tracks a bit cumbersome. However, the value of the select box cannot be passed directly into url_for(get_tracks), since JavaScript cannot be evaluated in Jinja. An alternative would be to [use AJAX](https://stackoverflow.com/questions/36143283/pass-javascript-variable-to-flask-url-for), but AJAX was beyond the scope of this project.
 
 Once get_tracks has been called and the charts page re-rendered with the updated list of tracks, a further bit of jQuery ensures that the value of the decade select is set to the current decade. By default, the select box would again be set to ‘Show All’.
-#### Sorting System
+#### 3.3.9. Sorting System
 Users are able to sort the tracks on the chart page either by number of Likes (either ascending or descending) or Date Added (again either by ascending or descending). The sort dropdown at the top of the charts page, situated just below the decade filter dropdown, handles this functionality. The design of the sort dropdown was influenced by the design of the sort option for posts on Reddit.
 
 The sorting dropdown is achieved differently to the decade filter, despite both systems using dropdowns. The sort dropdown makes uses of the Materialize framework’s dropdown component, unlike the decade select which is just a HTML select element rendered with Materialize.
@@ -148,11 +177,11 @@ The sorting dropdown is achieved differently to the decade filter, despite both 
 When the user clicks on a sorting option, they get taken to its respective sorting view, of which there are 4, within app.py. All the sorting view does is tell get_tracks, which the sorting view redirects to, which sorting order to use when the tracks are being determined within get_tracks. The get_tracks view then loads the charts page and shows the tracks.
 
 A bit of jQuery ensures that the text on the sorting dropdown matches the user’s actual sorting, or else similarly to the decade filter, the wrong option will be displayed on the dropdown. 
-#### No Tracks Message
+#### 3.3.10. No Tracks Message
 If there is a decade that currently has no uploaded tracks (e.g. there are no tracks from pre-1950 on the database), the user will be shown a message telling them that no tracks match that period, with a link to take them to the add-track form. This is to avoid the app looking broken or otherwise incomplete, as without the message the user would just see a lot of white space between the sort dropdown and the footer.
 
 This functionality is accomplished with a conditional check by the Jinja within the template, checking that tracks_count (established within app.py) is greater than 0. If tracks_count is greater than 0, the tracks get shown. Otherwise, the ‘no tracks’ message gets shown.
-### ‘Like’ System
+### 3.4. ‘Like’ System
 A core part of the app is the Like system, which records the number of times a user has clicked on the Like button for a given track. 
 
 This system was previous referred to as the ‘Upvote’ system, inspired by the system found on Reddit. This was changed during some initial testing; all of the four people who took part in the testing, bar one, did not know what an Upvote was, something I had (previously) assumed was obvious. This led me to decide, for the benefit of usability, to replace the word ‘Upvote’ with ‘Like’, in order to make DesertIsland’s system more in-tune with the systems of ubiquitous applications like Facebook and Instagram.
