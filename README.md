@@ -20,7 +20,7 @@
 
 [3.2. Homepage (index.html)](#32-homepage-indexhtml)
 
-[3.3. Charts (tracks.html](#33-charts-tracks.html)
+[3.3. Charts (tracks.html](#33-charts-trackshtml)
 
 [3.4. ‘Like’ System](#34-like-system)
 
