@@ -324,7 +324,9 @@ Used for version control
 ### [GitHub](https://github.com/)
 Used as the online hosting service for the git repository.
 ### [Heroku](https://dashboard.heroku.com/login)
-Used to deploy the app on the web
+Used to deploy the app on the web.
+### [mLab](https://mlab.com/welcome/)
+The online host for the database.
 ## Testing
 ### Code Validation
 The W3C code validators for [HTML](https://validator.w3.org/) and [CSS](https://jigsaw.w3.org/css-validator/) were used to check markup validity. The validators helped me fix a few errors in the markup, one example for the HTML validation being a descendant 'button' element within an 'a' element that I’d used to construct the ‘Cancel’ button on a number of pages (which was fixed simply by replacing the 'button' with a 'div'). After these and other fixes, both the index.html and style.css files pass the testers with no errors.
@@ -405,7 +407,15 @@ A second problem here is that users have to manually look for the genre they wan
 #### Redundant ‘date_added_raw’ and ‘date_added’ fields
 This refers to the schema of the database. Currently, there are two fields used to store data on the date that a track was uploaded. The field ‘date_added_raw’ is the Python format, whereas ‘date_added’ is a human-readable format. I’m aware it’s probably best to just store this data in raw format in the database, and then make it human-readable in the template or within app.py, thus eliminating the need for an extra field. This is how I would develop the app now, however, when I made the database this was very early on in the development process and my knowledge of Flask, MongoDB and databases in general is not what it is after making the project. I decided to keep the database schema in its current state in order to save time.
 ## Deployment
-The project is deployed on Heroku, available [here]().
+The project is deployed on Heroku, available [here](https://dhamma-desertisland.herokuapp.com/). The deployment process was (thankfully) mostly headache free. All that had to be done was setting the environment variables (the same as the local vars with the exception of flask’s secret key).
+
+Anyone wishing to run the app locally would just need to account for the following env variables:
+
+FLASK_SECRET_KEY
+
+MONGO_DBNAME
+
+MONGO_URI
 ## Credits
 ### Images
 #### Brand logo
@@ -418,5 +428,6 @@ https://image.redbull.com/rbcom/010/2015-09-10/1331746937069_2/0100/0/1/dj-nu-ma
 I received inspiration for this project mainly from Reddit. The design of the sort dropdown on tracks.html especially was inspired by Reddit’s design https://www.reddit.com/
 #### Code Acknowledgements
 Other developer’s code that I have reused is indicated within the code itself by comments.
+
 
 
