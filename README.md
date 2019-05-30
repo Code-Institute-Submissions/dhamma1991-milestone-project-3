@@ -8,15 +8,9 @@
 
 [2. UX](#2-ux)
 
-    [2.1. User Stories](#21-user-stories)
+[2.1. User Stories](#21-user-stories)
 
-        [2.1.1 Hardcore Sharer](#211-hardcore-sharer)
-
-        [2.1.2. Chart Observer](#212-chart-observer)
-
-        [2.1.3. Music Socialite](#213-music-socialite)
-
-    [2.2. Wireframes](#22-wireframes)
+[2.2. Wireframes](#22-wireframes)
 
 ----------
 
@@ -28,29 +22,7 @@
 
 [3.3. Charts (tracks.html](#33-charts-tracks.html)
 
-[3.3.1. Rank Number of the Track](#331-rank-number-of-the-track)
-
-[3.3.2. Artist and Track Title](#332-artist-and-track-title)
-
-[3.3.3. Like Button and Like Count](#333-like-button-and-like-count)
-
-[3.3.4. Name of User Who Submitted and Date Submitted](#334-name-of-user-who-submitted-and-date-submitted)
-
-[3.3.5. Edit and Delete Buttons](#335-edit-and-delete-buttons)
-
-[3.3.6. Embedded YouTube Video](#336-embedded-youtube-video)
-
-[3.3.7. Pagination System](#337-pagination-system)
-
-[3.3.8. Filter System](#338-filter-system)
-
-[3.3.9. Sorting System](#339-sorting-system)
-
-[3.3.10. No Tracks Message](#3310-no-tracks-message)
-
 [3.4. ‘Like’ System](#34-like-system)
-
-[3.4.1 Like Scroll Script](#341-like-scroll-script)
 
 [3.5. Track Detail](#35-track-detail)
 
@@ -99,27 +71,23 @@
 
 [7.2. User Stories Testing](#user-stories-testing)
 
-[7.2.1. Hardcore Sharer](#hardcore-sharer)
+[7.3. Other Testing](#other-testing)
 
-[5.3. Browser and Responsiveness Testing](#browser)
+[7.4. Browser and Responsiveness Testing](#browser-and-responsiveness-testing)
 
-[5.4. Known Issues](#known-issues)
-
-[5.5. Other Testing](#other-testing)
+[7.5. Known Issues](#known-issues)
 
 ----------
 
-[6. Deployment](#deployment)
+[8. Deployment](#deployment)
 
 ----------
 
-[7. Credits](#credits)
+[9. Credits](#credits)
 
-[7.1. Text Content](#text-content)
+[9.1. Images](#images)
 
-[7.2. Media](#media)
-
-[7.3. Acknowledgements](#acknowledgements)
+[9.2. Acknowledgements](#acknowledgements)
 
 --------------------
 ## 1. Introduction
@@ -414,7 +382,9 @@ The user categories simulated were:
 The 3rd category of user, the Music Socialite, was not simulated since the areas of functionality it was deemed necessary to implement in order to cater to this user were not added to the current release.
 
 The results of these tests were as follows:
-#### Hardcore Sharer
+<a name="hardcore-sharer-testing">
+#### 7.2.1. Hardcore Sharer
+</a>
 Upon loading the app, I am taken to index.html. I am able to appreciate the (rather cool) picture of Jimi Hendrix for a moment, before scrolling down. I see the current top 3 tracks, and the link ‘View The Full Charts’ which I click on. I take a look at the charts for a moment, navigating through the pagination using the ‘Next’ and ‘Previous’ buttons. I then decide I want to submit a track, and click the ‘Submit a Track’ link in the nav. I enter a new track, making use of the Wikipedia link in order to get the ‘Year Released’. Upon submitting the track, I am taken back to the charts page, where I can see my track is at the top of the list.
 
 At this point in the testing, I realised that for the user to see their newly submitted track at the top of the charts might be confusing. If the user has yet to realise that the charts page automatically changes the sorting option to ‘Date Added (Newest)’ when the user submits a track, then the user may end up wondering why their track is suddenly number 1.
@@ -424,7 +394,9 @@ In order to help counter this, I decided to add a sub-heading to the charts page
 Carrying on with the test, I noticed I made a typo in the artist name of the track I just uploaded. I click the ‘Edit’ button of the track and am taken to the edit form. I make the edit, submit the edit and then I am taken back to the charts page.
 
 I repeat the add track process a few times. During one of the submissions I am caught out by the validation, as I accidentally add ‘3002’ instead of ‘2002’ for the Year Released. The form will not submit, as the ‘Year Released’ input will only accept a 1 or 2 as the first character of the input. A logical bit of validation, as there is no music currently released in the 4th millennium. The validation allows me to correct my mistake before I submit the track.
-#### Chart Observer
+<a name="chart-observer-testing">
+#### 7.2.2. Chart Observer
+</a>
 I initially follow a similar process to the Hardcore Sharer, landing on index.html and taking a moment to explore the homepage. I then go to the charts page by clicking the link in the nav. I explore the charts for a few moments by clicking the ‘Next’ and ‘Previous’ buttons. I then decide to change the decade filter and take a look at the tracks from the 1990s. I can see the top track changes, and I recognise both it and other tracks as being from the 90s. I am able to change the decade to the 70s and 80s in the same way. I spot a track I like and click the Like button.
 
 At this point I realised that there is no feedback from the app that a Like was successful. It could be apparent to the user anyway, especially if a track which previously had 1 Like now has 2, but this requires reliance on the user’s memory and attention, and also relies on the track not ending up in a different pagination as a result of the user’s Like, meaning it will not be a part of the 5 tracks the user is currently viewing.
@@ -432,7 +404,7 @@ At this point I realised that there is no feedback from the app that a Like was 
 I decided to use Flask’s messaging framework to feedback to the user that a track was Liked, to avoid any confusion. This message simply thanks the user for voting.
 
 I Like a few more tracks. I find the message popping up after I Like a track to be useful, since there is no other visual feedback on the page except the number of likes changing. The fact the scroll is kept, so I don’t lose sight of the track I just Liked, is useful. It should be noted I conducted this simulation after the testing with User X which can be read about in the [Other Manual Testing section](#other-manual-testing). It was the testing with User X that led to the scroll script being added.
-### Other Manual testing
+### 7.3. Other Manual testing
 Apart from testing the app personally, I also made use of other people to test the app, most of whom were not developers. Feedback from these users was positive, with all agreeing that the site works well. With one of these tests I was able to sit with the person and observe and record them using the app. We can call this person User X.
 
 Upon landing on the app, the first thing User X did was test the nav links. All links worked and there were no dead pages. The user then went to the charts page and began Liking tracks. At this point during the app’s development, the scroll functionality, which keeps the user scrolled to the track they just Liked (with the exception of if the track has changed its pagination), was not implemented. User X, who was Liking a few tracks, said out loud that they found it irritating that the page kept scrolling back to the top, even when the track the user Liked was at the bottom of the list of 5 tracks.
@@ -442,7 +414,7 @@ This feedback led me to implement the scrollToView() based JavaScript that is cu
 After User X had Liked a few tracks, I asked them to submit a new track. The user was able to do this without difficulty, although they did at first fail the form validation by not adding a track description. It took the user a moment to realise this, although in the end they did spot the red validation message asking them to add a description.
 
 This concluded the test with User X.
-### Browser and Responsiveness Testing
+### 7.4. Browser and Responsiveness Testing
 The app was primarily tested on Google Chrome version 74.0.3729.169 on a Windows PC with a default maximised screen size of 1936px. 
 
 In addition to Google Chrome's developer tools where mobile devices can be simulated, an iPhone 7 running iOS v11.3 was used to test the app with its native Safari browser. The website was also tested on Firefox v66.0.3, Safari v12.1.1 (on a MacBook Pro 15-inch Retina) and Edge v42.17134.1.0.
@@ -454,7 +426,7 @@ No issues were detected on any of the tested browsers in terms of either layout 
 In addition to modern browser testing, the app was tested on IE version 11.0.9600.19130. On this browser, none of the charts were rendered. After some searching, I found that DC.js is tested in IE but that [mine wasn’t the only issue] https://stackoverflow.com/questions/50047687/dc-js-im-facing-issues-rendering-the-dc-js-dashboards-in-ie-11) and that issues relating to DC.js working with IE [have been documented](https://github.com/dc-js/dc.js/issues/1334).
 
 Due to IE being a legacy browser, and with Windows 10 (and Edge) becoming more and more common, I adopted to not support IE in any of its incarnations. To this effect, a user trying to view the app on IE will see a page similar to the no-js functionality, asking them to upgrade their browser.
-### Known Issues
+### 7.5. Known Issues
 There are several issues with the app that were not tackled in the current release, mainly because of the time it would have taken to implement fixes.
 #### User loses form data when adding genre
 At the moment, uses who partially complete either the add or edit track form, and then go to add a genre, will have lost the data they have already inputted into the add or edit form when returning to the form. This could be considered an annoying feature of the forms at present, especially since the Genre input is likely to be the 3rd or 5th input the user goes to (due to the layout of the forms), meaning they’ll lose the data they’ve inputted before that.
@@ -480,7 +452,7 @@ The genre select is q form input element on both the add and edit track forms. T
 A second problem here is that users have to manually look for the genre they want to add within the select. An ideal solution would be find and search functionality, so that a user could begin typing the name of the genre they want, and the genres matching the user’s search would come up via predictive search.
 #### Redundant ‘date_added_raw’ and ‘date_added’ fields
 This refers to the schema of the database. Currently, there are two fields used to store data on the date that a track was uploaded. The field ‘date_added_raw’ is the Python format, whereas ‘date_added’ is a human-readable format. I’m aware it’s probably best to just store this data in raw format in the database, and then make it human-readable in the template or within app.py, thus eliminating the need for an extra field. This is how I would develop the app now, however, when I made the database this was very early on in the development process and my knowledge of Flask, MongoDB and databases in general is not what it is after making the project. I decided to keep the database schema in its current state in order to save time.
-## Deployment
+## 8. Deployment
 The project is deployed on Heroku, available [here](https://dhamma-desertisland.herokuapp.com/). The deployment process was (thankfully) mostly headache free. All that had to be done was setting the environment variables (the same as the local vars with the exception of flask’s secret key).
 
 Anyone wishing to run the app locally would just need to account for the following env variables:
@@ -490,8 +462,8 @@ FLASK_SECRET_KEY
 MONGO_DBNAME
 
 MONGO_URI
-## Credits
-### Images
+## 9. Credits
+### 9.1. Images
 #### Brand logo
 https://www.canva.com/media/MACy4VY-bGc
 #### The top parallax image on index.html
