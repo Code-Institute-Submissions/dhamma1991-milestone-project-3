@@ -32,7 +32,7 @@
 
 [3.8. Track Submission](#38-track-submission)
 
-[3.9. And and Edit Track Forms](#39-and-and-edit-track-forms)
+[3.9. And and Edit Track Forms](#39-add-and-edit-track-forms)
 
 [3.10. Add Genre](#310-add-genre)
 
