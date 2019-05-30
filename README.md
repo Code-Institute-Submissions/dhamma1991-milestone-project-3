@@ -48,21 +48,58 @@
 
 [3.3.10. No Tracks Message](#3310-no-tracks-message)
 
-[3.4. ‘Like’ System](#34-’like’-system)
+[3.4. ‘Like’ System](#34-like-system)
 
-[3.SOMETHING. Features Left to Implement](#features-left-to-implement)
+[3.4.1 Like Scroll Script](#341-like-scroll-script)
+
+[3.5. Track Detail](#35-track-detail)
+
+[3.6. Edit Functionality](#36-edit-functionality)
+
+[3.7. Delete Functionality](#37-delete-functionality)
+
+[3.8. Track Submission](#38-track-submission)
+
+[3.9. And and Edit Track Forms](#39-and-and-edit-track-forms)
+
+[3.10. Add Genre](#310-add-genre)
+
+[3.11. Database Stats](#311-database-stats)
+
+[3.12. About Page](#312-about-page)
 
 ----------
 
-[4. Technologies Used](#technologies-used)
+[4. Features Left to Implement](#features-left-to-implement)
+
+[4.1 'First' and 'Last' buttons on the chart page](#41-first-and-last-buttons-on-the-chart-page)
+
+[4.2. Custom pagination](#42-custom-pagination)
+
+[4.3. User Authentication System](#43-user-authentication-system)
 
 ----------
 
-[5. Testing](#Testing)
+[5. How Existing Features Fulfil User Requirements](#how-existing-features-fulfil-user-requirements)
 
-[5.1. Code Validation](#code-validation)
+[5.1. Hardcore Sharer](#hardcore-sharer)
 
-[5.2. User Stories Testing](#user-stories-testing)
+[5.2. Chart Observer](#chart-observer)
+
+[5.3. Music Socialiate](#music-socialite)
+
+----------
+[6. Technologies Used](#technologies-used)
+
+----------
+
+[7. Testing](#Testing)
+
+[7.1. Code Validation](#code-validation)
+
+[7.2. User Stories Testing](#user-stories-testing)
+
+[7.2.1. Hardcore Sharer]
 
 [5.3. Browser and Responsiveness Testing](#browser)
 
@@ -193,7 +230,7 @@ Users are able to Like a track in two places on the app. The first place is on t
 A check within the upvote_track view ensures that once a Like has been submitted, the user goes back to the right place; it would be confusing if a user Liked a track from the charts page, to then be taken to that page’s track-detail.
 
 When a user submits a track, the track starts off with 1 Like already in place. This is due to the assumption that a user who uploads a track already Likes it.
-#### Like Scroll Script
+#### 3.4.1. Like Scroll Script
 The Like Scroll Script is a bit of functionality added fairly late-on in the development process. The need for it arose during testing with a user called User X (you can read about that test [here](#other-manual-testing).
 
 Prior to implementation of this script, the app would scroll back to the top of the page once the user had Liked a track on the charts page. This is not ideal, since if a user Likes a track towards the bottom of the charts page, they will lose where they were on the page. This has the potential to cause confusion.
@@ -203,13 +240,13 @@ In order for this script to have the desired effect, firstly, each track in the 
 Next, when the user clicks Like, the id of the track is sent forward to get_tracks, and then passed through to the template and the JavaScript. The method scrollToView() is then called on the element with the id which gets passed through to the template.
 
 It should be noted that the script has no effect if, once the user has Liked a track, that track ends up getting ‘promoted’ to the next level of pagination, e.g. if a track was rank 6, and the Like promotes it to rank 5, the user will be seeing tracks ranked 6-10, so the track they just liked will not be one of those. The pagination is not affected by this script.
-### Track Detail
+### 3.5. Track Detail
 The track detail page serves as a detailed view for each database item(i.e. each track). This page can be reached for each track from the charts page, with the rank number, artist and track title text serving as a clickable link.
 
 The track-detail page shows the same information about each track as the chart page, with the addition of the user description for the track, as well as the genre and year released.
 
 The user is also able to edit, delete, and Like tracks from the track-detail page.
-### Edit Functionality
+### 3.6. Edit Functionality
 Each track on the database can be edited, by any user. In the real world this would not be ideal, with the potential for abuse of the system becoming almost guaranteed. However, without an authentication system which is beyond the scope of this project, tying an edit to a particular user would be difficult.
 
 Users are able to edit tracks by clicking on the Edit button for the track on both the charts page and on the detailed page for each track. This will take the user to an edit form. The form on the page allows the user to edit the details for a track.
@@ -223,7 +260,7 @@ The edit page and the add-track page are quite similar. One of the big differenc
 Once the user has finished editing, or if they cancel their edit by clicking the Cancel Edit button, they are taken back to the charts page, retaining the pagination they were on before they went to edit the track. This is the case even if the user edits a track from a track-detail page. Ideally, in such a case the user would go back to the track-detail page once they had taken an action on the edit page, and not to the charts page. This is a current limitation of the app.
 
 The edit form, along with the add-track form, is discussed more in detail [here](#add-and-edit-track-forms).
-### Delete Functionality
+### 3.7. Delete Functionality
 Each track in the database is able to be deleted. Any user can delete any track, including ones they did not submit. Without an authentication system, I’m unsure as to how to implement a delete system which limits deletions of tracks to the users who submitted them.
 
 Tracks can be deleted from 2 places, either from the charts page or on the detail page for each track.
@@ -231,11 +268,11 @@ Tracks can be deleted from 2 places, either from the charts page or on the detai
 When the user clicks on the Delete button, they are first taken to a confirmation page. This page is intended to avoid user errors (i.e. misclicks on the Delete button).
 
 Once the user deletes a track, or changes their mind and clicks the ‘No, Cancel’ button, they are taken back to the charts page. If the user clicks ‘No, Cancel’, they are always taken back to the charts page, even if they clicked ‘No, Cancel’ from a track-detail page. Ideally, if coming from a track-detail page, they would be taken back to that track-detail page when cancelling the delete, and not to the charts page. This is a current limitation of the app.
-### Track Submission
+### 3.8. Track Submission
 Users are able to submit a track to DesertIsland by using a form found on add-track.html. Users can get to this page by clicking the nav links in either the main nav or the footer. There is also a link on the call to action text on the bottom parallax image on index.html, and also if the user sets a decade filter that returns no tracks, they will be shown a link to add-track.html there as well.
 
 The content on add-track.html is quite similar to the content found on edit-track.html. The forms used on both pages is discussed in detail [here](#add-and-edit-track-forms).
-### Add and Edit Track Forms
+### 3.9. Add and Edit Track Forms
 The forms on both the edit and add track pages are essentially the same. The primary difference is that when the user goes to add a track, they are presented with a blank form, whereas the edit form will have the selected track’s info already filled in. There is also a difference in where the form takes the user after it has been submitted. In the case off add-track, the user will go to the charts page with sorting order set to ‘Date Added (Newest)’ so that they can see their newly uploaded track at the top of the list, with pagination and decade filter set at defaults. In the case of an edit, the user will be taken back to the charts page, but with the current pagination, decade filter, and sorting order that they had before going to the edit.
 
 The forms are constructed using Materialize classes. Materialize icons are used in order to improve the forms’ aesthetics, as well as make fields more recognisable.
@@ -257,7 +294,7 @@ It should be noted that failing the database index-based validation will reset t
 In the case of add-track, this could be considered desired functionality; if the track already exists in the database, it makes sense to clear the form so that the user is ready to enter the details for a different track. In the case of edit-track, there are probably not many use cases where the user will need to edit the youtube_url; the client side validation should take care of input errors, and this is a field that is very likely to be copied and pasted. 
 
 There is always the possibility that the user will copy/paste the wrong URL. If that happens, and the URL the user intended to paste already exists in the database, the user may find that the track they wanted to upload already exists. I'm not sure how to go about preventing a scenario like this, and may be something inherent in the nature of the app.
-### Add Genre
+### 3.10. Add Genre
 Most of the fields on the add and edit track forms are text inputs. The one exception is the genre input, which is a select box. The select box is populated with values from the genres collection in the database. If the user wishes to add their own genre, they can do so by clicking the ‘Add a Genre’ option, which is always the bottom option of the dropdown. This option is coloured differently to the actual genres, making it more apparent to the user.
 
 By default, Materialize selects do not include links. I had to add this manually using jQuery. The jQuery listens for a change event on the select, and if the value of the select corresponds to the value of the add genre link, the user is taken to add-genre.html.
@@ -267,7 +304,7 @@ The add-genre.html page consists of a small form, with one input where the user 
 Care had to be taken that, upon successful submission of a new genre, that the user ends up in the right place. If they added a new genre from add-track, they will go back to add-track. Likewise, adding a new genre from edit-track will take the user back to edit-track. If the user manually goes to the add_genre URL (i.e. by entering it into the address bar and not using the link within the genre select) they will be taken to a blank add-track form upon submission of the genre.
 
 Limitations of this system are discussed in [known issues](#the-genre-select).
-### Database Stats
+### 3.11. Database Stats
 The user may navigate to stats.html using either the main nav or the footer, which gives the user an overall picture of the content of the database. These values are collected through various calculations within the stats view of app.py. The current stats displayed are:
 
 1.	The number of tracks uploaded on the database
@@ -278,15 +315,15 @@ The user may navigate to stats.html using either the main nav or the footer, whi
 6.	The artist with the most likes
 
 Within app.py, comments within the stats view give a more detailed breakdown of how these stats are calculated. 
-### About Page
+### 3.12. About Page
 This is a simple HTML page within the app, reachable by either the main nav or the footer. This page gives a very brief overview of the company behind DesertIsland, and an email link for users to get in touch.
-### Features Left to Implement
+## 4. Features Left to Implement
 Some features are left open to the idea of implementation but were not featured in this release.
-#### ’First’ and ‘Last’ buttons on the charts page
+### 4.1. ’First’ and ‘Last’ buttons on the charts page
 At the moment, users must rely on the Next and Previous buttons only, in order to work their way through the pagination of content on charts.html. It would be ideal if there was an easy way for users to go back to viewing the first (or last) 5 tracks. It is currently possible to go back to the first top 5 by clicking on the Sort option and selecting the same Sort option again, refreshing the page, or by clicking the Charts link on the nav to reload the page, but it would be ideal if there was a dedicated button or link to do this.
-#### Custom pagination
+### 4.2. Custom pagination
 Related to the above, currently the charts content is limited to 5 tracks per page, with no option to change this. It would be ideal if users could select their own pagination value, being able to choose perhaps 5, 10, or 20 tracks per page. I’ve noticed that in a lot of apps around the web where there is pagination of content, it is general practice to allow the user to customise the number of items per page.
-#### User Authentication System
+### 4.3. User Authentication System
 In my opinion, this app would not be in any way ‘real world’ worthy unless it had a user authentication system. This would enable far more functionality to be implemented.
 
 Firstly, users could track their uploads. Each user account would be associated with a number of uploads, which could be visible to the user on a dedicated profile page. This would allow the number of Likes a user was getting to be tied to their account, allowing a ‘rep’ system to be developed, similarly to Reddit. I think this would increase the appeal of the project, allowing users to get the psychological satisfaction from getting ‘Likes’, something a lot of real world apps exploit in order to gain a userbase.
@@ -294,17 +331,17 @@ Firstly, users could track their uploads. Each user account would be associated 
 Secondly, edits and deletions could be tied to individual user accounts. The current system (of anyone being able to edit or delete any track) is simply not viable in the real world, and leaves the app open to being exploited and possibly destroyed by a single malicious user.
 
 In addition, a user authentication system would enable more ‘social’ features. This could be a messaging system within the app that allows users to communicate with each other, as well as possibly a ‘friend’ or ‘follower’ system, which users could use to engage with fellow DesertIsland users to discuss uploads and music in general. 
-## How Existing Features Fulfil User Requirements
+## 5. How Existing Features Fulfil User Requirements
 This section details how the features implemented in the current release of the project meet the requirements of the users discussed in the UX section.
-#### Hardcore Sharer
+### 5.1. Hardcore Sharer
 This type of user has multiple places where they are able to get to add-track.html. This link is available in the nav and in the footer across the app, in the 2nd parallax image text on index.html, and also if the user’s decade filter selection comes up with no tracks on tracks.html.
 
 Without an authentication system, this type of user currently does not have a way to track their uploads or Likes. This is a feature that could be added in a future release.
-#### Chart Observer
+### 5.2. Chart Observer
 This type of user is served by tracks.html. The charts page allows them to clearly see where tracks sit in the various sorting orders. The decade filter allows them to refine the criteria and see what tracks are most popular in which decade. The charts page is designed to be as user-friendly as possible, so if the user spots something wrong with the listing of a track, they can edit that track, and then go back to the same 5 tracks they were viewing before the edit.
-#### Music Socialiate
+### 5.3. Music Socialiate
 The app currently does not possess any kind of social functionality, which was considered beyond the scope of the requirements for this project. Social functionality would be something added onto a future release.
-## Technologies Used
+## 6. Technologies Used
 ### [HTML5](https://www.w3.org/standards/webdesign/htmlcss)
 The project's markup uses HTML5 and makes as much use of HTML5 semantics as possible using W3C standards.
 ### [CSS3](https://www.w3.org/standards/webdesign/htmlcss)
@@ -356,10 +393,10 @@ Used as the online hosting service for the git repository.
 Used to deploy the app on the web.
 ### [mLab](https://mlab.com/welcome/)
 The online host for the database.
-## Testing
-### Code Validation
+## 7. Testing
+### 7.1. Code Validation
 The W3C code validators for [HTML](https://validator.w3.org/) and [CSS](https://jigsaw.w3.org/css-validator/) were used to check markup validity. The validators helped me fix a few errors in the markup, one example for the HTML validation being a descendant 'button' element within an 'a' element that I’d used to construct the ‘Cancel’ button on a number of pages (which was fixed simply by replacing the 'button' with a 'div'). After these and other fixes, both the index.html and style.css files pass the testers with no errors.
-### User Stories Testing
+### 7.2. User Stories Testing
 Manual testing was conducted simulating the three types of users that have been previously identified in the [UX](#ux) section. This testing was conducted by myself (the developer). Manual testing was also conducted by other people, of which one tester was observed and documented, although this testing did not attempt to simulate the user stories identified in the UX section. The downside of conducting user testing simulations personally is that, as the developer of the app, I know it better than anyone else, and that familiarity might mask issues that would otherwise be apparent to another person. On the other hand, personally adopting another person’s perspective when testing did prove useful, and led me to implement new features in response to some issues discovered. 
 
 The user categories simulated were:
