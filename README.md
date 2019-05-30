@@ -96,11 +96,11 @@ This project is a music database app called DesertIsland, where users submit the
 DesertIsland is aimed at music fans. The likely user is someone with a higher than average interest in music, and a desire to share their music taste with the world. The app serves as a way for users to see how much others share their taste in music, and also allows more casual users to see ‘what’s hot’, and what music fans generally agree on as good music.
 ### 2.1. User Stories
 Three types of users have been identified as the typical user types for this app.
-#### 2.1.1. Hardcore Sharer
+#### Hardcore Sharer
 The hardcore sharer is someone who would make multiple submissions to DesertIsland. This type of user would be typically one who also engages heavily in social media in general. This user type would want a clear and easy way to submit music, and ideally, a way for them to track their uploads and the number of Likes they have acquired. 
-#### 2.1.2. Chart Observer
+#### Chart Observer
 This type of user may or may not also be a hardcore sharer. They will however have an above average interest in music, and be curious as to how the rankings of music on the app look, seeing whether they agree or disagree with other’s votes. This type of user would need to see a clearly organised charts page.
-#### 2.1.3. Music Socialiate
+#### Music Socialiate
 This type of user is someone who is interested in the broader community surrounding music. They would likely be interested in social share capabilities, forums, and perhaps a messaging and ‘friend’ system. This type of user has not been catered for in the first release of the app, and the features they would require are planned for an updated release.
 ### 2.2. Wireframes
 Prior to work beginning on the app, wireframes were created to aid the design process and provide direction during actual coding. These can be found in the "wireframes" folder in the root directory of the project.
@@ -146,25 +146,25 @@ A for loop within tracks.html is used to render a number of <section> elements, 
 7.	Edit and Delete buttons
 8.	An embedded YouTube video
 
-#### 3.3.1. Rank Number of the Track
+#### Rank Number of the Track
 This is determined by combining the index of the track loop, added to the current pagination. For example, if the user clicks ‘Next’ to view tracks 6 through 10, the rank number ‘6’ is determined by adding the loop index of that track (1) to the current pagination value (in this case 5). If the user clicks ‘Next’ again to see tracks 11 through 15, then the pagination values of 10 will be added to the loop indexes on the page to get the values 11 to 15.
-#### 3.3.2. Artist and Track Title
+#### Artist and Track Title
 Determined by the ‘tracks’ passed through from the backend.
-#### 3.3.3. Like Button and Like Count
+#### Like Button and Like Count
 The ‘Like Button’ is technically a form, with a submit button that goes to the upvote_track view within app.py. This view increments the upvote_count of the selected track by 1. The upvote button knows which track to modify by being tied to track.id. The icon used to represent a ‘Like’ (a thumbs-up icon common to the internet) is a Material Icon. Some JavaScript ensues that once the user ‘Likes’ a track, the scroll of the page stays on the track they just Liked. The JavaScript also depends on a bit of Flask functionality, you can read more details on this in the [Like Scroll Script section](#like-scroll-script) of this readme.
-#### 3.3.4. Name of User Who Submitted and Date Submitted
+#### Name of User Who Submitted and Date Submitted
 Retrieved from the track object and passed through to the template similarly to the artist and track title.
-#### 3.3.5. Edit and Delete Buttons
+#### Edit and Delete Buttons
 The Edit and Delete buttons take the user to the edit pages or delete confirmation pages respectively for the tracks. More information about the Edit and Delete functionality can be found [here for Edit](#edit-functionality) and [here for Delete](#delete-functionality).
-#### 3.3.6. Embedded YouTube Video
+#### Embedded YouTube Video
 The embedded YouTube videos that load initially are not technically videos at all, but image thumbnails. When the user clicks on the thumbnail, the YouTube video loads in its place. This was done to save on the user’s bandwidth, since loading 5 YouTube videos on a page simultaneously is very likely to affect the overall load time of the page. The image is made to look like a video by using css to generated a play icon.
 
 This functionality is accomplished using a very nice piece of JavaScirpt courtesy of [this article](https://webdesign.tutsplus.com/tutorials/how-to-lazy-load-embedded-youtube-videos--cms-26743). I modified the CSS provided by the article (CSS that styles the YouTube image) to fit with SCSS syntax, but the modifications to the JavaScript itself were minor. The images are responsive, and scale down to always fit the viewport’s width, scaling up to a maximum of 730px width, which fits with the layout of the page on larger viewport sizes. The video that loads in place of the image when the image is clicked on is sized to match the image’s size.
-#### 3.3.7. Pagination System
+#### Pagination System
 There are 5 tracks per page. If more than 5 tracks meet the criteria of the user’s current filter, then they will be available via pagination. In order to navigate through the tracks, the user can click the ‘Next’ and ‘Previous’ buttons located at the bottom of the charts page just above the footer. The Next and Previous buttons display dynamically; the Next button will not display if the user has reached the end of the list of tracks, and the Previous button will not display if the user is at the beginning of the list. 
 
 The pagination system is implemented using session variables, which get passed through to the template. This means that in some use cases, the pagination gets saved, meaning the user won’t always go back to the first 5 tracks. For example, if the user clicks the ‘Next’ button 3 times, and then decides to edit track 20, they probably do not want to be taken back to the first 5 tracks once they finish editing and return to the charts page. Rather, the pagination they were on is saved, and they go back to the 5 tracks they were viewing before clicking ‘Edit’.
-#### 3.3.8. Filter System
+#### Filter System
 Users are able to filter the tracks on the chart page by decade. Users are able to choose between the various decades by manipulating the decade filter box at the top of the page. The decades available range from music released before 1950, to each decade up to and encompassing the present decade.
 
 The decade filter system uses a combined jQuery/Flask solution in order to get the correct list of tracks for the user and ensure the decade filter displays the correct text, matching the user’s selection.
@@ -174,7 +174,7 @@ The decade filter on the frontend is a HTML select element populated by an optio
 I personally find the switch statement used by the jQuery to pass the decade value to get_tracks a bit cumbersome. However, the value of the select box cannot be passed directly into url_for(get_tracks), since JavaScript cannot be evaluated in Jinja. An alternative would be to [use AJAX](https://stackoverflow.com/questions/36143283/pass-javascript-variable-to-flask-url-for), but AJAX was beyond the scope of this project.
 
 Once get_tracks has been called and the charts page re-rendered with the updated list of tracks, a further bit of jQuery ensures that the value of the decade select is set to the current decade. By default, the select box would again be set to ‘Show All’.
-#### 3.3.9. Sorting System
+#### Sorting System
 Users are able to sort the tracks on the chart page either by number of Likes (either ascending or descending) or Date Added (again either by ascending or descending). The sort dropdown at the top of the charts page, situated just below the decade filter dropdown, handles this functionality. The design of the sort dropdown was influenced by the design of the sort option for posts on Reddit.
 
 The sorting dropdown is achieved differently to the decade filter, despite both systems using dropdowns. The sort dropdown makes uses of the Materialize framework’s dropdown component, unlike the decade select which is just a HTML select element rendered with Materialize.
@@ -182,7 +182,7 @@ The sorting dropdown is achieved differently to the decade filter, despite both 
 When the user clicks on a sorting option, they get taken to its respective sorting view, of which there are 4, within app.py. All the sorting view does is tell get_tracks, which the sorting view redirects to, which sorting order to use when the tracks are being determined within get_tracks. The get_tracks view then loads the charts page and shows the tracks.
 
 A bit of jQuery ensures that the text on the sorting dropdown matches the user’s actual sorting, or else similarly to the decade filter, the wrong option will be displayed on the dropdown. 
-#### 3.3.10. No Tracks Message
+#### No Tracks Message
 If there is a decade that currently has no uploaded tracks (e.g. there are no tracks from pre-1950 on the database), the user will be shown a message telling them that no tracks match that period, with a link to take them to the add-track form. This is to avoid the app looking broken or otherwise incomplete, as without the message the user would just see a lot of white space between the sort dropdown and the footer.
 
 This functionality is accomplished with a conditional check by the Jinja within the template, checking that tracks_count (established within app.py) is greater than 0. If tracks_count is greater than 0, the tracks get shown. Otherwise, the ‘no tracks’ message gets shown.
@@ -198,7 +198,7 @@ Users are able to Like a track in two places on the app. The first place is on t
 A check within the upvote_track view ensures that once a Like has been submitted, the user goes back to the right place; it would be confusing if a user Liked a track from the charts page, to then be taken to that page’s track-detail.
 
 When a user submits a track, the track starts off with 1 Like already in place. This is due to the assumption that a user who uploads a track already Likes it.
-#### 3.4.1. Like Scroll Script
+#### Like Scroll Script
 The Like Scroll Script is a bit of functionality added fairly late-on in the development process. The need for it arose during testing with a user called User X (you can read about that test [here](#other-manual-testing).
 
 Prior to implementation of this script, the app would scroll back to the top of the page once the user had Liked a track on the charts page. This is not ideal, since if a user Likes a track towards the bottom of the charts page, they will lose where they were on the page. This has the potential to cause confusion.
@@ -376,9 +376,7 @@ The user categories simulated were:
 The 3rd category of user, the Music Socialite, was not simulated since the areas of functionality it was deemed necessary to implement in order to cater to this user were not added to the current release.
 
 The results of these tests were as follows:
-<a name="hardcore-sharer-testing">
-#### 7.2.1. Hardcore Sharer
-</a>
+#### Hardcore Sharer
 Upon loading the app, I am taken to index.html. I am able to appreciate the (rather cool) picture of Jimi Hendrix for a moment, before scrolling down. I see the current top 3 tracks, and the link ‘View The Full Charts’ which I click on. I take a look at the charts for a moment, navigating through the pagination using the ‘Next’ and ‘Previous’ buttons. I then decide I want to submit a track, and click the ‘Submit a Track’ link in the nav. I enter a new track, making use of the Wikipedia link in order to get the ‘Year Released’. Upon submitting the track, I am taken back to the charts page, where I can see my track is at the top of the list.
 
 At this point in the testing, I realised that for the user to see their newly submitted track at the top of the charts might be confusing. If the user has yet to realise that the charts page automatically changes the sorting option to ‘Date Added (Newest)’ when the user submits a track, then the user may end up wondering why their track is suddenly number 1.
@@ -388,9 +386,7 @@ In order to help counter this, I decided to add a sub-heading to the charts page
 Carrying on with the test, I noticed I made a typo in the artist name of the track I just uploaded. I click the ‘Edit’ button of the track and am taken to the edit form. I make the edit, submit the edit and then I am taken back to the charts page.
 
 I repeat the add track process a few times. During one of the submissions I am caught out by the validation, as I accidentally add ‘3002’ instead of ‘2002’ for the Year Released. The form will not submit, as the ‘Year Released’ input will only accept a 1 or 2 as the first character of the input. A logical bit of validation, as there is no music currently released in the 4th millennium. The validation allows me to correct my mistake before I submit the track.
-<a name="chart-observer-testing">
-#### 7.2.2. Chart Observer
-</a>
+#### Chart Observer
 I initially follow a similar process to the Hardcore Sharer, landing on index.html and taking a moment to explore the homepage. I then go to the charts page by clicking the link in the nav. I explore the charts for a few moments by clicking the ‘Next’ and ‘Previous’ buttons. I then decide to change the decade filter and take a look at the tracks from the 1990s. I can see the top track changes, and I recognise both it and other tracks as being from the 90s. I am able to change the decade to the 70s and 80s in the same way. I spot a track I like and click the Like button.
 
 At this point I realised that there is no feedback from the app that a Like was successful. It could be apparent to the user anyway, especially if a track which previously had 1 Like now has 2, but this requires reliance on the user’s memory and attention, and also relies on the track not ending up in a different pagination as a result of the user’s Like, meaning it will not be a part of the 5 tracks the user is currently viewing.
