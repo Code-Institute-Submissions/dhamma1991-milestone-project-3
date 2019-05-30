@@ -334,7 +334,7 @@ The user categories simulated were:
 The 3rd category of user, the Music Socialite, was not simulated since the areas of functionality it was deemed necessary to implement in order to cater to this user were not added to the current release.
 
 The results of these tests were as follows:
-#### 1. Hardcore Sharer
+#### Hardcore Sharer
 Upon loading the app, I am taken to index.html. I am able to appreciate the (rather cool) picture of Jimi Hendrix for a moment, before scrolling down. I see the current top 3 tracks, and the link ‘View The Full Charts’ which I click on. I take a look at the charts for a moment, navigating through the pagination using the ‘Next’ and ‘Previous’ buttons. I then decide I want to submit a track, and click the ‘Submit a Track’ link in the nav. I enter a new track, making use of the Wikipedia link in order to get the ‘Year Released’. Upon submitting the track, I am taken back to the charts page, where I can see my track is at the top of the list.
 
 At this point in the testing, I realised that for the user to see their newly submitted track at the top of the charts might be confusing. If the user has yet to realise that the charts page automatically changes the sorting option to ‘Date Added (Newest)’ when the user submits a track, then the user may end up wondering why their track is suddenly number 1.
@@ -344,7 +344,7 @@ In order to help counter this, I decided to add a sub-heading to the charts page
 Carrying on with the test, I noticed I made a typo in the artist name of the track I just uploaded. I click the ‘Edit’ button of the track and am taken to the edit form. I make the edit, submit the edit and then I am taken back to the charts page.
 
 I repeat the add track process a few times. During one of the submissions I am caught out by the validation, as I accidentally add ‘3002’ instead of ‘2002’ for the Year Released. The form will not submit, as the ‘Year Released’ input will only accept a 1 or 2 as the first character of the input. A logical bit of validation, as there is no music currently released in the 4th millennium. The validation allows me to correct my mistake before I submit the track.
-#### 2. Chart Observer
+#### Chart Observer
 I initially follow a similar process to the Hardcore Sharer, landing on index.html and taking a moment to explore the homepage. I then go to the charts page by clicking the link in the nav. I explore the charts for a few moments by clicking the ‘Next’ and ‘Previous’ buttons. I then decide to change the decade filter and take a look at the tracks from the 1990s. I can see the top track changes, and I recognise both it and other tracks as being from the 90s. I am able to change the decade to the 70s and 80s in the same way. I spot a track I like and click the Like button.
 
 At this point I realised that there is was feedback from the app that a Like was successful. It could be apparent to the user anyway, especially if a track which previously had 1 Like now has 2, but this requires reliance on the user’s memory and attention, and also relies on the track not ending up in a different pagination as a result of the user’s Like, meaning it will not be part of 5 tracks the user is currently viewing.
