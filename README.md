@@ -42,7 +42,7 @@
 
 ----------
 
-[4. Features Left to Implement](#4features-left-to-implement)
+[4. Features Left to Implement](#4-features-left-to-implement)
 
 [4.1 'First' and 'Last' buttons on the chart page](#41-first-and-last-buttons-on-the-chart-page)
 
