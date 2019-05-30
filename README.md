@@ -42,7 +42,7 @@
 
 ----------
 
-[4. Features Left to Implement](#features-left-to-implement)
+[4. Features Left to Implement](#4features-left-to-implement)
 
 [4.1 'First' and 'Last' buttons on the chart page](#41-first-and-last-buttons-on-the-chart-page)
 
@@ -52,42 +52,42 @@
 
 ----------
 
-[5. How Existing Features Fulfil User Requirements](#how-existing-features-fulfil-user-requirements)
+[5. How Existing Features Fulfil User Requirements](#5-how-existing-features-fulfil-user-requirements)
 
-[5.1. Hardcore Sharer](#hardcore-sharer-features)
+[5.1. Hardcore Sharer](#51-hardcore-sharer-features)
 
-[5.2. Chart Observer](#chart-observer-features)
+[5.2. Chart Observer](#52-chart-observer-features)
 
-[5.3. Music Socialiate](#music-socialite-features)
-
-----------
-[6. Technologies Used](#technologies-used)
+[5.3. Music Socialiate](#53-music-socialite-features)
 
 ----------
-
-[7. Testing](#Testing)
-
-[7.1. Code Validation](#code-validation)
-
-[7.2. User Stories Testing](#user-stories-testing)
-
-[7.3. Other Testing](#other-testing)
-
-[7.4. Browser and Responsiveness Testing](#browser-and-responsiveness-testing)
-
-[7.5. Known Issues](#known-issues)
+[6. Technologies Used](#6-technologies-used)
 
 ----------
 
-[8. Deployment](#deployment)
+[7. Testing](#7-Testing)
+
+[7.1. Code Validation](#71-code-validation)
+
+[7.2. User Stories Testing](72-#user-stories-testing)
+
+[7.3. Other Testing](#73-other-testing)
+
+[7.4. Browser and Responsiveness Testing](#74-browser-and-responsiveness-testing)
+
+[7.5. Known Issues](#75-known-issues)
 
 ----------
 
-[9. Credits](#credits)
+[8. Deployment](#8-deployment)
 
-[9.1. Images](#images)
+----------
 
-[9.2. Acknowledgements](#acknowledgements)
+[9. Credits](#9-credits)
+
+[9.1. Images](#91-images)
+
+[9.2. Acknowledgements](#92-acknowledgements)
 
 --------------------
 ## 1. Introduction
