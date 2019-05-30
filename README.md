@@ -307,7 +307,7 @@ This type of user has multiple places where they are able to get to add-track.ht
 Without an authentication system, this type of user currently does not have a way to track their uploads or Likes. This is a feature that could be added in a future release.
 ### 5.2. Chart Observer
 This type of user is served by tracks.html. The charts page allows them to clearly see where tracks sit in the various sorting orders. The decade filter allows them to refine the criteria and see what tracks are most popular in which decade. The charts page is designed to be as user-friendly as possible, so if the user spots something wrong with the listing of a track, they can edit that track, and then go back to the same 5 tracks they were viewing before the edit.
-### 5.3. Music Socialiate
+### 5.3. Music Socialite
 The app currently does not possess any kind of social functionality, which was considered beyond the scope of the requirements for this project. Social functionality would be something added onto a future release.
 ## 6. Technologies Used
 ### [HTML5](https://www.w3.org/standards/webdesign/htmlcss)
