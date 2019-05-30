@@ -71,7 +71,7 @@
 
 [7.2. User Stories Testing](#72-user-stories-testing)
 
-[7.3. Other Testing](#73-other-testing)
+[7.3. Other Manual Testing](#73-other-manual-testing)
 
 [7.4. Browser and Responsiveness Testing](#74-browser-and-responsiveness-testing)
 
@@ -394,7 +394,7 @@ At this point I realised that there is no feedback from the app that a Like was 
 I decided to use Flask’s messaging framework to feedback to the user that a track was Liked, to avoid any confusion. This message simply thanks the user for voting.
 
 I Like a few more tracks. I find the message popping up after I Like a track to be useful, since there is no other visual feedback on the page except the number of likes changing. The fact the scroll is kept, so I don’t lose sight of the track I just Liked, is useful. It should be noted I conducted this simulation after the testing with User X which can be read about in the [Other Manual Testing section](#other-manual-testing). It was the testing with User X that led to the scroll script being added.
-### 7.3. Other Manual testing
+### 7.3. Other Manual Testing
 Apart from testing the app personally, I also made use of other people to test the app, most of whom were not developers. Feedback from these users was positive, with all agreeing that the site works well. With one of these tests I was able to sit with the person and observe and record them using the app. We can call this person User X.
 
 Upon landing on the app, the first thing User X did was test the nav links. All links worked and there were no dead pages. The user then went to the charts page and began Liking tracks. At this point during the app’s development, the scroll functionality, which keeps the user scrolled to the track they just Liked (with the exception of if the track has changed its pagination), was not implemented. User X, who was Liking a few tracks, said out loud that they found it irritating that the page kept scrolling back to the top, even when the track the user Liked was at the bottom of the list of 5 tracks.
