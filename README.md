@@ -54,11 +54,11 @@
 
 [5. How Existing Features Fulfil User Requirements](#5-how-existing-features-fulfil-user-requirements)
 
-[5.1. Hardcore Sharer](#51-hardcore-sharer-features)
+[5.1. Hardcore Sharer](#hardcore-sharer-features)
 
-[5.2. Chart Observer](#52-chart-observer-features)
+[5.2. Chart Observer](#chart-observer-features)
 
-[5.3. Music Socialiate](#53-music-socialite-features)
+[5.3. Music Socialiate](#music-socialite-features)
 
 ----------
 [6. Technologies Used](#6-technologies-used)
