@@ -8,47 +8,47 @@
 
 [2. UX](#2-ux)
 
-[2.1. User Stories](#user-stories)
+[2.1. User Stories](#21-user-stories)
 
-[2.1.1 Hardcore Sharer](#hardcore-sharer)
+[2.1.1 Hardcore Sharer](#211-hardcore-sharer)
 
-[2.1.2. Chart Observer](#chart-observer)
+[2.1.2. Chart Observer](#212-chart-observer)
 
-[2.1.3. Music Socialite](#music-socialite)
+[2.1.3. Music Socialite](#213-music-socialite)
 
-[2.2. Wireframes](#wireframes)
+[2.2. Wireframes](#22-wireframes)
 
 ----------
 
-[3. Features](#features)
+[3. Features](#3-features)
 
-[3.1. Navbar](#navbar)
+[3.1. Navbar](#31-navbar)
 
-[3.2. Homepage (index.html)](#homepage-index.html)
+[3.2. Homepage (index.html)](#32-homepage-index.html)
 
-[3.3. Charts (tracks.html](#charts-tracks.html)
+[3.3. Charts (tracks.html](#33-charts-tracks.html)
 
-[3.3.1. Rank Number of the Track](#rank-number-of-the-track)
+[3.3.1. Rank Number of the Track](#331-rank-number-of-the-track)
 
-[3.3.2. Artist and Track Title](#artist-and-track-title)
+[3.3.2. Artist and Track Title](#332-artist-and-track-title)
 
-[3.3.3. Like Button and Like Count](#like-button-and-like-count)
+[3.3.3. Like Button and Like Count](#333-like-button-and-like-count)
 
-[3.3.4. Name of User Who Submitted and Date Submitted](#name-of-user-who-submitted-and-date-submitted)
+[3.3.4. Name of User Who Submitted and Date Submitted](#334-name-of-user-who-submitted-and-date-submitted)
 
-[3.3.5. Edit and Delete Buttons](#edit-and-delete-buttons)
+[3.3.5. Edit and Delete Buttons](#335-edit-and-delete-buttons)
 
-[3.3.6. Embedded YouTube Video](#embedded-youtube-video)
+[3.3.6. Embedded YouTube Video](#336-embedded-youtube-video)
 
-[3.3.7. Pagination System](#pagination-system)
+[3.3.7. Pagination System](#337-pagination-system)
 
-[3.3.8. Filter System](#filter-system)
+[3.3.8. Filter System](#338-filter-system)
 
-[3.3.9. Sorting System](#sorting-system)
+[3.3.9. Sorting System](#339-sorting-system)
 
-[3.3.10. No Tracks Message](#no-tracks-message)
+[3.3.10. No Tracks Message](#3310-no-tracks-message)
 
-[3.4. ‘Like’ System](#’like’-system)
+[3.4. ‘Like’ System](#34-’like’-system)
 
 [3.SOMETHING. Features Left to Implement](#features-left-to-implement)
 
