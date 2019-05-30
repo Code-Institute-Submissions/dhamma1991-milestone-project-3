@@ -18,7 +18,7 @@
 
 [3.1. Navbar](#31-navbar)
 
-[3.2. Homepage (index.html)](#32-homepage-index.html)
+[3.2. Homepage (index.html)](#32-homepage-indexhtml)
 
 [3.3. Charts (tracks.html](#33-charts-tracks.html)
 
