@@ -347,7 +347,7 @@ I repeat the add track process a few times. During one of the submissions I am c
 #### Chart Observer
 I initially follow a similar process to the Hardcore Sharer, landing on index.html and taking a moment to explore the homepage. I then go to the charts page by clicking the link in the nav. I explore the charts for a few moments by clicking the ‘Next’ and ‘Previous’ buttons. I then decide to change the decade filter and take a look at the tracks from the 1990s. I can see the top track changes, and I recognise both it and other tracks as being from the 90s. I am able to change the decade to the 70s and 80s in the same way. I spot a track I like and click the Like button.
 
-At this point I realised that there is was feedback from the app that a Like was successful. It could be apparent to the user anyway, especially if a track which previously had 1 Like now has 2, but this requires reliance on the user’s memory and attention, and also relies on the track not ending up in a different pagination as a result of the user’s Like, meaning it will not be part of 5 tracks the user is currently viewing.
+At this point I realised that there is no feedback from the app that a Like was successful. It could be apparent to the user anyway, especially if a track which previously had 1 Like now has 2, but this requires reliance on the user’s memory and attention, and also relies on the track not ending up in a different pagination as a result of the user’s Like, meaning it will not be part of 5 tracks the user is currently viewing.
 
 I decided to use Flask’s messaging framework to feedback to the user that a track was Liked, to avoid any confusion. This message simply thanks the user for voting.
 
