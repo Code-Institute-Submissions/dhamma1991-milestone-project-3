@@ -82,7 +82,7 @@
 
 [5. How Existing Features Fulfil User Requirements](#how-existing-features-fulfil-user-requirements)
 
-[5.1. Hardcore Sharer](#hardcore-sharer)
+[5.1. Hardcore Sharer](#hardcore-sharer-features)
 
 [5.2. Chart Observer](#chart-observer)
 
@@ -333,7 +333,9 @@ Secondly, edits and deletions could be tied to individual user accounts. The cur
 In addition, a user authentication system would enable more ‘social’ features. This could be a messaging system within the app that allows users to communicate with each other, as well as possibly a ‘friend’ or ‘follower’ system, which users could use to engage with fellow DesertIsland users to discuss uploads and music in general. 
 ## 5. How Existing Features Fulfil User Requirements
 This section details how the features implemented in the current release of the project meet the requirements of the users discussed in the UX section.
+<a name="hardcore-sharer-features">
 ### 5.1. Hardcore Sharer
+</a>
 This type of user has multiple places where they are able to get to add-track.html. This link is available in the nav and in the footer across the app, in the 2nd parallax image text on index.html, and also if the user’s decade filter selection comes up with no tracks on tracks.html.
 
 Without an authentication system, this type of user currently does not have a way to track their uploads or Likes. This is a feature that could be added in a future release.
