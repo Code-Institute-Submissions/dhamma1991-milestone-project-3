@@ -460,7 +460,7 @@ https://www.canva.com/media/MACy4VY-bGc
 https://www.rollingstone.com/wp-content/uploads/2018/11/jimi-hendrix-performing-in-1969.jpg?crop=900:600&width=440
 #### The bottom parallax image on index.html
 https://image.redbull.com/rbcom/010/2015-09-10/1331746937069_2/0100/0/1/dj-nu-marks-gets-his-toys-out.jpg
-### Acknowledgements
+### 9.2. Acknowledgements
 I received inspiration for this project mainly from Reddit. The design of the sort dropdown on tracks.html especially was inspired by Reddit’s design https://www.reddit.com/
 #### Code Acknowledgements
 Other developer’s code that I have reused is indicated within the code itself by comments.
