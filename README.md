@@ -58,7 +58,7 @@
 
 [5.2. Chart Observer](#52-chart-observer)
 
-[5.3. Music Socialiate](#53-music-socialite)
+[5.3. Music Socialite](#53-music-socialite)
 
 ----------
 [6. Technologies Used](#6-technologies-used)
@@ -69,7 +69,7 @@
 
 [7.1. Code Validation](#71-code-validation)
 
-[7.2. User Stories Testing](72-#user-stories-testing)
+[7.2. User Stories Testing](#72-user-stories-testing)
 
 [7.3. Other Testing](#73-other-testing)
 
