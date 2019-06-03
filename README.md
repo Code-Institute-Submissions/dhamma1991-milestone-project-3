@@ -323,7 +323,7 @@ A note on versions: the current stable version of Materialize is 1.0.0. This pro
 ### [Material Icons](https://material.io/tools/icons/?style=baseline)
 Included as part of the Materialize framework. Provides a useful set of icons that can be used to represent actions and items.
 ### [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-JavaScript is scattered throughout the project to enable DOM manipulation. Its primary purpose is to enable the user of jQuery, but there are some examples of pure JavaScript found within the app (e.g. the copyright date script found at the bottom of base.html, the YouTube lazy loading script, and the tracks.html scrollIntoView() script).
+JavaScript is scattered throughout the project to enable DOM manipulation. Its primary purpose is to enable the use of jQuery, but there are some examples of pure JavaScript found within the app (e.g. the copyright date script found at the bottom of base.html, the YouTube lazy loading script, and the tracks.html scrollIntoView() script).
 ### [jQuery 3.2.1](https://jquery.com)
 The latest version of jQuery (at the time of writing) is 3.4.1. An older version was used in keeping with the version stipulated by [Materialize](http://archives.materializecss.com/0.100.2/getting-started.html).
 
