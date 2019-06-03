@@ -32,7 +32,7 @@
 
 [3.8. Track Submission](#38-track-submission)
 
-[3.9. And and Edit Track Forms](#39-add-and-edit-track-forms)
+[3.9. Add and Edit Track Forms](#39-add-and-edit-track-forms)
 
 [3.10. Add Genre](#310-add-genre)
 
@@ -100,7 +100,7 @@ Three types of users have been identified as the typical user types for this app
 The hardcore sharer is someone who would make multiple submissions to DesertIsland. This type of user would be typically one who also engages heavily in social media in general. This user type would want a clear and easy way to submit music, and ideally, a way for them to track their uploads and the number of Likes they have acquired. 
 #### Chart Observer
 This type of user may or may not also be a hardcore sharer. They will however have an above average interest in music, and be curious as to how the rankings of music on the app look, seeing whether they agree or disagree with other’s votes. This type of user would need to see a clearly organised charts page.
-#### Music Socialiate
+#### Music Socialite
 This type of user is someone who is interested in the broader community surrounding music. They would likely be interested in social share capabilities, forums, and perhaps a messaging and ‘friend’ system. This type of user has not been catered for in the first release of the app, and the features they would require are planned for an updated release.
 ### 2.2. Wireframes
 Prior to work beginning on the app, wireframes were created to aid the design process and provide direction during actual coding. These can be found in the "wireframes" folder in the root directory of the project.
@@ -111,7 +111,7 @@ Along with designs for the app itself, within the wireframes directory you may f
 ## 3. Features
 DesertIsland is a website built from multiple HTML pages, with the backend handled by the Python Flask framework. The bulk of the custom backend code within the project can be found within the app.py file.
 ### 3.1. Navbar
-The main nav for the app is located at the top of every page, implemented by using Materialize classes. The nav is fairly basic, consisting of the DesertIsland brand logo and some links. On smaller viewports the nav collapses, with the links replaced by a menu icon. If the user clicks or taps on the icon, a sidenav appears on the left of the viewport where the user is able to view the navlinks. The user is able to close the sidenav by tapping or clicking off of the sidenav, or by clicking the close icon in the top right of the sidenav.
+The main nav for the app is located at the top of every page, implemented by using Materialize classes. The nav is fairly basic, consisting of the DesertIsland brand logo and some links. On smaller viewports the nav collapses, with the links replaced by a menu icon. If the user clicks or taps on the icon, a sidenav appears on the left of the viewport where the user is able to view the nav links. The user is able to close the sidenav by tapping or clicking off of the sidenav, or by clicking the close icon in the top right of the sidenav.
 
 The Materialize nav system by default does not include a close icon for the sidenav. I added this manually by adding a Material close icon, which is wired up to a method provided by Materialize called sideNav(‘hide’).
 ### 3.2. Homepage (index.html)
@@ -123,7 +123,7 @@ Care was taken to ensure that the legibility of the text over what was a very co
 
 The image is set to be 100% of the viewport’s height. This means that no matter the device on which the app is being viewed, the user will see just the navbar and the image. I like the consistency this provides between platforms.
 
-Different images are loaded depending on the size of the viewport, with smaller (and more efficient) images loaded for smaller viewports. A HTML <picture> element is used to this effect. In order for this to work, the Materialize JS handling the parallax effect had to be modified, since by default it looks for an <img> element to add the parallax effect to, and not <picture>. These minor modifications can be found in the uncompressed version of the materialize.js file within the project. 
+Different images are loaded depending on the size of the viewport, with smaller (and more efficient) images loaded for smaller viewports. A HTML 'picture' element is used to this effect. In order for this to work, the Materialize JS handling the parallax effect had to be modified, since by default it looks for an 'img' element to add the parallax effect to, and not 'picture'. These minor modifications can be found in the uncompressed version of the materialize.js file within the project. 
 
 I’m aware that modifying a library’s code may be an undesirable action to take, considering the implications when it’s time to update. However, due to the fairly basic modifications undertaken to materialize.js, I decided that for this project it was a reasonable step to take.
 
@@ -135,7 +135,7 @@ At the bottom of the page is the footer, containing the same nav links as the to
 ### 3.3. Charts (tracks.html)
 The charts page essentially gives an overview of the objects in the tracks collection within the database. Each of these objects represents a track submitted by a user. You can view a sketch of the database schema within the wireframes directory within the project.
 
-A for loop within tracks.html is used to render a number of <section> elements, with each <section> element representing a track. The list of tracks is determined by the [filter](#filter-system) and [sort](#sorting-system) systems. Each track contains the following:
+A for loop within tracks.html is used to render a number of 'section' elements, with each 'section' element representing a track. The list of tracks is determined by the [filter](#filter-system) and [sort](#sorting-system) systems. Each track contains the following:
 
 1.	The rank number of the track
 2.	Artist
@@ -151,7 +151,7 @@ This is determined by combining the index of the track loop, added to the curren
 #### Artist and Track Title
 Determined by the ‘tracks’ passed through from the backend.
 #### Like Button and Like Count
-The ‘Like Button’ is technically a form, with a submit button that goes to the upvote_track view within app.py. This view increments the upvote_count of the selected track by 1. The upvote button knows which track to modify by being tied to track.id. The icon used to represent a ‘Like’ (a thumbs-up icon common to the internet) is a Material Icon. Some JavaScript ensues that once the user ‘Likes’ a track, the scroll of the page stays on the track they just Liked. The JavaScript also depends on a bit of Flask functionality, you can read more details on this in the [Like Scroll Script section](#like-scroll-script) of this readme.
+The ‘Like Button’ is technically a form, with a submit button that goes to the upvote_track view within app.py. This view increments the upvotes field of the selected track by 1. The upvote button knows which track to modify by being tied to track.id. The icon used to represent a ‘Like’ (a thumbs-up icon common to the internet) is a Material Icon. Some JavaScript ensues that once the user ‘Likes’ a track, the scroll of the page stays on the track they just Liked. The JavaScript also depends on a bit of Flask functionality, you can read more details on this in the [Like Scroll Script section](#like-scroll-script) of this readme.
 #### Name of User Who Submitted and Date Submitted
 Retrieved from the track object and passed through to the template similarly to the artist and track title.
 #### Edit and Delete Buttons
@@ -159,7 +159,7 @@ The Edit and Delete buttons take the user to the edit pages or delete confirmati
 #### Embedded YouTube Video
 The embedded YouTube videos that load initially are not technically videos at all, but image thumbnails. When the user clicks on the thumbnail, the YouTube video loads in its place. This was done to save on the user’s bandwidth, since loading 5 YouTube videos on a page simultaneously is very likely to affect the overall load time of the page. The image is made to look like a video by using css to generated a play icon.
 
-This functionality is accomplished using a very nice piece of JavaScirpt courtesy of [this article](https://webdesign.tutsplus.com/tutorials/how-to-lazy-load-embedded-youtube-videos--cms-26743). I modified the CSS provided by the article (CSS that styles the YouTube image) to fit with SCSS syntax, but the modifications to the JavaScript itself were minor. The images are responsive, and scale down to always fit the viewport’s width, scaling up to a maximum of 730px width, which fits with the layout of the page on larger viewport sizes. The video that loads in place of the image when the image is clicked on is sized to match the image’s size.
+This functionality is accomplished using a very nice piece of JavaScript courtesy of [this article](https://webdesign.tutsplus.com/tutorials/how-to-lazy-load-embedded-youtube-videos--cms-26743). I modified the CSS provided by the article (CSS that styles the YouTube image) to fit with SCSS syntax, but the modifications to the JavaScript itself were minor. The images are responsive, and scale down to always fit the viewport’s width, scaling up to a maximum of 730px width, which fits with the layout of the page on larger viewport sizes. The video that loads in place of the image when the image is clicked on is sized to match the image’s size.
 #### Pagination System
 There are 5 tracks per page. If more than 5 tracks meet the criteria of the user’s current filter, then they will be available via pagination. In order to navigate through the tracks, the user can click the ‘Next’ and ‘Previous’ buttons located at the bottom of the charts page just above the footer. The Next and Previous buttons display dynamically; the Next button will not display if the user has reached the end of the list of tracks, and the Previous button will not display if the user is at the beginning of the list. 
 
@@ -169,7 +169,7 @@ Users are able to filter the tracks on the chart page by decade. Users are able 
 
 The decade filter system uses a combined jQuery/Flask solution in order to get the correct list of tracks for the user and ensure the decade filter displays the correct text, matching the user’s selection.
 
-The decade filter on the frontend is a HTML select element populated by an option for each decade. A jQuery event listener awaits a change on the select, and goes to get_tracks (the view that goes to the charts page), passing through the value the user selected via the select box to the get_tracks view. This value is then used to determine which tracks to show, by filtering the results of tracks_collection.find()  by the decade, using the value for the ‘Year’ field of the tracks objects.
+The decade filter on the frontend is a HTML select element populated by an option for each decade. A jQuery event listener awaits a change on the select, and goes to get_tracks (the view that goes to the charts page), passing through the value the user selected via the select box to the get_tracks view. This value is then used to determine which tracks to show, by filtering the results of tracks_collection.find() by the decade, using the value for the ‘Year’ field of the tracks objects.
 
 I personally find the switch statement used by the jQuery to pass the decade value to get_tracks a bit cumbersome. However, the value of the select box cannot be passed directly into url_for(get_tracks), since JavaScript cannot be evaluated in Jinja. An alternative would be to [use AJAX](https://stackoverflow.com/questions/36143283/pass-javascript-variable-to-flask-url-for), but AJAX was beyond the scope of this project.
 
@@ -203,13 +203,13 @@ The Like Scroll Script is a bit of functionality added fairly late-on in the dev
 
 Prior to implementation of this script, the app would scroll back to the top of the page once the user had Liked a track on the charts page. This is not ideal, since if a user Likes a track towards the bottom of the charts page, they will lose where they were on the page. This has the potential to cause confusion.
 
-In order for this script to have the desired effect, firstly, each track in the list of 5 needs a unique identifier, or else the JavaScript has nothing to cling on to. This is achieved by using Jinja to give each <section> element containing the tracks a unique id attribute, consisting of the id of the tracks from the database.
+In order for this script to have the desired effect, firstly, each track in the list of 5 needs a unique identifier, or else the JavaScript has nothing to cling on to. This is achieved by using Jinja to give each 'section' element containing the tracks a unique id attribute, consisting of the id of the tracks from the database.
 
 Next, when the user clicks Like, the id of the track is sent forward to get_tracks, and then passed through to the template and the JavaScript. The method scrollToView() is then called on the element with the id which gets passed through to the template.
 
 It should be noted that the script has no effect if, once the user has Liked a track, that track ends up getting ‘promoted’ to the next level of pagination, e.g. if a track was rank 6, and the Like promotes it to rank 5, the user will be seeing tracks ranked 6-10, so the track they just liked will not be one of those. The pagination is not affected by this script.
 ### 3.5. Track Detail
-The track detail page serves as a detailed view for each database item(i.e. each track). This page can be reached for each track from the charts page, with the rank number, artist and track title text serving as a clickable link.
+The track detail page serves as a detailed view for each database item (i.e. each track). This page can be reached for each track from the charts page, with the rank number, artist and track title text serving as a clickable link.
 
 The track-detail page shows the same information about each track as the chart page, with the addition of the user description for the track, as well as the genre and year released.
 
@@ -316,8 +316,8 @@ The project's markup uses HTML5 and makes as much use of HTML5 semantics as poss
 The markup is styled using CSS3.
 ### [SASS Pre-Processing](https://sass-lang.com/)
 SASS pre-processing (using SCSS syntax) is used to render the project’s style.css file, making the process of creating CSS easier.
-### [Materialize 0.100.2](https://getbootstrap.com/docs/3.3/)
-Materialize is a front-end framework based on Google’s philosophy of “material design”. Materialize is used throughoout the app in order to simplify the process of generating the visual look and feel of the project.
+### [Materialize 0.100.2](http://archives.materializecss.com/0.100.2/)
+Materialize is a front-end framework based on Google’s philosophy of “material design”. Materialize is used throughout the app in order to simplify the process of generating the visual look and feel of the project.
 
 A note on versions: the current stable version of Materialize is 1.0.0. This project makes use of an older version, 0.100.2. I was able to get client-side form validation for the add and edit track forms working only on the older version, and none of the learning materials I could find were applicable to the current version of Materialize, hence I was at a loss as to what exactly the problem was. I’m not sure what changed about 1.0.0. to complicate it in regard to form validation, but since the differences between the visual style and capabilities of 1.0.0 and 0.100.2 are small, I decided to stick with the older version.
 ### [Material Icons](https://material.io/tools/icons/?style=baseline)
@@ -381,7 +381,7 @@ Upon loading the app, I am taken to index.html. I am able to appreciate the (rat
 
 At this point in the testing, I realised that for the user to see their newly submitted track at the top of the charts might be confusing. If the user has yet to realise that the charts page automatically changes the sorting option to ‘Date Added (Newest)’ when the user submits a track, then the user may end up wondering why their track is suddenly number 1.
 
-In order to help counter this, I decided to add a sub-heading to the charts page. This sub-heading is part of the h1 element on tracks.html, and is generated by passing  the value of sorting_order_text and decade_filter_text to the template, the values of these variables being determined at the same time as the sorting_order and decade_filter are calculated.
+In order to help counter this, I decided to add a sub-heading to the charts page. This sub-heading is part of the h1 element on tracks.html, and is generated by passing the value of sorting_order_text and decade_filter_text to the template, the values of these variables being determined at the same time as the sorting_order and decade_filter are calculated.
 
 Carrying on with the test, I noticed I made a typo in the artist name of the track I just uploaded. I click the ‘Edit’ button of the track and am taken to the edit form. I make the edit, submit the edit and then I am taken back to the charts page.
 
@@ -429,7 +429,7 @@ It is desirable in most types of databases to avoid duplicate data entry, and th
 
 A compound index, implemented using MongoDB, checking that both the track_title and artist are unique would be a better solution, but even this is not fully watertight; many artists make several versions of the same song, perhaps recorded at different times, or remastered, or even live versions. In addition, relying on the artist and track_title relies on the user entering them in precisely the right format; the database would not detect that “The Rolling Stones” and “Rolling Stones” are actually referring to the same artist, unless extensive checks were made that handled scenarios like these.
 
-It was therefore decided to go with the youtube_link. This is the one thing that can be guaranteed to render unique entries for the database, at least in regards to the YouTube videos. And although this doesn’t prevent, say, the exact same recorded version of “Hey Jude” by The Beatles showing up in the database, simply with two different YouTube uploads, I felt like it was the best solution I could come up with without some very extensive work being undertaken on MongoDB.
+It was therefore decided to go with the youtube_link. This is the one thing that can be guaranteed to render unique entries for the database, at least in regard to the YouTube videos. And although this doesn’t prevent, say, the exact same recorded version of “Hey Jude” by The Beatles showing up in the database, simply with two different YouTube uploads, I felt like it was the best solution I could come up with without some very extensive work being undertaken on MongoDB.
 #### Capitalization of user uploads
 There is currently no uniform way that the app handles user input in regards capitalization. For example, if the user enters “the beatles” and “yellow submarine” as a track submission, the app will render the text as “the beatles – yellow submarine” when ideally in this case the app would use the correct grammar of “The Beatles – Yellow Submarine”. 
 
@@ -437,7 +437,7 @@ The app is currently wholly reliant on the user getting the capitalization corre
 
 As some defence against this issue, there is text above the add and edit track forms asking the user to check their spelling and grammar. The system itself however currently has no powers to enforce this.
 #### The genre select
-The genre select is q form input element on both the add and edit track forms. The main issue with this element is that if the list of genres on the database grows too large, the select will become cumbersome and unwieldy to use. As it is, the genre select is fine with about 20 genres, but if users eventually added something like 500 genres (which is possible given the diverse nature of music) then a different solution would have to be implemented.
+The genre select is a form input element on both the add and edit track forms. The main issue with this element is that if the list of genres on the database grows too large, the select will become cumbersome and unwieldy to use. As it is, the genre select is fine with about 20 genres, but if users eventually added something like 500 genres (which is possible given the diverse nature of music) then a different solution would have to be implemented.
 
 A second problem here is that users have to manually look for the genre they want to add within the select. An ideal solution would be find and search functionality, so that a user could begin typing the name of the genre they want, and the genres matching the user’s search would come up via predictive search.
 #### Redundant ‘date_added_raw’ and ‘date_added’ fields
