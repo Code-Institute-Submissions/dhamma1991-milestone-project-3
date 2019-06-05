@@ -199,7 +199,7 @@ A check within the upvote_track view ensures that once a Like has been submitted
 
 When a user submits a track, the track starts off with 1 Like already in place. This is due to the assumption that a user who uploads a track would presumably have clicked the ‘Like’ button if it already existed.
 #### Like Scroll Script
-The Like Scroll Script is a bit of functionality added fairly late-on in the development process. The need for it arose during testing with a user called User X (you can read about that test [here](#other-manual-testing).
+The Like Scroll Script is a bit of functionality added fairly late-on in the development process. The need for it arose during testing with a user called User X (you can read about that test [here](#73-other-manual-testing).
 
 Prior to implementation of this script, the app would scroll back to the top of the page once the user had Liked a track on the charts page. This is not ideal, since if a user Likes a track towards the bottom of the charts page, they will lose where they were on the page. This has the potential to cause confusion.
 
