@@ -155,7 +155,7 @@ The ‘Like Button’ is technically a form, with a submit button that goes to t
 #### Name of User Who Submitted and Date Submitted
 Retrieved from the track object and passed through to the template similarly to the artist and track title.
 #### Edit and Delete Buttons
-The Edit and Delete buttons take the user to the edit pages or delete confirmation pages respectively for the tracks. More information about the Edit and Delete functionality can be found [here for Edit](#36-edit-functionality) and [here for Delete](#37-delete-functionality).
+The Edit and Delete buttons take the user to the edit pages or delete confirmation pages respectively for the tracks. More information about the Edit and Delete functionality can be found [here for Edit](#edit-functionality) and [here for Delete](#delete-functionality).
 #### Embedded YouTube Video
 The embedded YouTube videos that load initially are not technically videos at all, but image thumbnails. When the user clicks on the thumbnail, the YouTube video loads in its place. This was done to save on the user’s bandwidth, since loading 5 YouTube videos on a page simultaneously is very likely to affect the overall load time of the page. The image is made to look like a video by using css to generated a play icon.
 
@@ -199,7 +199,7 @@ A check within the upvote_track view ensures that once a Like has been submitted
 
 When a user submits a track, the track starts off with 1 Like already in place. This is due to the assumption that a user who uploads a track would presumably have clicked the ‘Like’ button if it already existed.
 #### Like Scroll Script
-The Like Scroll Script is a bit of functionality added fairly late-on in the development process. The need for it arose during testing with a user called User X (you can read about that test [here](#73-other-manual-testing).
+The Like Scroll Script is a bit of functionality added fairly late-on in the development process. The need for it arose during testing with a user called User X (you can read about that test [here](#other-manual-testing).
 
 Prior to implementation of this script, the app would scroll back to the top of the page once the user had Liked a track on the charts page. This is not ideal, since if a user Likes a track towards the bottom of the charts page, they will lose where they were on the page. This has the potential to cause confusion.
 
@@ -227,7 +227,7 @@ The edit page and the add-track page are quite similar. One of the big differenc
 
 Once the user has finished editing, or if they cancel their edit by clicking the Cancel Edit button, they are taken back to the charts page, retaining the pagination they were on before they went to edit the track. This is the case even if the user edits a track from a track-detail page. Ideally, in such a case the user would go back to the track-detail page once they had taken an action on the edit page, and not to the charts page. This is a current limitation of the app.
 
-The edit form, along with the add-track form, is discussed more in detail [here](#39-add-and-edit-track-forms).
+The edit form, along with the add-track form, is discussed more in detail [here](#add-and-edit-track-forms).
 ### 3.7. Delete Functionality
 Each track in the database is able to be deleted. Any user can delete any track, including ones they did not submit. Without an authentication system, I’m unsure as to how to implement a delete system which limits deletions of tracks to the users who submitted them.
 
@@ -389,7 +389,7 @@ I repeat the add track process a few times. During one of the submissions I am c
 #### Chart Observer
 I initially follow a similar process to the Hardcore Sharer, landing on index.html and taking a moment to explore the homepage. I then go to the charts page by clicking the link in the nav. I explore the charts for a few moments by clicking the ‘Next’ and ‘Previous’ buttons. I then decide to change the decade filter and take a look at the tracks from the 1990s. I can see the top track changes, and I recognise both it and other tracks as being from the 90s. I am able to change the decade to the 70s and 80s in the same way. I spot a track I like and click the Like button.
 
-I Like a few more tracks. The fact the scroll is kept, so I don’t lose sight of the track I just Liked, is useful. It should be noted I conducted this simulation after the testing with User X which can be read about in the [Other Manual Testing section](#73-other-manual-testing). It was the testing with User X that led to the scroll script being added.
+I Like a few more tracks. The fact the scroll is kept, so I don’t lose sight of the track I just Liked, is useful. It should be noted I conducted this simulation after the testing with User X which can be read about in the [Other Manual Testing section](#other-manual-testing). It was the testing with User X that led to the scroll script being added.
 ### 7.3. Other Manual Testing
 Apart from testing the app personally, I also made use of other people to test the app, most of whom were not developers. Feedback from these users was positive, with all agreeing that the site works well. With one of these tests I was able to sit with the person and observe and record them using the app. We can call this person User X.
 
@@ -409,9 +409,9 @@ The app was developed mobile first. I tend to always work on projects with the b
 
 No issues were detected on any of the tested browsers in terms of either layout or functionality.
 
-In addition to modern browser testing, the app was tested on IE version 11.0.9600.19130. On this browser, none of the charts were rendered. After some searching, I found that DC.js is tested in IE but that [mine wasn’t the only issue] https://stackoverflow.com/questions/50047687/dc-js-im-facing-issues-rendering-the-dc-js-dashboards-in-ie-11) and that issues relating to DC.js working with IE [have been documented](https://github.com/dc-js/dc.js/issues/1334).
+In addition to modern browser testing, the app was tested on IE version 11.0.9600.19130. On IE, there were a few issues that led me to take the decision to not support it. The main issue was that the user would get an error when they changed the decade filter, which appears to be related to the JavaScript. There were also some layout issues, with the brand logo covering the brand text.
 
-Due to IE being a legacy browser, and with Windows 10 (and Edge) becoming more and more common, I adopted to not support IE in any of its incarnations. To this effect, a user trying to view the app on IE will see a page similar to the no-js functionality, asking them to upgrade their browser.
+Due to IE being a legacy browser, and with Windows 10 (and Edge) becoming more and more common, I adopted to not support IE in any of its incarnations. To this effect, a user trying to view the app on IE will see a page asking them to upgrade their browser. This functionality is accomplished with the ms-ie.js script and some styles that are applied as a result of the JavaScript.
 ### 7.5. Known Issues
 There are several issues with the app that were not tackled in the current release, mainly because of the time it would have taken to implement fixes.
 #### User loses form data when adding genre
