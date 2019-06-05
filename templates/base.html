@@ -35,6 +35,18 @@
     </head>
     
     <body>
+        <!-- Internet Explorer Fallback Display -->
+        <div id="ms-ie-display">
+            <div>
+                <h1>DESERTISLAND</h1>
+                
+                <p><span>You are currently using an old browser!</span></p>
+                
+                <p>Please update your browser to view the app.</p>
+            </div>
+        </div>
+        <!-- /Internet Explorer Fallback Display -->
+    
         <header>
             <nav>
                 <!-- Nav Wrapper -->
@@ -244,6 +256,10 @@
         {% endblock %}
         <!-- /Like Scroll -->
         <!-- /Block Scripts -->
+        
+        <!-- IE Fallback Script -->
+        <script src="{{ url_for('static', filename='js/ms-ie.js') }}"></script>
+        <!-- /IE Fallback Script -->
         
         <!-- Get the current year to be used for the copyright date in the footer -->
         <script>

@@ -504,6 +504,30 @@ Styles used within stats.html
   .stats-container .row strong {
     font-size: 2rem; }
 
+/* Internet Explorer Fallback
+-------------------- */
+/* The app does not function correctly on any version of Miccrosoft's Internet Explorer
+    Require users to have a modern browser to be able to access the app
+*/
+#ms-ie-display {
+  display: none; }
+
+.ms-ie #ms-ie-display {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: block; }
+  .ms-ie #ms-ie-display div {
+    position: relative;
+    top: 10%;
+    text-align: center; }
+    .ms-ie #ms-ie-display div p {
+      font-size: 1rem; }
+      .ms-ie #ms-ie-display div p span {
+        font-size: 2rem; }
+.ms-ie header, .ms-ie nav, .ms-ie main, .ms-ie footer {
+  display: none !important; }
+
 /* /Components */
 
 /*# sourceMappingURL=style.css.map */
