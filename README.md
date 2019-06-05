@@ -227,7 +227,7 @@ The edit page and the add-track page are quite similar. One of the big differenc
 
 Once the user has finished editing, or if they cancel their edit by clicking the Cancel Edit button, they are taken back to the charts page, retaining the pagination they were on before they went to edit the track. This is the case even if the user edits a track from a track-detail page. Ideally, in such a case the user would go back to the track-detail page once they had taken an action on the edit page, and not to the charts page. This is a current limitation of the app.
 
-The edit form, along with the add-track form, is discussed more in detail [here](#add-and-edit-track-forms).
+The edit form, along with the add-track form, is discussed more in detail [here](#39-add-and-edit-track-forms).
 ### 3.7. Delete Functionality
 Each track in the database is able to be deleted. Any user can delete any track, including ones they did not submit. Without an authentication system, I’m unsure as to how to implement a delete system which limits deletions of tracks to the users who submitted them.
 
