@@ -389,7 +389,7 @@ I repeat the add track process a few times. During one of the submissions I am c
 #### Chart Observer
 I initially follow a similar process to the Hardcore Sharer, landing on index.html and taking a moment to explore the homepage. I then go to the charts page by clicking the link in the nav. I explore the charts for a few moments by clicking the ‘Next’ and ‘Previous’ buttons. I then decide to change the decade filter and take a look at the tracks from the 1990s. I can see the top track changes, and I recognise both it and other tracks as being from the 90s. I am able to change the decade to the 70s and 80s in the same way. I spot a track I like and click the Like button.
 
-I Like a few more tracks. The fact the scroll is kept, so I don’t lose sight of the track I just Liked, is useful. It should be noted I conducted this simulation after the testing with User X which can be read about in the [Other Manual Testing section](#other-manual-testing). It was the testing with User X that led to the scroll script being added.
+I Like a few more tracks. The fact the scroll is kept, so I don’t lose sight of the track I just Liked, is useful. It should be noted I conducted this simulation after the testing with User X which can be read about in the [Other Manual Testing section](#73-other-manual-testing). It was the testing with User X that led to the scroll script being added.
 ### 7.3. Other Manual Testing
 Apart from testing the app personally, I also made use of other people to test the app, most of whom were not developers. Feedback from these users was positive, with all agreeing that the site works well. With one of these tests I was able to sit with the person and observe and record them using the app. We can call this person User X.
 
