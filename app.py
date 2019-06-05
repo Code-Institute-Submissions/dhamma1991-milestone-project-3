@@ -43,8 +43,6 @@ def index():
     #     pymongo.ASCENDING)], 
     #     unique=True, 
     #     collation=Collation(locale = 'en', strength = 2))
-    
-    # print(sorted(list(mongo.db.genres.index_information())))
 
     # Clear any session variables the user may have 
     # This ensures the user can go to get_tracks cleanly
@@ -696,19 +694,6 @@ def edit_track(sorting_order, decade_filter, track_id, inserted_genre):
     Determines which track the user wants to edit
     Then takes them to edit-track.html
     """
-    # If genre_edit_track_id is in session, that means the user is coming from just adding a genre
-    # if 'genre_edit_track_id' in session:
-    #     # Get the track_id from the session
-    #     track_id = session['genre_edit_track_id']
-    #     # Find the track the user wants to edit
-    #     # Wrap track_id in ObjectId in order to make it acceptabke to mongodb
-    #     the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
-    #     # Pop the session since it's no longer needed
-    #     print(session['genre_edit_track_id'])
-    #     session.pop('genre_edit_track_id', None)
-    # If genre_edit_track_id is not in session, that means the user has not come from just adding a genre
-    # else:
-    
     # Grab the track from what was passed through
     the_track = mongo.db.tracks.find_one({"_id": ObjectId(track_id)})
     # A list of all the genres is also needed in order to populate the edit form
