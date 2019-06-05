@@ -155,7 +155,7 @@ The ‘Like Button’ is technically a form, with a submit button that goes to t
 #### Name of User Who Submitted and Date Submitted
 Retrieved from the track object and passed through to the template similarly to the artist and track title.
 #### Edit and Delete Buttons
-The Edit and Delete buttons take the user to the edit pages or delete confirmation pages respectively for the tracks. More information about the Edit and Delete functionality can be found [here for Edit](#edit-functionality) and [here for Delete](#delete-functionality).
+The Edit and Delete buttons take the user to the edit pages or delete confirmation pages respectively for the tracks. More information about the Edit and Delete functionality can be found [here for Edit](#3-6-edit-functionality) and [here for Delete](#3-7-delete-functionality).
 #### Embedded YouTube Video
 The embedded YouTube videos that load initially are not technically videos at all, but image thumbnails. When the user clicks on the thumbnail, the YouTube video loads in its place. This was done to save on the user’s bandwidth, since loading 5 YouTube videos on a page simultaneously is very likely to affect the overall load time of the page. The image is made to look like a video by using css to generated a play icon.
 
